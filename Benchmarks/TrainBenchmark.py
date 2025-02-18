@@ -155,14 +155,14 @@ if __name__ == "__main__":
     # Checkpoint callback
     CheckPoint = tf.keras.callbacks.ModelCheckpoint(filepath=ModelSaveName, save_best_only=True, save_weights_only=True, monitor='val_loss', mode='min', verbose=1)
     # Early-stop callback
-    EarlyStop = EarlyStopping(monitor='val_loss', patience=300, restore_best_weights=True )
+    EarlyStop = EarlyStopping(monitor='val_loss', patience=1000, restore_best_weights=True )
     # Train model
 
     #### -----------------------------------------------------  Execute model training -------------------------------------------------------------------------     
     if 'VAE' in ConfigName:
         # Calling dynamic controller for losses (DCL)
         ## The relative size of the loss is reflected in the weight to minimize the loss.
-        RelLoss = DCLCall ({**CommonParams, **ModelParams}, ConfigName, ModelSaveName, ToSaveLoss=None, SaveWay='max', Resume=Resume, Patience=300)
+        RelLoss = DCLCall ({**CommonParams, **ModelParams}, ConfigName, ModelSaveName, ToSaveLoss=None, SaveWay='max', Resume=Resume, Patience=1000)
         NEpochs -= (RelLoss.StartEpoch )    
         
         #### Model Training

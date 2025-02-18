@@ -419,6 +419,16 @@ class VDM(tf.keras.Model):
         """
         Compute the total loss (diffusion loss, latent loss, reconstruction loss).
         """
+        
+        # Compute PSD
+        def tf_fft_psd(data, min_freq=1, max_freq=51):
+            data = tf.cast(data, tf.complex64)
+            fft_res = tf.abs(tf.signal.fft(data))
+            half_len = tf.shape(fft_res)[-1] // 2
+            psd = tf.square(fft_res[..., :half_len]) / tf.cast(tf.shape(data)[-1], tf.float32)
+            psd = psd[..., min_freq:max_freq]
+            return psd / tf.reduce_sum(psd, axis=(-1),keepdims=True)    
+            
         # Sample discrete timesteps uniformly from {1,..., Iter}
         batch_size = tf.shape(x)[0]
         timestep = tf.random.uniform([batch_size], minval=1, maxval=self.cfg['Iter'] + 1, dtype=tf.int32)
@@ -451,7 +461,13 @@ class VDM(tf.keras.Model):
 
         # 3) Reconstruction loss: continuous (Gaussian NLL)
         recons_loss = self.log_probs_x_z0(x, z_0=None, min_sigma=self.cfg['SigmaMin'])  # shape [B]
-        total_loss_per_sample = diffusion_loss + latent_loss + recons_loss
+
+        # 4) Compute PSD of denoised_signal
+        denoised_signal = x_t - pred_noise
+        psd_denoised = tf_fft_psd(denoised_signal[:,:,0]) # Compute PSD of denoised_signal
+        psd_loss = tf.reduce_sum((psd_denoised - condition) ** 2, axis=-1) # Compute PSD loss
+        
+        total_loss_per_sample = diffusion_loss + latent_loss + recons_loss + psd_loss
         total_loss = tf.reduce_mean(total_loss_per_sample)
         return total_loss
 

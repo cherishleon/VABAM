@@ -359,11 +359,11 @@ class ConditionalDiffWave(tf.keras.Model):
         noised, noise = self.diffusion(signal, noise_level)
         eps = self.pred_noise(noised, timesteps, condition)
 
-        denoised_signal = noised - noise
+        denoised_signal = noised - eps
         psd_denoised = tf_fft_psd(denoised_signal) # Compute PSD of denoised_signal
         
         # Compute the total loss 
-        loss = tf.reduce_mean((eps - noise)**2) + tf.reduce_mean((psd_denoised - condition) ** 2)
+        loss = tf.reduce_mean((eps - noise)**2) + tf.reduce_mean((psd_denoised - condition) ** 2) * 5
 
         return loss
 

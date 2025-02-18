@@ -823,7 +823,7 @@ class Evaluator ():
     def Eval_XCON (self, AnalData, GenModel, FcLimit=0.05,  WindowSize=3, NSplitBatch=1, SecDataType=None,  Continue=True ):
         
         ## Required parameters
-        self.GenModel = GenModel             # The model that generates signals based on given Zs and Cons.
+        self.GenModel = GenModel             # The model that generates signals based on given Xs and Cons.
         self.NSplitBatch = NSplitBatch
         
         assert SecDataType in ['FCIN','CONDIN', False], "Please verify the value of 'SecDataType'. Only 'FCIN', 'CONDIN'  or False are valid."
@@ -876,7 +876,7 @@ class Evaluator ():
             print(np.squeeze(SubData[0])[:, None].shape)
 
 
-            # Sampling Samp_Z and Samp_Zj
+            # Sampling Samp_X
             # Please note that the tensor is maintained in a reduced number of dimensions for computational efficiency in practice.
             ## Dimensionality Mapping in Our Paper: b: skipped, d: NMiniBat, r: NParts, m: NSubGen, t: SigDim; 
             self.Xbdr_tmp = np.broadcast_to(np.squeeze(SubData[0])[:, None], (self.NMiniBat, self.NParts, self.SigDim))

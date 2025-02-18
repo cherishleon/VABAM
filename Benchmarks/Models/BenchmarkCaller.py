@@ -89,8 +89,7 @@ def ModelCall (ConfigSpec, ConfigName, TrData, ValData, Resume=False, LoadWeight
 
 
 # Dynamic controller for losses
-def DCLCall(ConfigSpec, ConfigName, ModelSaveName,
-            ToSaveLoss=None, SaveWay='max', Buffer=0, Resume=False):
+def DCLCall(ConfigSpec, ConfigName, ModelSaveName, ToSaveLoss=None, SaveWay='max', Buffer=0, Resume=False, Patience=100):
     """
     Dynamic controller for losses.
     
@@ -146,7 +145,7 @@ def DCLCall(ConfigSpec, ConfigName, ModelSaveName,
         MaxLimit['Beta_DTC'] = ConfigSpec.get('MxWDTC', None)
                 
 
-    RelLoss = RelLossWeight(BetaList=RelLossDic, LossScaling= ScalingDic, MinLimit= MinLimit, MaxLimit = MaxLimit, 
-                            SavePath = ModelSaveName, ToSaveLoss=ToSaveLoss, SaveWay=SaveWay, Buffer=Buffer, Resume=Resume )
+    RelLoss = RelLossWeight(BetaList=RelLossDic, LossScaling= ScalingDic, MinLimit= MinLimit, MaxLimit = MaxLimit, SavePath = ModelSaveName, 
+                            ToSaveLoss=ToSaveLoss, SaveWay=SaveWay, Buffer=Buffer, Resume=Resume, Patience=Patience)
     
     return RelLoss
