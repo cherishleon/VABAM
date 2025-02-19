@@ -69,8 +69,8 @@ class FiLM(tf.keras.layers.Layer):
             Tensor: Modulated tensor of shape (B, T, C).
         """
         gamma = self.gamma_layer(condition)[:, None, :]  # Shape: (B, 1, C)
-        beta_w = self.beta_layer(condition)[:, None, :]    # Shape: (B, 1, C)
-        return gamma * inputs + beta_w  
+        beta = self.beta_layer(condition)[:, None, :]    # Shape: (B, 1, C)
+        return gamma * inputs + beta  
 
 # =============================================================================
 # WaveNet Block
@@ -241,11 +241,6 @@ class ConditionalDiffWave(tf.keras.Model):
         self.wavenet = WaveNet(config)
         self.config = config
 
-        # Beta scheduler
-        self.beta = np.linspace(self.config['BetaSchedule'][0], self.config['BetaSchedule'][1], self.config['Iter']) 
-        self.alpha = 1.0 - self.beta
-        self.alpha_bar = np.cumprod(self.alpha)
-        
     def call(self, condition, noise=None):
         """
         Inference call: generate denoised signals from conditions.
@@ -264,16 +259,19 @@ class ConditionalDiffWave(tf.keras.Model):
             t = self.config['SigDim']
             noise = tf.random.normal([b, t], mean=0.0, stddev=self.config['GaussSigma'])
 
+        # Beta scheduler
+        beta = np.linspace(self.config['BetaSchedule'][0], self.config['BetaSchedule'][1], self.config['Iter']) 
+        alpha = 1.0 - beta
+        alpha_bar = np.cumprod(alpha)
         
         signal = noise
         # Iteratively denoise (reverse diffusion process)
         for t_step in range(self.config['Iter'], 0, -1):
             eps = self.pred_noise(signal, tf.fill([tf.shape(signal)[0]], t_step), condition)
-            mu, sigma = self.pred_signal(signal, eps, self.alpha[t_step - 1], self.alpha_bar[t_step - 1])
+            mu, sigma = self.pred_signal(signal, eps, alpha[t_step - 1], alpha_bar[t_step - 1])
             signal = mu + tf.random.normal(tf.shape(signal), mean=0.0, stddev=self.config['GaussSigma']) * sigma
         return signal
-       
-        
+
     def diffusion(self, signal, alpha_bar, eps=None):
         """
         Diffuse the signal to a new state.
@@ -351,7 +349,11 @@ class ConditionalDiffWave(tf.keras.Model):
             psd = psd[..., min_freq:max_freq]
             return psd / tf.reduce_sum(psd, axis=(-1),keepdims=True) 
             
-        noise_level = tf.gather(tf.constant(self.alpha_bar, dtype=tf.float32), timesteps - 1)
+        # Beta scheduler
+        beta = np.linspace(self.config['BetaSchedule'][0], self.config['BetaSchedule'][1], self.config['Iter']) 
+        alpha = 1.0 - beta
+        alpha_bar = np.cumprod(alpha)
+        noise_level = tf.gather(tf.constant(alpha_bar, dtype=tf.float32), timesteps - 1)
         noised, noise = self.diffusion(signal, noise_level)
         eps = self.pred_noise(noised, timesteps, condition)
 
@@ -359,7 +361,7 @@ class ConditionalDiffWave(tf.keras.Model):
         psd_denoised = tf_fft_psd(denoised_signal) # Compute PSD of denoised_signal
         
         # Compute the total loss 
-        loss = tf.reduce_mean((eps - noise)**2) + tf.reduce_mean((psd_denoised - condition) ** 2) 
+        loss = tf.reduce_mean((eps - noise)**2) + tf.reduce_mean((psd_denoised - condition) ** 2) * 5
 
         return loss
 
