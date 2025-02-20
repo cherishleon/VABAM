@@ -50,17 +50,11 @@ if __name__ == "__main__":
     parser.add_argument('--Config', type=str, required=True, help='Set the name of the configuration to load (the name of the YAML file).')
     parser.add_argument('--ConfigSpec', nargs='+', type=str, required=False, 
                         default=None, help='Set the name of the specific configuration to load (the name of the model config in the YAML file).')
-    parser.add_argument('--SpecNZs', nargs='+', type=int, required=False, 
-                        default=None, help='Set the size of js to be selected at the same time with the list.')
-    parser.add_argument('--SpecFCs', nargs='+', type=float, required=False, default=None,
-                    help='Set the frequency cutoff range(s) for signal synthesis. Multiple ranges can be provided.')
     parser.add_argument('--GPUID', type=int, required=False, default=1)
     
     args = parser.parse_args() # Parse the arguments
     ConfigName = args.Config
     ConfigSpecName = args.ConfigSpec
-    SpecNZs = args.SpecNZs
-    SpecFCs = args.SpecFCs
     GPU_ID = args.GPUID
     
     YamlPath = './Config/'+ConfigName+'.yml'
@@ -138,56 +132,48 @@ if __name__ == "__main__":
 
         #### -----------------------------------------------------  Conducting Evalution -----------------------------------------------------------------          
         # Is the value assigned by ArgumentParser or assigned by YML?
-        if SpecNZs == None:
-            NSelZs = Params['NSelZ']
-        else:
-            NSelZs = SpecNZs
-            
-        if SpecFCs == None:
-            FcLimits = Params['FcLimit']
-        else:
-            FcLimits = SpecFCs
+        NZs = Params['NSelZ']
+        FC = Params['FcLimit']
         
-        print('NZs : ', NSelZs)
-        print('FC : ', FcLimits)
+        print('NZs : ', NZs)
+        print('FC : ', FC)
         print()
         
-        for NZs, FC in product(NSelZs, FcLimits):
-       
-            # Setting the model
-            SampZModel, SampFCModel, GenModel = SetModel()
+   
+        # Setting the model
+        SampZModel, SampFCModel, GenModel = SetModel()
 
-            
-            
-            # Object save path
-            ObjSavePath = './EvalResults/Instances/Obj_'+ConfigName+'_Nj'+str(NZs)+'_FC'+str(FC)+'.pkl'
-            SampZjSavePath = './Data/IntermediateData/'+ConfigName+'_Nj'+str(NZs)+'_FC'+str(FC)+'.pickle'
         
-            # Instantiation 
-            Eval = Evaluator(MinFreq = Params['MinFreq'], MaxFreq = Params['MaxFreq'], SimSize = Params['SimSize'], NMiniBat = Params['NMiniBat'], NParts = Params['NParts'],
-                   NSubGen = Params['NSubGen'], ReparaStdZj = Params['ReparaStdZj'], NSelZ = NZs, SampBatchSize = Params['SampBatchSize'], 
-                   SelMetricType = Params['SelMetricType'], SelMetricCut = Params['SelMetricCut'], GenBatchSize = Params['GenBatchSize'], GPU = Params['GPU'], 
-                   Name=ConfigName+'_Nj'+str(NZs)+'_FC'+str(FC))
+        
+        # Object save path
+        ObjSavePath = './EvalResults/Instances/Obj_'+ConfigName+'_Nj'+str(NZs)+'_FC'+str(FC)+'.pkl'
+        SampZjSavePath = './Data/IntermediateData/'+ConfigName+'_Nj'+str(NZs)+'_FC'+str(FC)+'.pickle'
     
-            
-            ## Executing evaluation
-            Eval.Eval_ZFC(AnalData[:],  SampZModel, SampFCModel, GenModel, FcLimit=FC, WindowSize=Params['WindowSize'], Continue=False)
-    
-    
-            # Selecting post Samp_Zj for generating plausible signals
-            SelPostSamp = Eval.SelPostSamp( Params['SelMetricCut'], SavePath=SampZjSavePath)
-    
-    
-            # Evaluating KLD (P || K)
-            #Eval.KLD_TrueGen(SecDataType ='FCA', RepeatSize = 1, PlotDist=False) 
-    
-            # Saving the instance's objects to a file
-            SerializeObjects(Eval, Params['Common_Info'], ObjSavePath)
+        # Instantiation 
+        Eval = Evaluator(MinFreq = Params['MinFreq'], MaxFreq = Params['MaxFreq'], SimSize = Params['SimSize'], NMiniBat = Params['NMiniBat'], NParts = Params['NParts'],
+               NSubGen = Params['NSubGen'], ReparaStdZj = Params['ReparaStdZj'], NSelZ = NZs, SampBatchSize = Params['SampBatchSize'], 
+               SelMetricType = Params['SelMetricType'], SelMetricCut = Params['SelMetricCut'], GenBatchSize = Params['GenBatchSize'], GPU = Params['GPU'], 
+               Name=ConfigName+'_Nj'+str(NZs)+'_FC'+str(FC))
 
-            # Clearing the current TensorFlow session and running garbage collection
-            # This helps to reduce unnecessary memory usage after each iteration
-            tf.keras.backend.clear_session()
-            
-            _ = gc.collect()
+        
+        ## Executing evaluation
+        Eval.Eval_ZFC(AnalData[:],  SampZModel, SampFCModel, GenModel, FcLimit=FC, WindowSize=Params['WindowSize'], Continue=False)
+
+
+        # Selecting post Samp_Zj for generating plausible signals
+        SelPostSamp = Eval.SelPostSamp( Params['SelMetricCut'], SavePath=SampZjSavePath)
+    
+    
+        # Evaluating KLD (P || K)
+        #Eval.KLD_TrueGen(SecDataType ='FCA', RepeatSize = 1, PlotDist=False) 
+
+        # Saving the instance's objects to a file
+        SerializeObjects(Eval, Params['Common_Info'], ObjSavePath)
+
+        # Clearing the current TensorFlow session and running garbage collection
+        # This helps to reduce unnecessary memory usage after each iteration
+        tf.keras.backend.clear_session()
+        
+        _ = gc.collect()
             
             

@@ -1,7 +1,7 @@
 import tensorflow as tf
 import math
 import numpy as np
-
+from tqdm.auto import tqdm
 
 # =============================================================================
 # Custom 1D dilated convolution layer.
@@ -246,7 +246,7 @@ class ConditionalDiffWave(tf.keras.Model):
         self.alpha = 1.0 - self.beta
         self.alpha_bar = np.cumprod(self.alpha)
         
-    def call(self, condition, noise=None):
+    def call(self, condition, noise=None, verbose=False):
         """
         Inference call: generate denoised signals from conditions.
         
@@ -268,8 +268,8 @@ class ConditionalDiffWave(tf.keras.Model):
         signal = noise
         # Iteratively denoise (reverse diffusion process)
         for t_step in range(self.config['Iter'], 0, -1):
-            eps = self.pred_noise(signal, tf.fill([tf.shape(signal)[0]], t_step), condition)
-            mu, sigma = self.pred_signal(signal, eps, self.alpha[t_step - 1], self.alpha_bar[t_step - 1])
+            eps = self.pred_noise(signal, tf.fill([tf.shape(signal)[0]], t_step), condition, verbose=verbose)
+            mu, sigma = self.pred_signal(signal, eps, self.alpha[t_step - 1], self.alpha_bar[t_step - 1], verbose=verbose)
             signal = mu + tf.random.normal(tf.shape(signal), mean=0.0, stddev=self.config['GaussSigma']) * sigma
         return signal
        
@@ -294,22 +294,56 @@ class ConditionalDiffWave(tf.keras.Model):
             alpha_bar = alpha_bar[:, None]
         return tf.sqrt(alpha_bar) * signal + tf.sqrt(1 - alpha_bar) * eps, eps
 
-    def pred_noise(self, signal, timestep, condition):
+    
+    def pred_noise(self, signal, timestep, condition, batch_size=None, verbose=False):
         """
-        Predict the noise component from the noised signal.
-        
+        Predict the noise component from the noised signal using smaller batch splits if needed.
+    
         Args:
-            signal: Tensor of shape [B, T], noised signal.
-            timestep: Tensor of shape [B], diffusion timesteps.
-            condition: Tensor of shape [B, M], input conditions.
-                 - Note: Internally expanded to [B, 1, M'].
-        
+            signal (tf.Tensor): Noised signal of shape [B, T].
+            timestep (tf.Tensor): Diffusion timesteps of shape [B].
+            condition (tf.Tensor): Conditioning tensor of shape [B, M].
+            batch_size (int, optional): If specified, the forward pass is done in 
+                batches of size `batch_size` along the batch dimension.
+    
         Returns:
-            Tensor of shape [B, T] containing the predicted noise.
+            tf.Tensor: Predicted noise of shape [B, T].
         """
-        return self.wavenet(signal, timestep, condition)
+        # If batch_size is None, process the entire batch at once
+        if batch_size is None:
+            return self.wavenet(signal, timestep, condition)
+    
+        B = tf.shape(signal)[0]  # Total batch size
+        outputs = []
+        start = 0
 
-    def pred_signal(self, signal, eps, alpha, alpha_bar):
+        if verbose: # Initialize tqdm progress bar if verbose is enabled
+            pbar = tqdm(total=int(B), desc='[pred_noise] Processing mini-batches')
+            
+        while start < B:
+            end = tf.minimum(start + batch_size, B)
+            
+            # Slice the batch
+            signal_batch = signal[start:end]
+            timestep_batch = timestep[start:end]
+            condition_batch = condition[start:end]
+
+            # Forward pass for this batch
+            noise_batch = self.wavenet(signal_batch, timestep_batch, condition_batch)
+            outputs.append(noise_batch)
+            
+            if verbose: # Update progress bar
+                pbar.update(int(end - start))
+                
+            start += batch_size
+        
+        if verbose:
+            pbar.close()
+        
+        return tf.concat(outputs, axis=0) # Concatenate along the batch dimension
+
+
+    def pred_signal(self, signal, eps, alpha, alpha_bar, verbose=False):
         """
         Compute the mean and standard deviation of the denoised signal.
         
@@ -326,6 +360,8 @@ class ConditionalDiffWave(tf.keras.Model):
         """
         mean = (signal - (1 - alpha) / np.sqrt(1 - alpha_bar) * eps) / np.sqrt(alpha)
         stddev = np.sqrt((1 - alpha_bar / alpha) / (1 - alpha_bar) * (1 - alpha))
+        if verbose:
+            print("[pred_signal] mean shape:", mean.shape, "stddev (scalar):", stddev)
         return mean, stddev
 
     def _compute_loss(self, signal, timesteps, condition):

@@ -32,6 +32,76 @@ def SplitBatch (Vec, HalfBatchIdx1, HalfBatchIdx2, mode='Both'):
         return  HalfBatch1
     elif mode=='D2':
         return  HalfBatch2
+
+
+def RestorationProcess(Model, Signal, Condition, GenBatchSize=1, GenSteps=3):
+    """
+    Performs the diffusion-based signal restoration process.
+    
+    Args:
+        Model: The model used for diffusion and prediction.
+        Signal: The original input signal.
+        Condition: Conditional inputs for the model.
+        GenSteps: Number of generation steps (default: 3).
+    
+    Returns:
+        Restored signal after diffusion process.
+    """
+    Noise = tf.random.normal(tf.shape(Signal), 0, Model.config['GaussSigma'])
+    DiffusedSignals, _ = Model.diffusion(Signal, Model.alpha_bar[GenSteps - 1].item(), Noise)
+    Base = tf.ones([tf.shape(Noise)[0]], dtype=tf.int32)
+    
+    # Initialize tqdm progress bar
+    pbar = tqdm(range(GenSteps, 0, -1), desc="[Restoration] Processing Steps")
+    
+    for Step in pbar:
+        # 1) Predict noise from the diffused sample
+        PredNoise = Model.pred_noise(DiffusedSignals, Base * Step, Condition, batch_size=GenBatchSize, verbose=True)
+        # 2) Restore the original signal based on the predicted noise
+        PredMean, PredStd = Model.pred_signal(DiffusedSignals, PredNoise, Model.alpha[Step - 1], Model.alpha_bar[Step - 1], verbose=True)
+        Sample = PredMean + tf.random.normal(tf.shape(DiffusedSignals), 0, Model.config['GaussSigma']) * PredStd
+        # 3) Update the diffused sample with the reconstructed one for the next iteration
+        DiffusedSignals = Sample
+        
+        # Update progress bar with current step info
+        pbar.set_postfix({"Current Step": Step})
+    pbar.close()
+    return Sample
+
+
+def BatchPredict(PredModel, Data, BatchSize, NSplitBatch, GPU):
+    """
+    Splits data into NSplitBatch and performs batch-wise predictions to avoid memory issues.
+
+    Parameters:
+    - PredModel: The model used for prediction.
+    - Data: Tuple of (input1, input2) to be processed.
+    - BatchSize: Size of each batch for prediction.
+    - NSplitBatch: Number of splits to divide the data.
+    - GPU: Whether to use GPU or CPU for computation.
+
+    Returns:
+    - Concatenated np.argmax predictions over all batches.
+    """
+    # Check if Data is a list or a single input tensor
+    is_tuple = isinstance(Data, list)
+
+    if is_tuple:
+        input1, input2 = Data  # Unpack the input data
+        split_data = list(zip(np.array_split(input1, NSplitBatch), np.array_split(input2, NSplitBatch)))
+    else:
+        split_batches = np.array_split(Data, NSplitBatch)
+
+    pred_results = []
+    if not GPU:
+        with tf.device('/CPU:0'):
+            for batch in tqdm(split_data, desc="Predicting on CPU"):
+                pred_results.append(PredModel.predict(batch, batch_size=BatchSize))
+    else:
+        for batch in tqdm(split_data, desc="Predicting on GPU"):
+            pred_results.append(PredModel.predict(batch, batch_size=BatchSize))
+
+    return np.concatenate(pred_results)
     
 
 # Power spectral density 

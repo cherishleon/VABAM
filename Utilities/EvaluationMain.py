@@ -80,7 +80,7 @@ class Evaluator ():
             CandZs = Samp_Z[[FreqIdx[MinScoreIdx]]]
             
             # Tracking results
-            self.TrackerCand_Temp[Freq]['TrackZs'].append(CandZs[None])
+            self.TrackerCand_Temp[Freq]['TrackZX'].append(CandZs[None])
             self.TrackerCand_Temp[Freq]['TrackMetrics'].append(MinScore[None])
             
             if SecData is not None: # for processing secondary data (SecData).
@@ -99,28 +99,28 @@ class Evaluator ():
     ### ------------------------  # Selecting nested Z values and secondary data matrix --------------------- ###
     def SubNestedZFix(self, SubTrackerCand):
                 
-        ''' Constructing the dictionary: {'KeyID': { 'TrackZs' : Zs, 'TrackSecData' : Secondary-data }}
+        ''' Constructing the dictionary: {'KeyID': { 'TrackZX' : Zs or Xs, 'TrackSecData' : Secondary-data }}
            
            - Outer Dictionary:
              - Key (KeyID): A unique, sequentially increasing integer from 'Cnt'; That is, the sequence number in each frequency domain.
              - Value: An inner dictionary (explained below)
         
            - Inner Dictionary:
-             - Key (TrackZs) : Value (Tracked Z-value matrix)
+             - Key (TrackZX) : Value (Tracked Z or X data)
              - Key (TrackSecData) : Values (Tracked secondary data matrix)
         '''
         
         Cnt = itertools.count()
         if self.SecDataType == False:
-            Results = {next(Cnt):{ 'TrackZs' : TrackZs} 
-                        for TrackZs, TrackMetrics 
-                        in zip(SubTrackerCand['TrackZs'], SubTrackerCand['TrackMetrics'])
+            Results = {next(Cnt):{ 'TrackZX' : TrackZX} 
+                        for TrackZX, TrackMetrics 
+                        in zip(SubTrackerCand['TrackZX'], SubTrackerCand['TrackMetrics'])
                         if TrackMetrics < self.SelMetricCut }
 
         else:
-            Results = {next(Cnt):{ 'TrackZs' : TrackZs, 'TrackSecData' : TrackSecData} 
-                        for TrackZs, TrackSecData, TrackMetrics 
-                        in zip(SubTrackerCand['TrackZs'], SubTrackerCand['TrackSecData'], SubTrackerCand['TrackMetrics'])
+            Results = {next(Cnt):{ 'TrackZX' : TrackZX, 'TrackSecData' : TrackSecData} 
+                        for TrackZX, TrackSecData, TrackMetrics 
+                        in zip(SubTrackerCand['TrackZX'], SubTrackerCand['TrackSecData'], SubTrackerCand['TrackMetrics'])
                         if TrackMetrics < self.SelMetricCut }
             
         return Results
@@ -178,7 +178,7 @@ class Evaluator ():
             
         
         # Selecting nested Z values and secondary data matrix
-        '''  Constructing the dictionary : {'FreqID' : {'SubKeys' : { 'TrackZs' : Zs, 'TrackSecData' : Secondary-data }}}
+        '''  Constructing the dictionary : {'FreqID' : {'SubKeys' : { 'TrackZX' : Zs or Xs, 'TrackSecData' : Secondary-data }}}
         
            - Outermost Dictionary:
              - Key (FreqID): Represents frequency identifiers.
@@ -189,7 +189,7 @@ class Evaluator ():
              - Value: A third-level dictionary (explained below).
         
            - Third-level Dictionary:
-             - Key (TrackZs) : Value (Tracked Z-value matrix)
+             - Key (TrackZX) : Value (Tracked Z or X data)
              - Key (TrackSecData) : Values (Tracked secondary data matrix)
              
         '''
@@ -218,7 +218,7 @@ class Evaluator ():
     def KLD_TrueGen (self, PostSamp=None, AnalSig=None, SecDataType=None, PlotDist=True): # Filtering Quality Index
     
         ## Required parameters
-        # PostSamp: The post-sampled data for generating signals with the shape of ({'FreqID': {'SubKeys': {'TrackZs': Zs, 'TrackSecData': Secondary-data}}}).
+        # PostSamp: The post-sampled data for generating signals with the shape of ({'FreqID': {'SubKeys': {'TrackZX': Zs or Xs, 'TrackSecData': Secondary-data}}}).
         # AnalSig: The raw true signals for obtaining the population PSD.  Data shape: (N_PostSamp, N_Obs)
         
         ## Optional parameters
@@ -237,7 +237,7 @@ class Evaluator ():
 
         for Freq, Subkeys in PostSamp.items():
             for Subkeys, Values in Subkeys.items():
-                PostZsList.append(np.array(Values['TrackZs']))
+                PostZsList.append(np.array(Values['TrackZX']))
                 if 'TrackSecData' in Values.keys(): 
                     PostSecDataList.append(np.array(Values['TrackSecData']))
         
@@ -326,7 +326,7 @@ class Evaluator ():
             self.SubResDic = {'I_V_ZjZ':[],'I_V_FCsZj':[],'I_S_FCsZj':[]}
             self.AggResDic = {'I_V_ZjZ':[],'I_V_FCsZj':[],'I_S_FCsZj':[]}
             self.BestZsMetrics = {i:[np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
-            self.TrackerCand_Temp = {i:{'TrackSecData':[],'TrackZs':[],'TrackMetrics':[] } for i in range(1, self.MaxFreq - self.MinFreq + 2)} 
+            self.TrackerCand_Temp = {i:{'TrackSecData':[],'TrackZX':[],'TrackMetrics':[] } for i in range(1, self.MaxFreq - self.MinFreq + 2)} 
             self.I_V_ZjZ, self.I_V_FCsZj, self.I_S_FCsZj = 0,0,0
         
          
@@ -528,7 +528,7 @@ class Evaluator ():
             # Restructuring TrackerCand
             ## item[0] contains frequency domains
             ## item[1] contains tracked Z values, 2nd data, and metrics
-            self.TrackerCand = {item[0]: {'TrackZs': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackZs']), 
+            self.TrackerCand = {item[0]: {'TrackZX': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackZX']), 
                                           'TrackSecData': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackSecData']), 
                                           'TrackMetrics': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackMetrics'])} 
                                           for item in self.TrackerCand_Temp.items() if len(item[1]['TrackSecData']) > 0} 
@@ -590,7 +590,7 @@ class Evaluator ():
             self.SubResDic = {'I_V_ZjZ':[],'I_V_CONsZj':[],'I_S_CONsZj':[]}
             self.AggResDic = {'I_V_ZjZ':[],'I_V_CONsZj':[],'I_S_CONsZj':[]}
             self.BestZsMetrics = {i:[np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
-            self.TrackerCand_Temp = {i:{'TrackSecData':[],'TrackZs':[],'TrackMetrics':[] } for i in range(1, self.MaxFreq - self.MinFreq + 2)} 
+            self.TrackerCand_Temp = {i:{'TrackSecData':[],'TrackZX':[],'TrackMetrics':[] } for i in range(1, self.MaxFreq - self.MinFreq + 2)} 
             self.I_V_ZjZ, self.I_V_CONsZj, self.I_S_CONsZj = 0,0,0
         
          
@@ -794,7 +794,7 @@ class Evaluator ():
             # Restructuring TrackerCand
             ## item[0] contains frequency domains
             ## item[1] contains tracked Z values, 2nd data, and metrics
-            self.TrackerCand = {item[0]: {'TrackZs': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackZs']), 
+            self.TrackerCand = {item[0]: {'TrackZX': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackZX']), 
                                           'TrackSecData': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackSecData']), 
                                           'TrackMetrics': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackMetrics'])} 
                                           for item in self.TrackerCand_Temp.items() if len(item[1]['TrackSecData']) > 0} 
@@ -817,14 +817,18 @@ class Evaluator ():
         self.AggResDic['I_S_CONsZj'].append(self.I_S_CONsZj)
 
 
-
     
     ### -------------------------- Evaluating the performance of the model using both X and Conditions -------------------------- ###
-    def Eval_XCON (self, AnalData, GenModel, FcLimit=0.05,  WindowSize=3, NSplitBatch=1, SecDataType=None,  Continue=True ):
+    def Eval_XCON (self, AnalData, GenModel, FcLimit=0.05,  WindowSize=3, SecDataType=None,  Continue=True, **kwargs ):
         
         ## Required parameters
         self.GenModel = GenModel             # The model that generates signals based on given Xs and Cons.
-        self.NSplitBatch = NSplitBatch
+        
+        if 'Wavenet' in self.Name:
+            self.NoiseStd = kwargs.get('NoiseStd', 2)
+            self.NSplitBatch = kwargs.get('NSplitBatch', 1) 
+        elif 'DiffWave' in self.Name or 'VDWave' in self.Name:
+            self.GenSteps = kwargs.get('GenSteps', 10) 
         
         assert SecDataType in ['FCIN','CONDIN', False], "Please verify the value of 'SecDataType'. Only 'FCIN', 'CONDIN'  or False are valid."
         
@@ -857,7 +861,7 @@ class Evaluator ():
             self.SubResDic = {'I_V_CONsX':[],'I_S_CONsX':[]}
             self.AggResDic = {'I_V_CONsX':[],'I_S_CONsX':[]}
             self.BestZsMetrics = {i:[np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
-            self.TrackerCand_Temp = {i:{'TrackSecData':[],'TrackZs':[],'TrackMetrics':[] } for i in range(1, self.MaxFreq - self.MinFreq + 2)} 
+            self.TrackerCand_Temp = {i:{'TrackSecData':[],'TrackZX':[],'TrackMetrics':[] } for i in range(1, self.MaxFreq - self.MinFreq + 2)} 
             self.I_V_CONsX, self.I_S_CONsX = 0,0
         
          
@@ -873,7 +877,6 @@ class Evaluator ():
             # Updating NMiniBat; If there is a remainder in Ndata/NMiniBat, NMiniBat must be updated." 
             self.NMiniBat = len(SubData[0]) 
             self.SubCond = SubData[1]
-            print(np.squeeze(SubData[0])[:, None].shape)
 
 
             # Sampling Samp_X
@@ -881,7 +884,12 @@ class Evaluator ():
             ## Dimensionality Mapping in Our Paper: b: skipped, d: NMiniBat, r: NParts, m: NSubGen, t: SigDim; 
             self.Xbdr_tmp = np.broadcast_to(np.squeeze(SubData[0])[:, None], (self.NMiniBat, self.NParts, self.SigDim))
             # The values of X are perturbed by randomly sampled errors along dimensions b, d, r, and t, while remaining constant along dimension m.
-            self.Xbdr_tmp = np.round(np.clip(self.Xbdr_tmp + np.random.normal(0,2, self.Xbdr_tmp.shape), 0, 256))
+            if 'Wavenet' in self.Name:
+                self.Xbdr_tmp = np.round(np.clip(self.Xbdr_tmp + np.random.normal(0, self.NoiseStd, self.Xbdr_tmp.shape), 0, 256))
+            elif 'DiffWave' in self.Name or 'VDWave' in self.Name:
+                Noise = tf.random.normal(tf.shape(self.Xbdr_tmp), 0, BenchModel.config['GaussSigma'])
+                self.Xbdr_tmp, _ = BenchModel.diffusion(self.Xbdr_tmp, BenchModel.alpha_bar[self.GenSteps - 1].item(), Noise)
+                
             self.Xbdr_Exp = np.broadcast_to(self.Xbdr_tmp[:,:,None], (self.NMiniBat, self.NParts, self.NSubGen, self.SigDim))
             self.Xbdr = np.reshape(self.Xbdr_Exp, (-1, self.SigDim))
 
@@ -950,11 +958,14 @@ class Evaluator ():
             DataCaseIDX = [0] + list(np.cumsum(CaseLens))
             
             # Choosing GPU or CPU and generating signals
-            Set_Pred = CompResource(self.GenModel, Set_Data, BatchSize=self.GenBatchSize, NSplitBatch=self.NSplitBatch, GPU=self.GPU)
-            
             if 'Wavenet' in self.Name:
+                Set_Pred = CompResource(self.GenModel, Set_Data, BatchSize=self.GenBatchSize, NSplitBatch=self.NSplitBatch, GPU=self.GPU)
+            elif 'DiffWave' in self.Name:
+                Set_Pred = RestorationProcess(self.GenModel, np.squeeze(Set_Data[0]), Set_Data[1], GenBatchSize=self.GenBatchSize, GenSteps=self.GenSteps, GPU=self.GPU)
+                
+            if self.Name == 'Wavenet_ART_Mimic':
                 Set_Pred = mu_law_decode(Set_Pred)
-            
+                
             # Re-splitting predictions for each case
             self.Sig_Xbdr_CONbdrm, self.Sig_Xbd_CONbdrm, self.Sig_Xbd_CONbdmSt, self.Sig_Xbd_CONbdSt  = [Set_Pred[DataCaseIDX[i]:DataCaseIDX[i+1]] for i in range(len(DataCaseIDX)-1)] 
             
@@ -1029,11 +1040,11 @@ class Evaluator ():
             I_V_CONsX_ = MeanKLD(self.QV_Xbd_CONbdSt, self.MQV_Xbd_CONbdm ) # I(V;Con'|z')
             I_S_CONsX_ = MeanKLD(self.QS_Xbd_CONbdmSt, self.MQS_Xbd_CONbdrm ) # I(S;Con'|z')
            
-            print("I(V;Con'|z') :", I_V_CONsX_)
+            print("I(V;Con'|x) :", I_V_CONsX_)
             self.SubResDic['I_V_CONsX'].append(I_V_CONsX_)
             self.I_V_CONsX += I_V_CONsX_
             
-            print("I(S;Con'|z') :", I_S_CONsX_)
+            print("I(S;Con'|x) :", I_S_CONsX_)
             self.SubResDic['I_S_CONsX'].append(I_S_CONsX_)
             self.I_S_CONsX += I_S_CONsX_
                         
@@ -1051,7 +1062,7 @@ class Evaluator ():
             # Restructuring TrackerCand
             ## item[0] contains frequency domains
             ## item[1] contains tracked X values, 2nd data, and metrics
-            self.TrackerCand = {item[0]: {'TrackZs': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackZs']), 
+            self.TrackerCand = {item[0]: {'TrackZX': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackZX']), 
                                           'TrackSecData': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackSecData']), 
                                           'TrackMetrics': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackMetrics'])} 
                                           for item in self.TrackerCand_Temp.items() if len(item[1]['TrackSecData']) > 0} 

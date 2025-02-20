@@ -144,11 +144,13 @@ def LoadParams (ModelConfigSet, EvalConfigSet): # Experiment setting
     
     # Define parameter keys for both ModelConfigSet and EvalConfigSet
     model_keys = ['ConfigName','DataSource', 'SigType', 'LatDim', 'NBlocks', 'FilterSize', 'SlidingSize', 'KernelSize', 
-                  'Capacity_Z',  'NumCl', 'LossType', 'SpecLosses']
+                  'Capacity_Z',  'NumCl', 'LossType', 'SpecLosses', 'Channels', 'Iter', 'EmbeddingSize', 'EmbeddingFactor', 
+                  'EmbeddingLayers', 'EmbeddingProj', 'NumLayers', 'NumCycles', 'DilationRate', 'Lr', 'Beta1', 'Beta2', 
+                  'Eps', 'GaussSigma', 'BetaSchedule']
     eval_keys = ['ReparaStd', 'ReparaStdZj', 'MaxFreq', 'MinFreq', 'NMiniBat', 'SimSize', 'NSubGen', 
                  'NSelZ', 'SelMetricType', 'SelMetricCut', 'SecDataType', 'NParts', 'TestDataSource',
-                 'EvalDataSize', 'SampBatchSize', 'GenBatchSize', 'GPU', 'WindowSize',
-                 'FcLimit']
+                 'EvalDataSize', 'SampBatchSize', 'GenBatchSize', 'GPU', 'WindowSize', 'GenSteps', 
+                 'NSplitBatch', 'FcLimit']
     
     # Assign values from ModelConfigSet (default to None if key does not exist)
     for key in model_keys:
