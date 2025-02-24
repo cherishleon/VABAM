@@ -13,7 +13,7 @@ from Utilities.Utilities import ReadYaml, LoadModelConfigs
 from Models.Caller64 import *
 
 # Refer to the execution code        
-# python .\TrainModel.py --Config TCMIDKZFC_II_50_500 --GPUID 0 --Resume True    
+# python .\TrainModel.py --Config SKZFC_II_1_30_800_VitalDB --GPUID 0 --Resume True    
 
 def str2bool(v):
     if isinstance(v, bool):
@@ -93,8 +93,8 @@ if __name__ == "__main__":
 
     
     #### -----------------------------------------------------   Data load and processing   -------------------------------------------------------------------------    
-    TrData = np.load('./Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy')
-    ValData = np.load('./Data/ProcessedData/'+str(DataSource)+'Val'+str(SigType)+'.npy')
+    TrData = np.load('./Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('float64')
+    ValData = np.load('./Data/ProcessedData/'+str(DataSource)+'Val'+str(SigType)+'.npy').astype('float64')
     SigDim = TrData.shape[1]
     DataSize= TrData.shape[0]
        
@@ -106,7 +106,7 @@ if __name__ == "__main__":
    
     # Calling dynamic controller for losses (DCL)
     ## The relative size of the loss is reflected in the weight to minimize the loss.
-    RelLoss = DCLCall (ModelConfigSet, ModelSavePath, ToSaveLoss=None, SaveWay='max', Resume=Resume)
+    RelLoss = DCLCall (ModelConfigSet, ModelSavePath, ToSaveLoss=None, SaveWay='max', Resume=Resume, Patience=300)
     NEpochs -= (RelLoss.StartEpoch )
     
     # Model Training

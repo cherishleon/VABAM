@@ -1,5 +1,6 @@
 import numpy as np
 import tensorflow as tf
+tf.keras.backend.set_floatx('float64')
 from tensorflow.keras import Model
 from Utilities.Utilities import Lossweight
 from Utilities.AncillaryFunctions64 import LogNormalDensity, SplitBatch
@@ -7,15 +8,15 @@ from Utilities.AncillaryFunctions64 import LogNormalDensity, SplitBatch
 
 def CustCCE(y_true, y_pred):
     epsilon = 1e-15
-    y_true = tf.cast(y_true, tf.float32)
-    y_pred = tf.cast(y_pred, tf.float32)
+    y_true = tf.cast(y_true, tf.float64)
+    y_pred = tf.cast(y_pred, tf.float64)
     y_pred = tf.clip_by_value(y_pred, epsilon, 1. - epsilon)
     return -tf.reduce_mean(tf.reduce_sum(y_true * tf.math.log(y_pred), axis=-1))
 
 
 def CustMSE_NLL(y_true, y_pred, Type='MSE', Sigma=1., HybRate = 0.85, NLLScale= 1e-7):
-    y_true = tf.cast(y_true, tf.float32)
-    y_pred = tf.cast(y_pred, tf.float32)
+    y_true = tf.cast(y_true, tf.float64)
+    y_pred = tf.cast(y_pred, tf.float64)
 
     if Type =='MSE':
         return tf.reduce_mean(tf.square(y_pred - y_true))
@@ -59,14 +60,14 @@ def DefLosses (Models, DataSize, LossConfigSet):
     
     ###-------------------------------- Weights for losses -------------------------------------------- ###
     ### Weight controller; Apply beta and capacity 
-    ''' The values assigned to 'InitVal' are just initial values. TThey are dynamically modified within the on_epoch_end function in the RelLossWeight class, based on the values provided through BetaList as specified in the Config file. '''
+    ''' The values assigned to 'InitVal' are just initial values. They are dynamically modified within the on_epoch_end function in the RelLossWeight class, based on the values provided through BetaList as specified in the Config file. '''
     
-    Beta_Z = Lossweight(name='Beta_Z', InitVal=0.01)(SigRepModel.input)
-    Beta_Fc = Lossweight(name='Beta_Fc', InitVal=0.01)(SigRepModel.input)
-    Beta_TC = Lossweight(name='Beta_TC', InitVal=0.01)(SigRepModel.input)
-    Beta_MI = Lossweight(name='Beta_MI', InitVal=0.01)(SigRepModel.input)
-    Beta_Orig = Lossweight(name='Beta_Orig', InitVal=1.)(SigRepModel.input)
-    Beta_Feat = Lossweight(name='Beta_Feat', InitVal=1.)(SigRepModel.input)
+    Beta_Z    = tf.cast(Lossweight(name='Beta_Z', InitVal=0.01)(SigRepModel.input), tf.float64)
+    Beta_Fc   = tf.cast(Lossweight(name='Beta_Fc', InitVal=0.01)(SigRepModel.input), tf.float64)
+    Beta_TC   = tf.cast(Lossweight(name='Beta_TC', InitVal=0.01)(SigRepModel.input), tf.float64)
+    Beta_MI   = tf.cast(Lossweight(name='Beta_MI', InitVal=0.01)(SigRepModel.input), tf.float64)
+    Beta_Orig = tf.cast(Lossweight(name='Beta_Orig', InitVal=1.)(SigRepModel.input), tf.float64)
+    Beta_Feat = tf.cast(Lossweight(name='Beta_Feat', InitVal=1.)(SigRepModel.input), tf.float64)
 
 
 
@@ -111,9 +112,9 @@ def DefLosses (Models, DataSize, LossConfigSet):
     
     
     ### KL Divergence for p(FC) vs q(FC)
-    BernP = tf.cast(0.5, tf.float32) # hyperparameter
+    BernP = tf.cast(0.5, tf.float64) # hyperparameter
     FC_Mu = SigRepModel.get_layer('FC_Mu').output 
-    FC_Mu = tf.cast(FC_Mu, tf.float32)
+    FC_Mu = tf.cast(FC_Mu, tf.float64)
     kl_Loss_FC = FC_Mu*(tf.math.log(FC_Mu) - tf.math.log(BernP)) + (1-FC_Mu)*(tf.math.log(1-FC_Mu) - tf.math.log(1-BernP))
     kl_Loss_FC = tf.reduce_mean(kl_Loss_FC )
     
@@ -201,12 +202,12 @@ def FACLosses (Models, LossConfigSet):
     
     ###-------------------------------- Weights for losses -------------------------------------------- ###
     ### Weight controller; Apply beta and capacity 
-    Beta_Z = Lossweight(name='Beta_Z', InitVal=0.01)(SigRepModel.input)
-    Beta_Fc = Lossweight(name='Beta_Fc', InitVal=0.01)(SigRepModel.input)
-    Beta_TC = Lossweight(name='Beta_TC', InitVal=0.01)(SigRepModel.input)
-    Beta_DTC = Lossweight(name='Beta_DTC', InitVal=0.01)(SigRepModel.input)
-    Beta_Orig = Lossweight(name='Beta_Orig', InitVal=1.)(SigRepModel.input)
-    Beta_Feat = Lossweight(name='Beta_Feat', InitVal=1.)(SigRepModel.input)
+    Beta_Z    = tf.cast(Lossweight(name='Beta_Z', InitVal=0.01)(SigRepModel.input), tf.float64)
+    Beta_Fc   = tf.cast(Lossweight(name='Beta_Fc', InitVal=0.01)(SigRepModel.input), tf.float64)
+    Beta_TC   = tf.cast(Lossweight(name='Beta_TC', InitVal=0.01)(SigRepModel.input), tf.float64)
+    Beta_DTC  = tf.cast(Lossweight(name='Beta_DTC', InitVal=0.01)(SigRepModel.input), tf.float64)
+    Beta_Orig = tf.cast(Lossweight(name='Beta_Orig', InitVal=1.)(SigRepModel.input), tf.float64)
+    Beta_Feat = tf.cast(Lossweight(name='Beta_Feat', InitVal=1.)(SigRepModel.input), tf.float64)
 
 
 

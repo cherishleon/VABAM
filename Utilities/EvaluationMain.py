@@ -884,11 +884,14 @@ class Evaluator ():
             ## Dimensionality Mapping in Our Paper: b: skipped, d: NMiniBat, r: NParts, m: NSubGen, t: SigDim; 
             self.Xbdr_tmp = np.broadcast_to(np.squeeze(SubData[0])[:, None], (self.NMiniBat, self.NParts, self.SigDim))
             # The values of X are perturbed by randomly sampled errors along dimensions b, d, r, and t, while remaining constant along dimension m.
-            if 'Wavenet' in self.Name:
+            if 'Wavenet' in Eval.Name:
                 self.Xbdr_tmp = np.round(np.clip(self.Xbdr_tmp + np.random.normal(0, self.NoiseStd, self.Xbdr_tmp.shape), 0, 256))
-            elif 'DiffWave' in self.Name or 'VDWave' in self.Name:
-                Noise = tf.random.normal(tf.shape(self.Xbdr_tmp), 0, BenchModel.config['GaussSigma'])
-                self.Xbdr_tmp, _ = BenchModel.diffusion(self.Xbdr_tmp, BenchModel.alpha_bar[self.GenSteps - 1].item(), Noise)
+            elif 'DiffWave' in Eval.Name:
+                Noise = tf.random.normal(tf.shape(Eval.Xbdr_tmp), 0, Eval.GenModel.config['GaussSigma'])
+                Eval.Xbdr_tmp, _ = Eval.GenModel.diffusion(Eval.Xbdr_tmp, Eval.GenModel.alpha_bar[Eval.GenSteps - 1].item(), Noise)
+            elif 'VDWave' in Eval.Name:
+                t_float = (tf.cast(BenchModel.cfg['GenSteps'], tf.float32) - 1) / (tf.cast(BenchModel.cfg['Iter'] - 1, tf.float32))
+                Eval.Xbdr_tmp, _, _ = BenchModel.sample_q_t_0(Eval.Xbdr_tmp, t_float, None, gamma_t=None)
                 
             self.Xbdr_Exp = np.broadcast_to(self.Xbdr_tmp[:,:,None], (self.NMiniBat, self.NParts, self.NSubGen, self.SigDim))
             self.Xbdr = np.reshape(self.Xbdr_Exp, (-1, self.SigDim))
@@ -958,10 +961,12 @@ class Evaluator ():
             DataCaseIDX = [0] + list(np.cumsum(CaseLens))
             
             # Choosing GPU or CPU and generating signals
-            if 'Wavenet' in self.Name:
+            if 'Wavenet' in Eval.Name:
                 Set_Pred = CompResource(self.GenModel, Set_Data, BatchSize=self.GenBatchSize, NSplitBatch=self.NSplitBatch, GPU=self.GPU)
-            elif 'DiffWave' in self.Name:
-                Set_Pred = RestorationProcess(self.GenModel, np.squeeze(Set_Data[0]), Set_Data[1], GenBatchSize=self.GenBatchSize, GenSteps=self.GenSteps, GPU=self.GPU)
+            elif 'DiffWave' in Eval.Name:
+                Set_Pred = DiffWAVE_Restoration(Eval.GenModel, np.squeeze(Set_Data[0]), Set_Data[1], GenBatchSize=Eval.GenBatchSize, GenSteps=Eval.GenSteps, GPU=Eval.GPU)
+            elif 'VDWave' in Eval.Name:
+                Set_Pred = VDiffWAVE_Restoration(Eval.GenModel, Set_Data[0], Set_Data[1], GenBatchSize=Eval.GenBatchSize, GenSteps=Eval.GenSteps, Noise=None, GPU=Eval.GPU)
                 
             if self.Name == 'Wavenet_ART_Mimic':
                 Set_Pred = mu_law_decode(Set_Pred)

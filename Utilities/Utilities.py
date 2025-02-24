@@ -146,7 +146,7 @@ def LoadParams (ModelConfigSet, EvalConfigSet): # Experiment setting
     model_keys = ['ConfigName','DataSource', 'SigType', 'LatDim', 'NBlocks', 'FilterSize', 'SlidingSize', 'KernelSize', 
                   'Capacity_Z',  'NumCl', 'LossType', 'SpecLosses', 'Channels', 'Iter', 'EmbeddingSize', 'EmbeddingFactor', 
                   'EmbeddingLayers', 'EmbeddingProj', 'NumLayers', 'NumCycles', 'DilationRate', 'Lr', 'Beta1', 'Beta2', 
-                  'Eps', 'GaussSigma', 'BetaSchedule']
+                  'Eps', 'GaussSigma', 'BetaSchedule', 'NoiseSchedule', 'GammaMin', 'GammaMax']
     eval_keys = ['ReparaStd', 'ReparaStdZj', 'MaxFreq', 'MinFreq', 'NMiniBat', 'SimSize', 'NSubGen', 
                  'NSelZ', 'SelMetricType', 'SelMetricCut', 'SecDataType', 'NParts', 'TestDataSource',
                  'EvalDataSize', 'SampBatchSize', 'GenBatchSize', 'GPU', 'WindowSize', 'GenSteps', 

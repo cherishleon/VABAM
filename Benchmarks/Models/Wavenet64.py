@@ -1,5 +1,6 @@
 from tqdm import tqdm
 import tensorflow as tf
+tf.keras.backend.set_floatx('float64')
 from tensorflow.keras import layers, Model
 
 
@@ -201,7 +202,7 @@ class ConditionalWaveNet(Model):
         self.embedding = None
         # If discrete conditioning is provided, set up an Embedding layer.
         if num_classes is not None:
-            self.embedding = layers.Embedding(num_classes, condition_dim)
+            self.embedding = layers.Embedding(num_classes, condition_dim, dtype='float64')
         
         # If a continuous condition is used, create a Dense layer to project the condition.
         if condition_dim is not None:

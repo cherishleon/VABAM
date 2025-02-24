@@ -13,7 +13,7 @@ from Models.Caller import *
 
 
 # Refer to the execution code        
-# python .\TrainModel.py --Config TCMIDKZFC_II_50_500 --GPUID 0 --Resume True    
+# python .\TrainModel.py --Config SKZFC_II_1_30_800_VitalDB --GPUID 0 --Resume True    
 
 def str2bool(v):
     if isinstance(v, bool):
@@ -99,14 +99,13 @@ if __name__ == "__main__":
     DataSize= TrData.shape[0]
        
     
-    
     #### -----------------------------------------------------   Defining model structure -------------------------------------------------------------------------    
     # Calling Modesl
     SigRepModel = ModelCall (ModelConfigSet, SigDim, DataSize, Resume=Resume, Reparam=True, ModelSaveName=ModelSavePath)
    
     # Calling dynamic controller for losses (DCL)
     ## The relative size of the loss is reflected in the weight to minimize the loss.
-    RelLoss = DCLCall (ModelConfigSet, ModelSavePath, ToSaveLoss=None, SaveWay='max', Resume=Resume, Patience=300)
+    RelLoss = DCLCall (ModelConfigSet, ModelSavePath, ToSaveLoss=None, SaveWay='max', Resume=Resume, Patience=1000)
     NEpochs -= (RelLoss.StartEpoch )
     
     # Model Training

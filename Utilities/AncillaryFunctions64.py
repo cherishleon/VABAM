@@ -38,7 +38,6 @@ def SplitBatch (Vec, HalfBatchIdx1, HalfBatchIdx2, mode='Both'):
         return  HalfBatch1
     elif mode=='D2':
         return  HalfBatch2
-    
 
 # Power spectral density 
 def FFT_PSD (Data, ReducedAxis, MinFreq = 1, MaxFreq = 51):

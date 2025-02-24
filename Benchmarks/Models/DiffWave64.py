@@ -1,4 +1,5 @@
 import tensorflow as tf
+tf.keras.backend.set_floatx('float64')
 import math
 import numpy as np
 from tqdm.auto import tqdm
@@ -28,13 +29,13 @@ class DilatedConv1d(tf.keras.layers.Layer):
             name='kernel',
             shape=(self.kernel_size, self.in_channels, self.out_channels),
             initializer=tf.keras.initializers.GlorotUniform(),
-            trainable=True)
+            trainable=True, dtype=tf.float64)
         
         self.bias = self.add_weight(
             name='bias',
             shape=(1, 1, self.out_channels),
             initializer='zeros',
-            trainable=True)
+            trainable=True, dtype=tf.float64)
         
         super(DilatedConv1d, self).build(input_shape)
 
@@ -132,7 +133,7 @@ class Block(tf.keras.Model):
 
         # Compute the residual connection (if not the last block).
         if not self.last:
-            residual = (self.proj_res(x) + inputs) / tf.math.sqrt(2.0)
+            residual = (self.proj_res(x) + inputs) / tf.cast(tf.math.sqrt(2.0), tf.float64)
         else:
             residual = None
         skip = self.proj_skip(x)
@@ -199,7 +200,7 @@ class WaveNet(tf.keras.Model):
             skip_connections.append(skip)
 
         # Sum the skip connections
-        out = tf.add_n(skip_connections) / tf.math.sqrt(float(len(self.blocks)))
+        out = tf.add_n(skip_connections) / tf.cast(tf.math.sqrt(float(len(self.blocks))), tf.float64)
 
         # Apply output projection layers
         for proj in self.proj_out:
@@ -219,8 +220,8 @@ class WaveNet(tf.keras.Model):
         half_dim = self.config['EmbeddingSize'] // 2
         # Create a linear space from 0 to 1.
         logit = tf.linspace(0.0, 1.0, half_dim)
-        exp_term = tf.pow(10.0, logit * self.config['EmbeddingFactor'])
-        timesteps = tf.cast(tf.range(1, num_steps + 1), tf.float32)  # [num_steps]
+        exp_term = tf.cast(tf.pow(10.0, logit * self.config['EmbeddingFactor']), tf.float64)
+        timesteps = tf.cast(tf.range(1, num_steps + 1), tf.float64)  # [num_steps]
         comp = timesteps[:, None] * exp_term[None, :]  # [num_steps, half_dim]
         emb = tf.concat([tf.sin(comp), tf.cos(comp)], axis=-1)  # [num_steps, embedding_size]
         return emb
@@ -262,7 +263,7 @@ class ConditionalDiffWave(tf.keras.Model):
         if noise is None:
             b = tf.shape(condition)[0]
             t = self.config['SigDim']
-            noise = tf.random.normal([b, t], mean=0.0, stddev=self.config['GaussSigma'])
+            noise = tf.random.normal([b, t], mean=0.0, stddev=self.config['GaussSigma'], dtype=tf.float64)
 
         
         signal = noise
@@ -270,7 +271,7 @@ class ConditionalDiffWave(tf.keras.Model):
         for t_step in range(self.config['Iter'], 0, -1):
             eps = self.pred_noise(signal, tf.fill([tf.shape(signal)[0]], t_step), condition, verbose=verbose)
             mu, sigma = self.pred_signal(signal, eps, self.alpha[t_step - 1], self.alpha_bar[t_step - 1], verbose=verbose)
-            signal = mu + tf.random.normal(tf.shape(signal), mean=0.0, stddev=self.config['GaussSigma']) * sigma
+            signal = mu + tf.random.normal(tf.shape(signal), mean=0.0, stddev=self.config['GaussSigma'], dtype=tf.float64) * sigma
         return signal
        
         
@@ -289,7 +290,7 @@ class ConditionalDiffWave(tf.keras.Model):
               - eps: Tensor of shape [B, T], the added noise.
         """
         if eps is None:
-            eps = tf.random.normal(tf.shape(signal), mean=0.0, stddev=self.config['GaussSigma'])
+            eps = tf.random.normal(tf.shape(signal), mean=0.0, stddev=self.config['GaussSigma'], dtype=tf.float64)
         if isinstance(alpha_bar, tf.Tensor):
             alpha_bar = alpha_bar[:, None]
         return tf.sqrt(alpha_bar) * signal + tf.sqrt(1 - alpha_bar) * eps, eps
@@ -383,11 +384,11 @@ class ConditionalDiffWave(tf.keras.Model):
             data = tf.cast(data, tf.complex64)
             fft_res = tf.abs(tf.signal.fft(data))
             half_len = tf.shape(fft_res)[-1] // 2
-            psd = tf.square(fft_res[..., :half_len]) / tf.cast(tf.shape(data)[-1], tf.float32)
+            psd = tf.cast(tf.square(fft_res[..., :half_len]), tf.float64) / tf.cast(tf.shape(data)[-1], tf.float64)
             psd = psd[..., min_freq:max_freq]
             return psd / tf.reduce_sum(psd, axis=(-1),keepdims=True) 
             
-        noise_level = tf.gather(tf.constant(self.alpha_bar, dtype=tf.float32), timesteps - 1)
+        noise_level = tf.gather(tf.constant(self.alpha_bar, dtype=tf.float64), timesteps - 1)
         noised, noise = self.diffusion(signal, noise_level)
         eps = self.pred_noise(noised, timesteps, condition)
 
@@ -414,7 +415,7 @@ class ConditionalDiffWave(tf.keras.Model):
         """
         signal, condition = data
         batch_size = tf.shape(signal)[0]
-        timesteps = tf.random.uniform(shape=[batch_size], minval=1, maxval=self.config['Iter'] + 1, dtype=tf.int32)
+        timesteps = tf.random.uniform(shape=[batch_size], minval=1, maxval=self.config['Iter'] + 1, dtype=tf.int64)
         with tf.GradientTape() as tape:
             loss = self._compute_loss(signal, timesteps, condition)
         gradients = tape.gradient(loss, self.trainable_variables)
@@ -439,7 +440,7 @@ class ConditionalDiffWave(tf.keras.Model):
         timesteps = tf.random.uniform(shape=[batch_size],
                                       minval=1,
                                       maxval=self.config['Iter'] + 1,
-                                      dtype=tf.int32)
+                                      dtype=tf.int64)
         loss = self._compute_loss(signal, timesteps, condition)
         return {"loss": loss}
         
@@ -465,7 +466,7 @@ def DiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenBatchSize=1, GenS
 
     device = "/GPU:0" if GPU else "/CPU:0"
     with tf.device(device):        
-        Base = tf.ones([tf.shape(DiffusedSignals)[0]], dtype=tf.int32)
+        Base = tf.ones([tf.shape(DiffusedSignals)[0]], dtype=tf.int64)
         
         # Initialize tqdm progress bar
         pbar = tqdm(range(GenSteps, 0, -1), desc="[Restoration] Processing Steps")
@@ -475,7 +476,7 @@ def DiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenBatchSize=1, GenS
             PredNoise = Model.pred_noise(DiffusedSignals, Base * Step, Condition, batch_size=GenBatchSize, verbose=True)
             # 2) Restore the original signal based on the predicted noise
             PredMean, PredStd = Model.pred_signal(DiffusedSignals, PredNoise, Model.alpha[Step - 1], Model.alpha_bar[Step - 1], verbose=True)
-            Sample = PredMean + tf.random.normal(tf.shape(DiffusedSignals), 0, Model.config['GaussSigma']) * PredStd
+            Sample = PredMean + tf.random.normal(tf.shape(DiffusedSignals), 0, Model.config['GaussSigma'], dtype=tf.float64) * PredStd
             # 3) Update the diffused sample with the reconstructed one for the next iteration
             DiffusedSignals = Sample
             

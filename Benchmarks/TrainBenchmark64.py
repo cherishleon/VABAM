@@ -6,11 +6,12 @@ import random
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+tf.keras.backend.set_floatx('float64') # Set the default float type for TensorFlow to float64
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 
 from argparse import ArgumentParser
 from Utilities.Utilities import *
-from Benchmarks.Models.BenchmarkCaller import *
+from Benchmarks.Models.BenchmarkCaller64 import *
 
 
 import warnings
@@ -123,13 +124,13 @@ if __name__ == "__main__":
     if 'Wavenet' in ConfigName:
         SlidingSize = ConfigSet['Models'][ConfigName]['SlidingSize']
     
-        TrRaw = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy')
-        ValRaw = np.load('../Data/ProcessedData/'+str(DataSource)+'Val'+str(SigType)+'.npy')
+        TrRaw = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('float64')
+        ValRaw = np.load('../Data/ProcessedData/'+str(DataSource)+'Val'+str(SigType)+'.npy').astype('float64')
     
-        TrSampled = np.load('../Data/ProcessedData/Sampled'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('float32') # Sampled_TrData
-        ValSampled = np.load('../Data/ProcessedData/Sampled'+str(DataSource)+'Val'+str(SigType)+'.npy').astype('float32') # Sampled_ValData
-        TrOut = np.load('../Data/ProcessedData/MuLaw'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('int32') # MuLaw_TrData
-        ValOut = np.load('../Data/ProcessedData/MuLaw'+str(DataSource)+'Val'+str(SigType)+'.npy').astype('int32') # MuLaw_ValData
+        TrSampled = np.load('../Data/ProcessedData/Sampled'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('float64') # Sampled_TrData
+        ValSampled = np.load('../Data/ProcessedData/Sampled'+str(DataSource)+'Val'+str(SigType)+'.npy').astype('float64') # Sampled_ValData
+        TrOut = np.load('../Data/ProcessedData/MuLaw'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('int64') # MuLaw_TrData
+        ValOut = np.load('../Data/ProcessedData/MuLaw'+str(DataSource)+'Val'+str(SigType)+'.npy').astype('int64') # MuLaw_ValData
 
         TrInp = [TrSampled, TrRaw]
         ValInp = [ValSampled, ValRaw]
@@ -138,8 +139,8 @@ if __name__ == "__main__":
         ModelParams['SigDim'] = TrSampled.shape[1]
         
     else:
-        TrInp = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy')
-        ValInp = np.load('../Data/ProcessedData/'+str(DataSource)+'Val'+str(SigType)+'.npy')
+        TrInp = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('float64')
+        ValInp = np.load('../Data/ProcessedData/'+str(DataSource)+'Val'+str(SigType)+'.npy').astype('float64')
         ModelParams['DataSize'] = TrInp.shape[0] 
         ModelParams['SigDim'] = TrInp.shape[1]
 
@@ -151,8 +152,8 @@ if __name__ == "__main__":
         ValDeNorm = (ValInp * (SigMax[str(SigType)] - SigMin[str(SigType)]) + SigMin[str(SigType)]).copy()
         
         MeanSig, SigmaSig = np.mean(TrDeNorm), np.std(TrDeNorm) 
-        TrInp = (TrDeNorm-MeanSig)/SigmaSig
-        ValInp = (ValDeNorm-MeanSig)/SigmaSig
+        TrInp = ((TrDeNorm-MeanSig)/SigmaSig).astype('float64')
+        ValInp = ((ValDeNorm-MeanSig)/SigmaSig).astype('float64')
     
     #### -----------------------------------------------------  Defining model structure -------------------------------------------------------------------------     
     # Calling Modesl

@@ -1,4 +1,4 @@
-from Benchmarks.Models.BenchmarkModels import *
+from Benchmarks.Models.BenchmarkModels64 import *
 from Utilities.Utilities import RelLossWeight
 from Utilities.AncillaryFunctions import FFT_PSD
 

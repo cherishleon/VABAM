@@ -1,4 +1,5 @@
 import tensorflow as tf
+tf.keras.backend.set_floatx('float64')
 import numpy as np
 import math
 
@@ -51,8 +52,8 @@ class LearnedLinearSchedule(tf.keras.Model):
     def __init__(self, GammaMin, GammaMax, **kwargs):
         super().__init__(**kwargs)
         # b = GammaMin, w = GammaMax - GammaMin
-        self.b = tf.Variable(GammaMin, trainable=True, dtype=tf.float32, name="b")
-        self.w = tf.Variable(GammaMax - GammaMin, trainable=True, dtype=tf.float32, name="w")
+        self.b = tf.Variable(GammaMin, trainable=True, dtype=tf.float64, name="b")
+        self.w = tf.Variable(GammaMax - GammaMin, trainable=True, dtype=tf.float64, name="w")
 
     def call(self, t):
         return self.b + tf.abs(self.w) * t
@@ -115,12 +116,12 @@ class DilatedConv1d(tf.keras.layers.Layer):
             name='kernel',
             shape=(self.kernel_size, self.in_channels, self.out_channels),
             initializer=tf.keras.initializers.GlorotUniform(),
-            trainable=True)
+            trainable=True, dtype=tf.float64)
         self.bias = self.add_weight(
             name='bias',
             shape=(1, 1, self.out_channels),
             initializer='zeros',
-            trainable=True)
+            trainable=True, dtype=tf.float64)
         super().build(input_shape)
 
     def call(self, inputs):
@@ -279,8 +280,8 @@ class WaveNet(tf.keras.Model):
         """
         half_dim = self.config['EmbeddingSize'] // 2
         linspace = tf.linspace(0.0, 1.0, half_dim)
-        exp_term = tf.pow(10.0, linspace * self.config['EmbeddingFactor'])
-        timesteps = tf.cast(tf.range(1, num_steps + 1), tf.float32)
+        exp_term = tf.cast(tf.pow(10.0, linspace * self.config['EmbeddingFactor']), tf.float64)
+        timesteps = tf.cast(tf.range(1, num_steps + 1), tf.float64)
         comp = timesteps[:, None] * exp_term[None, :]
         emb = tf.concat([tf.sin(comp), tf.cos(comp)], axis=-1)
         return emb
@@ -333,7 +334,7 @@ class VDM(tf.keras.Model):
         alpha_t = tf.sqrt(tf.nn.sigmoid(-gamma_t))
         sigma_t = tf.sqrt(tf.nn.sigmoid(gamma_t))
         if noise is None:
-            noise = tf.random.normal(tf.shape(x), 0, self.cfg['GaussSigma'])
+            noise = tf.random.normal(tf.shape(x), 0, self.cfg['GaussSigma'], dtype=tf.float64)
         alpha_t_exp = tf.reshape(alpha_t, [-1, 1, 1])
         sigma_t_exp = tf.reshape(sigma_t, [-1, 1, 1])
         x_t = alpha_t_exp * x + sigma_t_exp * noise
@@ -343,7 +344,7 @@ class VDM(tf.keras.Model):
         """
         Compute log p(x | z_0) under a continuous Gaussian assumption.
         """
-        gamma_0 = self.gamma(tf.constant([0.0], dtype=tf.float32))
+        gamma_0 = self.gamma(tf.constant([0.0], dtype=tf.float64))
         # alpha_0, sigma_0 from gamma_0
         alpha_0 = tf.sqrt(tf.nn.sigmoid(-gamma_0))
         sigma_0 = tf.sqrt(tf.nn.sigmoid(gamma_0))
@@ -352,7 +353,7 @@ class VDM(tf.keras.Model):
         if x is not None and z_0 is None:
             # x -> z_0 (forward diffusion step)
             # z_0 = alpha_0*x + sigma_0*noise
-            noise = tf.random.normal(tf.shape(x), 0, self.cfg['GaussSigma'])
+            noise = tf.random.normal(tf.shape(x), 0, self.cfg['GaussSigma'], dtype=tf.float64)
             x_pred = x + sigma_0 * noise / alpha_0
         elif z_0 is not None and x is not None:
             # z_0 -> x (denoising step)
@@ -387,8 +388,8 @@ class VDM(tf.keras.Model):
         Returns:
             z_next of shape [B, T, 1].
         """
-        t_float = (tf.cast(t, tf.float32) - 1) / (tf.cast(self.cfg['Iter'] - 1, tf.float32))
-        s_float = (tf.cast(s, tf.float32) - 1) / (tf.cast(self.cfg['Iter'] - 1, tf.float32))
+        t_float = (tf.cast(t, tf.float64) - 1) / (tf.cast(self.cfg['Iter'] - 1, tf.float64))
+        s_float = (tf.cast(s, tf.float64) - 1) / (tf.cast(self.cfg['Iter'] - 1, tf.float64))
         gamma_t = self.gamma(t_float)
         gamma_s = self.gamma(s_float)
         c = -tf.math.expm1(gamma_s - gamma_t)
@@ -412,7 +413,7 @@ class VDM(tf.keras.Model):
             mean = (alpha_s_exp / alpha_t_exp) * (z - c_exp * sigma_t_exp * pred_noise)
         
         scale = sigma_s_exp * tf.sqrt(c_exp)
-        z_next = mean + scale * tf.random.normal(tf.shape(z), 0, self.cfg['GaussSigma'])
+        z_next = mean + scale * tf.random.normal(tf.shape(z), 0, self.cfg['GaussSigma'], dtype=tf.float64)
         return z_next
 
     def compute_loss(self, x, condition, noise=None):
@@ -425,15 +426,15 @@ class VDM(tf.keras.Model):
             data = tf.cast(data, tf.complex64)
             fft_res = tf.abs(tf.signal.fft(data))
             half_len = tf.shape(fft_res)[-1] // 2
-            psd = tf.square(fft_res[..., :half_len]) / tf.cast(tf.shape(data)[-1], tf.float32)
+            psd =  tf.cast(tf.square(fft_res[..., :half_len]), tf.float64) / tf.cast(tf.shape(data)[-1], tf.float64)
             psd = psd[..., min_freq:max_freq]
             return psd / tf.reduce_sum(psd, axis=(-1),keepdims=True)    
             
         # Sample discrete timesteps uniformly from {1,..., Iter}
         batch_size = tf.shape(x)[0]
-        timestep = tf.random.uniform([batch_size], minval=1, maxval=self.cfg['Iter'] + 1, dtype=tf.int32)
+        timestep = tf.random.uniform([batch_size], minval=1, maxval=self.cfg['Iter'] + 1, dtype=tf.int64)
         # Convert to float in [0,1]
-        t_float = tf.cast(timestep - 1, tf.float32) / tf.cast(self.cfg['Iter'] - 1, tf.float32)
+        t_float = tf.cast(timestep - 1, tf.float64) / tf.cast(self.cfg['Iter'] - 1, tf.float64)
 
         # 1) Diffusion Loss
         with tf.GradientTape() as tape_inner:
@@ -452,7 +453,7 @@ class VDM(tf.keras.Model):
         diffusion_loss = 0.5 * squared_diff * gamma_grad  # shape [B]
 
         # 2) Latent loss (KL divergence) from x1 to standard normal
-        gamma_1 = self.gamma(tf.constant([1.0], dtype=tf.float32))
+        gamma_1 = self.gamma(tf.constant([1.0], dtype=tf.float64))
         sigma_1_sq = tf.nn.sigmoid(gamma_1)
         alpha_1_sq = 1.0 - sigma_1_sq
         mean_sq = alpha_1_sq * tf.square(x)
@@ -513,21 +514,21 @@ class VDM(tf.keras.Model):
         """
         T, C = self.signal_shape
         # Start with Gaussian noise in z space
-        z = tf.random.normal(shape=(batch_size, T, C), mean=0.0, stddev=self.cfg['GaussSigma'])
+        z = tf.random.normal(shape=(batch_size, T, C), mean=0.0, stddev=self.cfg['GaussSigma'], dtype=tf.float64)
 
         # Sequence of integer timesteps from Iter down to 1
         # e.g., if Iter=1000, then t goes 1000 -> 999 -> ... -> 1, but limited by n_sample_steps
-        t_vals = tf.linspace(tf.cast(self.cfg['Iter'], tf.float32), 1.0, n_sample_steps + 1)
+        t_vals = tf.linspace(tf.cast(self.cfg['Iter'], tf.float64), 1.0, n_sample_steps + 1)
         
         for i in tf.range(n_sample_steps):
             t_ = t_vals[i]
             s_ = t_vals[i + 1]
-            t_batch = tf.cast(tf.ones((batch_size,)) * t_, tf.int32)
-            s_batch = tf.cast(tf.ones((batch_size,)) * s_, tf.int32)
+            t_batch = tf.cast(tf.ones((batch_size,), dtype=tf.float64) * t_, tf.int64)
+            s_batch = tf.cast(tf.ones((batch_size,), dtype=tf.float64) * s_, tf.int64)
             z = self.sample_p_s_t(z, t_batch, s_batch, condition, clip_samples)
 
         # Convert final z -> x via alpha_0 if you want the pure "z_0 -> x" transform:
-        alpha_0 = tf.sqrt(tf.nn.sigmoid(-self.gamma(tf.constant([0.0], dtype=tf.float32))))
+        alpha_0 = tf.sqrt(tf.nn.sigmoid(-self.gamma(tf.constant([0.0], dtype=tf.float64))))
         x_out = z / alpha_0
 
         # Optionally clip to [-1,1]    
@@ -600,7 +601,7 @@ def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, GenBat
         Sample = DiffusedSignals
  
         # Time steps from GenSteps down to 1 (inclusive)
-        t_vals = tf.linspace(tf.cast(GenSteps, tf.float32), 1.0, GenSteps + 1)
+        t_vals = tf.linspace(tf.cast(GenSteps, tf.float64), 1.0, GenSteps + 1)
 
         # tqdm progress bar
         pbar = tqdm(range(GenSteps), desc="[Restoration] Processing Steps")
@@ -625,8 +626,8 @@ def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, GenBat
                 sub_B = end_idx - start_idx
 
                 # Make a tensor of timesteps for this sub-batch
-                t_batch = tf.cast(tf.ones((sub_B,)) * t_, tf.int32)
-                s_batch = tf.cast(tf.ones((sub_B,)) * s_, tf.int32)
+                t_batch = tf.cast(tf.ones((sub_B,)) * t_, tf.int64)
+                s_batch = tf.cast(tf.ones((sub_B,)) * s_, tf.int64)
 
                 # Call model on the sub-batch
                 sub_sample_updated = Model.sample_p_s_t(z=sub_sample, t=t_batch, s=s_batch, 
