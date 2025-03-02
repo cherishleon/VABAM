@@ -7,6 +7,8 @@ from tensorflow.keras.layers import Lambda
 import yaml
 import pickle
 import re
+from tqdm import trange, tqdm
+
 
 
 def ReadYaml(file_path):
@@ -25,40 +27,67 @@ def GenBatches(data_list, batch_size):
         yield [data[i:i + batch_size] for data in data_list]
         
 
-#The 'predict' function in TensorFlow version 2.10 may cause memory leak issues.
-def CompResource (PredModel, Data, BatchSize=1, GPU=True):  # GPU vs CPU
+def CompResource(PredModel, Data, BatchSize=1, GPU=True, NSplitBatch=1):  
+    """
+    Predict function optimized for handling large data by splitting into batches when needed.
 
-    if GPU==False:
-        with tf.device('/CPU:0'):
-            PredVal = PredModel.predict(Data, batch_size=BatchSize, verbose=1)
-    else:
-        PredVal = PredModel.predict(Data, batch_size=BatchSize, verbose=1)
+    Parameters:
+    - PredModel: The model used for prediction.
+    - Data: Tuple of (input1, input2) to be processed.
+    - BatchSize: Size of each batch for prediction.
+    - GPU: Whether to use GPU or CPU for computation.
+    - NSplitBatch: Number of splits to divide the data to avoid memory issues.
 
-    return PredVal
-
-'''
-def CompResource (PredModel, Data, BatchSize=1, GPU=True):  # GPU vs CPU
+    Returns:
+    - Concatenated np.argmax predictions (if NSplitBatch > 1) or direct model predictions.
+    """
     
-    PredVal = []
-    TotalBatches = len(Data[0]) // BatchSize + (len(Data[0]) % BatchSize != 0)
-    if GPU==False:
-        
-        with tf.device('/CPU:0'):
-            for i, Batch in enumerate(GenBatches(Data, BatchSize)):
-                BatchPred = PredModel.predict_on_batch(Batch)
-                print(f"Processing batch {i+1}/{TotalBatches}", end='\r')
-                PredVal.extend(BatchPred)
-                gc.collect()
-
+    if NSplitBatch > 1:
+        return BatchPredict(PredModel, Data, BatchSize, NSplitBatch, GPU)
     else:
-        for i, Batch in enumerate(GenBatches(Data, BatchSize)):
-            BatchPred = PredModel.predict_on_batch(Batch)
-            print(f"Processing batch {i+1}/{TotalBatches}", end='\r')
-            PredVal.extend(BatchPred)
-            gc.collect()
+        if not GPU:
+            with tf.device('/CPU:0'):
+                PredVal = PredModel.predict(Data, batch_size=BatchSize)
+        else:
+            PredVal = PredModel.predict(Data, batch_size=BatchSize)
+
+        return PredVal
+
+
+def BatchPredict(PredModel, Data, BatchSize, NSplitBatch, GPU):
+    """
+    Splits data into NSplitBatch and performs batch-wise predictions to avoid memory issues.
+
+    Parameters:
+    - PredModel: The model used for prediction.
+    - Data: Tuple of (input1, input2) to be processed.
+    - BatchSize: Size of each batch for prediction.
+    - NSplitBatch: Number of splits to divide the data.
+    - GPU: Whether to use GPU or CPU for computation.
+
+    Returns:
+    - Concatenated np.argmax predictions over all batches.
+    """
+    # Check if Data is a list or a single input tensor
+    is_tuple = isinstance(Data, list)
+
+    if is_tuple:
+        input1, input2 = Data  # Unpack the input data
+        split_data = list(zip(np.array_split(input1, NSplitBatch), np.array_split(input2, NSplitBatch)))
+    else:
+        split_batches = np.array_split(Data, NSplitBatch)
+
+    pred_results = []
+    if not GPU:
+        with tf.device('/CPU:0'):
+            for batch in tqdm(split_data, desc="Predicting on CPU"):
+                pred_results.append(PredModel.predict(batch, batch_size=BatchSize))
+    else:
+        for batch in tqdm(split_data, desc="Predicting on GPU"):
+            pred_results.append(PredModel.predict(batch, batch_size=BatchSize))
+
+    return np.concatenate(pred_results)
     
-    return np.array(PredVal)
-'''
 
 def LoadModelConfigs(ConfigName, Training=True, Comp=True, TypeDesig = False, RootDirYaml=None, RootDirRes=None):
     
@@ -143,14 +172,14 @@ def LoadParams (ModelConfigSet, EvalConfigSet): # Experiment setting
     Params = {}
     
     # Define parameter keys for both ModelConfigSet and EvalConfigSet
-    model_keys = ['ConfigName','DataSource', 'SigType', 'LatDim', 'NBlocks', 'FilterSize', 'SlidingSize', 'KernelSize', 
-                  'Capacity_Z',  'NumCl', 'LossType', 'SpecLosses', 'Channels', 'Iter', 'EmbeddingSize', 'EmbeddingFactor', 
-                  'EmbeddingLayers', 'EmbeddingProj', 'NumLayers', 'NumCycles', 'DilationRate', 'Lr', 'Beta1', 'Beta2', 
-                  'Eps', 'GaussSigma', 'BetaSchedule', 'NoiseSchedule', 'GammaMin', 'GammaMax']
+    model_keys = ['ConfigName','DataSource', 'SigType', 'LatDim', 'NBlocks', 'FilterSize', 'SlidingSize', 'KernelSize', 'BatSize', 
+                  'Capacity_Z', 'Capacity_TC','Capacity_MI', 'Capacity_DTC', 'NumCl', 'LossType', 'SpecLosses', 'Channels', 'Iter', 
+                  'EmbeddingSize', 'EmbeddingFactor', 'EmbeddingLayers', 'EmbeddingProj', 'NumLayers', 'NumCycles', 'DilationRate', 'Lr', 
+                  'Beta1', 'Beta2', 'Eps', 'GaussSigma', 'BetaSchedule', 'NoiseSchedule', 'GammaMin', 'GammaMax', 'DiscHiddenSize']
     eval_keys = ['ReparaStd', 'ReparaStdZj', 'MaxFreq', 'MinFreq', 'NMiniBat', 'SimSize', 'NSubGen', 
                  'NSelZ', 'SelMetricType', 'SelMetricCut', 'SecDataType', 'NParts', 'TestDataSource',
                  'EvalDataSize', 'SampBatchSize', 'GenBatchSize', 'GPU', 'WindowSize', 'GenSteps', 
-                 'NSplitBatch', 'FcLimit']
+                 'NSplitBatch', 'FcLimit', 'StepInterval', 'InferenceType']
     
     # Assign values from ModelConfigSet (default to None if key does not exist)
     for key in model_keys:

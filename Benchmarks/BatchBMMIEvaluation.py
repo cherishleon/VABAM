@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import copy
 from argparse import ArgumentParser
 
-from Benchmarks.Models.BenchmarkCaller import *
+from Benchmarks.Models.BenchmarkCaller64 import *
 from Utilities.EvaluationMain import *
 from Utilities.Utilities import ReadYaml, SerializeObjects, DeserializeObjects, LoadModelConfigs, LoadParams
 
@@ -19,20 +19,23 @@ from Utilities.Utilities import ReadYaml, SerializeObjects, DeserializeObjects, 
 # python .\BatchBMMIEvaluation.py --Config EvalConfigART --ConfigSpec BaseVAE_ART_30 --GPUID 4    
 # python .\BatchBMMIEvaluation.py --Config EvalConfigII --ConfigSpec ConVAE_II_50 --GPUID 4 --SpecNZs 40 50
 
-
+ 
 #### -----------------------------------------------------   Defining model structure -----------------------------------------------------------------    
-def SetModel():
+def SetVAEs():
     # Calling Modesl
-    BenchModel, _, AnalData = ModelCall (ModelConfigSet, ConfigName, TrData, TestData, LoadWeight=True,  
-                                             Reparam=True, ReparaStd=Params['ReparaStd'], ModelSaveName=ModelLoadPath) 
-    
-    
+    BenchModel, _, AnalData = ModelCall (Params, ConfigName, TrInp, ValInp, LoadWeight=True,  
+                                         Reparam=True, ReparaStd=Params['ReparaStd'], ModelSaveName=ModelLoadPath) 
+        
     ## The generation model for evaluation
     GenModel = BenchModel.get_layer('ReconModel')
     
     ## The sampling model for evaluation
     Inp_Enc = BenchModel.get_layer('Inp_Enc')
-    Zs = BenchModel.get_layer('Zs').output
+
+    if 'VDV' in ConfigName:
+        Zs = tf.concat([BenchModel.get_layer('Zs'+str(i)).output for i in range(len(Params['LatDim']))], axis=-1)
+    else:
+        Zs = BenchModel.get_layer('Zs').output
     
     if Params['SecDataType'] == 'CONDIN':
         Inp_Cond = BenchModel.get_layer('Inp_Cond')
@@ -41,6 +44,10 @@ def SetModel():
         SampZModel = Model(Inp_Enc.input, Zs)
     return SampZModel, GenModel, AnalData
     
+def SetModels():
+    GenModel, _, AnalData = ModelCall (Params, ConfigName, TrInp, ValInp, LoadWeight = True, ModelSaveName=ModelLoadPath) 
+    return GenModel, AnalData
+
 
 if __name__ == "__main__":
 
@@ -52,14 +59,11 @@ if __name__ == "__main__":
     parser.add_argument('--Config', type=str, required=True, help='Set the name of the configuration to load (the name of the YAML file).')
     parser.add_argument('--ConfigSpec', nargs='+', type=str, required=False, 
                         default=None, help='Set the name of the specific configuration to load (the name of the model config in the YAML file).')
-    parser.add_argument('--SpecNZs', nargs='+', type=int, required=False, 
-                        default=None, help='Set the size of js to be selected at the same time with the list.')
     parser.add_argument('--GPUID', type=int, required=False, default=1)
     
     args = parser.parse_args() # Parse the arguments
     ConfigName = args.Config
     ConfigSpecName = args.ConfigSpec
-    SpecNZs = args.SpecNZs
     GPU_ID = args.GPUID
     
     YamlPath = './Config/'+ConfigName+'.yml'
@@ -97,10 +101,7 @@ if __name__ == "__main__":
     #### -----------------------------------------------------  Conducting batch evaluation --------------------------------------------------------------
                  
     SigTypePrev = None
-    for ConfigName in EvalConfigs:
-        
-        if ConfigName == 'Common_Info':
-            continue
+    for ConfigName in EvalConfigs['Models'].keys():
         
         if ConfigSpecName is not None: 
             if ConfigName not in ConfigSpecName:
@@ -112,11 +113,16 @@ if __name__ == "__main__":
 
         #### -----------------------------------------------------  Setting evaluation environment ----------------------------------------------------------
         # Loading the model configurations
-        ModelConfigSet, ModelLoadPath = LoadModelConfigs(ConfigName, Comp=False)
+        ModelConfigSet, ModelLoadPath = LoadModelConfigs(ConfigName, Comp=False, TypeDesig=True)
+        CommonParams = EvalConfigs['Common_Param']
+        ModelParams = EvalConfigs["Models"][ConfigName]
 
         # Loading parameters for the evaluation
-        Params = LoadParams(ModelConfigSet, EvalConfigs[ConfigName])
+        Params = LoadParams(ModelConfigSet, {**CommonParams, **ModelParams})
         Params['Common_Info'] = EvalConfigs['Common_Info']
+        DataSource = Params['DataSource']
+        TestDataSource = Params['TestDataSource']
+        SigType = Params['SigType']
 
 
         #### -----------------------------------------------------   Loading data -------------------------------------------------------------------------   
@@ -124,57 +130,92 @@ if __name__ == "__main__":
             SigTypePrev = Params['SigType'] # To change data type: ART, II, PLETH
 
             # Loading data
-            TrData = np.load('../Data/ProcessedData/Tr'+str(Params['SigType'])+'.npy').astype('float32')
-            TestData = np.load('../Data/ProcessedData/Test'+str(Params['SigType'])+'.npy').astype('float32')
-
-        # Intermediate parameters 
-        SigDim = TestData.shape[1]
-        DataSize = TestData.shape[0]
-
+            if 'Wavenet' in ConfigName:
+                SlidingSize = Params['SlidingSize']
+            
+                TrRaw = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy')
+                ValRaw = np.load('../Data/ProcessedData/'+str(TestDataSource)+'Val'+str(SigType)+'.npy')
+            
+                TrSampled = np.load('../Data/ProcessedData/Sampled'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('float64') # Sampled_TrData
+                ValSampled = np.load('../Data/ProcessedData/Sampled'+str(TestDataSource)+'Val'+str(SigType)+'.npy').astype('float64') # Sampled_ValData
+                TrOut = np.load('../Data/ProcessedData/MuLaw'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('int64') # MuLaw_TrData
+                ValOut = np.load('../Data/ProcessedData/MuLaw'+str(TestDataSource)+'Val'+str(SigType)+'.npy').astype('int64') # MuLaw_ValData
+        
+                TrInp = [TrSampled, TrRaw]
+                ValInp = [ValSampled, ValRaw]
+                
+                Params['DataSize'] = TrSampled.shape[0] 
+                Params['SigDim'] = TrSampled.shape[1]
+                
+            else:
+                TrInp = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy')
+                ValInp = np.load('../Data/ProcessedData/'+str(TestDataSource)+'Val'+str(SigType)+'.npy')
+                Params['DataSize'] = TrInp.shape[0] 
+                Params['SigDim'] = TrInp.shape[1]
+        
+            # Standardization for certain models.
+            if 'DiffWave' in ConfigName or 'VDWave' in ConfigName:
+                SigMax = np.load('../Data/ProcessedData/'+str(DataSource)+'SigMax.pkl', allow_pickle=True)
+                SigMin = np.load('../Data/ProcessedData/'+str(DataSource)+'SigMin.pkl', allow_pickle=True)
+                TrDeNorm = (TrInp * (SigMax[str(SigType)] - SigMin[str(SigType)]) + SigMin[str(SigType)]).copy()
+                ValDeNorm = (ValInp * (SigMax[str(SigType)] - SigMin[str(SigType)]) + SigMin[str(SigType)]).copy()
+                
+                MeanSig, SigmaSig = np.mean(TrDeNorm), np.std(TrDeNorm) 
+                TrInp = (TrDeNorm-MeanSig)/SigmaSig
+                ValInp = (ValDeNorm-MeanSig)/SigmaSig
 
 
         #### -----------------------------------------------------  Conducting Evalution -----------------------------------------------------------------    
         # Is the value assigned by ArgumentParser or assigned by YML?
-        if SpecNZs == None:
-            NSelZs = Params['NSelZ']
-        else:
-            NSelZs = SpecNZs
+        NZs = Params['NSelZ']
+        print('NZs : ', NZs)
 
+       
         # Setting the model
-        SampModel, GenModel, AnalData = SetModel()
+        if 'VAE' in ConfigName:
+            SampModel, GenModel, AnalData = SetVAEs()
+        else:
+            GenModel, AnalData = SetModels()
                     
-        for NZs in NSelZs:
-            
-            # Clearing the session before building the model
-            tf.keras.backend.clear_session()
+       
+        # Clearing the session before building the model
+        tf.keras.backend.clear_session()
 
-            # Object save path
-            ObjSavePath = './EvalResults/Instances/Obj_'+ConfigName+'_Nj'+str(NZs)+'.pkl'
-            SampZjSavePath = './Data/IntermediateData/'+ConfigName+'_Nj'+str(NZs)+'.npy'
-                
-            # Instantiation 
-            Eval = Evaluator(MinFreq = Params['MinFreq'], MaxFreq = Params['MaxFreq'], SimSize = Params['SimSize'], NMiniBat = Params['NMiniBat'], NParts = Params['NParts'], 
-                   NSubGen = Params['NSubGen'], ReparaStdZj = Params['ReparaStdZj'], NSelZ = NZs, SampBatchSize = Params['SampBatchSize'],  SelMetricType = Params['SelMetricType'],
-                   SelMetricCut = Params['SelMetricCut'], GenBatchSize = Params['GenBatchSize'], GPU = Params['GPU'], Name=ConfigName+'_Nj'+str(NZs))
+        # Object save path
+        ObjSavePath = './EvalResults/Instances/Obj_'+ConfigName+'_Nj'+str(NZs)+'.pkl'
+        SampZjSavePath = './Data/IntermediateData/'+ConfigName+'_Nj'+str(NZs)+'.npy'
             
-            if Params['SecDataType'] == 'CONDIN':
-                ## SampZType: Z~ N(Zμ|y, σ) (SampZType = 'ModelRptA' or 'ModelRptB') vs. Z ~ N(0, ReparaStdZj) (SampZType = 'Gauss' or 'GaussRptA')
-                Eval.Eval_ZCON(AnalData[:],  SampModel, GenModel, WindowSize = Params['WindowSize'],  Continue=False,  SecDataType=Params['SecDataType'])
+        # Instantiation 
+        Eval = Evaluator(MinFreq = Params['MinFreq'], MaxFreq = Params['MaxFreq'], SimSize = Params['SimSize'], NMiniBat = Params['NMiniBat'], NParts = Params['NParts'], 
+               NSubGen = Params['NSubGen'], ReparaStdZj = Params['ReparaStdZj'], NSelZ = NZs, SampBatchSize = Params['SampBatchSize'],  SelMetricType = Params['SelMetricType'],
+               SelMetricCut = Params['SelMetricCut'], GenBatchSize = Params['GenBatchSize'], GPU = Params['GPU'], Name=ConfigName+'_Nj'+str(NZs))
+        
+        if Params['SecDataType'] is None:
+            Eval.Eval_Z(AnalData, SampModel, GenModel, Continue=False)
+        else:
+            if 'ConVAE' in ConfigName:
+                Eval.Eval_ZCON(AnalData,  SampModel, GenModel, Continue=False, SecDataType=Params['SecDataType'])
+            
+            elif 'Wavenet' in ConfigName:
+                Eval.Eval_XCON([AnalData[0], AnalData[1]], GenModel, Continue=False, NSplitBatch=Params['NSplitBatch'], SecDataType='CONDIN' )
+            
+            elif 'DiffWave' or 'VDWave' in ConfigName:
+                Eval.Eval_XCON([AnalData[0], AnalData[1]], GenModel, GenSteps=Params['GenSteps'], StepInterval=Params['StepInterval'], Continue=False, SecDataType='CONDIN' )
             else:
-                Eval.Eval_Z(AnalData[:], SampModel, GenModel,  Continue=False)
-    
-    
-            # Selecting post Samp_Zj for generating plausible signals
-            SelPostSamp = Eval.SelPostSamp( Params['SelMetricCut'], SavePath=SampZjSavePath)
-    
-    
-            # Evaluating KLD (P || K)
-            #Eval.KLD_TrueGen(SecDataType = Params['SecDataType'], RepeatSize = 1, PlotDist=False) 
-    
-            # Saving the instance's objects to a file
-            SerializeObjects(Eval, Params['Common_Info']+Params['Spec_Info'], ObjSavePath)
+                assert False, "Please verify if ConfigName is properly provided."
 
-            del Eval
+        
+        # Selecting post Samp_Zj for generating plausible signals
+        SelPostSamp = Eval.SelPostSamp( Params['SelMetricCut'], SavePath=SampZjSavePath)
+
+
+        # Evaluating KLD (P || K)
+        #Eval.KLD_TrueGen(SecDataType = Params['SecDataType'], RepeatSize = 1, PlotDist=False) 
+
+        # Saving the instance's objects to a file
+        SerializeObjects(Eval, Params['Common_Info']+Params['Spec_Info'], ObjSavePath)
+
+        del Eval
             
 
 

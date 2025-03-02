@@ -13,6 +13,12 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 from Utilities.AncillaryFunctions import FFT_PSD, ProbPermutation, MeanKLD, Sampler, SamplingZ, SamplingZj, SamplingFCs
 from Utilities.Utilities import CompResource
 
+import sys
+sys.path.append("..")
+from Benchmarks.Models.DiffWave64 import DiffWAVE_Restoration
+from Benchmarks.Models.VDiffWave64 import VDiffWAVE_Restoration
+
+
        
 class Evaluator ():
     
@@ -829,6 +835,7 @@ class Evaluator ():
             self.NSplitBatch = kwargs.get('NSplitBatch', 1) 
         elif 'DiffWave' in self.Name or 'VDWave' in self.Name:
             self.GenSteps = kwargs.get('GenSteps', 10) 
+            self.StepInterval = kwargs.get('StepInterval', 1) 
         
         assert SecDataType in ['FCIN','CONDIN', False], "Please verify the value of 'SecDataType'. Only 'FCIN', 'CONDIN'  or False are valid."
         
@@ -884,14 +891,14 @@ class Evaluator ():
             ## Dimensionality Mapping in Our Paper: b: skipped, d: NMiniBat, r: NParts, m: NSubGen, t: SigDim; 
             self.Xbdr_tmp = np.broadcast_to(np.squeeze(SubData[0])[:, None], (self.NMiniBat, self.NParts, self.SigDim))
             # The values of X are perturbed by randomly sampled errors along dimensions b, d, r, and t, while remaining constant along dimension m.
-            if 'Wavenet' in Eval.Name:
+            if 'Wavenet' in self.Name:
                 self.Xbdr_tmp = np.round(np.clip(self.Xbdr_tmp + np.random.normal(0, self.NoiseStd, self.Xbdr_tmp.shape), 0, 256))
-            elif 'DiffWave' in Eval.Name:
-                Noise = tf.random.normal(tf.shape(Eval.Xbdr_tmp), 0, Eval.GenModel.config['GaussSigma'])
-                Eval.Xbdr_tmp, _ = Eval.GenModel.diffusion(Eval.Xbdr_tmp, Eval.GenModel.alpha_bar[Eval.GenSteps - 1].item(), Noise)
-            elif 'VDWave' in Eval.Name:
-                t_float = (tf.cast(BenchModel.cfg['GenSteps'], tf.float32) - 1) / (tf.cast(BenchModel.cfg['Iter'] - 1, tf.float32))
-                Eval.Xbdr_tmp, _, _ = BenchModel.sample_q_t_0(Eval.Xbdr_tmp, t_float, None, gamma_t=None)
+            elif 'DiffWave' in self.Name:
+                Noise = tf.random.normal(tf.shape(self.Xbdr_tmp), 0, self.GenModel.config['GaussSigma'])
+                self.Xbdr_tmp, _ = self.GenModel.diffusion(self.Xbdr_tmp, self.GenModel.alpha_bar[self.GenSteps - 1].item(), Noise)
+            elif 'VDWave' in self.Name:
+                t_float = (tf.cast(self.GenModel.cfg['GenSteps'], tf.float32) - 1) / (tf.cast(self.GenModel.cfg['Iter'] - 1, tf.float32))
+                self.Xbdr_tmp, _, _ = self.GenModel.sample_q_t_0(self.Xbdr_tmp, t_float, None, gamma_t=None)
                 
             self.Xbdr_Exp = np.broadcast_to(self.Xbdr_tmp[:,:,None], (self.NMiniBat, self.NParts, self.NSubGen, self.SigDim))
             self.Xbdr = np.reshape(self.Xbdr_Exp, (-1, self.SigDim))
@@ -961,12 +968,16 @@ class Evaluator ():
             DataCaseIDX = [0] + list(np.cumsum(CaseLens))
             
             # Choosing GPU or CPU and generating signals
-            if 'Wavenet' in Eval.Name:
+            if 'Wavenet' in self.Name:
+                print(self.GenBatchSize, self.NSplitBatch)
                 Set_Pred = CompResource(self.GenModel, Set_Data, BatchSize=self.GenBatchSize, NSplitBatch=self.NSplitBatch, GPU=self.GPU)
-            elif 'DiffWave' in Eval.Name:
-                Set_Pred = DiffWAVE_Restoration(Eval.GenModel, np.squeeze(Set_Data[0]), Set_Data[1], GenBatchSize=Eval.GenBatchSize, GenSteps=Eval.GenSteps, GPU=Eval.GPU)
-            elif 'VDWave' in Eval.Name:
-                Set_Pred = VDiffWAVE_Restoration(Eval.GenModel, Set_Data[0], Set_Data[1], GenBatchSize=Eval.GenBatchSize, GenSteps=Eval.GenSteps, Noise=None, GPU=Eval.GPU)
+                
+            elif 'DiffWave' in self.Name:
+                Set_Pred = DiffWAVE_Restoration(self.GenModel, np.squeeze(Set_Data[0]), Set_Data[1], GenBatchSize=self.GenBatchSize,
+                                                StepInterval=self.StepInterval, GenSteps=self.GenSteps, GPU=self.GPU)
+            elif 'VDWave' in self.Name:
+                Set_Pred = VDiffWAVE_Restoration(self.GenModel, Set_Data[0], Set_Data[1], GenBatchSize=self.GenBatchSize, GenSteps=self.GenSteps, 
+                                                 StepInterval=self.StepInterval, Noise=None, GPU=self.GPU)
                 
             if self.Name == 'Wavenet_ART_Mimic':
                 Set_Pred = mu_law_decode(Set_Pred)
@@ -1084,3 +1095,137 @@ class Evaluator ():
         # MI(VE;CON',X) 
         self.I_S_CONsX /= (self.TotalIterSize)
         self.AggResDic['I_S_CONsX'].append(self.I_S_CONsX)
+
+
+    
+    ### -------------------------- Evaluating the performance of the model using only Z inputs  -------------------------- ###
+    def Eval_Z (self, AnalSig, SampZModel, GenModel, FcLimit=0.05, WindowSize=3, Continue=True ):
+        
+        ## Required parameters
+        self.AnalSig = AnalSig             # The data to be used for analysis.
+        self.SampZModel = SampZModel           # The model that samples Zs.
+        self.GenModel = GenModel             # The model that generates signals based on given Zs and FCs.
+        self.SecDataType = False             # The ancillary data-type: False means there is no ancillary dataset. 
+        
+        ## Intermediate variables
+        self.Ndata = len(AnalSig) # The dimension size of the data.
+        self.LatDim = SampZModel.output.shape[-1] # The dimension size of Z.
+        self.SigDim = AnalSig.shape[-1] # The dimension (i.e., length) size of the raw signal.
+        self.SubIterSize = self.Ndata//self.NMiniBat
+        self.TotalIterSize = self.SubIterSize * self.SimSize
+        
+        
+        # Functional trackers
+        if Continue == False or not hasattr(self, 'iter'):
+            self.sim, self.mini, self.iter = 0, 0, 0
+        
+            ## Result trackers
+            self.SubResDic = {'I_V_ZjZ':[]}
+            self.AggResDic = {'I_V_ZjZ':[]}
+            self.BestZsMetrics = {i:[np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
+            self.TrackerCand_Temp = {i:{'TrackSecData':[],'TrackZX':[],'TrackMetrics':[] } for i in range(1, self.MaxFreq - self.MinFreq + 2)} 
+            self.I_V_ZjZ = 0
+        
+                 
+        ### ------------------------------------------------ Task logics ------------------------------------------------ ###
+
+        def TaskLogic(SubData):
+
+            ### ------------------------------------------------ Sampling ------------------------------------------------ ###
+            # Updating NMiniBat; If there is a remainder in Ndata/NMiniBat, NMiniBat must be updated." 
+            self.NMiniBat = len(SubData) 
+
+            # Sampling Samp_Z and Samp_Zj
+            # Please note that the tensor is maintained in a reduced number of dimensions for computational efficiency in practice.
+            ## Dimensionality Mapping in Our Paper: b: skipped, d: NMiniBat; 
+            # The values of z are randomly sampled at dimensions b, and d.
+            self.Zbd = SamplingZ(SubData, self.SampZModel, self.NMiniBat, 1, 1, 
+                                BatchSize = self.SampBatchSize, GPU=self.GPU, SampZType='Modelbd', ReparaStdZj=self.ReparaStdZj)
+           
+            # Selecting Samp_Zjs from Zbd 
+            self.Zjbd = SamplingZj (self.Zbd, self.NMiniBat, 1, 1, self.LatDim, self.NSelZ, ZjType='bd' )
+
+            
+            
+
+            ### ------------------------------------------------ Signal reconstruction ------------------------------------------------ ###
+            '''
+                                        ## Variable cases for the signal generation ##
+              # Cases                     # Super Signal                   # Target metric
+              1) Zbd           ->         Sig_Zbd              ->          I() // H() or KLD ()
+              2) Zjbd          ->         Sig_Zjbd             ->          I() 
+                                          
+            ''' 
+            
+            # Binding the samples together, generate signals through the model 
+            ListZs = [self.Zbd,    self.Zjbd]
+            Set_Data = np.concatenate(ListZs)  
+
+            # Gneraing indices for Re-splitting predictions for each case
+            CaseLens = np.array([item.shape[0] for item in ListZs])
+            DataCaseIDX = [0] + list(np.cumsum(CaseLens))
+            
+            # Choosing GPU or CPU and generating signals
+            Set_Pred = CompResource (self.GenModel, Set_Data, BatchSize=self.GenBatchSize, GPU=self.GPU)
+
+            # Re-splitting predictions for each case
+            self.Sig_Zbd, self.Sig_Zjbd = [Set_Pred[DataCaseIDX[i]:DataCaseIDX[i+1]] for i in range(len(DataCaseIDX)-1)] 
+            
+            self.Sig_Zbd = self.Sig_Zbd.reshape(self.NMiniBat, -1)
+            self.Sig_Zjbd = self.Sig_Zjbd.reshape(self.NMiniBat, -1)
+
+            
+            ### ------------------------------------------------ Calculating metrics for the evaluation ------------------------------------------------ ###
+            
+            '''                                        ## Sub-Metric list ##
+                ------------------------------------------------------------------------------------------------------------- 
+                # Sub-metrics     # Function       # Code                 # Function            # Code 
+                1) I_V_ZjZ        q(v|Sig_Zjbd)    <QV_Zjbd>      vs      q(v|Sig_Zbd)          <QV_Zbd>
+                2) H()//KLD()     q(v|Sig_Zbd)     <QV_Zbd>               q(v)                  <QV_Batch>       
+                
+                ## Metric list : I_V_ZjZ, H() or KLD()
+                
+            '''
+            
+            
+             ### ---------------------------- Cumulative Power Spectral Density (PSD) over each frequency -------------------------------- ###
+            # Return shape of MQV_Zbd_FCbdm : (NMiniBat, N_frequency)
+            self.QV_Zbd = FFT_PSD(self.Sig_Zbd, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).mean(1)
+            # Return shape of MQV_Zjbd_FCbdm : (NMiniBat, N_frequency)
+            self.QV_Zjbd = FFT_PSD(self.Sig_Zjbd, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).mean(1)
+
+
+            ### ---------------------------------------- Mutual information ---------------------------------------- ###
+            # zPSD and fcPE stand for z-wise power spectral density and fc-wise permutation sets, respectively.
+            I_V_ZjZ_ = MeanKLD(self.QV_Zjbd, self.QV_Zbd )  # I(V;z'|z)
+
+
+            print("I(V;z'|z) :", I_V_ZjZ_)
+            self.SubResDic['I_V_ZjZ'].append(I_V_ZjZ_)
+            self.I_V_ZjZ += I_V_ZjZ_
+
+
+            ### --------------------------- Locating the candidate Z values that generate plausible signals ------------------------- ###
+            ## Return shape: (1, N_frequency, NMiniBat)
+            ### Since it is the true PSD, there are no M generations. 
+            self.QV_Batch = FFT_PSD(SubData[:,None], 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).transpose((1,2,0))
+            
+            # Intermediate objects for Q(s) and H(')
+            ## Return shape: (NMiniBat, N_frequency, NGen)
+            self.QV_Zbdr_T = self.QV_Zbd.reshape(self.NMiniBat, self.NGen, -1).transpose(0,2,1)
+            self.LocCandZsMaxFreq ( self.QV_Zbdr_T, self.Zbd)
+ 
+            # Restructuring TrackerCand
+            ## item[0] contains frequency domains
+            ## item[1] contains tracked Z values, 2nd data, and metrics
+            self.TrackerCand = {item[0]: {'TrackZX': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackZX']), 
+                                   'TrackMetrics': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackMetrics'])} 
+                                     for item in self.TrackerCand_Temp.items() if len(item[1]['TrackZX']) > 0} 
+            
+            
+        # Conducting the task iteration
+        self.Iteration(TaskLogic)
+
+        # MI(V;Z',Z)
+        self.I_V_ZjZ /= (self.TotalIterSize)
+        self.AggResDic['I_V_ZjZ'].append(self.I_V_ZjZ)
