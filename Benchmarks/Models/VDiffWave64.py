@@ -2,6 +2,9 @@ import tensorflow as tf
 tf.keras.backend.set_floatx('float64')
 import numpy as np
 import math
+from tqdm import tqdm
+import time
+start_time = time.time()
 
 # =============================================================================
 # 1) Helper Functions
@@ -45,24 +48,58 @@ class FixedLinearSchedule(tf.keras.layers.Layer):
         })
         return config
 
-class LearnedLinearSchedule(tf.keras.Model):
+class LearnedSchedule(tf.keras.Model):
     """
-    Learnable linear schedule: gamma(t) = b + |w| * t.
+    Learnable schedule (ensuring non-negative values):
+
+    gamma(t) = (b^2) * t + (w^2) * t + anchor
+
+    - The anchor is set to either GammaMin or GammaMax if provided.
+    - If neither is provided, anchor defaults to 0.0.
+    - If both GammaMin and GammaMax are given simultaneously, an error is raised.
+
+    Using b^2 and w^2 ensures that gamma(t) remains non-negative.
+    (This approach maintains a schedule while preventing negative values.)
     """
-    def __init__(self, GammaMin, GammaMax, **kwargs):
+
+    def __init__(self, GammaMin=None, GammaMax=None, **kwargs):
         super().__init__(**kwargs)
-        # b = GammaMin, w = GammaMax - GammaMin
-        self.b = tf.Variable(GammaMin, trainable=True, dtype=tf.float64, name="b")
-        self.w = tf.Variable(GammaMax - GammaMin, trainable=True, dtype=tf.float64, name="w")
+        # Ensure that only one of GammaMin or GammaMax is set
+        if GammaMin is not None and GammaMax is not None:
+            raise ValueError("Only one of GammaMin or GammaMax can be set. Choose one.")
+
+        self.GammaMin = GammaMin
+        self.GammaMax = GammaMax
+
+        # Initialize b and w (can be adjusted if necessary)
+        self.b = tf.Variable(-1.0, trainable=True, dtype=tf.float64, name="b")
+        self.w = tf.Variable(-1.0, trainable=True, dtype=tf.float64, name="w")
 
     def call(self, t):
-        return self.b + tf.abs(self.w) * t
+        # Set anchor based on GammaMin or GammaMax, or default to 0
+        if self.GammaMin is not None:
+            anchor = self.GammaMin
+        elif self.GammaMax is not None:
+            anchor = self.GammaMax
+        else:
+            anchor = 0.0
+
+        # gamma(t) = (b^2) * t + (w^2) * t + anchor
+        return tf.square(self.b) * t + tf.square(self.w) * t + anchor
 
     def get_config(self):
-        # 변수값을 numpy로 추출하여 config에 저장합니다.
-        config = {"GammaMin": float(self.b.numpy()),
-                  "GammaMax": float(self.b.numpy() + tf.abs(self.w).numpy())}
+        """
+        Returns model configuration for serialization.
+        """
+        config = super().get_config()
+        config.update({
+            "GammaMin": self.GammaMin,
+            "GammaMax": self.GammaMax,
+            "b": float(self.b.numpy()),
+            "w": float(self.w.numpy()),
+        })
         return config
+
 
 # =============================================================================
 # 3) FiLM Layer
@@ -183,7 +220,7 @@ class Block(tf.keras.Model):
         
         # Residual and skip connections.
         if not self.last:
-            residual = (self.proj_res(x) + inputs) / math.sqrt(2.0)
+            residual = (self.proj_res(x) + inputs) / tf.cast(tf.math.sqrt(2.0), dtype=tf.float64)
         else:
             residual = None
             
@@ -239,6 +276,7 @@ class WaveNet(tf.keras.Model):
             tf.keras.layers.Conv1D(1, kernel_size=1)
         ]
 
+    @tf.function
     def call(self, signal, timestep, condition):
         """
         Forward pass.
@@ -264,7 +302,7 @@ class WaveNet(tf.keras.Model):
             x, skip = block(x, embed, condition)
             skip_connections.append(skip)
         
-        out = tf.add_n(skip_connections) / math.sqrt(len(self.blocks))
+        out = tf.add_n(skip_connections) / tf.math.sqrt(tf.cast(len(self.blocks), dtype=tf.float64))
         for proj in self.proj_out:
             out = proj(out)
         return out # [B, T, 1]
@@ -312,7 +350,7 @@ class VDM(tf.keras.Model):
         if cfg["NoiseSchedule"] == "fixed_linear":
             self.gamma = FixedLinearSchedule(cfg["GammaMin"], cfg["GammaMax"])
         elif cfg["NoiseSchedule"] == "learned_linear":
-            self.gamma = LearnedLinearSchedule(cfg["GammaMin"], cfg["GammaMax"])
+            self.gamma = LearnedSchedule(cfg["GammaMin"], cfg["GammaMax"])
         else:
             raise ValueError(f"Unknown noise schedule {cfg['NoiseSchedule']}")
 
@@ -375,7 +413,8 @@ class VDM(tf.keras.Model):
         else:
             raise ValueError("RecLossType must be either 'logP' or 'mse'.")
         return loss
-
+    
+    @tf.function
     def sample_p_s_t(self, z, t, s, condition, clip_samples):
         """
         Sample from p(z_s | z_t).
@@ -397,7 +436,6 @@ class VDM(tf.keras.Model):
         alpha_s = tf.sqrt(tf.nn.sigmoid(-gamma_s))
         sigma_t = tf.sqrt(tf.nn.sigmoid(gamma_t))
         sigma_s = tf.sqrt(tf.nn.sigmoid(gamma_s))
-
         pred_noise = self.wavenet(z, t, condition)
 
         alpha_t_exp = tf.reshape(alpha_t, [-1, 1, 1])
@@ -411,7 +449,6 @@ class VDM(tf.keras.Model):
             mean = alpha_s_exp * (z * (1.0 - c_exp) / alpha_t_exp + c_exp * x_start)
         else:
             mean = (alpha_s_exp / alpha_t_exp) * (z - c_exp * sigma_t_exp * pred_noise)
-        
         scale = sigma_s_exp * tf.sqrt(c_exp)
         z_next = mean + scale * tf.random.normal(tf.shape(z), 0, self.cfg['GaussSigma'], dtype=tf.float64)
         return z_next
@@ -572,7 +609,7 @@ class VDM(tf.keras.Model):
 # =============================================================================
 # 8) Restoration function for evaluation.
 # =============================================================================
-def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, GenBatchSize=100, Noise=None, GPU=True):
+def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, StepInterval=1, GenBatchSize=100, Noise=None, GPU=True):
     """
     Performs the signal restoration process using the given model in sub-batches.
 
@@ -604,7 +641,7 @@ def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, GenBat
         t_vals = tf.linspace(tf.cast(GenSteps, tf.float64), 1.0, GenSteps + 1)
 
         # tqdm progress bar
-        pbar = tqdm(range(GenSteps), desc="[Restoration] Processing Steps")
+        pbar = tqdm(range(0, GenSteps, StepInterval), desc="[Restoration] Processing Steps")
 
         for i in pbar:
             # t -> s transition
@@ -615,6 +652,7 @@ def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, GenBat
             start_idx = 0
             sub_outputs = []  # To store each sub-batch's updated sample
 
+            start_time = time.time()
             while start_idx < B:
                 end_idx = tf.minimum(start_idx + GenBatchSize, B)
 
@@ -626,19 +664,18 @@ def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, GenBat
                 sub_B = end_idx - start_idx
 
                 # Make a tensor of timesteps for this sub-batch
-                t_batch = tf.cast(tf.ones((sub_B,)) * t_, tf.int64)
-                s_batch = tf.cast(tf.ones((sub_B,)) * s_, tf.int64)
+                t_batch = tf.cast(tf.ones((sub_B,), dtype=tf.float64) * t_, tf.int64)
+                s_batch = tf.cast(tf.ones((sub_B,), dtype=tf.float64) * s_, tf.int64)
 
                 # Call model on the sub-batch
-                sub_sample_updated = Model.sample_p_s_t(z=sub_sample, t=t_batch, s=s_batch, 
-                                                        condition=sub_condition, clip_samples=False)
+                sub_sample_updated = Model.sample_p_s_t(z=sub_sample, t=t_batch, s=s_batch, condition=sub_condition, clip_samples=False)
                 sub_outputs.append(sub_sample_updated)
-
                 start_idx = end_idx  # move to next sub-batch
 
             # Concatenate sub-batch results -> [B, T, C]
             Sample = tf.concat(sub_outputs, axis=0)
-
+            print('Time elapsed:',  time.time() - start_time)
+            
             # Update progress bar
             pbar.set_postfix({"Current Step": i + 1})
 

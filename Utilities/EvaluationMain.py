@@ -18,7 +18,74 @@ sys.path.append("..")
 from Benchmarks.Models.DiffWave64 import DiffWAVE_Restoration
 from Benchmarks.Models.VDiffWave64 import VDiffWAVE_Restoration
 
+def compute_snr(signal, noisy_signal):
+    """Computes SNR in dB for a 2D batch signal."""
+    noise = noisy_signal - signal  # Extract noise
+    signal_power = np.mean(signal ** 2, axis=1)
+    noise_power = np.mean(noise ** 2, axis=1)
+    return 10 * np.log10(signal_power / noise_power)  # SNR in dB
 
+
+
+
+def find_t(instance, Xbdr_tmp_copy, Iter, GenSteps, SNR_cutoff=10.0):
+    """
+    Finds the time step t where the SNR is just above the cutoff threshold.
+    That is, it returns the last  where SNR is above the SNR_cutoff.
+    
+    Parameters:
+    - instance: an object containing GenModel and sampling functions
+    - Xbdr_tmp_copy: A true, writable copy of Xbdr_tmp to avoid modifying the original
+    - Iter: Number of iterations (from cfg)
+    - GenSteps: Number of generation steps (from cfg)
+    - SNR_cutoff: The SNR threshold
+    
+    Returns:
+    - t_tmp and the corresponding iteration index
+    """
+    # Create a copy of the original to preserve it
+    Xbdr_tmp_raw = Xbdr_tmp_copy.copy()
+    
+    # Variables to store the last t and index where SNR is above the cutoff
+    last_t = None
+    last_i = None
+
+    for i in range(Iter):
+        if 'VDWave' in instance.Name:
+            t_tmp = i / float(Iter - 1)  
+            Xbdr_tmp_iter, _, _ = instance.GenModel.sample_q_t_0(Xbdr_tmp_copy.copy(), t_tmp, None, gamma_t=None)
+        elif 'DiffWave' in instance.Name:
+            t_tmp = i  # Directly use the index
+            Noise = tf.random.normal(tf.shape(Xbdr_tmp_raw), 0, instance.GenModel.config['GaussSigma'])
+            Xbdr_tmp_iter, _ = instance.GenModel.diffusion(Xbdr_tmp_copy.copy(), instance.GenModel.alpha_bar[t_tmp].item(), Noise)
+        else:
+            raise ValueError(f"Unsupported model type: {instance.Name}")
+            
+        # Compute the SNR
+        snr_val = np.mean(compute_snr(Xbdr_tmp_raw, Xbdr_tmp_iter))
+        print(f"Iteration {i}, t={t_tmp}, SNR={snr_val}")
+        
+        # Save the t and index if SNR is above the cutoff
+        if snr_val > SNR_cutoff:
+            last_t = t_tmp
+            last_i = i
+        else:
+            # When SNR first drops below the cutoff, return the last t and index where SNR was above the cutoff
+            if last_t is not None:
+                print(f"SNR dropped below {SNR_cutoff} at iteration {i}. Returning t={last_t} (iteration {last_i}) where SNR was still above cutoff.")
+                return last_t, last_i
+            else:
+                # If SNR is below the cutoff from the beginning, return the current values
+                print(f"At iteration {i}, SNR is below {SNR_cutoff} without any prior SNR above cutoff. Returning current values.")
+                return t_tmp, i
+
+    # If SNR is above the cutoff for all iterations, return the default value
+    if 'VDWave' in instance.Name:
+        return float(GenSteps - 1) / float(Iter - 1), GenSteps
+    elif 'DiffWave' in instance.Name:
+        return GenSteps, GenSteps
+
+        
        
 class Evaluator ():
     
@@ -894,12 +961,15 @@ class Evaluator ():
             if 'Wavenet' in self.Name:
                 self.Xbdr_tmp = np.round(np.clip(self.Xbdr_tmp + np.random.normal(0, self.NoiseStd, self.Xbdr_tmp.shape), 0, 256))
             elif 'DiffWave' in self.Name:
+                t_val, self.GenSteps = find_t(self, self.Xbdr_tmp.copy(), self.GenModel.config['Iter'], self.GenModel.config['GenSteps'], SNR_cutoff=10.0)
                 Noise = tf.random.normal(tf.shape(self.Xbdr_tmp), 0, self.GenModel.config['GaussSigma'])
-                self.Xbdr_tmp, _ = self.GenModel.diffusion(self.Xbdr_tmp, self.GenModel.alpha_bar[self.GenSteps - 1].item(), Noise)
+                self.Xbdr_tmp, _ = self.GenModel.diffusion(self.Xbdr_tmp, self.GenModel.alpha_bar[t_val].item(), Noise) 
             elif 'VDWave' in self.Name:
-                t_float = (tf.cast(self.GenModel.cfg['GenSteps'], tf.float32) - 1) / (tf.cast(self.GenModel.cfg['Iter'] - 1, tf.float32))
-                self.Xbdr_tmp, _, _ = self.GenModel.sample_q_t_0(self.Xbdr_tmp, t_float, None, gamma_t=None)
-                
+                t_float, self.GenSteps = find_t(self, self.Xbdr_tmp.copy(), self.GenModel.cfg['Iter'], self.GenModel.cfg['GenSteps'], SNR_cutoff=10.0)  
+                self.Xbdr_tmp, _, noise = self.GenModel.sample_q_t_0(self.Xbdr_tmp, t_float, None, gamma_t=None)
+                #t_float = (tf.cast(self.GenModel.cfg['GenSteps'], tf.float32) - 1) / (tf.cast(self.GenModel.cfg['Iter'] - 1, tf.float32))
+                #self.Xbdr_tmp, _, _ = self.GenModel.sample_q_t_0(self.Xbdr_tmp, t_float, None, gamma_t=None)
+                           
             self.Xbdr_Exp = np.broadcast_to(self.Xbdr_tmp[:,:,None], (self.NMiniBat, self.NParts, self.NSubGen, self.SigDim))
             self.Xbdr = np.reshape(self.Xbdr_Exp, (-1, self.SigDim))
 
@@ -915,7 +985,6 @@ class Evaluator ():
             ## The values of X are perturbed by randomly sampled errors along dimensions b, d, and j.
             self.Xbd_Red2 = self.Xbd_Ext[:, 0, 0].copy()
 
-            
             # Processing Conditional information 
             ### Generating random indices for selecting true conditions
             RandSelIDXbdm = np.random.randint(0, self.TrueCond.shape[0], self.NMiniBat * self.NSubGen)
@@ -929,7 +998,6 @@ class Evaluator ():
             
             # True conditions are randomly sampled across all dimensions b, d, r, m, and k.
             self.CONbdrm = self.TrueCond[RandSelIDXbdrm]
-            
             
             # Sorting the arranged condition values in ascending order at the generation index.
             self.CONbdm_Ext = self.CONbdm.reshape(self.NMiniBat, self.NParts, self.NSubGen, -1)
@@ -962,7 +1030,7 @@ class Evaluator ():
             Set_Xs = np.concatenate(ListXs)   
             Set_CONs = np.concatenate([self.CONbdrm, self.CONbdrm, self.CONbdm_Sort, self.CONbd_Sort]) 
             Set_Data = [Set_Xs[:,:,None], Set_CONs]
-            
+
             # Gneraing indices for Re-splitting predictions for each case
             CaseLens = np.array([item.shape[0] for item in ListXs])
             DataCaseIDX = [0] + list(np.cumsum(CaseLens))
@@ -978,7 +1046,7 @@ class Evaluator ():
             elif 'VDWave' in self.Name:
                 Set_Pred = VDiffWAVE_Restoration(self.GenModel, Set_Data[0], Set_Data[1], GenBatchSize=self.GenBatchSize, GenSteps=self.GenSteps, 
                                                  StepInterval=self.StepInterval, Noise=None, GPU=self.GPU)
-                
+              
             if self.Name == 'Wavenet_ART_Mimic':
                 Set_Pred = mu_law_decode(Set_Pred)
                 

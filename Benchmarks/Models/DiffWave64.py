@@ -449,7 +449,7 @@ class ConditionalDiffWave(tf.keras.Model):
 # Restoration function for evaluation.
 # =============================================================================
 
-def DiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenBatchSize=1, GenSteps=3, GPU=True):
+def DiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenBatchSize=1, GenSteps=3, StepInterval=1, GPU=True):
     """
     Performs the diffusion-based signal restoration process.
     
@@ -469,14 +469,15 @@ def DiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenBatchSize=1, GenS
         Base = tf.ones([tf.shape(DiffusedSignals)[0]], dtype=tf.int64)
         
         # Initialize tqdm progress bar
-        pbar = tqdm(range(GenSteps, 0, -1), desc="[Restoration] Processing Steps")
+        pbar = tqdm(range(GenSteps, 0, -StepInterval), desc="[Restoration] Processing Steps")
         
         for Step in pbar:
             # 1) Predict noise from the diffused sample
             PredNoise = Model.pred_noise(DiffusedSignals, Base * Step, Condition, batch_size=GenBatchSize, verbose=True)
             # 2) Restore the original signal based on the predicted noise
             PredMean, PredStd = Model.pred_signal(DiffusedSignals, PredNoise, Model.alpha[Step - 1], Model.alpha_bar[Step - 1], verbose=True)
-            Sample = PredMean + tf.random.normal(tf.shape(DiffusedSignals), 0, Model.config['GaussSigma'], dtype=tf.float64) * PredStd
+            Random = tf.random.normal(tf.shape(DiffusedSignals), 0, Model.config['GaussSigma'], dtype=tf.float64) * PredStd
+            Sample = PredMean + Random
             # 3) Update the diffused sample with the reconstructed one for the next iteration
             DiffusedSignals = Sample
             

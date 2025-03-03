@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import math
+from tqdm import tqdm
 
 # =============================================================================
 # 1) Helper Functions
@@ -44,24 +45,61 @@ class FixedLinearSchedule(tf.keras.layers.Layer):
         })
         return config
 
-class LearnedLinearSchedule(tf.keras.Model):
+
+class LearnedSchedule(tf.keras.Model):
     """
-    Learnable linear schedule: gamma(t) = b + |w| * t.
+    Learnable schedule (ensuring non-negative values):
+
+    gamma(t) = (b^2) * t + (w^2) * t + anchor
+
+    - The anchor is set to either GammaMin or GammaMax if provided.
+    - If neither is provided, anchor defaults to 0.0.
+    - If both GammaMin and GammaMax are given simultaneously, an error is raised.
+
+    Using b^2 and w^2 ensures that gamma(t) remains non-negative.
+    (This approach maintains a schedule while preventing negative values.)
     """
-    def __init__(self, GammaMin, GammaMax, **kwargs):
+
+    def __init__(self, GammaMin=None, GammaMax=None, **kwargs):
         super().__init__(**kwargs)
-        # b = GammaMin, w = GammaMax - GammaMin
-        self.b = tf.Variable(GammaMin, trainable=True, dtype=tf.float32, name="b")
-        self.w = tf.Variable(GammaMax - GammaMin, trainable=True, dtype=tf.float32, name="w")
+        # Ensure that only one of GammaMin or GammaMax is set
+        if GammaMin is not None and GammaMax is not None:
+            raise ValueError("Only one of GammaMin or GammaMax can be set. Choose one.")
+
+        self.GammaMin = GammaMin
+        self.GammaMax = GammaMax
+
+        # Initialize b and w (can be adjusted if necessary)
+        self.b = tf.Variable(-1.0, trainable=True, dtype=tf.float32, name="b")
+        self.w = tf.Variable(-1.0, trainable=True, dtype=tf.float32, name="w")
 
     def call(self, t):
-        return self.b + tf.abs(self.w) * t
+        # Set anchor based on GammaMin or GammaMax, or default to 0
+        if self.GammaMin is not None:
+            anchor = self.GammaMin
+        elif self.GammaMax is not None:
+            anchor = self.GammaMax
+        else:
+            anchor = 0.0
+
+        # gamma(t) = (b^2) * t + (w^2) * t + anchor
+        return tf.square(self.b) * t + tf.square(self.w) * t + anchor
 
     def get_config(self):
-        # 변수값을 numpy로 추출하여 config에 저장합니다.
-        config = {"GammaMin": float(self.b.numpy()),
-                  "GammaMax": float(self.b.numpy() + tf.abs(self.w).numpy())}
+        """
+        Returns model configuration for serialization.
+        """
+        config = super().get_config()
+        config.update({
+            "GammaMin": self.GammaMin,
+            "GammaMax": self.GammaMax,
+            "b": float(self.b.numpy()),
+            "w": float(self.w.numpy()),
+        })
         return config
+
+
+
 
 # =============================================================================
 # 3) FiLM Layer
@@ -182,7 +220,7 @@ class Block(tf.keras.Model):
         
         # Residual and skip connections.
         if not self.last:
-            residual = (self.proj_res(x) + inputs) / math.sqrt(2.0)
+            residual = (self.proj_res(x) + inputs) / tf.math.sqrt(2.0)
         else:
             residual = None
             
@@ -237,7 +275,8 @@ class WaveNet(tf.keras.Model):
             tf.keras.layers.Conv1D(config['Channels'], kernel_size=1, activation=tf.nn.relu),
             tf.keras.layers.Conv1D(1, kernel_size=1)
         ]
-
+        
+    @tf.function
     def call(self, signal, timestep, condition):
         """
         Forward pass.
@@ -263,7 +302,7 @@ class WaveNet(tf.keras.Model):
             x, skip = block(x, embed, condition)
             skip_connections.append(skip)
         
-        out = tf.add_n(skip_connections) / math.sqrt(len(self.blocks))
+        out = tf.add_n(skip_connections) / tf.math.sqrt(len(self.blocks))
         for proj in self.proj_out:
             out = proj(out)
         return out # [B, T, 1]
@@ -308,10 +347,10 @@ class VDM(tf.keras.Model):
         self.wavenet = WaveNet(cfg)
         
         # Noise schedule: Use either a fixed linear schedule or a learnable linear schedule.
-        if cfg["NoiseSchedule"] == "fixed_linear":
+        if self.cfg["NoiseSchedule"] == "fixed_linear":
             self.gamma = FixedLinearSchedule(cfg["GammaMin"], cfg["GammaMax"])
-        elif cfg["NoiseSchedule"] == "learned_linear":
-            self.gamma = LearnedLinearSchedule(cfg["GammaMin"], cfg["GammaMax"])
+        elif self.cfg["NoiseSchedule"] == "learned_linear":
+            self.gamma = LearnedSchedule(cfg["GammaMin"], cfg["GammaMax"])
         else:
             raise ValueError(f"Unknown noise schedule {cfg['NoiseSchedule']}")
 
@@ -410,7 +449,7 @@ class VDM(tf.keras.Model):
             mean = alpha_s_exp * (z * (1.0 - c_exp) / alpha_t_exp + c_exp * x_start)
         else:
             mean = (alpha_s_exp / alpha_t_exp) * (z - c_exp * sigma_t_exp * pred_noise)
-        
+
         scale = sigma_s_exp * tf.sqrt(c_exp)
         z_next = mean + scale * tf.random.normal(tf.shape(z), 0, self.cfg['GaussSigma'])
         return z_next
@@ -571,7 +610,7 @@ class VDM(tf.keras.Model):
 # =============================================================================
 # 8) Restoration function for evaluation.
 # =============================================================================
-def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, GenBatchSize=100, Noise=None, GPU=True):
+def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, StepInterval=1, GenBatchSize=100, Noise=None, GPU=True):
     """
     Performs the signal restoration process using the given model in sub-batches.
 
@@ -587,7 +626,6 @@ def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, GenBat
     Returns:
         Restored signal [B, T, C] after iterative process.
     """
-
     device = "/GPU:0" if GPU else "/CPU:0"
 
     with tf.device(device):
@@ -601,10 +639,9 @@ def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, GenBat
  
         # Time steps from GenSteps down to 1 (inclusive)
         t_vals = tf.linspace(tf.cast(GenSteps, tf.float32), 1.0, GenSteps + 1)
-
+        
         # tqdm progress bar
-        pbar = tqdm(range(GenSteps), desc="[Restoration] Processing Steps")
-
+        pbar = tqdm(range(0, GenSteps, StepInterval), desc="[Restoration] Processing Steps")
         for i in pbar:
             # t -> s transition
             t_ = t_vals[i]
