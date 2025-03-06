@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from scipy.stats import mode
 import itertools
@@ -109,10 +110,85 @@ class Evaluator ():
         self.SelMetricType = SelMetricType   # The type of metric used for selecting Zs and ancillary data. 
         self.Name = Name                     # Model name.
         self.NGen = NSubGen * NParts         # The number of generations (i.e., samplings) within the mini-batch.
-    
+        
+        # Iteration counters
+        self.sim, self.mini, self.iter = 0, 0, 0
+
+        # Generation of checkpoint folders
+        if not os.path.exists('./Data/Checkpoints/') :
+            os.makedirs('./Data/Checkpoints/')
+        self.CheckpointPath = './Data/Checkpoints/' +Name+ '.pkl'
     
     ''' ------------------------------------------------------ Ancillary Functions ------------------------------------------------------'''
+    
+    def save_checkpoint(self, ):
+        """
+        Saves (pickles) all relevant fields, including optional metrics if present.
+        """
+        checkpoint_data = {
+            "sim": self.sim,
+            "mini": self.mini,
+            "iter": self.iter,
+            "SubResDic": self.SubResDic,
+            "AggResDic": self.AggResDic,
+            "BestZsMetrics": self.BestZsMetrics,
+            "TrackerCand": self.TrackerCand,
+            "TrackerCand_Temp": self.TrackerCand_Temp,
+            "Name": self.Name,
+            "NMiniBat": self.NMiniBat,
+            "SimSize": self.SimSize, }
 
+        # Optional attributes that may or may not exist yet
+        optional_attrs = [
+            "I_V_ZjZ", "I_V_FCsZj", "I_S_FCsZj",
+            "I_V_CONsZj", "I_S_CONsZj",
+            "I_V_CONsX", "I_S_CONsX" ]
+        
+        for attr in optional_attrs:
+            if hasattr(self, attr):
+                checkpoint_data[attr] = getattr(self, attr)
+
+        # Write to disk
+        with open(self.CheckpointPath, 'wb') as f:
+            pickle.dump(checkpoint_data, f, protocol=pickle.HIGHEST_PROTOCOL)
+        print(f"[Evaluator] Checkpoint saved -> {self.CheckpointPath}")
+
+    
+    def load_checkpoint(self, ):
+        """
+        Loads state from 'path' into the current Evaluator instance.
+        Tries to assign optional fields if present in the file.
+        """
+        if not os.path.isfile(self.CheckpointPath):
+            raise FileNotFoundError(f"No checkpoint file found at: {self.CheckpointPath}")
+
+        with open(self.CheckpointPath, 'rb') as f:
+            checkpoint_data = pickle.load(f)
+
+        # Mandatory fields
+        self.sim = checkpoint_data.get("sim", 0)
+        self.mini = checkpoint_data.get("mini", 0)
+        self.iter = checkpoint_data.get("iter", 0)
+        self.SubResDic = checkpoint_data.get("SubResDic", {})
+        self.AggResDic = checkpoint_data.get("AggResDic", {})
+        self.BestZsMetrics = checkpoint_data.get("BestZsMetrics", {})
+        self.TrackerCand = checkpoint_data.get("TrackerCand", {})
+        self.TrackerCand_Temp = checkpoint_data.get("TrackerCand_Temp", {})
+        self.Name = checkpoint_data.get("Name", None)
+        self.NMiniBat = checkpoint_data.get("NMiniBat", self.NMiniBat)
+        self.SimSize = checkpoint_data.get("SimSize", self.SimSize)
+
+        # Optional fields
+        self.I_V_ZjZ = checkpoint_data.get("I_V_ZjZ", None)
+        self.I_V_FCsZj = checkpoint_data.get("I_V_FCsZj", None)
+        self.I_S_FCsZj = checkpoint_data.get("I_S_FCsZj", None)
+        self.I_V_CONsZj = checkpoint_data.get("I_V_CONsZj", None)
+        self.I_S_CONsZj = checkpoint_data.get("I_S_CONsZj", None)
+        self.I_V_CONsX = checkpoint_data.get("I_V_CONsX", None)
+        self.I_S_CONsX = checkpoint_data.get("I_S_CONsX", None)
+
+        print(f"[Evaluator] Checkpoint loaded <- {self.CheckpointPath}")
+        
     ### ----------- Searching for candidate Zj for plausible signal generation ----------- ###
     def LocCandZsMaxFreq (self, CandQV, Samp_Z, SecData=None):
         # Shape of CandQV: (NMiniBat, N_frequency, NGen)
@@ -201,8 +277,16 @@ class Evaluator ():
     
     
     ### ------------------------------ Conducting task iteration ------------------------------ ###
-    def Iteration (self, TaskLogic):
-
+    def Iteration (self, TaskLogic, SaveInterval=1, Continue=False):
+        """
+        If Continue=True, try to load from 'SavePath' first.
+        Then every 'SaveInterval' iterations, save a checkpoint.
+        """
+        
+        # If resuming from a checkpoint
+        if Continue and os.path.isfile(self.CheckpointPath):
+            self.load_checkpoint()
+            
         # Just functional code for setting the initial position of the progress bar 
         self.StartBarPoint = self.TotalIterSize*(self.iter/self.TotalIterSize) 
         with trange(self.iter, self.TotalIterSize , initial=self.StartBarPoint, leave=False) as t:
@@ -227,7 +311,11 @@ class Evaluator ():
                         TaskLogic([subs[mini] for subs in SplitData])
                     else:
                         TaskLogic(SplitData[mini])
-
+                    
+                    # Checkpoint every N iterations if desired
+                    if self.iter % SaveInterval == 0:
+                        self.save_checkpoint()
+                        
                     t.update(1)
     
     
@@ -608,7 +696,7 @@ class Evaluator ():
             
             
         # Conducting the task iteration
-        self.Iteration(TaskLogic)
+        self.Iteration(TaskLogic, Continue=Continue)
 
 
         # MI(V;Z',Z)
@@ -874,7 +962,7 @@ class Evaluator ():
             
             
         # Conducting the task iteration
-        self.Iteration(TaskLogic)
+        self.Iteration(TaskLogic, Continue=Continue)
 
 
         # MI(V;Z',Z)
@@ -1153,7 +1241,7 @@ class Evaluator ():
             
             
         # Conducting the task iteration
-        self.Iteration(TaskLogic)
+        self.Iteration(TaskLogic, Continue=Continue)
 
 
         # MI(V;CON,X)
@@ -1292,7 +1380,7 @@ class Evaluator ():
             
             
         # Conducting the task iteration
-        self.Iteration(TaskLogic)
+        self.Iteration(TaskLogic, Continue=Continue)
 
         # MI(V;Z',Z)
         self.I_V_ZjZ /= (self.TotalIterSize)
