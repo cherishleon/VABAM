@@ -16,8 +16,7 @@ from Utilities.Utilities import ReadYaml, SerializeObjects, DeserializeObjects, 
 
 # Refer to the execution code
 # python .\BatchBMMIEvaluation.py --Config EvalConfigART --GPUID 0 
-# python .\BatchBMMIEvaluation.py --Config EvalConfigART --ConfigSpec BaseVAE_ART_30 --GPUID 4    
-# python .\BatchBMMIEvaluation.py --Config EvalConfigII --ConfigSpec ConVAE_II_50 --GPUID 4 --SpecNZs 40 50
+# python .\BatchBMMIEvaluation.py --Config EvalConfigART --ConfigSpec VDWave_ART_VitalDB --GPUID 0    
 
  
 #### -----------------------------------------------------   Defining model structure -----------------------------------------------------------------    
@@ -60,11 +59,14 @@ if __name__ == "__main__":
     parser.add_argument('--ConfigSpec', nargs='+', type=str, required=False, 
                         default=None, help='Set the name of the specific configuration to load (the name of the model config in the YAML file).')
     parser.add_argument('--GPUID', type=int, required=False, default=1)
+    parser.add_argument('--Continue', type=bool, required=False, default=False, help='Continue from previous checkpoint')
+
     
     args = parser.parse_args() # Parse the arguments
     ConfigName = args.Config
     ConfigSpecName = args.ConfigSpec
     GPU_ID = args.GPUID
+    Continue = args.Continue
     
     YamlPath = './Config/'+ConfigName+'.yml'
     EvalConfigs = ReadYaml(YamlPath)
@@ -100,7 +102,6 @@ if __name__ == "__main__":
                  
     #### -----------------------------------------------------  Conducting batch evaluation --------------------------------------------------------------
                  
-    SigTypePrev = None
     for ConfigName in EvalConfigs['Models'].keys():
         
         if ConfigSpecName is not None: 
@@ -120,49 +121,46 @@ if __name__ == "__main__":
         # Loading parameters for the evaluation
         Params = LoadParams(ModelConfigSet, {**CommonParams, **ModelParams})
         Params['Common_Info'] = EvalConfigs['Common_Info']
+        Params['Spec_Info'] = EvalConfigs['Models'][ConfigName]['Spec_Info']
+        Params['DataSize'] = Params['EvalDataSize']
+        
         DataSource = Params['DataSource']
         TestDataSource = Params['TestDataSource']
         SigType = Params['SigType']
 
-
+        
         #### -----------------------------------------------------   Loading data -------------------------------------------------------------------------   
-        if SigTypePrev != Params['SigType']:
-            SigTypePrev = Params['SigType'] # To change data type: ART, II, PLETH
+        # Loading data
+        if 'Wavenet' in ConfigName:
+            SlidingSize = Params['SlidingSize']
+        
+            TrRaw = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy')
+            ValRaw = np.load('../Data/ProcessedData/'+str(TestDataSource)+'Val'+str(SigType)+'.npy')[:Params['EvalDataSize']]
+        
+            TrSampled = np.load('../Data/ProcessedData/Sampled'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('float64') # Sampled_TrData
+            ValSampled = np.load('../Data/ProcessedData/Sampled'+str(TestDataSource)+'Val'+str(SigType)+'.npy').astype('float64')[:Params['EvalDataSize']] # Sampled_ValData
+            TrOut = np.load('../Data/ProcessedData/MuLaw'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('int64') # MuLaw_TrData
+            ValOut = np.load('../Data/ProcessedData/MuLaw'+str(TestDataSource)+'Val'+str(SigType)+'.npy').astype('int64')[:Params['EvalDataSize']] # MuLaw_ValData
+    
+            TrInp = [TrSampled, TrRaw]
+            ValInp = [ValSampled, ValRaw]
+            
+            
+        else:
+            TrInp = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy')
+            ValInp = np.load('../Data/ProcessedData/'+str(TestDataSource)+'Val'+str(SigType)+'.npy')[:Params['EvalDataSize']]
 
-            # Loading data
-            if 'Wavenet' in ConfigName:
-                SlidingSize = Params['SlidingSize']
+    
+        # Standardization for certain models.
+        if 'DiffWave' in ConfigName or 'VDWave' in ConfigName:
+            SigMax = np.load('../Data/ProcessedData/'+str(DataSource)+'SigMax.pkl', allow_pickle=True)
+            SigMin = np.load('../Data/ProcessedData/'+str(DataSource)+'SigMin.pkl', allow_pickle=True)
+            TrDeNorm = (TrInp * (SigMax[str(SigType)] - SigMin[str(SigType)]) + SigMin[str(SigType)]).copy()
+            ValDeNorm = (ValInp * (SigMax[str(SigType)] - SigMin[str(SigType)]) + SigMin[str(SigType)]).copy()
             
-                TrRaw = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy')
-                ValRaw = np.load('../Data/ProcessedData/'+str(TestDataSource)+'Val'+str(SigType)+'.npy')
-            
-                TrSampled = np.load('../Data/ProcessedData/Sampled'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('float64') # Sampled_TrData
-                ValSampled = np.load('../Data/ProcessedData/Sampled'+str(TestDataSource)+'Val'+str(SigType)+'.npy').astype('float64') # Sampled_ValData
-                TrOut = np.load('../Data/ProcessedData/MuLaw'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('int64') # MuLaw_TrData
-                ValOut = np.load('../Data/ProcessedData/MuLaw'+str(TestDataSource)+'Val'+str(SigType)+'.npy').astype('int64') # MuLaw_ValData
-        
-                TrInp = [TrSampled, TrRaw]
-                ValInp = [ValSampled, ValRaw]
-                
-                Params['DataSize'] = TrSampled.shape[0] 
-                Params['SigDim'] = TrSampled.shape[1]
-                
-            else:
-                TrInp = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy')
-                ValInp = np.load('../Data/ProcessedData/'+str(TestDataSource)+'Val'+str(SigType)+'.npy')
-                Params['DataSize'] = TrInp.shape[0] 
-                Params['SigDim'] = TrInp.shape[1]
-        
-            # Standardization for certain models.
-            if 'DiffWave' in ConfigName or 'VDWave' in ConfigName:
-                SigMax = np.load('../Data/ProcessedData/'+str(DataSource)+'SigMax.pkl', allow_pickle=True)
-                SigMin = np.load('../Data/ProcessedData/'+str(DataSource)+'SigMin.pkl', allow_pickle=True)
-                TrDeNorm = (TrInp * (SigMax[str(SigType)] - SigMin[str(SigType)]) + SigMin[str(SigType)]).copy()
-                ValDeNorm = (ValInp * (SigMax[str(SigType)] - SigMin[str(SigType)]) + SigMin[str(SigType)]).copy()
-                
-                MeanSig, SigmaSig = np.mean(TrDeNorm), np.std(TrDeNorm) 
-                TrInp = (TrDeNorm-MeanSig)/SigmaSig
-                ValInp = (ValDeNorm-MeanSig)/SigmaSig
+            MeanSig, SigmaSig = np.mean(TrDeNorm), np.std(TrDeNorm) 
+            TrInp = (TrDeNorm-MeanSig)/SigmaSig
+            ValInp = (ValDeNorm-MeanSig)/SigmaSig
 
 
         #### -----------------------------------------------------  Conducting Evalution -----------------------------------------------------------------    
@@ -170,7 +168,7 @@ if __name__ == "__main__":
         NZs = Params['NSelZ']
         print('NZs : ', NZs)
 
-       
+
         # Setting the model
         if 'VAE' in ConfigName:
             SampModel, GenModel, AnalData = SetVAEs()
@@ -191,16 +189,16 @@ if __name__ == "__main__":
                SelMetricCut = Params['SelMetricCut'], GenBatchSize = Params['GenBatchSize'], GPU = Params['GPU'], Name=ConfigName+'_Nj'+str(NZs))
         
         if Params['SecDataType'] is None:
-            Eval.Eval_Z(AnalData, SampModel, GenModel, Continue=False)
+            Eval.Eval_Z(AnalData, SampModel, GenModel, Continue=Continue)
         else:
             if 'ConVAE' in ConfigName:
-                Eval.Eval_ZCON(AnalData,  SampModel, GenModel, Continue=False, SecDataType=Params['SecDataType'])
+                Eval.Eval_ZCON(AnalData,  SampModel, GenModel, Continue=Continue, SecDataType=Params['SecDataType'])
             
             elif 'Wavenet' in ConfigName:
-                Eval.Eval_XCON([AnalData[0], AnalData[1]], GenModel, Continue=False, NSplitBatch=Params['NSplitBatch'], SecDataType='CONDIN' )
+                Eval.Eval_XCON([AnalData[0], AnalData[1]], GenModel, Continue=Continue, NSplitBatch=Params['NSplitBatch'], SecDataType='CONDIN' )
             
             elif 'DiffWave' or 'VDWave' in ConfigName:
-                Eval.Eval_XCON([AnalData[0], AnalData[1]], GenModel, GenSteps=Params['GenSteps'], StepInterval=Params['StepInterval'], Continue=False, SecDataType='CONDIN' )
+                Eval.Eval_XCON([AnalData[0], AnalData[1]], GenModel, GenSteps=Params['GenSteps'], StepInterval=Params['StepInterval'], Continue=Continue, SecDataType='CONDIN' )
             else:
                 assert False, "Please verify if ConfigName is properly provided."
 
@@ -214,8 +212,6 @@ if __name__ == "__main__":
 
         # Saving the instance's objects to a file
         SerializeObjects(Eval, Params['Common_Info']+Params['Spec_Info'], ObjSavePath)
-
-        del Eval
             
 
 

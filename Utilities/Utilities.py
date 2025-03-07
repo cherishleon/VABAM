@@ -179,7 +179,7 @@ def LoadParams (ModelConfigSet, EvalConfigSet): # Experiment setting
     eval_keys = ['ReparaStd', 'ReparaStdZj', 'MaxFreq', 'MinFreq', 'NMiniBat', 'SimSize', 'NSubGen', 
                  'NSelZ', 'SelMetricType', 'SelMetricCut', 'SecDataType', 'NParts', 'TestDataSource',
                  'EvalDataSize', 'SampBatchSize', 'GenBatchSize', 'GPU', 'WindowSize', 'GenSteps', 
-                 'NSplitBatch', 'FcLimit', 'StepInterval', 'InferenceType']
+                 'NSplitBatch', 'FcLimit', 'StepInterval', 'InferenceType', 'SigDim']
     
     # Assign values from ModelConfigSet (default to None if key does not exist)
     for key in model_keys:

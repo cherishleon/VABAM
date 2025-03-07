@@ -302,7 +302,7 @@ class WaveNet(tf.keras.Model):
             x, skip = block(x, embed, condition)
             skip_connections.append(skip)
         
-        out = tf.add_n(skip_connections) / tf.math.sqrt(len(self.blocks))
+        out = tf.add_n(skip_connections) / tf.math.sqrt(tf.cast(len(self.blocks), dtype=tf.float32))
         for proj in self.proj_out:
             out = proj(out)
         return out # [B, T, 1]
@@ -414,6 +414,7 @@ class VDM(tf.keras.Model):
             raise ValueError("RecLossType must be either 'logP' or 'mse'.")
         return loss
 
+    @tf.function
     def sample_p_s_t(self, z, t, s, condition, clip_samples):
         """
         Sample from p(z_s | z_t).

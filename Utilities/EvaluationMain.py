@@ -111,6 +111,7 @@ class Evaluator ():
         self.Name = Name                     # Model name.
         self.NGen = NSubGen * NParts         # The number of generations (i.e., samplings) within the mini-batch.
         
+        
         # Iteration counters
         self.sim, self.mini, self.iter = 0, 0, 0
 
@@ -178,16 +179,12 @@ class Evaluator ():
         self.NMiniBat = checkpoint_data.get("NMiniBat", self.NMiniBat)
         self.SimSize = checkpoint_data.get("SimSize", self.SimSize)
 
-        # Optional fields
-        self.I_V_ZjZ = checkpoint_data.get("I_V_ZjZ", None)
-        self.I_V_FCsZj = checkpoint_data.get("I_V_FCsZj", None)
-        self.I_S_FCsZj = checkpoint_data.get("I_S_FCsZj", None)
-        self.I_V_CONsZj = checkpoint_data.get("I_V_CONsZj", None)
-        self.I_S_CONsZj = checkpoint_data.get("I_S_CONsZj", None)
-        self.I_V_CONsX = checkpoint_data.get("I_V_CONsX", None)
-        self.I_S_CONsX = checkpoint_data.get("I_S_CONsX", None)
-
+        # Use the original fixed value.
+        for attr in ["I_V_ZjZ", "I_V_FCsZj", "I_S_FCsZj",
+                     "I_V_CONsZj", "I_S_CONsZj", "I_V_CONsX", "I_S_CONsX"]:
+            setattr(self, attr, checkpoint_data.get(attr, None))
         print(f"[Evaluator] Checkpoint loaded <- {self.CheckpointPath}")
+        print("iter =", self.iter)
         
     ### ----------- Searching for candidate Zj for plausible signal generation ----------- ###
     def LocCandZsMaxFreq (self, CandQV, Samp_Z, SecData=None):
@@ -288,8 +285,7 @@ class Evaluator ():
             self.load_checkpoint()
             
         # Just functional code for setting the initial position of the progress bar 
-        self.StartBarPoint = self.TotalIterSize*(self.iter/self.TotalIterSize) 
-        with trange(self.iter, self.TotalIterSize , initial=self.StartBarPoint, leave=False) as t:
+        with trange(self.TotalIterSize, initial=self.iter, leave=False) as pbar:
 
             for sim in range(self.sim, self.SimSize):
                 self.sim = sim
@@ -299,7 +295,7 @@ class Evaluator ():
                     SplitData = [np.array_split(sub, self.SubIterSize) for sub in (self.AnalSig, self.TrueCond)] 
 
                 else: # For models with a single input such as VAE and TCVAE.
-                    SplitData = np.array_split(self.AnalSig, self.SubIterSize)    
+                    SplitData = np.array_split(self.AnalSig, self.SubIterSize) 
 
                 for mini in range(self.mini, self.SubIterSize):
                     self.mini = mini
@@ -307,16 +303,15 @@ class Evaluator ():
                     print()
 
                     # Core part; the task logic as the function
-                    if self.SecDataType  == 'CONDIN': 
+                    if self.SecDataType == 'CONDIN':
                         TaskLogic([subs[mini] for subs in SplitData])
                     else:
                         TaskLogic(SplitData[mini])
-                    
-                    # Checkpoint every N iterations if desired
+
                     if self.iter % SaveInterval == 0:
                         self.save_checkpoint()
-                        
-                    t.update(1)
+
+                    pbar.update(1)
     
     
     
