@@ -2,24 +2,50 @@ import sys
 # setting path
 sys.path.append('../')
 
+import pickle
+from argparse import ArgumentParser
 import os
 import re
 import numpy as np
-from argparse import ArgumentParser
 import pandas as pd
-import pickle
-
-from Benchmarks.Models.BenchmarkCaller import *
+from Utilities.Utilities import ReadYaml, SerializeObjects, DeserializeObjects, CompResource
+from BatchBMMIEvaluation import LoadModelConfigs, LoadParams, SetVAEs, SetModels
+from Models.BenchmarkCaller64 import *
+from Models.VDiffWave64 import VDiffWAVE_Restoration
+from Models.DiffWave64 import DiffWAVE_Restoration
+from Utilities.AncillaryFunctions64 import Denorm, MAPECal, MSECal, mu_law_decode
 from Utilities.EvaluationMain import *
-from Utilities.Utilities import ReadYaml, SerializeObjects, DeserializeObjects, LoadModelConfigs, LoadParams
-from Utilities.AncillaryFunctions import Denorm, MAPECal, MSECal
 
 
 # Refer to the execution code
 # python .\TabulatingBMResults.py -CP ./Config/ --GPUID 0
 
 
-def Aggregation (ConfigName, ConfigPath, NJ=1, MetricCut = 1., BatSize=3000):
+# Function to extract Nj value from filename
+def ExtractNj(Filename):
+    Match = re.search(r'Nj(\d+)\_', Filename)
+    return int(Match.group(1)) if Match else 'All'
+
+def compute_snr(signal, noisy_signal):
+    """Computes SNR in dB for a 2D batch signal."""
+    noise = noisy_signal - signal  # Extract noise
+    signal_power = np.mean(signal ** 2, axis=1)
+    noise_power = np.mean(noise ** 2, axis=1)
+    return 10 * np.log10(signal_power / noise_power)  # SNR in dB
+
+def scale_and_normalize(data, sigma, mean, min_x, max_x):
+    """
+    Scales and normalizes the input data.
+      """
+    # Apply scaling
+    scaled_data = data * sigma + mean
+    
+    # Apply normalization
+    normalized_data = (scaled_data - min_x) / (max_x - min_x)
+    
+    return normalized_data
+    
+def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
 
     print()
     print(ConfigName)
@@ -29,36 +55,61 @@ def Aggregation (ConfigName, ConfigPath, NJ=1, MetricCut = 1., BatSize=3000):
     print('Loading configurations and objects' )
     ## Loading the model configurations
     EvalConfigs = ReadYaml(ConfigPath)
-    ModelConfigSet, ModelLoadName = LoadModelConfigs(ConfigName, Comp=False)
-
-    if ModelConfigSet['LatDim'] < NJ:
-        return None, None, None, None, None, None  # To ensure consistency with the main return statement, return 6 None
-        
+    ModelConfigSet, ModelLoadPath = LoadModelConfigs(ConfigName, Comp=False, TypeDesig=True)
+    CommonParams = EvalConfigs['Common_Param']
+    ModelParams = EvalConfigs["Models"][ConfigName]
+    
+    #if ModelConfigSet['LatDim'] < NJ:
+    #    return None, None, None, None, None, None  # To ensure consistency with the main return statement, return 6 None
+    
     ## Loading parameters for the evaluation
-    Params = LoadParams(ModelConfigSet, EvalConfigs[ConfigName])
+    Params = LoadParams(ModelConfigSet, {**CommonParams, **ModelParams})
     Params['Common_Info'] = EvalConfigs['Common_Info']
+    Params['Spec_Info'] = EvalConfigs['Models'][ConfigName]['Spec_Info']
+    ModelParams['DataSize'] = Params['EvalDataSize']
+    NZs = 'All' if Params['NSelZ'] is None else Params['NSelZ']
     
     ## Object Load path
-    ObjLoadPath = './EvalResults/Instances/Obj_'+ConfigName+'_Nj'+str(NJ)+'.pkl'
-    SampZjLoadPath = './Data/IntermediateData/'+ConfigName+'_SampZj_'+str(Params['NSelZ'])+'.npy'
-    
+    ObjLoadPath = './EvalResults/Instances/Obj_'+ConfigName+'_Nj'+str(NZs)+'.pkl'
     
     # Data part
     print('-----------------------------------------------------' )
     print('Loading data')
-    ## Loading data
-    TestData = np.load('../Data/ProcessedData/Test'+str(Params['SigType'])+'.npy')
-    TrData = np.load('../Data/ProcessedData/Tr'+str(Params['SigType'])+'.npy')
     
     
-    ## Intermediate parameters 
-    SigDim = TestData.shape[1]
-    DataSize = TestData.shape[0]
+    #### -----------------------------------------------------   Loading data -------------------------------------------------------------------------   
+    # Loading data
+    SigMax = np.load('../Data/ProcessedData/'+str(Params['TestDataSource'])+'SigMax.pkl', allow_pickle=True)
+    SigMin = np.load('../Data/ProcessedData/'+str(Params['TestDataSource'])+'SigMin.pkl', allow_pickle=True)
     
-    with open('../Data/ProcessedData/SigMax.pkl', 'rb') as f:
-        SigMax = pickle.load(f)
-    with open('../Data/ProcessedData/SigMin.pkl', 'rb') as f:
-        SigMin = pickle.load(f)
+    if 'Wavenet' in ConfigName:
+        SlidingSize = Params['SlidingSize']
+    
+        TrRaw = np.load('../Data/ProcessedData/'+str(Params['DataSource'])+'Tr'+Params['SigType']+'.npy')
+        ValRaw = np.load('../Data/ProcessedData/'+str(Params['TestDataSource'])+'Val'+Params['SigType']+'.npy')[:Params['EvalDataSize']]
+    
+        TrSampled = np.load('../Data/ProcessedData/Sampled'+str(Params['DataSource'])+'Tr'+Params['SigType']+'.npy').astype('float64') # Sampled_TrData
+        ValSampled = np.load('../Data/ProcessedData/Sampled'+str(Params['TestDataSource'])+'Val'+Params['SigType']+'.npy').astype('float64')[:Params['EvalDataSize']] # Sampled_ValData
+        TrOut = np.load('../Data/ProcessedData/MuLaw'+str(Params['DataSource'])+'Tr'+Params['SigType']+'.npy').astype('int64') # MuLaw_TrData
+        ValOut = np.load('../Data/ProcessedData/MuLaw'+str(Params['TestDataSource'])+'Val'+Params['SigType']+'.npy').astype('int64')[:Params['EvalDataSize']] # MuLaw_ValData
+    
+        TrInp = [TrSampled, TrRaw]
+        ValInp = [ValSampled, ValRaw]
+    
+        GroundTruth = np.load('../Data/ProcessedData/'+str(Params['TestDataSource'])+'Val'+Params['SigType']+'.npy')[:Params['EvalDataSize']]
+            
+    else:
+        TrInp = np.load('../Data/ProcessedData/'+str(Params['DataSource'])+'Tr'+Params['SigType']+'.npy')
+        ValInp = np.load('../Data/ProcessedData/'+str(Params['TestDataSource'])+'Val'+Params['SigType']+'.npy')[:Params['EvalDataSize']]
+    
+    # Standardization for certain models.
+    if 'DiffWave' in ConfigName or 'VDWave' in ConfigName:
+        TrDeNorm = (TrInp * (SigMax[Params['SigType']] - SigMin[Params['SigType']]) + SigMin[Params['SigType']]).copy()
+        ValDeNorm = (ValInp * (SigMax[Params['SigType']] - SigMin[Params['SigType']]) + SigMin[Params['SigType']]).copy()
+        
+        MeanSig, SigmaSig = np.mean(TrDeNorm), np.std(TrDeNorm) 
+        TrInp = (TrDeNorm-MeanSig)/SigmaSig
+        ValInp = (ValDeNorm-MeanSig)/SigmaSig
     
     
     if 'ART' in ConfigName:
@@ -68,94 +119,150 @@ def Aggregation (ConfigName, ConfigPath, NJ=1, MetricCut = 1., BatSize=3000):
     elif 'II' in ConfigName:
         MaxX, MinX = SigMax['II'], SigMin['II']
     
+    Params['DataSize'] = ModelParams['DataSize']
+    Params['DataSize'] = CommonParams['SigDim']
+    
+    
     # Model part
     print('-----------------------------------------------------' )
     print('Loading model structures')
     ## Calling Modesl
-    BenchModel, _, AnalData = ModelCall (ModelConfigSet, ConfigName, TrData, TestData, LoadWeight=True, Reparam=False, ReparaStd=Params['ReparaStd'], ModelSaveName=ModelLoadName)
+    BenchModel, _, AnalData = ModelCall (Params, ConfigName, TrInp, ValInp,  Reparam=False, LoadWeight=True, ModelSaveName=ModelLoadPath) 
     
-    
-    ## The generation model for evaluation
-    GenModel = BenchModel.get_layer('ReconModel')
-    
-    ## The sampling model for evaluation
-    Inp_Enc = BenchModel.get_layer('Inp_Enc')
-    Zs = BenchModel.get_layer('Zs').output
-    
-    if Params['SecDataType'] == 'CONDIN':
-        Inp_Cond = BenchModel.get_layer('Inp_Cond')
-        SampModel = Model([Inp_Enc.input, Inp_Cond.input], Zs)
-    else:
-        SampModel = Model(Inp_Enc.input, Zs)
-    
+    if not 'Wavenet' in ConfigName:
+        GroundTruth = AnalData[0]
     
     # Evaluating MAPEs
     ## Prediction
     print('-----------------------------------------------------' )
     print('MAPE calculation')
     
-    PredRes = BenchModel.predict(AnalData, batch_size=BatSize, verbose=1)
-    if 'FAC' in ConfigName:
-        PredSigRec = PredRes[-1]
-    else:
-        PredSigRec = PredRes
+    if 'VAE' in ConfigName:
+        PredSigRec = BenchModel.predict(AnalData, batch_size=BatSize, verbose=1)
+        if 'FAC' in ConfigName:
+            PredSigRec = PredSigRec[1]
+    
+    elif 'Wavenet' in ConfigName:
+        PredSigRec = CompResource(BenchModel, AnalData, BatchSize=Params['GenBatchSize'], NSplitBatch=5)
+        PredSigRec = mu_law_decode(PredSigRec)
+    
+    elif 'VDWave' in ConfigName:
+        for i in range(BenchModel.cfg['Iter']):
+            t_tmp = i / float(BenchModel.cfg['Iter'] - 1)
+            DiffusedSignal, _, noise = BenchModel.sample_q_t_0(AnalData[0], t_tmp, None, gamma_t=None)
+            snr_val = np.mean(compute_snr(AnalData[0], DiffusedSignal[0]))
+            if snr_val < SNR_cutoff:
+                GenSteps = i - 1
+                t_float = GenSteps / float(BenchModel.cfg['Iter'] - 1)
+                break;
+        DiffusedSignal, _, noise = BenchModel.sample_q_t_0(AnalData[0], t_float, None, gamma_t=None)
+        PredSigRec = VDiffWAVE_Restoration(BenchModel,DiffusedSignal[0][..., None], AnalData[1], GenSteps, BenchModel.cfg['StepInterval'], GenBatchSize = Params['GenBatchSize'] )
+    
+        PredSigRec = scale_and_normalize(PredSigRec, SigmaSig, MeanSig, MinX, MaxX)
+    
+    elif 'DiffWave' in ConfigName:
+        for t_tmp in range(BenchModel.config['Iter']):
+            Noise = tf.random.normal(tf.shape(AnalData[0]), 0, BenchModel.config['GaussSigma'])
+            DiffusedSignal, _ = BenchModel.diffusion(AnalData[0], BenchModel.alpha_bar[t_tmp].item(), Noise)
+            snr_val = np.mean(compute_snr(AnalData[0], DiffusedSignal))
+            if snr_val < SNR_cutoff:
+                GenSteps = t_tmp - 1
+                break;
+        DiffusedSignal, _ = BenchModel.diffusion(AnalData[0], BenchModel.alpha_bar[GenSteps].item(), Noise)
+        PredSigRec = DiffWAVE_Restoration(BenchModel, DiffusedSignal, AnalData[1], GenBatchSize= Params['GenBatchSize'], StepInterval=BenchModel.config['StepInterval'], GenSteps=GenSteps )
+        
+        PredSigRec = scale_and_normalize(PredSigRec, SigmaSig, MeanSig, MinX, MaxX)
+        
     
     if Params['SecDataType'] == 'CONDIN':
-        InpData = AnalData[0]
+        ## MAPE    
+        MAPEnorm, MAPEdenorm = MAPECal(GroundTruth, np.squeeze(PredSigRec), MaxX, MinX)
+        ## MSE    
+        MSEnorm, MSEdenorm = MSECal(GroundTruth, np.squeeze(PredSigRec), MaxX, MinX)
     else:
-        InpData = AnalData
+        ## MAPE    
+        MAPEnorm, MAPEdenorm = MAPECal(GroundTruth, np.squeeze(PredSigRec), MaxX, MinX)
+        ## MSE    
+        MSEnorm, MSEdenorm = MSECal(GroundTruth, np.squeeze(PredSigRec), MaxX, MinX)
     
-    
-    ## MAPE    
-    MAPEnorm, MAPEdenorm = MAPECal(InpData, PredSigRec, MaxX, MinX)
-    ## MSE    
-    MSEnorm, MSEdenorm = MSECal(InpData, PredSigRec, MaxX, MinX)
+    print('MAPEnorm : ', MAPEnorm,', MAPEdenorm : ', MAPEdenorm, ', MSEnorm : ', MSEnorm, ', MSEdenorm : ', MSEdenorm)
     
     # Evaluating Mutual information
     ## Creating new instances
-    NewEval = Evaluator()
+    NewEval = Evaluator(Name=ConfigName)
+    
     # Populating it with the saved data
     DeserializeObjects(NewEval, ObjLoadPath)
-    if Params['SecDataType'] == 'CONDIN':
-        NewEval.SecDataType = 'CONDIN'
-    else:
-        NewEval.SecDataType = False
     
     # Post evaluation of KLD
     ## MetricCut: The threshold value for selecting Zs whose Entropy of PSD (i.e., SumH) is less than the MetricCut
-    PostSamp = NewEval.SelPostSamp( MetricCut)
-
-    ## Calculation of KLD
-    NewEval.GenModel = GenModel
-    NewEval.KLD_TrueGen(AnalSig=InpData, PlotDist=False) 
-    MeanKld_GTTG = (NewEval.KldPSD_GenTrue + NewEval.KldPSD_TrueGen) / 2
+    NewEval.SecDataType = Params['SecDataType'] if Params['SecDataType'] is not None else False
+    PostSamp = NewEval.SelPostSamp(MetricCut)
     
+    if 'VAE' in ConfigName:
+        ## Calculation of KLD
+        NewEval.GenModel = BenchModel.get_layer('ReconModel')
+        NewEval.KLD_TrueGen(AnalSig=GroundTruth, PlotDist=False) 
+        MeanKld_GTTG = (NewEval.KldPSD_GenTrue + NewEval.KldPSD_TrueGen) / 2
+        
+    else:
+        # Converting the dictionary to the list type.
+        PostZsList = []
+        PostSecDataList = []
+        
+        for Freq, Subkeys in PostSamp.items():
+            for Subkeys, Values in Subkeys.items():
+                PostZsList.append(np.array(Values['TrackZX']))
+                if 'TrackSecData' in Values.keys(): 
+                    PostSecDataList.append(np.array(Values['TrackSecData']))
+        
+                
+        # Converting the list type to the np-data type.
+        PostZsList = np.concatenate(PostZsList)
+        PostSecDataList = np.concatenate(PostSecDataList)
+        
+        if 'VDWave' in ConfigName:
+            PredSigRec = VDiffWAVE_Restoration(BenchModel,PostZsList[:,:,None], PostSecDataList, GenSteps, 
+                                               BenchModel.cfg['StepInterval'], GenBatchSize = Params['GenBatchSize'] )
+        elif 'DiffWave' in ConfigName:
+            PredSigRec = DiffWAVE_Restoration(BenchModel,PostZsList, PostSecDataList, GenBatchSize = Params['GenBatchSize'], 
+                                              GenSteps = GenSteps, StepInterval = BenchModel.config['StepInterval'])
     
-    print(MeanKld_GTTG)
+        elif 'Wavenet' in ConfigName:
+            PredSigRec = CompResource(BenchModel, [PostZsList[...,None] , PostSecDataList], BatchSize=Params['GenBatchSize'], NSplitBatch=5)
+            PredSigRec = mu_law_decode(PredSigRec)
+    
+        # Calculating the KLD between the PSD of the true signals and the generated signals    
+        PSDGenSamp =  FFT_PSD(PredSigRec, 'All', MinFreq = NewEval.MinFreq, MaxFreq = NewEval.MaxFreq)
+        PSDTrueData =  FFT_PSD(GroundTruth, 'All', MinFreq = NewEval.MinFreq, MaxFreq = NewEval.MaxFreq)
+        
+        KldPSD_GenTrue = MeanKLD(PSDGenSamp, PSDTrueData)
+        KldPSD_TrueGen  = MeanKLD(PSDTrueData, PSDGenSamp)
+        MeanKld_GTTG = (KldPSD_GenTrue + KldPSD_TrueGen) / 2
+        
+        print('KldPSD_GenTrue : ', KldPSD_GenTrue,', KldPSD_TrueGen : ', KldPSD_TrueGen, ', MeanKld_GTTG : ', MeanKld_GTTG)
     
     ''' Renaming columns '''
-    # r'I(V;Z)'
     # r'I(V; \acute{Z} \mid Z)'
-    # r'I(V;\acute{Z})'
     # r'I(V;\acute{\Theta} \mid \acute{Z})'
-    # r'I(S;\acute{Z})'
     # r'I(S;\acute{\Theta} \mid \acute{Z})'
     
+    
     MIVals = pd.DataFrame(NewEval.SubResDic)
-    if Params['SecDataType'] == 'CONDIN':
-        MIVals.columns = [r'(i) I(V;Z)',r'(ii) $I(V; \acute{Z} \mid Z)$',  r'(iii) $I(V;\acute{Z})$', r'(iv) $I(V;\acute{\Theta} \mid \acute{Z})$', r'(v) $I(S;\acute{Z})$', r'(vi) $I(S;\acute{\Theta} \mid \acute{Z})$']
+    if 'VAE' in ConfigName:
+        if 'Con' in ConfigName:
+            MIVals.columns = [r'(i) $I(V; \acute{Z} \mid Z)$', r'(ii) $I(V;\acute{\Theta} \mid \acute{Z})$', r'(iii) $I(S;\acute{\Theta} \mid \acute{Z})$']
+        else:
+            MIVals.columns = [r'(i) $I(V; \acute{Z} \mid Z)$']
     else:
-        MIVals.columns = [r'(i) I(V;Z)',r'(ii) $I(V; \acute{Z} \mid Z)$']
+        MIVals.columns =[r'(i) $I(V;\acute{\Theta} \mid X)$', r'(ii) $I(S;\acute{\Theta} \mid X)$']
         
     MIVals['Model'] = ConfigName
     longMI = MIVals.melt(id_vars='Model', var_name='Metrics', value_name='Values')
 
+
     return MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, longMI, MeanKld_GTTG
     
-# Function to extract Nj value from filename
-def ExtractNj(Filename):
-    Match = re.search(r'Nj(\d+)\.', Filename)
-    return int(Match.group(1)) if Match else None
 
 if __name__ == "__main__":
 
@@ -168,13 +275,15 @@ if __name__ == "__main__":
     parser.add_argument('--MetricCut', '-MC',type=int, required=False, default=1, help='The threshold for Zs and ancillary data where the metric value is below SelMetricCut (default: 1)')
     parser.add_argument('--BatSize', '-BS',type=int, required=False, default=5000, help='The batch size during prediction.')
     parser.add_argument('--GPUID', type=int, required=False, default=1)
+    parser.add_argument('--SNR', type=float, required=False, default=10)
     
     args = parser.parse_args() # Parse the arguments
     YamlPath = args.ConfigPath
     MetricCut = args.MetricCut
     BatSize = args.BatSize
     GPU_ID = args.GPUID
-   
+    SNR_cutoff = args.SNR 
+
 
     ## GPU selection
     os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
@@ -197,7 +306,7 @@ if __name__ == "__main__":
                  
                  
     #### -----------------------------------------------------  Conducting tabulation --------------------------------------------------------------
-                 
+             
     # Object part
     print('-----------------------------------------------------' )
     print('Scanning objects' )
@@ -205,27 +314,43 @@ if __name__ == "__main__":
     ObjLoadPath = './EvalResults/Instances/'
     FileList = os.listdir(ObjLoadPath)
     FileList = [file for file in FileList if file.endswith('.pkl')]
+    print('FileList')
+    print(FileList)
     
     ## Loading the model configuration lists
     EvalConfigList = os.listdir(YamlPath) # Retrieve a list of all files in the YamlPath directory.
     EvalConfigList = [i for i in EvalConfigList if 'Eval' in i] # Filter the list to include only files that contain 'Eval' in their names.
-
-    print(FileList)   
+    
     # loop
     for Filename in FileList:
         # Extracts the string between 'Obj_' and '_Nj'
-        ConfigName =re.search(r'Obj_(.*?)_Nj', Filename).group(1)  
-        ConfigPath = [EvalConfig for EvalConfig in EvalConfigList if ConfigName.split('_')[1] in EvalConfig ][0]
+        ConfigName =re.search(r'Obj_(.*?)_Nj', Filename).group(1) 
+        Match = re.search(r'(VAE)', ConfigName).group(1) if re.search(r'(VAE)', ConfigName) else None
+        
+        if 'VAE' in ConfigName:
+            if 'II' in ConfigName:
+               ConfigPath = 'EvalConfigII_VAE.yml'
+            elif 'ART' in ConfigName:
+                ConfigPath = 'EvalConfigART_VAE.yml'
+        else:
+            if 'II' in ConfigName:
+               ConfigPath = 'EvalConfigII_Other.yml'
+            elif 'ART' in ConfigName:
+                ConfigPath = 'EvalConfigART_Other.yml'
+                
         ConfigPath = YamlPath + ConfigPath
         NJ = ExtractNj(Filename)
+    
+        
         # Perform aggregation (custom function) and retrieve results.
         MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, longMI, MeanKld_GTTG = Aggregation(ConfigName, ConfigPath, NJ=NJ, MetricCut=MetricCut, BatSize=BatSize)
     
+        
         # Save the MItables to a CSV file.
-        longMI.to_csv('./EvalResults/Tables/MI_' + str(ConfigName) +'_Nj'+str(NJ)+'.csv', index=False)
+        longMI.to_csv('./EvalResults/Tables/MI_' + str(ConfigName) +'_Nj'+str(NJ) + '.csv', index=False)
     
         # Save the AccKLDtables to a CSV file.
         DicRes = {'Model': [ConfigName] , 'MeanKldRes': [MeanKld_GTTG], 'MSEnorm':[MSEnorm] , 'MSEdenorm': [MSEdenorm], 'MAPEnorm': [MAPEnorm], 'MAPEdenorm': [MAPEdenorm] }
         AccKLDtables = pd.DataFrame(DicRes)
-        AccKLDtables.to_csv('./EvalResults/Tables/AccKLD_' + str(ConfigName) + '_Nj'+str(NJ)+'.csv', index=False)
-        
+        AccKLDtables.to_csv('./EvalResults/Tables/AccKLD_' + str(ConfigName) + '_Nj'+str(NJ) +'.csv', index=False)
+            
