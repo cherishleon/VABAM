@@ -8,7 +8,7 @@ def ModelCall (ConfigSpec, ConfigName, TrData, ValData, Resume=False, LoadWeight
     DataSize = ConfigSpec['DataSize']
     SigDim = ConfigSpec['SigDim']
     
-        
+
     # ModelName selection
     if 'BaseVAE' in ConfigName:
         BenchModel = BaseVAE(SigDim, ConfigSpec, Reparam=Reparam, ReparaStd=ReparaStd)

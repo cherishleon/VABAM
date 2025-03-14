@@ -116,7 +116,7 @@ class Evaluator ():
         self.sim, self.mini, self.iter = 0, 0, 0
 
         # Generation of checkpoint folders
-        if not os.path.exists('./Data/Checkpoints/') :
+        if not os.path.exists('./Data/Checkpoints/') and Name is not None:
             os.makedirs('./Data/Checkpoints/')
         self.CheckpointPath = './Data/Checkpoints/' +Name+ '.pkl'
     
@@ -405,7 +405,7 @@ class Evaluator ():
         
         # Data binding for the model input
         if SecDataType == 'FCIN':
-            Data = [PostSecDataList[:, :2], PostSecDataList[:, 2:], PostZsList]
+            Data = [PostSecDataList[:, :self.GenModel.input[0].shape[-1]], PostSecDataList[:, self.GenModel.input[0].shape[-1]:], PostZsList]            
         elif SecDataType == 'CONDIN':  
              Data = [PostZsList, PostSecDataList]
         elif SecDataType == False :
@@ -1120,7 +1120,6 @@ class Evaluator ():
             
             # Choosing GPU or CPU and generating signals
             if 'Wavenet' in self.Name:
-                print(self.GenBatchSize, self.NSplitBatch)
                 Set_Pred = CompResource(self.GenModel, Set_Data, BatchSize=self.GenBatchSize, NSplitBatch=self.NSplitBatch, GPU=self.GPU)
                 
             elif 'DiffWave' in self.Name:

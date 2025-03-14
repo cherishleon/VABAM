@@ -359,7 +359,8 @@ class ConditionalDiffWave(tf.keras.Model):
               - mean: Tensor of shape [B, T], estimated mean of the denoised signal.
               - stddev: float, estimated standard deviation.
         """
-        mean = (signal - (1 - alpha) / np.sqrt(1 - alpha_bar) * eps) / np.sqrt(alpha)
+        signal = tf.cast(signal, dtype=tf.float64)
+        mean = (signal- (1 - alpha) / np.sqrt(1 - alpha_bar) * eps) / np.sqrt(alpha)
         stddev = np.sqrt((1 - alpha_bar / alpha) / (1 - alpha_bar) * (1 - alpha))
         if verbose:
             print("[pred_signal] mean shape:", mean.shape, "stddev (scalar):", stddev)

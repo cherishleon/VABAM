@@ -48,7 +48,7 @@ def Reparameterization(Z_Mu, Z_Log_Sigma, ReparaStd=1., Reparam=False, num=''):
 
 ## --------------------------------------------------   Encoder  -------------------------------------------------------------
 def Encoder(SigDim, CondDim=None,  SlidingSize = 50, LatDim= 2, Type = 'Base',  ReparaStd = 0.1, Reparam = False):
-
+    print('ReparaStd', ReparaStd)
     InpL = Input(shape=(SigDim,), name='Inp_Enc')
     InpFrame = tf.signal.frame(InpL, SlidingSize, SlidingSize)
 

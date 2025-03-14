@@ -131,11 +131,11 @@ def VDVAE(SigDim, ConfigSpec,  SlidingSize = 50, Reparam=True, ReparaStd=None):
 
 
 def ConVAE(SigDim, CondDim, ConfigSpec, SlidingSize = 50, Reparam=True, ReparaStd=None):
-    
+
     ### Model related parameters
     ReparaStd = ConfigSpec['ReparaStd'] if ReparaStd is None else ReparaStd
     LatDim = ConfigSpec['LatDim']
-    
+
     #### -----------------------------------------------------   Model   -------------------------------------------------------------------------    
     EncModel = Encoder(SigDim=SigDim,CondDim=CondDim, SlidingSize = SlidingSize, LatDim= LatDim, Reparam = Reparam, ReparaStd=ReparaStd)
     ReconModel = Decoder(SigDim=SigDim,CondDim=CondDim, SlidingSize = SlidingSize, LatDim= LatDim)

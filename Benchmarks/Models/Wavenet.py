@@ -291,7 +291,6 @@ class ConditionalWaveNet(Model):
         
     def predict(self, inputs, batch_size=32,  steps=None, callbacks=None):
         results = []
-        num_batches = (len(inputs) + batch_size - 1) // batch_size
           
         for i in range(0, len(inputs), batch_size):
             batch = inputs[i:i+batch_size]

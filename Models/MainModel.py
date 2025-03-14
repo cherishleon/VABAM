@@ -1,5 +1,6 @@
 import numpy as np
 import tensorflow as tf
+tf.keras.backend.set_floatx('float32') # Set the default float type for TensorFlow to float64
 from tensorflow.keras import backend as K
 from tensorflow.keras.layers import Input, GRU, Dense, Masking, Reshape, Flatten, RepeatVector, Bidirectional, Activation, GaussianNoise
 from tensorflow.keras import Model
@@ -104,7 +105,7 @@ def Encoder(SigDim, SlidingSize = 50, LatDim= 2, Depth=2, Type = '', MaskingRate
 
     if Reparam==False:
         Epsilon_z = Epsilon_z * 0
-
+   
     Zs = Z_Mu + tf.exp(0.5 * Z_Log_Sigma) * Epsilon_z
     Zs = ReName(Zs,'Zs'+Type)
     

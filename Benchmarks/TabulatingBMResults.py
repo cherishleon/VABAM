@@ -129,8 +129,10 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
     ## Calling Modesl
     BenchModel, _, AnalData = ModelCall (Params, ConfigName, TrInp, ValInp,  Reparam=False, LoadWeight=True, ModelSaveName=ModelLoadPath) 
     
-    if not 'Wavenet' in ConfigName:
+    if type(AnalData) == list and not 'Wavenet' in ConfigName :
         GroundTruth = AnalData[0]
+    else:
+        GroundTruth = AnalData
     
     # Evaluating MAPEs
     ## Prediction
@@ -224,6 +226,8 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
         if 'VDWave' in ConfigName:
             PredSigRec = VDiffWAVE_Restoration(BenchModel,PostZsList[:,:,None], PostSecDataList, GenSteps, 
                                                BenchModel.cfg['StepInterval'], GenBatchSize = Params['GenBatchSize'] )
+            PredSigRec = np.squeeze(PredSigRec)
+            
         elif 'DiffWave' in ConfigName:
             PredSigRec = DiffWAVE_Restoration(BenchModel,PostZsList, PostSecDataList, GenBatchSize = Params['GenBatchSize'], 
                                               GenSteps = GenSteps, StepInterval = BenchModel.config['StepInterval'])
