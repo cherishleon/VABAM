@@ -79,8 +79,8 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
     
     #### -----------------------------------------------------   Loading data -------------------------------------------------------------------------   
     # Loading data
-    SigMax = np.load('../Data/ProcessedData/'+str(Params['TestDataSource'])+'SigMax.pkl', allow_pickle=True)
-    SigMin = np.load('../Data/ProcessedData/'+str(Params['TestDataSource'])+'SigMin.pkl', allow_pickle=True)
+    SigMax = np.load('../Data/ProcessedData/'+str(Params['DataSource'])+'SigMax.pkl', allow_pickle=True)
+    SigMin = np.load('../Data/ProcessedData/'+str(Params['DataSource'])+'SigMin.pkl', allow_pickle=True)
     
     if 'Wavenet' in ConfigName:
         SlidingSize = Params['SlidingSize']
@@ -129,10 +129,6 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
     ## Calling Modesl
     BenchModel, _, AnalData = ModelCall (Params, ConfigName, TrInp, ValInp,  Reparam=False, LoadWeight=True, ModelSaveName=ModelLoadPath) 
     
-    if type(AnalData) == list and not 'Wavenet' in ConfigName :
-        GroundTruth = AnalData[0]
-    else:
-        GroundTruth = AnalData
     
     # Evaluating MAPEs
     ## Prediction
@@ -161,6 +157,7 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
         PredSigRec = VDiffWAVE_Restoration(BenchModel,DiffusedSignal[0][..., None], AnalData[1], GenSteps, BenchModel.cfg['StepInterval'], GenBatchSize = Params['GenBatchSize'] )
     
         PredSigRec = scale_and_normalize(PredSigRec, SigmaSig, MeanSig, MinX, MaxX)
+        GroundTruth = scale_and_normalize(GroundTruth, SigmaSig, MeanSig, MinX, MaxX)
     
     elif 'DiffWave' in ConfigName:
         for t_tmp in range(BenchModel.config['Iter']):
@@ -174,6 +171,7 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
         PredSigRec = DiffWAVE_Restoration(BenchModel, DiffusedSignal, AnalData[1], GenBatchSize= Params['GenBatchSize'], StepInterval=BenchModel.config['StepInterval'], GenSteps=GenSteps )
         
         PredSigRec = scale_and_normalize(PredSigRec, SigmaSig, MeanSig, MinX, MaxX)
+        GroundTruth = scale_and_normalize(GroundTruth, SigmaSig, MeanSig, MinX, MaxX)
         
     
     if Params['SecDataType'] == 'CONDIN':
