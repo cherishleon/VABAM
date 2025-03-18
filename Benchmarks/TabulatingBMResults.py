@@ -129,7 +129,12 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
     ## Calling Modesl
     BenchModel, _, AnalData = ModelCall (Params, ConfigName, TrInp, ValInp,  Reparam=False, LoadWeight=True, ModelSaveName=ModelLoadPath) 
     
-    
+    if 'Wavenet' not in ConfigName:
+        if isinstance(AnalData, list):
+            GroundTruth = AnalData[0]
+        else:
+            GroundTruth = AnalData
+        
     # Evaluating MAPEs
     ## Prediction
     print('-----------------------------------------------------' )
