@@ -20,7 +20,7 @@ from Utilities.Utilities import ReadYaml, SerializeObjects, DeserializeObjects, 
 
  
 #### -----------------------------------------------------   Defining model structure -----------------------------------------------------------------    
-def SetVAEs():
+def SetVAEs(Params, ConfigName, TrInp, ValInp, ModelLoadPath):
     # Calling Modesl
     BenchModel, _, AnalData = ModelCall (Params, ConfigName, TrInp, ValInp, LoadWeight=True,  
                                          Reparam=True, ReparaStd=Params['ReparaStd'], ModelSaveName=ModelLoadPath) 
@@ -43,7 +43,7 @@ def SetVAEs():
         SampZModel = Model(Inp_Enc.input, Zs)
     return SampZModel, GenModel, AnalData
     
-def SetModels():
+def SetModels(Params, ConfigName, TrInp, ValInp, ModelLoadPath):
     GenModel, _, AnalData = ModelCall (Params, ConfigName, TrInp, ValInp, LoadWeight = True, ModelSaveName=ModelLoadPath) 
     return GenModel, AnalData
 
@@ -135,12 +135,12 @@ if __name__ == "__main__":
             SlidingSize = Params['SlidingSize']
         
             TrRaw = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy')
-            ValRaw = np.load('../Data/ProcessedData/'+str(TestDataSource)+'Val'+str(SigType)+'.npy')[:Params['EvalDataSize']]
+            ValRaw = np.load('../Data/ProcessedData/'+str(TestDataSource)+'Test'+str(SigType)+'.npy')[:Params['EvalDataSize']]
         
             TrSampled = np.load('../Data/ProcessedData/Sampled'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('float64') # Sampled_TrData
-            ValSampled = np.load('../Data/ProcessedData/Sampled'+str(TestDataSource)+'Val'+str(SigType)+'.npy').astype('float64')[:Params['EvalDataSize']] # Sampled_ValData
+            ValSampled = np.load('../Data/ProcessedData/Sampled'+str(TestDataSource)+'Test'+str(SigType)+'.npy').astype('float64')[:Params['EvalDataSize']] # Sampled_ValData
             TrOut = np.load('../Data/ProcessedData/MuLaw'+str(DataSource)+'Tr'+str(SigType)+'.npy').astype('int64') # MuLaw_TrData
-            ValOut = np.load('../Data/ProcessedData/MuLaw'+str(TestDataSource)+'Val'+str(SigType)+'.npy').astype('int64')[:Params['EvalDataSize']] # MuLaw_ValData
+            ValOut = np.load('../Data/ProcessedData/MuLaw'+str(TestDataSource)+'Test'+str(SigType)+'.npy').astype('int64')[:Params['EvalDataSize']] # MuLaw_ValData
     
             TrInp = [TrSampled, TrRaw]
             ValInp = [ValSampled, ValRaw]
@@ -148,7 +148,7 @@ if __name__ == "__main__":
             
         else:
             TrInp = np.load('../Data/ProcessedData/'+str(DataSource)+'Tr'+str(SigType)+'.npy')
-            ValInp = np.load('../Data/ProcessedData/'+str(TestDataSource)+'Val'+str(SigType)+'.npy')[:Params['EvalDataSize']]
+            ValInp = np.load('../Data/ProcessedData/'+str(TestDataSource)+'Test'+str(SigType)+'.npy')[:Params['EvalDataSize']]
 
     
         # Standardization for certain models.
@@ -165,15 +165,15 @@ if __name__ == "__main__":
 
         #### -----------------------------------------------------  Conducting Evalution -----------------------------------------------------------------    
         # Is the value assigned by ArgumentParser or assigned by YML?
-        NZs = Params['NSelZ']
+        NZs = 'All' if Params['NSelZ'] is None else Params['NSelZ']
         print('NZs : ', NZs)
 
 
         # Setting the model
         if 'VAE' in ConfigName:
-            SampModel, GenModel, AnalData = SetVAEs()
+            SampModel, GenModel, AnalData = SetVAEs(Params, ConfigName, TrInp, ValInp, ModelLoadPath)
         else:
-            GenModel, AnalData = SetModels()
+            GenModel, AnalData = SetModels(Params, ConfigName, TrInp, ValInp, ModelLoadPath)
                     
        
         # Clearing the session before building the model
