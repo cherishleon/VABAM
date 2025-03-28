@@ -58,16 +58,14 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
     ModelConfigSet, ModelLoadPath = LoadModelConfigs(ConfigName, Comp=False, TypeDesig=True)
     CommonParams = EvalConfigs['Common_Param']
     ModelParams = EvalConfigs["Models"][ConfigName]
-    
-    #if ModelConfigSet['LatDim'] < NJ:
-    #    return None, None, None, None, None, None  # To ensure consistency with the main return statement, return 6 None
-    
+
     ## Loading parameters for the evaluation
     Params = LoadParams(ModelConfigSet, {**CommonParams, **ModelParams})
     Params['Common_Info'] = EvalConfigs['Common_Info']
     Params['Spec_Info'] = EvalConfigs['Models'][ConfigName]['Spec_Info']
     ModelParams['DataSize'] = Params['EvalDataSize']
     NZs = 'All' if Params['NSelZ'] is None else Params['NSelZ']
+    SNR_cutoff = EvalConfigs['Models']['SNR_cutoff']
     
     ## Object Load path
     ObjLoadPath = './EvalResults/Instances/Obj_'+ConfigName+'_Nj'+str(NZs)+'.pkl'
@@ -282,14 +280,12 @@ if __name__ == "__main__":
     parser.add_argument('--MetricCut', '-MC',type=int, required=False, default=1, help='The threshold for Zs and ancillary data where the metric value is below SelMetricCut (default: 1)')
     parser.add_argument('--BatSize', '-BS',type=int, required=False, default=5000, help='The batch size during prediction.')
     parser.add_argument('--GPUID', type=int, required=False, default=1)
-    parser.add_argument('--SNR', type=float, required=False, default=10)
     
     args = parser.parse_args() # Parse the arguments
     YamlPath = args.ConfigPath
     MetricCut = args.MetricCut
     BatSize = args.BatSize
     GPU_ID = args.GPUID
-    SNR_cutoff = args.SNR 
 
 
     ## GPU selection

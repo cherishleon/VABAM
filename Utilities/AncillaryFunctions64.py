@@ -288,33 +288,63 @@ def MSECal (TrueData, PredSigRec, MaxX, MinX):
 
 
 
-def mu_law_encode(audio, quantization_channels=256):
+def mu_law_encode(audio, quantization_channels=256, input_range='0to1'):
     """
     Mu-law encoding for audio.
+    
     Args:
-        audio: Input audio signal, normalized in range [-1, 1].
-        quantization_channels: Number of quantization levels (typically 256).
+        audio: Input audio signal.
+               By default, assumed to be in the range [-1, 1] or [0, 1].
+        quantization_channels: Number of quantization levels (commonly 256).
+        input_range:
+            - '-1to1': audio is already in the range [-1, 1]
+            - '0to1': audio is in the range [0, 1], so it will be rescaled to [-1, 1]
+
     Returns:
-        Encoded audio signal as integers in range [0, quantization_channels - 1].
+        Encoded audio signal as int in the range [0, quantization_channels - 1].
     """
+    if input_range == '0to1':
+        # Rescale [0, 1] to [-1, 1]
+        audio = 2.0 * audio - 1.0
+    
     mu = quantization_channels - 1
+    
+    # Ensure audio is within [-1, 1]
     audio = np.clip(audio, -1, 1)
+    
+    # Apply the mu-law formula
     encoded = np.sign(audio) * np.log1p(mu * np.abs(audio)) / np.log1p(mu)
-    encoded = ((encoded + 1) / 2 * mu + 0.5).astype(np.int32)
+    
+    # Convert from [-1, 1] to [0, mu], then round
+    encoded = ((encoded + 1) / 2 * mu + 0.5).astype(np.int64)
     return encoded
 
-def mu_law_decode(encoded, quantization_channels=256):
+def mu_law_decode(encoded, quantization_channels=256, output_range='0to1'):
     """
     Mu-law decoding for audio.
+    
     Args:
-        encoded: Encoded audio signal as integers in range [0, quantization_channels - 1].
-        quantization_channels: Number of quantization levels (typically 256).
+        encoded: Encoded audio signal (int), in the range [0, quantization_channels - 1].
+        quantization_channels: Number of quantization levels (commonly 256).
+        output_range:
+            - '-1to1': returns the decoded audio in the range [-1, 1]
+            - '0to1': rescales the decoded audio to [0, 1]
+
     Returns:
-        Decoded audio signal in range [-1, 1].
+        Decoded audio signal (float).
+        By default in the range [-1, 1], or in [0, 1] if specified.
     """
     mu = quantization_channels - 1
-    encoded = 2 * (encoded.astype(np.float32) / mu) - 1
+    
+    # Convert from [0, mu] to [-1, 1]
+    encoded = 2.0 * (encoded.astype(np.float64) / mu) - 1.0
+    
+    # Apply the mu-law decoding formula
     decoded = np.sign(encoded) * (np.exp(np.abs(encoded) * np.log1p(mu)) - 1) / mu
+    
+    if output_range == '0to1':
+        # Rescale [-1, 1] back to [0, 1]
+        decoded = (decoded + 1.0) / 2.0
+    
     return decoded
-
         
