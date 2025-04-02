@@ -1048,7 +1048,7 @@ class Evaluator ():
                 Noise = tf.random.normal(tf.shape(self.Xbdr_tmp), 0, self.GenModel.config['GaussSigma'])
                 self.Xbdr_tmp, _ = self.GenModel.diffusion(self.Xbdr_tmp, self.GenModel.alpha_bar[t_val].item(), Noise) 
             elif 'VDWave' in self.Name:
-                t_float, self.GenSteps = find_t(self, self.Xbdr_tmp.copy(), self.GenModel.cfg['Iter'], self.GenModel.cfg['GenSteps'], SNR_cutoff=self.GenModel.config['SNR_cutoff'])  
+                t_float, self.GenSteps = find_t(self, self.Xbdr_tmp.copy(), self.GenModel.cfg['Iter'], self.GenModel.cfg['GenSteps'], SNR_cutoff=self.GenModel.cfg['SNR_cutoff'])  
                 self.Xbdr_tmp, _, noise = self.GenModel.sample_q_t_0(self.Xbdr_tmp, t_float, None, gamma_t=None)
                 #t_float = (tf.cast(self.GenModel.cfg['GenSteps'], tf.float32) - 1) / (tf.cast(self.GenModel.cfg['Iter'] - 1, tf.float32))
                 #self.Xbdr_tmp, _, _ = self.GenModel.sample_q_t_0(self.Xbdr_tmp, t_float, None, gamma_t=None)
