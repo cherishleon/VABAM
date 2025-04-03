@@ -1,0 +1,104 @@
+# Common Parameters for only VAE models
+Common_Param:
+  SigType: ART # Types of signals to train on: ART, PLETH, II.
+  ReparaStd: 0.1 # Gaussian noise standard deviation for reparameterization trick.
+  Capacity_Z: 0.05 # KLD control capacity for Z.
+
+  # The parameters below are related to dynamic loss control; refer to the RelLossWeight class in utility.py.
+  # Loss Weights
+  WRec: 1 # Reconstruction loss weight.
+  WZ: 1 # Z loss weight.
+
+  # If MnW* and MxW* are the same, loss scaling remains constant without dynamic adjustments ; refer to the RelLossWeight class in utility.py.
+  # Minimum Weights
+  MnWRec: 1 # Min reconstruction loss weight.
+  MnWZ: 0.00001 # Min Z loss weight.
+
+  # Maximum Weights
+  MxWRec: 1 # Max reconstruction loss weight.
+  MxWZ: 0.00001 # Max Z loss weight.
+
+
+# Model-Specific Parameters
+Models:
+  ConVAE_ART_30_Mimic:
+    DataSource: Mimic3 # The data source.
+    LatDim: 30 # Dimensionality of the latent variable Z.
+    BatSize: 3000 # Batch size for training.
+    NEpochs: 5000 # Number of epochs.
+  
+  ConVAE_ART_30_VitalDB:
+    DataSource: VitalDB # The data source.
+    LatDim: 30 # Dimensionality of the latent variable Z.
+    BatSize: 3000 # Batch size for training.
+    NEpochs: 5000 # Number of epochs.
+     
+  VDVAE_ART_30_Mimic:
+    DataSource: Mimic3 # The data source.
+    LatDim: [30, 30, 30] # Dimensionality of the latent variable Z.
+    BatSize: 3000 # Batch size for training.
+    NEpochs: 5000 # Number of epochs.
+
+  VDVAE_ART_30_VitalDB:
+    DataSource: VitalDB # The data source.
+    LatDim: [30, 30, 30] # Dimensionality of the latent variable Z.
+    BatSize: 3000 # Batch size for training.
+    NEpochs: 5000 # Number of epochs.
+
+  FACVAE_ART_30_Mimic:
+    DataSource: Mimic3 # The data source.
+    LatDim: 30 # The dimensionality of the latent variable z.
+    DiscHiddenSize: 50 # The size of the hidden nodes within the discriminator model.
+    Capacity_TC: 0.01 # The capacity value for controlling the Kullback-Leibler divergence (KLD) of TC.
+    Capacity_DTC: 0.1 # The capacity value for controlling the Kullback-Leibler divergence (KLD) of DTC.
+    WTC: 1 # The scaling weight for the TC loss.
+    WDTC: 1 # The scaling weight for the DTC loss.
+    MnWTC: 0.001 # The min weight for the TC loss.
+    MnWDTC: 0.001 # The min weight for the DTC loss.
+    MxWTC: 0.001 # The max weight for the TC loss.
+    MxWDTC: 0.001 # The max weight for the DTC loss.   
+    BatSize: 3000 # Batch size for training.
+    NEpochs: 5000 # Number of epochs.
+
+  FACVAE_ART_30_VitalDB:
+    DataSource: VitalDB # The data source.
+    LatDim: 30 # The dimensionality of the latent variable z.
+    DiscHiddenSize: 50 # The size of the hidden nodes within the discriminator model.
+    Capacity_TC: 0.01 # The capacity value for controlling the Kullback-Leibler divergence (KLD) of TC.
+    Capacity_DTC: 0.1 # The capacity value for controlling the Kullback-Leibler divergence (KLD) of DTC.
+    WTC: 1 # The scaling weight for the TC loss.
+    WDTC: 1 # The scaling weight for the DTC loss.
+    MnWTC: 0.001 # The min weight for the TC loss.
+    MnWDTC: 0.001 # The min weight for the DTC loss.
+    MxWTC: 0.001 # The max weight for the TC loss.
+    MxWDTC: 0.001 # The max weight for the DTC loss.   
+    BatSize: 3000 # Batch size for training.
+    NEpochs: 5000 # Number of epochs.
+    
+  TCVAE_ART_30_Mimic:
+    DataSource: Mimic3 # The data source.
+    LatDim: 30 # Dimensionality of the latent variable Z.
+    Capacity_TC: 0.01 # The capacity value for controlling the Kullback-Leibler divergence (KLD) of TC.
+    Capacity_MI: 0.1 # The capacity value for controlling the Kullback-Leibler divergence (KLD) of MI.
+    WTC: 1 # The scaling weight for the TC loss.
+    WMI: 1 # The scaling weight for the MI loss.
+    MnWTC: 0.00001 # The min weight for the TC loss. 
+    MxWTC: 0.00001 # The max weight for the TC loss.
+    MnWMI: 0.00001 # The min weight for the MI loss.
+    MxWMI: 0.00001 # The max weight for the MI loss.  
+    BatSize: 3000 # Batch size for training.
+    NEpochs: 5000 # Number of epochs.
+    
+  TCVAE_ART_30_VitalDB:
+    DataSource: VitalDB # The data source.
+    LatDim: 30 # Dimensionality of the latent variable Z.
+    Capacity_TC: 0.01 # The capacity value for controlling the Kullback-Leibler divergence (KLD) of TC.
+    Capacity_MI: 0.1 # The capacity value for controlling the Kullback-Leibler divergence (KLD) of MI.
+    WTC: 1 # The scaling weight for the TC loss.
+    WMI: 1 # The scaling weight for the MI loss.
+    MnWTC: 0.00001 # The min weight for the TC loss. 
+    MxWTC: 0.00001 # The max weight for the TC loss.
+    MnWMI: 0.00001 # The min weight for the MI loss.
+    MxWMI: 0.00001 # The max weight for the MI loss.  
+    BatSize: 3000 # Batch size for training.
+    NEpochs: 5000 # Number of epochs.

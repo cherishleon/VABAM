@@ -89,7 +89,7 @@ def Aggregation (ConfigName, ConfigPath, NJ=1, FC=1.0, MetricCut = 1., BatSize=3
     # Evaluating MAPEs
     ## Prediction
     print('-----------------------------------------------------' )
-    print('MAPE calculation')
+    print('MAPE/MSE calculation')
     PredSigRec = SigRepModel.predict(AnalData, batch_size=BatSize, verbose=1)[-2]
     
     

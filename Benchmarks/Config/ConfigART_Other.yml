@@ -1,0 +1,119 @@
+# Common Parameters for only VAE models
+Common_Param:
+  SigType: ART # Types of signals to train on: ART, PLETH, II.
+
+
+
+# Model-Specific Parameters
+Models:
+  Wavenet_ART_Mimic:
+    DataSource: Mimic3 # The data source.
+    SlidingSize : 50 # Hop size for signal processing.
+    NBlocks : 5 #The number of WaveNet blocks to stack.
+    FilterSize : 32 #The number of filters used in the convolutional layers.
+    KernelSize : 2 #The size of the convolution kernels.
+    NumCl : null # The number of classes for discrete conditioning. 
+    BatSize: 3000 # Batch size for training.
+    NEpochs: 5000 # Number of epochs.
+    
+  Wavenet_ART_VitalDB:
+    DataSource: VitalDB # The data source.
+    SlidingSize : 50 # Hop size for signal processing.
+    NBlocks : 5 #The number of WaveNet blocks to stack.
+    FilterSize : 32 #The number of filters used in the convolutional layers.
+    KernelSize : 2 #The size of the convolution kernels.
+    NumCl : null # The number of classes for discrete conditioning. 
+    BatSize: 3000 # Batch size for training.
+    NEpochs: 5000 # Number of epochs.
+  
+  DiffWave_ART_Mimic:
+    DataSource: Mimic3 # The data source.
+    Channels: 64  # Number of channels in the model.
+    Iter: 100  # Number of diffusion steps. #50
+    EmbeddingProj: 128  # Size of projected embedding.
+    EmbeddingLayers: 4  # Number of embedding projection layers.
+    NumLayers: 5  # Total number of model layers.
+    NumCycles: 5  # Cycles in the dilation pattern.
+    DilationRate: 1  # Base dilation rate.
+    KernelSize: 3  # Size of the convolution kernel.
+    EmbeddingSize: 64  # Embedding size for diffusion steps.
+    EmbeddingFactor: 2.0  # Scale factor for embedding.
+    Beta1: 0.9  # Adam optimizer beta1 parameter.
+    Beta2: 0.999  # Adam optimizer beta2 parameter.
+    BatSize: 1000  # Batch size for training.
+    NEpochs: 5000  # Total number of training epochs.
+    BetaSchedule: [0.00005, 0.07] # Beta schedule: [Start, End, ]. The value for steps is from the parameter Iter. [0.001, 0.3]
+    GaussSigma: 0.1 # Standard deviation (sigma) for the Gaussian distribution.
+    Lr: 0.0001 # Learning rate.
+    Eps: 0.00000001  # Adam optimizer epsilon parameter.
+
+  DiffWave_ART_VitalDB:
+    DataSource: VitalDB # The data source.
+    Channels: 64  # Number of channels in the model.
+    Iter: 100  # Number of diffusion steps. #50
+    EmbeddingProj: 64  # Size of projected embedding.
+    EmbeddingLayers: 4  # Number of embedding projection layers.
+    NumLayers: 5  # Total number of model layers.
+    NumCycles: 5  # Cycles in the dilation pattern.
+    DilationRate: 1  # Base dilation rate.
+    KernelSize: 3  # Size of the convolution kernel.
+    EmbeddingSize: 64  # Embedding size for diffusion steps.
+    EmbeddingFactor: 2.0  # Scale factor for embedding.
+    Beta1: 0.9  # Adam optimizer beta1 parameter.
+    Beta2: 0.999  # Adam optimizer beta2 parameter.
+    BatSize: 1000  # Batch size for training.
+    NEpochs: 5000  # Total number of training epochs.
+    BetaSchedule:  [0.00005, 0.07] # Beta schedule: [Start, End, ]. The value for steps is from the parameter Iter. [0.001, 0.3]
+    GaussSigma: 0.1 # Standard deviation (sigma) for the Gaussian distribution.    
+    Lr: 0.0001 # Learning rate.
+    Eps: 0.00000001  # Adam optimizer epsilon parameter.
+
+  VDWave_ART_Mimic:
+    DataSource: Mimic3 # The data source.
+    NoiseSchedule: "fixed_linear"  # Type of noise schedule used in the model
+    GammaMin: -8  # Minimum value of gamma (log-variance scaling)
+    GammaMax: 3    # Maximum value of gamma
+    Iter: 100         # Number of diffusion steps
+    Channels: 64         # Number of channels in the neural network
+    EmbeddingProj: 64    # Size of embedding projection
+    EmbeddingLayers: 4   # Number of layers in the embedding network
+    NumLayers: 5         # Number of layers in the model
+    NumCycles: 5         # Number of cycles in the model
+    DilationRate: 1      # Dilation rate for convolutional layers
+    KernelSize: 3        # Kernel size for convolutional layers
+    EmbeddingSize: 64   # Size of embedding vector
+    EmbeddingFactor: 2.0 # Scaling factor for embedding vector
+    SigmaMin: 1.0 # Minimum standard deviation for noise distribution
+    RecLossType: "mse"  # Options: 'logP' (log probability-based loss)
+    GaussSigma: 0.1 # Standard deviation (sigma) for the Gaussian distribution.
+    BatSize: 1000  # Batch size for training.
+    NEpochs: 5000  # Total number of training epochs.
+
+
+  VDWave_ART_VitalDB:
+    DataSource: VitalDB # The data source.
+    NoiseSchedule: "fixed_linear"  # Type of noise schedule used in the model
+    GammaMin: -8  # Minimum value of gamma (log-variance scaling)
+    GammaMax: 3    # Maximum value of gamma
+    Iter: 100          # Number of diffusion steps
+    Channels: 64         # Number of channels in the neural network
+    EmbeddingProj: 64    # Size of embedding projection
+    EmbeddingLayers: 4   # Number of layers in the embedding network
+    NumLayers: 5         # Number of layers in the model
+    NumCycles: 5         # Number of cycles in the model
+    DilationRate: 1      # Dilation rate for convolutional layers
+    KernelSize: 3        # Kernel size for convolutional layers
+    EmbeddingSize: 64   # Size of embedding vector
+    EmbeddingFactor: 2.0 # Scaling factor for embedding vector
+    SigmaMin: 1.0 # Minimum standard deviation for noise distribution
+    RecLossType: "mse"  # Options: 'logP' (log probability-based loss)
+    GaussSigma: 0.1 # Standard deviation (sigma) for the Gaussian distribution.
+    BatSize: 1000  # Batch size for training.
+    NEpochs: 5000  # Total number of training epochs.
+
+
+    
+
+    
+
+  

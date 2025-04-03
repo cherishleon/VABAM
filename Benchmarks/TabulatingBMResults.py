@@ -65,7 +65,7 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
     Params['Spec_Info'] = EvalConfigs['Models'][ConfigName]['Spec_Info']
     ModelParams['DataSize'] = Params['EvalDataSize']
     NZs = 'All' if Params['NSelZ'] is None else Params['NSelZ']
-    SNR_cutoff = EvalConfigs['Models']['SNR_cutoff']
+    SNR_cutoff = Params['SNR_cutoff']
     
     ## Object Load path
     ObjLoadPath = './EvalResults/Instances/Obj_'+ConfigName+'_Nj'+str(NZs)+'.pkl'
