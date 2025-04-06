@@ -40,10 +40,10 @@ Models:
     Capacity_MI: 0.1 # The capacity value for controlling the Kullback-Leibler divergence (KLD) of MI.
     WTC: 1 # The scaling weight for the TC loss.
     WMI: 1 # The scaling weight for the MI loss.
-    MnWTC: 0.000001 # The min weight for the TC loss. 
-    MxWTC: 0.000001 # The max weight for the TC loss.
-    MnWMI: 0.000001 # The min weight for the MI loss.
-    MxWMI: 0.000001 # The max weight for the MI loss.  
+    MnWTC: 0.0000005 # The min weight for the TC loss. 
+    MxWTC: 0.0000005 # The max weight for the TC loss.
+    MnWMI: 0.0000005 # The min weight for the MI loss.
+    MxWMI: 0.0000005 # The max weight for the MI loss.  
     BatSize: 3000 # Batch size for training.
     NEpochs: 5000 # Number of epochs.
 

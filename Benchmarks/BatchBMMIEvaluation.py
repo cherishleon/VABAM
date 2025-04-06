@@ -15,8 +15,8 @@ from Utilities.Utilities import ReadYaml, SerializeObjects, DeserializeObjects, 
 
 
 # Refer to the execution code
-# python .\BatchBMMIEvaluation.py --Config EvalConfigART --GPUID 0 
-# python .\BatchBMMIEvaluation.py --Config EvalConfigART --ConfigSpec VDWave_ART_VitalDB --GPUID 0    
+# python .\BatchBMMIEvaluation.py --Config EvalConfigART_VAE --GPUID 0 
+# python .\BatchBMMIEvaluation.py --Config EvalConfigART_VAE --ConfigSpec ConVAE_ART_30_Mimic --GPUID 0    
 
  
 #### -----------------------------------------------------   Defining model structure -----------------------------------------------------------------    
@@ -191,7 +191,7 @@ if __name__ == "__main__":
         if Params['SecDataType'] is None:
             Eval.Eval_Z(AnalData, SampModel, GenModel, Continue=Continue)
         else:
-            if 'ConVAE' in ConfigName:
+            if 'VAE' in ConfigName:
                 Eval.Eval_ZCON(AnalData,  SampModel, GenModel, Continue=Continue, SecDataType=Params['SecDataType'])
             
             elif 'Wavenet' in ConfigName:

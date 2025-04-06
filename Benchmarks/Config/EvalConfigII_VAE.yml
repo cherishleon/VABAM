@@ -32,25 +32,25 @@ Models:
   TCVAE_II_30_Mimic:
     TestDataSource: VitalDB # The data source for testing and visualization.
     GenBatchSize: 10000     # The batch size during prediction of the generation model.
-    NSubGen: 1              # The number of generations (i.e., samplings) within a sample.
-    NParts: 1               # The number of partitions (i.e., samplings) in generations within a sample.
-    SecDataType: null       # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
+    NSubGen: 50             # The number of generations (i.e., samplings) within a sample.
+    NParts: 10              # The number of partitions (i.e., samplings) in generations within a sample.
+    SecDataType: 'CONDIN'   # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
     Spec_Info: ['LatDim', 'NSelZ']   # The list of specific objects subject to class serialization.
 
   FACVAE_II_30_Mimic:
     TestDataSource: VitalDB # The data source for testing and visualization.
     GenBatchSize: 10000     # The batch size during prediction of the generation model.
-    NSubGen: 1              # The number of generations (i.e., samplings) within a sample.
-    NParts: 1               # The number of partitions (i.e., samplings) in generations within a sample.
-    SecDataType: null       # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
+    NSubGen: 50             # The number of generations (i.e., samplings) within a sample.
+    NParts: 10              # The number of partitions (i.e., samplings) in generations within a sample.
+    SecDataType: 'CONDIN'   # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
     Spec_Info: []           # The list of specific objects subject to class serialization.
     
   VDVAE_II_30_Mimic:
     TestDataSource: VitalDB # The data source for testing and visualization.
     GenBatchSize: 10000     # The batch size during prediction of the generation model.
-    NSubGen: 1              # The number of generations (i.e., samplings) within a sample.
-    NParts: 1               # The number of partitions (i.e., samplings) in generations within a sample.
-    SecDataType: null       # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
+    NSubGen: 50             # The number of generations (i.e., samplings) within a sample.
+    NParts: 10              # The number of partitions (i.e., samplings) in generations within a sample.
+    SecDataType: 'CONDIN'   # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
     Spec_Info: ['LatDim', 'NSelZ'] # The list of specific objects subject to class serialization.
     
   ConVAE_II_30_VitalDB:
@@ -64,23 +64,23 @@ Models:
   TCVAE_II_30_VitalDB:
     TestDataSource: Mimic3 # The data source for testing and visualization.
     GenBatchSize: 10000     # The batch size during prediction of the generation model.
-    NSubGen: 1              # The number of generations (i.e., samplings) within a sample.
-    NParts: 1               # The number of partitions (i.e., samplings) in generations within a sample.
-    SecDataType: null       # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
+    NSubGen: 50             # The number of generations (i.e., samplings) within a sample.
+    NParts: 10              # The number of partitions (i.e., samplings) in generations within a sample.
+    SecDataType: 'CONDIN'   # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
     Spec_Info: ['LatDim', 'NSelZ']  # The list of specific objects subject to class serialization.
 
   FACVAE_II_30_VitalDB:
     TestDataSource: Mimic3 # The data source for testing and visualization.
     GenBatchSize: 10000     # The batch size during prediction of the generation model.
-    NSubGen: 1              # The number of generations (i.e., samplings) within a sample.
-    NParts: 1               # The number of partitions (i.e., samplings) in generations within a sample.
-    SecDataType: null       # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
+    NSubGen: 50             # The number of generations (i.e., samplings) within a sample.
+    NParts: 10              # The number of partitions (i.e., samplings) in generations within a sample.
+    SecDataType: 'CONDIN'   # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
     Spec_Info: ['LatDim', 'NSelZ']  # The list of specific objects subject to class serialization.
     
   VDVAE_II_30_VitalDB:
     TestDataSource: Mimic3 # The data source for testing and visualization.
     GenBatchSize: 10000     # The batch size during prediction of the generation model.
-    NSubGen: 1              # The number of generations (i.e., samplings) within a sample.
-    NParts: 1               # The number of partitions (i.e., samplings) in generations within a sample.
-    SecDataType: null       # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
+    NSubGen: 50             # The number of generations (i.e., samplings) within a sample.
+    NParts: 10              # The number of partitions (i.e., samplings) in generations within a sample.
+    SecDataType: 'CONDIN'   # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
     Spec_Info: ['LatDim', 'NSelZ']  # The list of specific objects subject to class serialization.

@@ -120,7 +120,7 @@ if __name__ == "__main__":
             print('SigType:', Params['SigType'])
             
             # Loading data
-            AnalData = np.load('./Data/ProcessedData/'+str(Params['TestDataSource'])+'Val'+str(Params['SigType'])+'.npy').astype('float32')
+            AnalData = np.load('./Data/ProcessedData/'+str(Params['TestDataSource'])+'Test'+str(Params['SigType'])+'.npy').astype('float64')
             AnalData = np.random.permutation(AnalData)[:Params['EvalDataSize']]
 
         # Intermediate parameters 

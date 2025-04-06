@@ -10,29 +10,24 @@ def ModelCall (ConfigSpec, ConfigName, TrData, ValData, Resume=False, LoadWeight
     
 
     # ModelName selection
-    if 'BaseVAE' in ConfigName:
-        BenchModel = BaseVAE(SigDim, ConfigSpec, Reparam=Reparam, ReparaStd=ReparaStd)
-        TrInp, ValInp = TrData, ValData
-    
-    elif 'VDVAE' in ConfigName:
-        BenchModel = VDVAE(SigDim, ConfigSpec, Reparam=Reparam, ReparaStd=ReparaStd)
-        TrInp, ValInp = TrData, ValData
-    
-    elif 'TCVAE' in ConfigName:
-        BenchModel = TCVAE(SigDim, DataSize, ConfigSpec, Reparam=Reparam, ReparaStd=ReparaStd)
-        TrInp, ValInp = TrData, ValData
-    
-    elif 'FACVAE' in ConfigName:
-        BenchModel = FACVAE(SigDim, ConfigSpec, Reparam=Reparam, ReparaStd=ReparaStd)
-        TrInp, ValInp = TrData, ValData
-    
-    elif 'ConVAE' in ConfigName:
+    if 'VAE' in ConfigName:
         ## Identifying conditions based on cumulative Power Spectral Entropy (PSE) over each frequency
         Tr_Cond = FFT_PSD(TrData, 'None')[:, 0]
         Val_Cond = FFT_PSD(ValData, 'None')[:, 0]            
         TrInp, ValInp = [TrData, Tr_Cond], [ValData, Val_Cond]
         CondDim = Tr_Cond.shape[-1]
-        
+
+    
+    if 'VDVAE' in ConfigName:
+        BenchModel = VDVAE(SigDim, CondDim, ConfigSpec, Reparam=Reparam, ReparaStd=ReparaStd)
+    
+    elif 'TCVAE' in ConfigName:
+        BenchModel = TCVAE(SigDim, CondDim, DataSize, ConfigSpec, Reparam=Reparam, ReparaStd=ReparaStd)
+    
+    elif 'FACVAE' in ConfigName:
+        BenchModel = FACVAE(SigDim, CondDim, ConfigSpec, Reparam=Reparam, ReparaStd=ReparaStd)
+    
+    elif 'ConVAE' in ConfigName:
         BenchModel= ConVAE(SigDim, CondDim, ConfigSpec, Reparam=Reparam, ReparaStd=ReparaStd)
     
     elif 'Wavenet' in ConfigName:

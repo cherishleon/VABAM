@@ -78,22 +78,22 @@ def BaseVAE(SigDim, ConfigSpec,  SlidingSize = 50, Reparam=True, ReparaStd=None)
 
 
 
-def VDVAE(SigDim, ConfigSpec,  SlidingSize = 50, Reparam=True, ReparaStd=None):
+def VDVAE(SigDim, CondDim, ConfigSpec,  SlidingSize = 50, Reparam=True, ReparaStd=None):
     
     ### Model related parameters
     ReparaStd = ConfigSpec['ReparaStd'] if ReparaStd is None else ReparaStd
     LatDim = ConfigSpec['LatDim']
     
     #### -----------------------------------------------------   Model   -------------------------------------------------------------------------    
-    EncModel = Encoder(SigDim=SigDim, SlidingSize = SlidingSize, LatDim= LatDim,  Type = 'VDV', Reparam = Reparam, ReparaStd=ReparaStd)
+    EncModel = Encoder(SigDim=SigDim, CondDim=CondDim, SlidingSize = SlidingSize, LatDim= LatDim,  Type = 'VDV', Reparam = Reparam, ReparaStd=ReparaStd)
     
     NZs = len(EncModel.output)
     EncOut =  tf.concat(EncModel.output, axis=-1)
     DecLatDim = EncOut.shape[-1]
-    ReconModel = Decoder(SigDim=SigDim, SlidingSize = SlidingSize, LatDim= DecLatDim)
+    ReconModel = Decoder(SigDim=SigDim, CondDim=CondDim, SlidingSize = SlidingSize, LatDim= DecLatDim)
     
     ## Model core parts
-    ReconOut =ReconModel(EncOut)
+    ReconOut = ReconModel([EncOut, EncModel.input[-1]])
     
     ### Define the model
     VDVModel = Model(EncModel.input, ReconOut)
@@ -109,7 +109,7 @@ def VDVAE(SigDim, ConfigSpec,  SlidingSize = 50, Reparam=True, ReparaStd=None):
     Beta_Rec = Lossweight(name='Beta_Rec', InitVal=1.)(VDVModel.input)
     
     ### Adding the RecLoss; 
-    ReconOutLoss = Beta_Rec * CustMSE(ReconOut, EncModel.input)
+    ReconOutLoss = Beta_Rec * CustMSE(ReconOut, EncModel.input[0])
     VDVModel.add_loss(ReconOutLoss)
     VDVModel.add_metric(ReconOutLoss, 'ReconOutLoss')
     
@@ -177,18 +177,18 @@ def ConVAE(SigDim, CondDim, ConfigSpec, SlidingSize = 50, Reparam=True, ReparaSt
 
 
 
-def TCVAE(SigDim, NData, ConfigSpec, SlidingSize = 50, Reparam=True, ReparaStd=None):
+def TCVAE(SigDim, CondDim, NData, ConfigSpec, SlidingSize = 50, Reparam=True, ReparaStd=None):
     
     ### Model related parameters
     ReparaStd = ConfigSpec['ReparaStd'] if ReparaStd is None else ReparaStd
     LatDim = ConfigSpec['LatDim']
     
     #### -----------------------------------------------------   Model   -------------------------------------------------------------------------    
-    EncModel = Encoder(SigDim=SigDim, SlidingSize = SlidingSize, LatDim= LatDim, Reparam = Reparam, ReparaStd=ReparaStd)
-    ReconModel = Decoder(SigDim=SigDim, SlidingSize = SlidingSize, LatDim= LatDim)
+    EncModel = Encoder(SigDim=SigDim, CondDim=CondDim, SlidingSize = SlidingSize, LatDim= LatDim, Reparam = Reparam, ReparaStd=ReparaStd)
+    ReconModel = Decoder(SigDim=SigDim,CondDim=CondDim,  SlidingSize = SlidingSize, LatDim= LatDim)
 
     ## Model core parts
-    ReconOut =ReconModel(EncModel.output)
+    ReconOut = ReconModel([EncModel.output, EncModel.input[-1]])
 
     ### Define the total model
     TCVAEModel = Model(EncModel.input, ReconOut)
@@ -210,7 +210,7 @@ def TCVAE(SigDim, NData, ConfigSpec, SlidingSize = 50, Reparam=True, ReparaStd=N
     
     
     ### Adding the RecLoss; 
-    ReconOutLoss = Beta_Rec * CustMSE(ReconOut, EncModel.input)
+    ReconOutLoss = Beta_Rec * CustMSE(ReconOut, EncModel.input[0])
     
     
     'Reference: https://github.com/YannDubs/disentangling-vae/issues/60#issuecomment-705164833' 
@@ -260,7 +260,7 @@ def TCVAE(SigDim, NData, ConfigSpec, SlidingSize = 50, Reparam=True, ReparaStd=N
 
 
 
-def FACVAE(SigDim, ConfigSpec, SlidingSize = 50, Reparam=True, ReparaStd=None):
+def FACVAE(SigDim, CondDim, ConfigSpec, SlidingSize = 50, Reparam=True, ReparaStd=None):
     
     ### Model related parameters
     ReparaStd = ConfigSpec['ReparaStd'] if ReparaStd is None else ReparaStd
@@ -268,18 +268,18 @@ def FACVAE(SigDim, ConfigSpec, SlidingSize = 50, Reparam=True, ReparaStd=None):
     DiscHiddenSize = ConfigSpec['DiscHiddenSize']
     
     #### -----------------------------------------------------   Model   -------------------------------------------------------------------------    
-    EncModel = Encoder(SigDim=SigDim, SlidingSize = SlidingSize, LatDim= LatDim, Reparam = Reparam, ReparaStd=ReparaStd)
-    ReconModel = Decoder(SigDim=SigDim, SlidingSize = SlidingSize, LatDim= LatDim)
+    EncModel = Encoder(SigDim=SigDim, CondDim=CondDim, SlidingSize = SlidingSize, LatDim= LatDim, Reparam = Reparam, ReparaStd=ReparaStd)
+    ReconModel = Decoder(SigDim=SigDim, CondDim=CondDim, SlidingSize = SlidingSize, LatDim= LatDim)
     FacDiscModel = FacDiscriminator(LatDim, DiscHiddenSize)
 
     ## Batch split 
-    BatchSize = tf.shape(EncModel.input)[0]
+    BatchSize = tf.shape(EncModel.input[0])[0]
     HalfBatchIdx1 = tf.range(BatchSize//2)
     HalfBatchIdx2 = tf.range(BatchSize//2, BatchSize)
     Z_D1, Z_D2 = SplitBatch(EncModel.output, HalfBatchIdx1, HalfBatchIdx2, mode='Both')
 
     ## Model core parts
-    ReconOut = ReconModel(EncModel.output)
+    ReconOut = ReconModel([EncModel.output, EncModel.input[-1]])
     FacDiscOut_D1 =  FacDiscModel(Z_D1)
 
     ### Define the model
@@ -301,7 +301,7 @@ def FACVAE(SigDim, ConfigSpec, SlidingSize = 50, Reparam=True, ReparaStd=None):
 
     
     ### Adding the RecLoss; 
-    ReconOutLoss = Beta_Rec * CustMSE(ReconOut, EncModel.input)
+    ReconOutLoss = Beta_Rec * CustMSE(ReconOut, EncModel.input[0])
 
     
     ### KL Divergence for p(Z) vs q(Z)
