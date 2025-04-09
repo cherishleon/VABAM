@@ -13,7 +13,7 @@ from Utilities.Utilities import ReadYaml, LoadModelConfigs
 from Models.Caller64 import *
 
 # Refer to the execution code        
-# python .\TrainModel.py --Config SKZFC_II_1_30_800_VitalDB --GPUID 0 --Resume True    
+# python .\TrainModel64.py --Config SKZFC_II_1_30_800_VitalDB --GPUID 0 --Resume True    
 
 def str2bool(v):
     if isinstance(v, bool):

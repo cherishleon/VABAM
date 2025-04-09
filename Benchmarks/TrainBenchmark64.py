@@ -19,7 +19,7 @@ warnings.filterwarnings('ignore')
 
 
 # Refer to the execution code
-# python .\TrainBenchmark.py --Config FACVAE_ART_30_Mimic --GPUID 0
+# python .\TrainBenchmark64.py --Config FACVAE_ART_30_Mimic --GPUID 0
 
 def str2bool(v):
     if isinstance(v, bool):

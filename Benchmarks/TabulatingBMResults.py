@@ -255,10 +255,7 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
     
     MIVals = pd.DataFrame(NewEval.SubResDic)
     if 'VAE' in ConfigName:
-        if 'Con' in ConfigName:
-            MIVals.columns = [r'(i) $I(V; \acute{Z} \mid Z)$', r'(ii) $I(V;\acute{\Theta} \mid \acute{Z})$', r'(iii) $I(S;\acute{\Theta} \mid \acute{Z})$']
-        else:
-            MIVals.columns = [r'(i) $I(V; \acute{Z} \mid Z)$']
+        MIVals.columns = [r'(i) $I(V; \acute{Z} \mid Z)$', r'(ii) $I(V;\acute{\Theta} \mid \acute{Z})$', r'(iii) $I(S;\acute{\Theta} \mid \acute{Z})$']
     else:
         MIVals.columns =[r'(i) $I(V;\acute{\Theta} \mid X)$', r'(ii) $I(S;\acute{\Theta} \mid X)$']
         
