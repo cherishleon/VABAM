@@ -13,7 +13,7 @@ from Utilities.Utilities import ReadYaml, SerializeObjects, DeserializeObjects, 
 
 
 # Refer to the execution code
-#python .\BatchMIEvaluation.py --Config EvalConfigMimic --GPUID 0
+#python .\BatchMIEvaluation.py --Config EvalConfigMimic --ConfigSpec FC_II_1_50_800_Mimic --GPUID 0
 
 
 
@@ -120,8 +120,8 @@ if __name__ == "__main__":
             print('SigType:', Params['SigType'])
             
             # Loading data
-            AnalData = np.load('./Data/ProcessedData/'+str(Params['TestDataSource'])+'Test'+str(Params['SigType'])+'.npy').astype('float64')
-            AnalData = np.random.permutation(AnalData)[:Params['EvalDataSize']]
+            AnalData = np.load('./Data/ProcessedData/'+str(Params['TestDataSource'])+'Test'+str(Params['SigType'])+'.npy').astype('float64')[:Params['EvalDataSize']]
+
 
         # Intermediate parameters 
         SigDim = AnalData.shape[1]
