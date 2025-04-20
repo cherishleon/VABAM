@@ -1,3 +1,4 @@
+from Utilities.AncillaryFunctions import compute_snr
 import tensorflow as tf
 import math
 import numpy as np
@@ -484,3 +485,31 @@ def DiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenBatchSize=1, GenS
             pbar.set_postfix({"Current Step": Step})
         pbar.close()
     return Sample.numpy()
+
+
+def determine_gen_steps_diffwave(signal, model, iter_count, gauss_sigma, snr_cutoff):
+    """
+    Determine the number of diffusion steps based on the SNR threshold for DiffWave.
+    
+    Parameters:
+        signal (np.array): Input signal (AnalData[0]).
+        model: The generator model with the diffusion method and alpha_bar.
+        iter_count (int): Total number of iterations to try.
+        gauss_sigma (float): Standard deviation for Gaussian noise.
+        snr_cutoff (float): SNR cutoff threshold.
+    
+    Returns:
+        tuple: (GenSteps, noise)
+            - GenSteps: Number of diffusion steps determined.
+            - noise: Noise used when SNR drops below the cutoff.
+    """
+    noise = None
+    GenSteps = None
+    for t in range(iter_count):
+        noise = tf.random.normal(tf.shape(signal), mean=0, stddev=gauss_sigma)
+        diffused_signal, _ = model.diffusion(signal, model.alpha_bar[t].item(), noise)
+        snr_val = np.mean(compute_snr(signal, diffused_signal))
+        if snr_val < snr_cutoff:
+            GenSteps = t - 1
+            break
+    return GenSteps, noise

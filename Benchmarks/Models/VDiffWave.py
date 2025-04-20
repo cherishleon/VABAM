@@ -1,3 +1,4 @@
+from Utilities.AncillaryFunctions import compute_snr
 import tensorflow as tf
 import numpy as np
 import math
@@ -682,3 +683,33 @@ def VDiffWAVE_Restoration(Model, DiffusedSignals, Condition, GenSteps=10, StepIn
         pbar.close()
     
     return Sample.numpy()  # Return as NumPy array
+
+
+def determine_gen_steps_vdwave(signal, model, iter_count, snr_cutoff):
+    """
+    Determine the number of generation steps for VDWave using sample_q_t_0.
+    
+    Parameters:
+        signal (np.array): Input signal (AnalData[0]).
+        model: The generator model with the sample_q_t_0 method.
+        iter_count (int): Total number of iterations.
+        snr_cutoff (float): SNR cutoff threshold.
+    
+    Returns:
+        tuple: (GenSteps, t_float, noise)
+            - GenSteps: Determined number of generation steps.
+            - t_float: Normalized time corresponding to GenSteps.
+            - noise: Noise obtained during sampling.
+    """
+    GenSteps = None
+    t_float = None
+    noise = None
+    for i in range(iter_count):
+        t_val = i / float(iter_count - 1)
+        diffused_signal, _, noise = model.sample_q_t_0(signal, t_val, None, gamma_t=None)
+        snr_val = np.mean(compute_snr(signal, diffused_signal[0]))
+        if snr_val < snr_cutoff:
+            GenSteps = i - 1
+            t_float = GenSteps / float(iter_count - 1)
+            break
+    return GenSteps, t_float, noise

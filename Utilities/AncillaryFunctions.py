@@ -12,6 +12,25 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 from Utilities.Utilities import GenBatches
 
 
+def compute_snr(signal, noisy_signal):
+    """Computes SNR in dB for a 2D batch signal."""
+    noise = noisy_signal - signal  # Extract noise
+    signal_power = np.mean(signal ** 2, axis=1)
+    noise_power = np.mean(noise ** 2, axis=1)
+    return 10 * np.log10(signal_power / noise_power)  # SNR in dB
+
+def scale_and_normalize(data, sigma, mean, min_x, max_x):
+    """
+    Scales and normalizes the input data.
+      """
+    # Apply scaling
+    scaled_data = data * sigma + mean
+    
+    # Apply normalization
+    normalized_data = (scaled_data - min_x) / (max_x - min_x)
+    
+    return normalized_data
+    
 # For the dimensional Kullback-Leibler Divergence of the Z distribution
 def LogNormalDensity(LatSamp, LatMean, LogSquaScale):
     Norm = tf.math.log(2. * tf.constant(np.pi))

@@ -13,7 +13,7 @@ from BatchBMMIEvaluation import LoadModelConfigs, LoadParams, SetVAEs, SetModels
 from Models.BenchmarkCaller64 import *
 from Models.VDiffWave64 import VDiffWAVE_Restoration
 from Models.DiffWave64 import DiffWAVE_Restoration
-from Utilities.AncillaryFunctions64 import Denorm, MAPECal, MSECal, mu_law_decode
+from Utilities.AncillaryFunctions64 import Denorm, MAPECal, MSECal, mu_law_decode, compute_snr, scale_and_normalize
 from Utilities.EvaluationMain import *
 
 
@@ -25,25 +25,6 @@ from Utilities.EvaluationMain import *
 def ExtractNj(Filename):
     Match = re.search(r'Nj(\d+)\_', Filename)
     return int(Match.group(1)) if Match else 'All'
-
-def compute_snr(signal, noisy_signal):
-    """Computes SNR in dB for a 2D batch signal."""
-    noise = noisy_signal - signal  # Extract noise
-    signal_power = np.mean(signal ** 2, axis=1)
-    noise_power = np.mean(noise ** 2, axis=1)
-    return 10 * np.log10(signal_power / noise_power)  # SNR in dB
-
-def scale_and_normalize(data, sigma, mean, min_x, max_x):
-    """
-    Scales and normalizes the input data.
-      """
-    # Apply scaling
-    scaled_data = data * sigma + mean
-    
-    # Apply normalization
-    normalized_data = (scaled_data - min_x) / (max_x - min_x)
-    
-    return normalized_data
     
 def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
 

@@ -172,8 +172,8 @@ def LoadParams (ModelConfigSet, EvalConfigSet): # Experiment setting
     Params = {}
     
     # Define parameter keys for both ModelConfigSet and EvalConfigSet
-    model_keys = ['ConfigName','DataSource', 'SigType', 'LatDim', 'NBlocks', 'FilterSize', 'SlidingSize', 'KernelSize', 'BatSize', 
-                  'Capacity_Z', 'Capacity_TC','Capacity_MI', 'Capacity_DTC', 'NumCl', 'LossType', 'SpecLosses', 'Channels', 'Iter', 
+    model_keys = ['ConfigName','DataSource', 'SigType', 'LatDim', 'NBlocks', 'FilterSize', 'SlidingSize', 'KernelSize', 'BatSize', 'Depth',
+                  'Capacity_Z', 'Capacity_TC','Capacity_MI', 'Capacity_DTC', 'NumCl', 'LossType', 'SpecLosses', 'Channels', 'Iter', 'CompSize',
                   'EmbeddingSize', 'EmbeddingFactor', 'EmbeddingLayers', 'EmbeddingProj', 'NumLayers', 'NumCycles', 'DilationRate', 'Lr', 
                   'Beta1', 'Beta2', 'Eps', 'GaussSigma', 'BetaSchedule', 'NoiseSchedule', 'GammaMin', 'GammaMax', 'DiscHiddenSize']
     eval_keys = ['ReparaStd', 'ReparaStdZj', 'MaxFreq', 'MinFreq', 'NMiniBat', 'SimSize', 'NSubGen', 

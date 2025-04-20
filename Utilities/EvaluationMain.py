@@ -11,22 +11,13 @@ from tensorflow.keras import Model
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-from Utilities.AncillaryFunctions import FFT_PSD, ProbPermutation, MeanKLD, Sampler, SamplingZ, SamplingZj, SamplingFCs
+from Utilities.AncillaryFunctions64 import FFT_PSD, ProbPermutation, MeanKLD, Sampler, SamplingZ, SamplingZj, SamplingFCs, compute_snr
 from Utilities.Utilities import CompResource
 
 import sys
 sys.path.append("..")
 from Benchmarks.Models.DiffWave64 import DiffWAVE_Restoration
 from Benchmarks.Models.VDiffWave64 import VDiffWAVE_Restoration
-
-def compute_snr(signal, noisy_signal):
-    """Computes SNR in dB for a 2D batch signal."""
-    noise = noisy_signal - signal  # Extract noise
-    signal_power = np.mean(signal ** 2, axis=1)
-    noise_power = np.mean(noise ** 2, axis=1)
-    return 10 * np.log10(signal_power / noise_power)  # SNR in dB
-
-
 
 
 def find_t(instance, Xbdr_tmp_copy, Iter, GenSteps, SNR_cutoff=10.0):
