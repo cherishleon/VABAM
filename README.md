@@ -95,7 +95,7 @@ You can download the processed dataset by running GitBash or Command Prompt and 
 
 ### 2.TrainModel.py 
 
-**MainModel Training Commands:**
+**VABAM Training Commands:**
 python TrainModel.py --Config [model_config] --GPUID [gpu_id]
 
 - **VABAM_ART_Mimic Examples:**
@@ -149,28 +149,28 @@ python TrainBenchmark.py --Config [model_config] --GPUID [gpu_id]
 <br><br>
 
 ### 3. BatchBMMIEvaluation.py
-**MainModel Training Commands:**
+**VABAM Training Commands:**
 python BatchMIEvaluation.py --Config [eval_config] --GPUID [gpu_id] --ConfigSpec [model_spec]
 
-- **MainModel Examples:**
+- **VABAM Examples:**
   - `python .\BatchMIEvaluation.py --Config EvalConfigMimic --GPUID 0`
-  - ...
   - `python .\BatchMIEvaluation.py --Config EvalConfigVitalDB --GPUID 0`
 <br>
 
 **Benchmark Model Training Commands:**
-python BatchBMMIEvaluation.py --Config [eval_config] --GPUID [gpu_id] --ConfigSpec [model_spec]
+python BatchBMMIEvaluation.py --Config [eval_config] --GPUID [gpu_id] --ConfigSpec [model_spec] 
 
 - **Benchmark Examples:**
   - `python .\BatchBMMIEvaluation.py --Config EvalConfigART_VAE --GPUID 0`
-  - `python .\BatchBMMIEvaluation.py --Config EvalConfigII_VAE --GPUID 0`
+  - ...
+  - `python .\BatchBMMIEvaluation.py --Config EvalConfigII_Other --GPUID 0`
 <br><br>
 
 ### 4. TabulatingResults.py
-**MainModel Training Commands:**
+**VABAM Training Commands:**
 python TabulatingResults.py -CP [config_path] --GPUID [gpu_id]
 
-- **MainModel Example:**
+- **VABAM Example:**
   - `python .\TabulatingResults.py -CP ./Config/ --GPUID 0`
 <br>
 
