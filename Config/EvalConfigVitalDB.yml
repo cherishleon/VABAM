@@ -30,4 +30,5 @@ Parameters:           # SigType_LatDim_CompSize
 ModelList: ['SKZFC_II_1_30_800_VitalDB', 'SKZFC_II_2_30_800_VitalDB', 'SKZFC_II_1_50_800_VitalDB', 
             'SKZFC_II_1_30_500_VitalDB', 'SKZFC_II_2_50_800_VitalDB', 'SKZFC_II_2_30_500_VitalDB',
             'SKZFC_ART_1_30_800_VitalDB', 'SKZFC_ART_2_30_800_VitalDB', 'SKZFC_ART_1_50_800_VitalDB', 
-            'SKZFC_ART_1_30_500_VitalDB', 'SKZFC_ART_2_50_800_VitalDB', 'SKZFC_ART_2_30_500_VitalDB']
+            'SKZFC_ART_1_30_500_VitalDB', 'SKZFC_ART_2_50_800_VitalDB', 'SKZFC_ART_2_30_500_VitalDB',
+            'SKZ_ART_1_50_800_VitalDB', 'SKZ_II_1_50_800_VitalDB', 'FC_ART_1_50_800_VitalDB', 'FC_II_1_50_800_VitalDB']

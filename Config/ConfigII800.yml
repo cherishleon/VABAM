@@ -15,7 +15,6 @@ Common_Param:
   BatSize: 3000 # Batch size for training.
   NEpochs: 5000 # Number of epochs.
   LossType: 'Default' # Loss type (Default or FACLosses).
-  SpecLosses: ['SKZ', 'FC'] # Specific loss nicknames.
 
   # The parameters below are related to dynamic loss control; refer to the RelLossWeight class in utility.py.
   # Loss Weights
@@ -41,6 +40,7 @@ Models:
     DataSource: Mimic3
     LatDim: 30
     Depth: 1
+    SpecLosses: ['SKZ', 'FC']
     MnWZ: 0.000001 # Min Z loss weight.
     MxWZ: 0.000001 # Max Z loss weight.
 
@@ -48,6 +48,7 @@ Models:
     DataSource: Mimic3
     LatDim: 50
     Depth: 1
+    SpecLosses: ['SKZ', 'FC']
     MnWZ: 0.000001
     MxWZ: 0.000001
 
@@ -55,6 +56,7 @@ Models:
     DataSource: Mimic3
     LatDim: 30
     Depth: 2
+    SpecLosses: ['SKZ', 'FC']
     MnWZ: 0.000001
     MxWZ: 0.000001
 
@@ -62,6 +64,7 @@ Models:
     DataSource: Mimic3
     LatDim: 50
     Depth: 2
+    SpecLosses: ['SKZ', 'FC']
     MnWZ: 0.000001
     MxWZ: 0.000001
 
@@ -69,6 +72,7 @@ Models:
     DataSource: VitalDB
     LatDim: 30
     Depth: 1
+    SpecLosses: ['SKZ', 'FC']
     MnWZ: 0.00001
     MxWZ: 0.00001
 
@@ -76,6 +80,7 @@ Models:
     DataSource: VitalDB
     LatDim: 50
     Depth: 1
+    SpecLosses: ['SKZ', 'FC']
     MnWZ: 0.00001
     MxWZ: 0.00001
 
@@ -83,6 +88,7 @@ Models:
     DataSource: VitalDB
     LatDim: 30
     Depth: 2
+    SpecLosses: ['SKZ', 'FC']
     MnWZ: 0.00001
     MxWZ: 0.00001
     
@@ -90,5 +96,40 @@ Models:
     DataSource: VitalDB
     LatDim: 50
     Depth: 2
+    SpecLosses: ['SKZ', 'FC']
+    MnWZ: 0.00001
+    MxWZ: 0.00001
+
+
+  # Ablation models
+  SKZ_II_1_50_800_Mimic:
+    DataSource: Mimic3 
+    LatDim: 50
+    Depth: 1
+    SpecLosses: ['SKZ'] # Specific loss nicknames.
+    MnWZ: 0.000001
+    MxWZ: 0.000001
+    
+  SKZ_II_1_50_800_VitalDB:
+    DataSource: VitalDB 
+    LatDim: 50
+    Depth: 1
+    SpecLosses: ['SKZ'] # Specific loss nicknames.
+    MnWZ: 0.00001
+    MxWZ: 0.00001
+    
+  FC_II_1_50_800_Mimic:
+    DataSource: Mimic3 
+    LatDim: 50
+    Depth: 1
+    SpecLosses: ['FC'] # Specific loss nicknames.
+    MnWZ: 0.000001
+    MxWZ: 0.000001
+
+  FC_II_1_50_800_VitalDB:
+    DataSource: VitalDB 
+    LatDim: 50
+    Depth: 1
+    SpecLosses: ['FC'] # Specific loss nicknames.
     MnWZ: 0.00001
     MxWZ: 0.00001

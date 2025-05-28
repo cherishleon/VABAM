@@ -28,6 +28,7 @@ Parameters:           # SigType_LatDim_CompSize
 ModelList: ['SKZFC_II_1_30_800_Mimic', 'SKZFC_II_2_30_800_Mimic', 'SKZFC_II_1_50_800_Mimic', 
             'SKZFC_II_1_30_500_Mimic', 'SKZFC_II_2_50_800_Mimic', 'SKZFC_II_2_30_500_Mimic',
             'SKZFC_ART_1_30_800_Mimic', 'SKZFC_ART_2_30_800_Mimic', 'SKZFC_ART_1_50_800_Mimic', 
-            'SKZFC_ART_1_30_500_Mimic', 'SKZFC_ART_2_50_800_Mimic', 'SKZFC_ART_2_30_500_Mimic']
+            'SKZFC_ART_1_30_500_Mimic', 'SKZFC_ART_2_50_800_Mimic', 'SKZFC_ART_2_30_500_Mimic',
+            'SKZ_ART_1_50_800_Mimic', 'SKZ_II_1_50_800_Mimic', 'FC_ART_1_50_800_Mimic', 'FC_II_1_50_800_Mimic']
     
     

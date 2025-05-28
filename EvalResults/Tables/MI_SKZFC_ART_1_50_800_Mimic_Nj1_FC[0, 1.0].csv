@@ -1,0 +1,601 @@
+Model,Metrics,Values
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2746329647304706
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.298356224651875
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4749145110063906
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.651857265920618
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.7910824119910025
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.8619525184140584
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4407701640016035
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.309853362274831
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.620279057764528
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3705569403308417
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6502772530490146
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.0923960852932613
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3042217266120963
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6155683165999535
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4253253133879142
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,4.10704245881065
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6870098831354556
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.7365847232814065
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6938386195499477
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.418880419865636
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6279744730009624
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.513390950452461
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.8181393113131743
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5946888933181764
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5462134815134867
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.8175435764638697
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4787766473842283
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.441647493699498
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.817751077239765
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.8511015741672634
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2619597046737847
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5436604858843324
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4522652399111546
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4821235688378196
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.7160590968174008
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.204775806397632
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.7081026068670635
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6603103692865737
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2556428999093407
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2760874117784113
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.865163825188804
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4923779148802523
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,4.0110952179066155
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4955271515284467
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.318903638266014
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.7831500625687564
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3639993110704434
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6878521083714624
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6041630367079813
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3734565514899155
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2637481298370683
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6213260760670174
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.699955981505894
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.350808471963695
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.68381556487451
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3536034725736976
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.119514400443845
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.139459180324579
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4924644855996134
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.693037210229018
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5148657363146434
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.797351445115723
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5024036035320854
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3209832328360886
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.628596207306089
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5557325254511905
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.7213150337793635
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.470655049593684
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.48972723779369
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.660961796595139
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3076019973798054
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.499061877657029
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.8771310403268044
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3451326812398725
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6946608180333533
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2956854048937587
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.798711602270262
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.791464632411313
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.8784249260969
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.1561676374547027
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.7344700589452327
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4334312288909024
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3911685162051164
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2848479200954923
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.856672904789177
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.443792560673438
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.586873057207061
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.90167092980654
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4759558281524203
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.1724423558888897
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.615617482157486
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.245081738677836
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.453477294991585
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4150447217709554
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.9846080995729456
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.603912135679774
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.408397453050955
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.9032572288450167
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3754225926926664
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4980781066156363
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.7557011973086754
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.508604245417796
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3353529961013155
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,4.071755533045105
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.615490101954293
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5262962210698885
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.113976891066599
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.462797248326968
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.338832438629355
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.1503523554672768
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.7074153300116794
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5782367355186238
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.7746468133141984
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3696390899612134
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.8808057146742683
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4006170527392214
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3899842175752894
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4790641636534434
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.8029430873401067
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.354464534963587
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.9315775209065524
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3382152053412057
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.9094654798090245
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.817695419561579
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2212681564584535
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.22205203569071
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.215943654401828
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3377800517265364
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.708201637703557
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2242749807011677
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6805794254923243
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.1979366938600897
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2286510132940935
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4184215836668144
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4869016441867156
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6346760437779744
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.318374849808987
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.515713840171551
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.398509397292524
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,4.112196553929283
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3912060152115306
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.606418405753051
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.1085858629261622
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2737948129102334
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5917708439168994
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2682804237904675
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.9124434306499642
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.703137925285136
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.595055731520292
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.412763012607162
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.430469765856734
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.682517477964971
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2405329355372947
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.711123723605203
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3945769658782354
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.384876913678604
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.726977116803967
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3639849411940554
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.425869033927569
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.8092516882409186
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5504994402122874
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.607180836021592
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5891274704727225
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.3770294543458523
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.315051321227202
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4730074958675794
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.7331510305991187
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,4.012987352289071
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6222545210641433
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.251203146338052
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4683483703641405
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.21448667633799
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.511511477362957
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2227820362613624
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6331091718393367
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.1404839352426457
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5169518037968186
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.056716971532365
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2525086837433217
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6169693592578436
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.664467057222093
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.6518207989984215
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2564251188801676
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.158500700539092
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4162967864486817
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,4.063024872074003
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.553245417399145
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4199857291061773
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.212289580571248
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2739690728281534
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.247413650423975
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.379670798672583
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.240393570347525
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.5719043769257968
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.212725161341427
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.811524457187722
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.4093881422516925
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.2626509062314324
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.584034094525097
+SKZFC_ART_1_50_800_Mimic,(i) $I(V; \acute{Z} \mid Z)$,3.915994932237408
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04594690448892971
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04458001941640574
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.037489002682129624
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03036507939416856
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07080062309605537
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.024197152043210473
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06570400699746702
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.051395281714355485
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07731545525343309
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05017816603491172
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05812273511623554
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.048952267378536446
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.035305973458475345
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04759780575620142
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.056697310974465266
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06922034036770552
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.09887169448669728
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04859604125634813
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.12659819945873294
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.08253613428842219
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05411289763400998
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07671086225510142
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05620071937341349
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.09413410618794849
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03126737002968493
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.037295901460712176
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.0677849692083635
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.044089463810874294
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.031759727351301045
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.12391500436106377
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.02495624326216152
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03193720767528941
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04906640262594155
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.13667160281110416
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.09701083961755858
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.0893993664832114
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.14319453597351534
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04813973764918853
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.17757896513395077
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07277142606550498
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03793291497822982
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.01980300008361832
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.08350764861779378
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.08053208464183409
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.08944164988798688
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06112364416183857
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.039960311146946245
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.050791802636301446
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.10023378018201988
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.061372438243047396
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.040854143512729146
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04811514992394675
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.10562224086902704
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.036000404756674056
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04734532742738651
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.09069167654416585
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06449656416490857
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05493984617211622
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07308732785247005
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07176501757322834
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05423980531178087
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.056421310207081056
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04706700603823852
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.11346951434263687
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05049029892110903
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03178789235647499
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04768479563667374
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05869592878143593
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.024766341913552994
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.029719637457912937
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03958682830614836
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07945007635596756
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07182658959436587
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07429492298710405
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.022811209317446676
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.038494127873709184
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.042347939775597074
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.02748010368843942
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03944849665985144
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06649090754926083
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.02536330491878897
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05853629696514335
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.024891061859197216
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06806739684626925
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07305247406889422
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03146926122604415
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.09519197403749535
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06925758174790682
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.023285649628012117
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07743499924272036
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05128192192088633
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07773943436542632
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.047352058771678134
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.014823810949008072
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.022125600684535104
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03185105312738402
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.030047419490376356
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.024774650584819792
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.046998661265482425
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.024236865180357312
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.08738434183751644
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.15241500821939385
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.02969422931626992
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.0244136089781246
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07826792880501929
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.09939702329322773
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.0870522239294448
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.032963387755922974
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04286440329984696
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.02339149046313102
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03529092284928006
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.031969992623996205
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.09640696131496673
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.028244707215800576
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05197655996099518
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04304949000574494
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07015412553939696
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07335955909159453
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.026958169191480398
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06965733651875537
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03925731766413879
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.08331227652553204
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.0711664552078996
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.029195784458375368
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04813316001485379
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03923745392299047
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04255245850865006
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.021364936501926838
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03401454234642445
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06400378188572675
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.043963986444470526
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.049704565863941355
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.024748758445260838
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03180018963653268
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.02822624094395684
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.060443835554605786
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06946159316784432
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04569481197514462
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03164222928343898
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.0349821209619316
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06631642490404191
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.023748011926319385
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05034781052981069
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03401620180257157
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.022560549972175478
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06145522814622128
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04023906771694047
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04345026900218736
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.027416382119533473
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05212931876428007
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.0698714230390962
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.033695451709405785
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03914667997734255
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07781277868108832
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03637897364503251
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.0720169780654066
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.02955687895603622
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03348460581559031
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.022404626319174472
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.12299332657633646
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03825738284437805
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.13921872563509766
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03178132328386583
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04223717740522022
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.029931926288980594
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03918796166692008
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.13666161891898582
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.049181348355825626
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03985536137778663
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.019838998274992362
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07417730858719782
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.02623623413451905
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.14138490187612446
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.14962390120198008
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.018392923900876306
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07079418254500887
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.050016243577703914
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.032736391642327
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.028750321788626763
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.1388838835973298
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03642056691345153
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.08985530380450342
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.05637192839627578
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.042896573589882664
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04548258805847434
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.02135895157977251
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07171608958990962
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.10766358283692971
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.08738326349871726
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.04880471289502083
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06986131439058886
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.12426369789201681
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.10161981696399117
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.07173649859974479
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06755813000639922
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03140918276200781
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.024965254809807172
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06123984242403242
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.06391900819087866
+SKZFC_ART_1_50_800_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.03962232215684527
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7804301714106384
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7932564228647275
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7960270771103427
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7839256704736745
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7755770044233451
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7976101717419634
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.780403430835501
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.786468615433777
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7932882665811447
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7818670121652189
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7795000937761533
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7998651668823861
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7871083263806891
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7917781939679064
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7832981508319381
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7749086406193654
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.793132462060288
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7901119547441791
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7943812758085644
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7707633648482697
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.799696289537706
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7762384092841554
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7938677579610396
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7980813494451366
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7886660840111723
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7752685009419464
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7810632273198356
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7968007545381188
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8094262750036997
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7893436741695926
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7871746707485601
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7833299586139151
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7938731950134392
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7835847491132966
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7827412745819977
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.795634366121421
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7879547260597184
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.783792208897427
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7836357982692125
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7793185806333188
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7903718691924685
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7951190713396497
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7978494379544113
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7895930417688484
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7635966933056736
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7865860549912966
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7984406443122803
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7866555860996701
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7928631218902402
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.783281926017094
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7945568480151225
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.780800837084469
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7861260359666599
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7830478681677578
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7957328385153403
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7787015784942767
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7882906035786859
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7879278504452155
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7892204408856334
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7756904020117217
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7890332149528448
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7982216293970731
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7750734725740409
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7915462237886021
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7924643669334422
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.784494016899138
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8177199969290102
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7869708787585458
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7818659886848652
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7741800421155266
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.792538239591943
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7853451946316956
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8007111943945489
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7959435887087156
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7929697935295533
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8014085141905043
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7889948746149652
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7915305747472593
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7924343217501726
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7777882503278961
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.782816185661292
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7888941512944512
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7931517743252369
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7909463242347935
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7960864970002577
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7856593126864465
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7966423875174524
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7963136506683673
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7881882256386646
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7994091972364669
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7857336977429987
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7829986050991233
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7884057536208485
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7698350577678654
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8068061926303384
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8029531983662587
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7924533564879127
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.79688194050622
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7674793204762489
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7928565516176098
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7818016590211141
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.781641903423581
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7836161512562342
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7926956182688448
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7885145613568241
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7921532783973967
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.771162020755876
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7875225941078496
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7848657224738455
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7966163383672448
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8085644679480278
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7847448909214543
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8026243669534958
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7780449686796851
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7775545276658703
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7852889849626058
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7986429711914783
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7982609532952952
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7775342024325851
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7909594145532134
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7992113682258528
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7999449033985375
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8052124389359707
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7902041362478264
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7840600112806306
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7900258472411518
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7935606782386376
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7947854748669768
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8080706690506791
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.794158099524703
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7863045662231524
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7850728408658185
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7970052655542219
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7686060824368702
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.783588432321583
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7908485069315908
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.795655658558159
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7817395348804547
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7978311014217929
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8040194044604055
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7992480467512665
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.785722627034411
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7791804227315892
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7890591653915849
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7870801405518207
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8013776527368737
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7943260973719158
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7882311781057527
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.788326471733009
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8027112109904277
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7950167718543518
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8029224967770999
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7901970654926064
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7959612620413966
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7970761988102568
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7782598383808409
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8126268199493812
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7790164206463501
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7929608469186518
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7759317980096972
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7861517319583952
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7730735554782373
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7813339939986709
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.772004122051234
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7955211994739397
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7844116258765996
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7898421882883278
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7897979425890364
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7889545444679348
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7866536909797681
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7905841100738449
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8012475772930223
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7959474029691309
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7969486710431753
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7991094762977717
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7759511764398368
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8002896521188838
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7893607775868514
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7935583775738982
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7971871904377095
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7896789201996732
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7906235109510036
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7829008850479888
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7869173993320464
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7872640945326381
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7987073342240848
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7813998143410505
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7691587099130713
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7901900993213437
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7913282095690594
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7797790883595768
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8059719518077009
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7947073253825906
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8009598478055441
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7969083419169547
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8073985222050233
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7981678904838561
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7932037980032295
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.7805973626709698
+SKZFC_ART_1_50_800_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.8068253813014661

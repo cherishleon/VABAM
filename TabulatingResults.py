@@ -215,7 +215,7 @@ if __name__ == "__main__":
     print(FileList)
     
     
-    for Filename in FileList:
+    for Filename in (FileList):
         # Extracts the string between 'Obj_' and '_Nj'
         ConfigName =re.search(r'Obj_(.*?)_Nj', Filename).group(1)  
         ConfigPath = [EvalConfig for EvalConfig in EvalConfigList if  ConfigName.split('_')[-1] in EvalConfig][0]
