@@ -148,22 +148,22 @@ python TrainBenchmark.py --Config [model_config] --GPUID [gpu_id]
   - `python TrainBenchmark.py --Config TCVAE_II_30_VitalDB --GPUID 0`
 <br><br>
 
-### 3. SubProcMIEVAL.py
+### 3. BatchBMMIEvaluation.py
 **MainModel Training Commands:**
-python SubProcMIEVAL.py --Config [eval_config] --GPUID [gpu_id] --ConfigSpec [model_spec] --SpecNZs [nz_values] --SpecFCs [fc_values]
+python BatchMIEvaluation.py --Config [eval_config] --GPUID [gpu_id] --ConfigSpec [model_spec]
 
 - **MainModel Examples:**
-  - `python .\SubProcMIEVAL.py --Config EvalConfigART800 --GPUID 4`
+  - `python .\BatchMIEvaluation.py --Config EvalConfigMimic --GPUID 0`
   - ...
-  - `python .\SubProcMIEVAL.py --Config EvalConfigII500 --GPUID 4`
+  - `python .\BatchMIEvaluation.py --Config EvalConfigVitalDB --GPUID 0`
 <br>
 
 **Benchmark Model Training Commands:**
-python SubProcMIEVAL.py --Config [eval_config] --GPUID [gpu_id]
+python BatchBMMIEvaluation.py --Config [eval_config] --GPUID [gpu_id] --ConfigSpec [model_spec]
 
 - **Benchmark Examples:**
-  - `python .\SubProcMIEVAL.py --Config EvalConfigART --GPUID 4`
-  - `python .\SubProcMIEVAL.py --Config EvalConfigII --GPUID 4`
+  - `python .\BatchBMMIEvaluation.py --Config EvalConfigART_VAE --GPUID 0`
+  - `python .\BatchBMMIEvaluation.py --Config EvalConfigII_VAE --GPUID 0`
 <br><br>
 
 ### 4. TabulatingResults.py
@@ -178,4 +178,4 @@ python TabulatingResults.py -CP [config_path] --GPUID [gpu_id]
 python TabulatingBMResults.py -CP [config_path] --GPUID [gpu_id]
 
 - **Benchmark Example:**
-  - `python .\TabulatingBMResults.py -CP ./Config/ --GPUID 4`
+  - `python .\TabulatingBMResults.py -CP ./Config/ --GPUID 0`
