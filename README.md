@@ -29,7 +29,7 @@ Figure 1 shows the results of synthesizing 100 signals from a single original Ar
 - **Feature Extractor** $\boldsymbol{g_{x}(\cdot)}$ applies cascading filters to the raw signal $y$, producing four amplitude-modulated subsets $x \in \\{x_{2^{\lambda}-1}, x_{2^{\lambda}}, \dots, x_{2^{\lambda+1}-3}, x_{2^{\lambda+1}-2}\\}$ that guide the Feature Generator.
 
 - **Encoder** $\boldsymbol{g_{e}(\cdot)}$ learns parameters for the latent variable $Z$ and cutoff frequency $\Theta$, under two assumptions:
-  - $\theta_k \sim \mathcal{U}(0, 1)$ for $k = 1, \ldots, K$, where $K = \sum_{i=1}^{\lambda} 2^i$ denotes the total number of cascading filters, increasing with depth $\zeta$, approximated by a Bernoulli distribution.
+  - $\theta_k \sim \mathcal{U}(0, 1)$ for $k = 1, \ldots, K$, where $K = \sum_{i=1}^{\lambda} 2^i$ denotes the total number of cascading filters, increasing with depth $\zeta$, approximated by Bernoulli distributions.
   - $z_{j} \sim \mathcal{N}(\mu_{z_j}, \sigma_{z_j}^2)$ for each dimension $j$, with $j \in \{1, 2, \ldots, J\}$, where $J$ is a hyperparameter defining dimension count.
 
 - **Sampler** $\boldsymbol{g_{z}(\cdot)}$ and $\boldsymbol{g_{\theta}(\cdot)}$ utilizes the reparameterization trick for backpropagation, allowing sampling of $z_{j}$ and $\theta_{k}$ for gradient flow.
