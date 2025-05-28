@@ -82,3 +82,100 @@ For visualization and table generation:
 - Configuration files for the main and benchmark models are located in the [Config](https://github.com/JunetaeKim/VABAM/tree/main/Config) and [/Benchmarks
 /Config/](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks/Config) folders, respectively.
 <br><br>
+
+
+
+## Scripts Executed for Our Research
+All execution code lists are available in the [ExecutionProcedure.txt](https://github.com/JunetaeKim/VABAM/blob/main/ExecutionProcedure.txt) file; please refer to this file for detailed information.
+
+### 1.Dataset
+You can download the processed dataset by running GitBash or Command Prompt and using wget, or you can directly download it via the URL.
+
+**Download link:** will be updated
+
+### 2.TrainModel.py 
+
+**MainModel Training Commands:**
+python TrainModel.py --Config [model_config] --GPUID [gpu_id]
+
+- **VABAM_ART_Mimic Examples:**
+  - 'python TrainModel.py --Config FC_ART_1_50_800_Mimic --GPUID 0'
+  - 'python TrainModel.py --Config SKZ_ART_1_50_800_Mimic --GPUID 0'
+  - 'python TrainModel.py --Config SKZFC_ART_1_30_500_Mimic --GPUID 0'
+  - 'python TrainModel.py --Config SKZFC_ART_1_30_800_Mimic --GPUID 0'
+  - 'python TrainModel.py --Config SKZFC_ART_1_50_800_Mimic --GPUID 0'
+  - 'python TrainModel.py --Config SKZFC_ART_2_30_500_Mimic --GPUID 0'
+  - 'python TrainModel.py --Config SKZFC_ART_2_30_800_Mimic --GPUID 0'
+  - 'python TrainModel.py --Config SKZFC_ART_2_50_800_Mimic --GPUID 0'
+
+- **VABAM_ART_VitalDB:**
+  - `python TrainModel.py --Config FC_ART_1_50_800_VitalDB --GPUID 0`
+  - ...
+  - `python TrainModel.py --Config SKZFC_ART_2_50_800_VitalDB --GPUID 0`
+
+- **VABAM_II_Mimic:**
+  - `python TrainModel.py --Config FC_II_1_50_800_Mimic --GPUID 0`
+  - ...
+  - `python TrainModel.py --Config SKZFC_II_2_50_800_Mimic --GPUID 0`
+
+- **VABAM_II_VitalDB:**
+  - `python TrainModel.py --Config FC_II_1_50_800_VitalDB --GPUID 0`
+  - ...
+  - `python TrainModel.py --Config SKZFC_II_2_50_800_VitalDB --GPUID 0`
+<br>
+
+**Benchmark Model Training Commands:**
+python TrainBenchmark.py --Config [model_config] --GPUID [gpu_id]
+
+- **Benchmark_ART_Mimic Examples:**
+  - `python TrainBenchmark.py --Config Wavenet_ART_Mimic --GPUID 0`
+  - ...
+  - `python TrainBenchmark.py --Config TCVAE_ART_30_Mimic --GPUID 0`
+
+- **Benchmark_ART_VitalDB Examples:**
+  - `python TrainBenchmark.py --Config Wavenet_ART_VitalDB --GPUID 0`
+  - ...
+  - `python TrainBenchmark.py --Config TCVAE_ART_30_VitalDB --GPUID 0`
+ 
+- **Benchmark_II_Mimic Examples:**
+  - `python TrainBenchmark.py --Config Wavenet_II_Mimic --GPUID 0`
+  - ...
+  - `python TrainBenchmark.py --Config TCVAE_II_30_Mimic --GPUID 0`
+ 
+- **Benchmark_ART_VitalDB Examples:**
+  - `python TrainBenchmark.py --Config Wavenet_II_VitalDB --GPUID 0`
+  - ...
+  - `python TrainBenchmark.py --Config TCVAE_II_30_VitalDB --GPUID 0`
+<br><br>
+
+### 3. SubProcMIEVAL.py
+**MainModel Training Commands:**
+python SubProcMIEVAL.py --Config [eval_config] --GPUID [gpu_id] --ConfigSpec [model_spec] --SpecNZs [nz_values] --SpecFCs [fc_values]
+
+- **MainModel Examples:**
+  - `python .\SubProcMIEVAL.py --Config EvalConfigART800 --GPUID 4`
+  - ...
+  - `python .\SubProcMIEVAL.py --Config EvalConfigII500 --GPUID 4`
+<br>
+
+**Benchmark Model Training Commands:**
+python SubProcMIEVAL.py --Config [eval_config] --GPUID [gpu_id]
+
+- **Benchmark Examples:**
+  - `python .\SubProcMIEVAL.py --Config EvalConfigART --GPUID 4`
+  - `python .\SubProcMIEVAL.py --Config EvalConfigII --GPUID 4`
+<br><br>
+
+### 4. TabulatingResults.py
+**MainModel Training Commands:**
+python TabulatingResults.py -CP [config_path] --GPUID [gpu_id]
+
+- **MainModel Example:**
+  - `python .\TabulatingResults.py -CP ./Config/ --GPUID 0`
+<br>
+
+**Benchmark Model Training Commands:**
+python TabulatingBMResults.py -CP [config_path] --GPUID [gpu_id]
+
+- **Benchmark Example:**
+  - `python .\TabulatingBMResults.py -CP ./Config/ --GPUID 4`
