@@ -62,7 +62,7 @@ To start the training process, use the following scripts:
 - `TrainBenchmark.py` or `TrainBenchmark64.py`: Scripts for training the benchmark models (32-bit or 64-bit). Refer to the [Benchmarks](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks) folder for details.
 
 
-### For JMI-Based Metric Computation
+### For CMI-Based Metric Computation
 To compute the CMI-based metrics, follow these steps:
 - `BatchMIEvaluation.py` (with `BatchMIEvaluation.py`): Script for computing metrics.
 - `BatchBMMIEvaluation.py` (with `BatchBMMIEvaluation.py`): Script for computing benchmark model metrics. Refer to the [Benchmarks](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks) folder.
