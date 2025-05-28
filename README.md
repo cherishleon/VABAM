@@ -22,4 +22,34 @@ Figure 1 shows the results of synthesizing 100 signals from a single original Ar
   2. **Morphological Preservation under Conditional Inputs :** Assessing the model’s ability to maintain waveform structure while adjusting amplitude.
   3. **Amplitude Modulation Controllability within Fixed Morphologies:** Measuring the model's capability to modulate signal amplitude accurately in accordance with the intended input.
 
- 
+
+ ## A Brief Introduction to VABAM
+-VABAM is structured around five key components: Feature Extractor, Encoder, Sampler, Feature Generator, and Signal Reconstructor (Figure 4). For detailed information, please refer to our paper.
+
+- **Feature Extractor** $\boldsymbol{g_{x}(\cdot)}$ applies cascading filters to the raw signal $y$, producing four amplitude-modulated subsets $x \in \{x_{HH}, x_{HL}, x_{LH}, x_{LL}\}$ that guide the Feature Generator.
+
+- **Encoder** $\boldsymbol{g_{e}(\cdot)}$ learns parameters for the latent variable $Z$ and cutoff frequency $\Theta$, under two assumptions:
+  - $\theta_k \sim \mathcal{U}(0, 1)$ for $k = 1, \ldots, 6$, indicating six instances in the model, approximated by a Bernoulli distribution.
+  - $z_{j} \sim \mathcal{N}(\mu_{z_j}, \sigma_{z_j}^2)$ for each dimension $j$, with $j \in \{1, 2, \ldots, J\}$, where $J$ is a hyperparameter defining dimension count.
+
+- **Sampler** $\boldsymbol{g_{z}(\cdot)}$ and $\boldsymbol{g_{\theta}(\cdot)}$ utilizes the reparameterization trick for backpropagation, allowing sampling of $z_{j}$ and $\theta_{k}$ for gradient flow.
+
+- **Feature Generator** $\boldsymbol{g_{x'}(\cdot)}$ generates four principal feature signals for the Signal Reconstructor, aligning with the amplitude-modulated subsets from the Feature Extractor.
+
+- **Signal Reconstructor** $\boldsymbol{g_{y}(\cdot)}$ reconstructs coherent signals from the feature subsets, keeping the original signal's main aspects and adding latent elements influenced by $z_{j}$ and $\theta_{k}$.
+
+<p align="center">
+  <img src="https://github.com/JunetaeKim/VABAM/blob/main/Figures/Training%20and%20Generating%20Framework.png" width="60%" alt="Intuitive Illustration of VABAM">
+  <br>
+  <em> Figure 4: Intuitive Illustration of VABAM </em>  
+</p><br><br>
+
+## Library Dependencies and Test Environment Information
+VABAM's training and its post-evaluation were conducted and tested with the following libraries and their respective versions:
+- Python == 3.8.16 , 3.9.18
+- numpy == 1.19.5 , 1.26.0
+- pandas == 1.1.4 , 2.1.1
+- tensorflow == 2.4.0 , 2.10.0
+- gpu == rtx4080 , rtx4090
+<br><br>
+
