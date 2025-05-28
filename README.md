@@ -99,14 +99,14 @@ You can download the processed dataset by running GitBash or Command Prompt and 
 python TrainModel.py --Config [model_config] --GPUID [gpu_id]
 
 - **VABAM_ART_Mimic Examples:**
-  - python TrainModel.py --Config FC_ART_1_50_800_Mimic --GPUID 0
-  - python TrainModel.py --Config SKZ_ART_1_50_800_Mimic --GPUID 0
-  - python TrainModel.py --Config SKZFC_ART_1_30_500_Mimic --GPUID 0
-  - python TrainModel.py --Config SKZFC_ART_1_30_800_Mimic --GPUID 0
-  - python TrainModel.py --Config SKZFC_ART_1_50_800_Mimic --GPUID 0
-  - python TrainModel.py --Config SKZFC_ART_2_30_500_Mimic --GPUID 0
-  - python TrainModel.py --Config SKZFC_ART_2_30_800_Mimic --GPUID 0
-  - python TrainModel.py --Config SKZFC_ART_2_50_800_Mimic --GPUID 0
+  - `python TrainModel.py --Config FC_ART_1_50_800_Mimic --GPUID 0`
+  - `python TrainModel.py --Config SKZ_ART_1_50_800_Mimic --GPUID 0`
+  - `python TrainModel.py --Config SKZFC_ART_1_30_500_Mimic --GPUID 0`
+  - `python TrainModel.py --Config SKZFC_ART_1_30_800_Mimic --GPUID 0`
+  - `python TrainModel.py --Config SKZFC_ART_1_50_800_Mimic --GPUID 0`
+  - `python TrainModel.py --Config SKZFC_ART_2_30_500_Mimic --GPUID 0`
+  - `python TrainModel.py --Config SKZFC_ART_2_30_800_Mimic --GPUID 0`
+  - `python TrainModel.py --Config SKZFC_ART_2_50_800_Mimic --GPUID 0`
 
 - **VABAM_ART_VitalDB:**
   - `python TrainModel.py --Config FC_ART_1_50_800_VitalDB --GPUID 0`
