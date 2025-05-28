@@ -59,17 +59,26 @@ VABAM's training and its post-evaluation were conducted and tested with the foll
 ### For Training
 To start the training process, use the following scripts:
 - `TrainModel.py` or `TrainModel64.py`: Scripts for training the main model (32-bit or 64-bit).
-- `TrainBenchmark.py` or `TrainBenchmark64.py`: Scripts for training the benchmark models (32-bit or 64-bit).  
-  Refer to the [Benchmarks](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks) folder for details.
+- `TrainBenchmark.py` or `TrainBenchmark64.py`: Scripts for training the benchmark models (32-bit or 64-bit). Refer to the [Benchmarks](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks) folder for details.
 
-### For JMI-Based Metric Computation
+
+### For CMI-Based Metric Computation
 To compute the CMI-based metrics, follow these steps:
 - `BatchMIEvaluation.py` (with `BatchMIEvaluation.py`): Script for computing metrics.
 - `BatchBMMIEvaluation.py` (with `BatchBMMIEvaluation.py`): Script for computing benchmark model metrics. Refer to the [Benchmarks](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks) folder.
 - `TabulatingResults.py`: Script for tabulating results from the main model evaluation.
 - `TabulatingBMResults.py`: Script for tabulating results from the benchmark model evaluation. Refer to the [Benchmarks](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks) folder.
+
 For visualization and table generation:
-- `VisualizationSig.ipynb`: Jupyter notebook for signal visualization.
-- `VisualizationMetrics.ipynb`: Jupyter notebook for metrics visualization.
-- `Tables.ipynb`: Jupyter notebook for generating tables of results.
-- Please note that the visualization code heavily relies on GPT-4.0 and was not primarily written with high readability in mind. This is an ongoing coding file, so the code may contain redundancies and is subject to continuous updates.
+- `VisualizationSig.ipynb`: Jupyter Notebook for signal visualization.
+- `VisualizationMetrics.ipynb`: Jupyter Notebook for visualizing evaluation metrics.
+- `VisualizationGendist.ipynb`: Jupyter Notebook for spectral responsiveness and distribution visualization.
+- `TablesVis.ipynb`: Converts pandas tables into LaTeX code for presentation.
+- `Tables.ipynb`: Jupyter Notebook for generating summary tables of experimental results.
+
+> **Note:** The visualization code was developed with GPT-4.0 assistance and prioritizes functional output over readability. Some redundancy may be present, and further updates are expected.
+
+### Configurations
+- Configuration files for the main and benchmark models are located in the [Config](https://github.com/JunetaeKim/VABAM/tree/main/Config) and [/Benchmarks
+/Config/](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks/Config) folders, respectively.
+<br><br>
