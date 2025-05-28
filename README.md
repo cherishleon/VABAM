@@ -39,7 +39,8 @@ Figure 1 shows the results of synthesizing 100 signals from a single original Ar
 - **Signal Reconstructor** $\boldsymbol{g_{y}(\cdot)}$ reconstructs coherent signals from the feature subsets, keeping the original signal's main aspects and adding latent elements influenced by $z_{j}$ and $\theta_{k}$.
 
 <p align="center">
-  <img src="https://github.com/JunetaeKim/VABAM/blob/main/Figures/Training%20and%20Generating%20Framework.png" width="60%" alt="Intuitive Illustration of VABAM">
+  <img src="https://github.com/JunetaeKim/VABAM/blob/main/Figures/Training framework and Generative process.png" width="60%" alt="Intuitive Illustration of VABAM">
+  
   <br>
   <em> Figure 4: Intuitive Illustration of VABAM </em>  
 </p><br><br>
