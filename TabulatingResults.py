@@ -150,7 +150,6 @@ if __name__ == "__main__":
     
     # Add Experiment-related parameters
     parser.add_argument('--ConfigPath', '-CP', type=str, required=True, help='Set the path of the configuration to load (the name of the YAML file).')
-    parser.add_argument('--ConfigSpec', nargs='+', type=str, required=False, default=None, help='Set the name of the specific configuration to load (the name of the model config in the YAML file).')
     parser.add_argument('--MetricCut', '-MC',type=int, required=False, default=1, help='The threshold for Zs and ancillary data where the metric value is below SelMetricCut (default: 1)')
     parser.add_argument('--BatSize', '-BS',type=int, required=False, default=3000, help='The batch size during prediction.')
     parser.add_argument('--GPUID', type=int, required=False, default=1)
@@ -165,7 +164,6 @@ if __name__ == "__main__":
     GPU_ID = args.GPUID
     SpecNZs = args.SpecNZs
     SpecFCs = args.SpecFCs
-    ConfigSpec = args.ConfigSpec
 
     
     ## GPU selection
