@@ -51,6 +51,6 @@ VABAM's training and its post-evaluation were conducted and tested with the foll
 - numpy == 1.19.5 , 1.26.0
 - pandas == 1.1.4 , 2.1.1
 - tensorflow == 2.4.0 , 2.10.0
-- gpu == rtx4080 , rtx4090
+- gpu == rtx3090TI , rtx4080 , rtx4090
 <br><br>
 
