@@ -68,8 +68,14 @@ To compute the CMI-based metrics, follow these steps:
 - `BatchBMMIEvaluation.py` (with `BatchBMMIEvaluation.py`): Script for computing benchmark model metrics. Refer to the [Benchmarks](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks) folder.
 - `TabulatingResults.py`: Script for tabulating results from the main model evaluation.
 - `TabulatingBMResults.py`: Script for tabulating results from the benchmark model evaluation. Refer to the [Benchmarks](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks) folder.
+
 For visualization and table generation:
-- `VisualizationSig.ipynb`: Jupyter notebook for signal visualization.
-- `VisualizationMetrics.ipynb`: Jupyter notebook for metrics visualization.
-- `Tables.ipynb`: Jupyter notebook for generating tables of results.
-- Please note that the visualization code heavily relies on GPT-4.0 and was not primarily written with high readability in mind. This is an ongoing coding file, so the code may contain redundancies and is subject to continuous updates.
+- `VisualizationSig.ipynb`: Jupyter Notebook for signal visualization.
+- `VisualizationMetrics.ipynb`: Jupyter Notebook for visualizing evaluation metrics.
+- `VisualizationGendist.ipynb`: Jupyter Notebook for spectral responsiveness and distribution visualization.
+- `TablesVis.ipynb`: Converts pandas tables into LaTeX code for presentation.
+- `Tables.ipynb`: Jupyter Notebook for generating summary tables of experimental results.
+
+> **Note:** The visualization code was developed with GPT-4.0 assistance and prioritizes functional output over readability. Some redundancy may be present, and further updates are expected.
+
+
