@@ -59,8 +59,8 @@ VABAM's training and its post-evaluation were conducted and tested with the foll
 ### For Training
 To start the training process, use the following scripts:
 - `TrainModel.py` or `TrainModel64.py`: Scripts for training the main model (32-bit or 64-bit).
-- `TrainBenchmark.py` or `TrainBenchmark64.py`: Scripts for training the benchmark models (32-bit or 64-bit).  
-  Refer to the [Benchmarks](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks) folder for details.
+- `TrainBenchmark.py` or `TrainBenchmark64.py`: Scripts for training the benchmark models (32-bit or 64-bit). Refer to the [Benchmarks](https://github.com/JunetaeKim/VABAM/tree/main/Benchmarks) folder for details.
+
 
 ### For JMI-Based Metric Computation
 To compute the CMI-based metrics, follow these steps:
