@@ -26,7 +26,7 @@ Figure 1 shows the results of synthesizing 100 signals from a single original Ar
  ## A Brief Introduction to VABAM
 -VABAM is structured around five key components: Feature Extractor, Encoder, Sampler, Feature Generator, and Signal Reconstructor (Figure 4). For detailed information, please refer to our paper.
 
-- **Feature Extractor** $\boldsymbol{g_{x}(\cdot)}$ applies cascading filters to the raw signal $y$, producing four amplitude-modulated subsets \( x \in \{x_{2^{\lambda}-1}, x_{2^{\lambda}}, \dots, x_{2^{\lambda+1}-3}, x_{2^{\lambda+1}-2}\} \) that guide the Feature Generator.
+- **Feature Extractor** $\boldsymbol{g_{x}(\cdot)}$ applies cascading filters to the raw signal $y$, producing four amplitude-modulated subsets  that guide the Feature Generator.
 
 - **Encoder** $\boldsymbol{g_{e}(\cdot)}$ learns parameters for the latent variable $Z$ and cutoff frequency $\Theta$, under two assumptions:
   - $\theta_k \sim \mathcal{U}(0, 1)$ for $k = 1, \ldots, 6$, indicating six instances in the model, approximated by a Bernoulli distribution.
