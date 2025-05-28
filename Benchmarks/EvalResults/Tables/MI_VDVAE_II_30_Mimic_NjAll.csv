@@ -1,0 +1,601 @@
+Model,Metrics,Values
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1159334498094847
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.15441390915082231
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14224002183877565
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.15336958929562383
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12277705667836818
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13781672622828328
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1242778563341687
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10976112124235239
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12048947381850765
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13475541344661757
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11009944922536467
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.15289334363579032
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1059673953869914
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13118658800979496
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.15540068086158776
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1374592981305214
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13895895011273843
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1376067524275161
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13190242266580532
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11711610561574202
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11999308653703085
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11539644863706552
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1209937253021696
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10290944595654389
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1313892799714108
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14857222467650208
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13283095450344237
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1070130453917642
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12728587044566786
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11726364330301481
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10873505790431619
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.15988922907548964
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11509745628144477
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12779886644037142
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14384326292634322
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14346219130618448
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14786388737532102
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13501670772871632
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12335648102361044
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11839492114092252
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11033528044086252
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12432087380530993
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13150971576525958
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10395320100832338
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12044491740349533
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12121309106252053
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13720569225031273
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14925522376270378
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11912270510818379
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12469236425981137
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13470982941737397
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12148370576107397
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14436335022868063
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12185576791237654
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.18535181404460616
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10726487340258357
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12850669996406264
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10805207857693101
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12057884355602284
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13529193639070522
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1420802240192458
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.16127462600249262
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14599109015303033
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1344106894457167
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.149416293286271
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10684121150262184
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.114192238302789
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12787398696026928
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12165214120828599
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14216708231032477
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.15673864751344893
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12140522066666934
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1488638412214709
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14050900586430382
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12019829859435154
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1408148535733152
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14517092848622629
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10809915515051019
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.15571295537441457
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11667096328614977
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.15593365364252848
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1338762783880581
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12044036452849766
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12773265702040892
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12429525901235823
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11742546029009845
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11182451753963563
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13474305121335486
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13180085110511916
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10954303031834907
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13613851645448155
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12192960498987442
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10805205909306695
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12297508369102594
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14884518606891614
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12339322139058011
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1421635109800956
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1645045279050576
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12235437427035364
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11816782225834715
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10999211718292312
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13344999637531704
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14877934656744718
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14373633143475592
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10602284162957462
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13015935201288506
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14934411271666603
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1450627501691929
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1310840492392959
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12087242515958105
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13287817374339375
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14050405947743927
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11627238508271251
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12005270069998007
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13458243387496152
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11754018523772776
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12296591430878548
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11798695726234945
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11562421849922033
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12777184864552826
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11021321775293759
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14250475134560225
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12939668153111789
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12718404098371752
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12799601251493
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10016640439440273
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14676780610040727
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14243084144902246
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11208024306432858
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11176911188640135
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.15394765099002541
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14631550136136343
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10980182121692629
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12271005670495497
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14681008482214405
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13257223474671082
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14080007137634143
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12791111410005715
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14923997872573486
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1175110585373653
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13029267969053074
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10800917027571984
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14603281509006888
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1350424838357988
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12264092752450273
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13059186201496262
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12485889493438532
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12759710633038893
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12884383173839334
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14639904298210749
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1167256489090571
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1290450465576882
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10184753253497628
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11511352438605339
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1259425889501164
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12087102482845376
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.16154890804868557
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11732141171688401
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13145399315203302
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13036123208197706
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1297801112002179
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11013174891793508
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13852177781549188
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.15992928721984978
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1390708825289225
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11872852761370697
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1820196742065957
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12454864677769562
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14865930778249722
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11842884093345615
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12094335430173736
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11493789145334073
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13584772084138513
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13525579717735117
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12932005287316048
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.10930263291639247
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1252397794543912
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13745136258526805
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.09271388663043474
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.16542571943134005
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11811856036732267
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11875051114270542
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11877466734178033
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.15624654550447356
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.123181140552859
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14363815345843794
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12994993218640175
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12869241222329955
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13293641795941682
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12338467332748149
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13588057335360101
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12174328667854165
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.14292034710863408
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11590665834899021
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13116172907892534
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.13733504012025302
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.11926267294343708
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12876004956467568
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.1368629940785106
+VDVAE_II_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.12000737819361142
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.20535661390781
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2370640734664997
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1773814465585353
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2484190026652846
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.237996067060945
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2055445933820423
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2120713342404779
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2357347645388932
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2024979543212202
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.258724058893096
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1730678537380514
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2317422758220264
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2148271282398593
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2364431940950384
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2061772394709167
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2143689992176694
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2588208425352436
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1429636161901207
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2182670025272995
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.263726847106452
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2417436064854324
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2377658784009626
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1760447185099965
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3348809701501654
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2228153442715104
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1559138497965842
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2375194539523122
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.250953989869526
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.203413097598383
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.206831416212842
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1221695493762947
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2236172063658213
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2006199717887565
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2176365524566588
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2704163707329241
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.269112198979649
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2180653396533296
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3197406913232017
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3038133104401521
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2672593728784975
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.233888728859555
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2437312942376415
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.193515093459506
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1808731949021178
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1992793677177647
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3287532405160467
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1759713145700494
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2164700969611708
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2511165142277476
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2305862541097117
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2177817875173023
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2367977622732382
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2483471314899215
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2441876386439943
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.22881662908865
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1520040411134667
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2851943655255353
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2516724899557863
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2344288943015038
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2342425716467187
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2577096932555438
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1863661106423764
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2060160308660868
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2547220657391929
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2700251921722125
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.245905489103452
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2563305907199065
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2161753580137458
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2862736586814643
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2480201706750222
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2272521616791179
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2421100091401382
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1483694857076154
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2094122214015244
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1498075936588104
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2202403454606532
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2243175417384362
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2383201466120688
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2365266525214644
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.19406627054131
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2366915143562454
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2033716011663602
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.116577449864095
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2595206373035672
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2889895256621156
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1649344579814707
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2064211551511104
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.252306077849147
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.21401275323069
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1950395944989645
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3011346257356207
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2386939109035726
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1808872626355282
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3111100885518878
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1856623902794121
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2926039896394874
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.228458032386187
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2180682778391718
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1822510767814896
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.212629093998339
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.179874654414881
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2515647412989899
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1563096658808552
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2583350821244954
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2929219915056434
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2239546104928598
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.192060426525921
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2268723109581474
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.267713466352214
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1990017993671138
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.160527134242059
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1799579040697963
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1723176329576213
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3205726252277143
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2302644694354965
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2437061175996103
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2354730070394029
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2667362271520448
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2076414565933362
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1219052897330126
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2831528570118371
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2161912979576128
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.177578457785237
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2065621190977975
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1930152273317274
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.223300613782714
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2600827169602404
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2751608949721358
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2476859276457997
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2036809785217362
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.152450501007585
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2054625208408725
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2351359120553118
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2718700919651065
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1722550983335083
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2249349407445542
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.194944963326254
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1113414824033443
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2621677210229243
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.255324246224083
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.18648754605906
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2763975053987338
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2271933759439246
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.291841447155955
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.255624318397397
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2142767842103284
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3397853247516591
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2760947659424453
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1636202405689575
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1667160531879508
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2547945708204624
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.232617462572363
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2536075995678293
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1985983533117257
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2966298312419575
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3010933676544907
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2251897071622162
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.316932149696824
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2130477568450961
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1846444722891203
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2334265142859475
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.230982483087892
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.233310727627355
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1733231962312554
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.244647466692343
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.201634970058545
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2572127824182673
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2896320245072195
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2091171821427995
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1506513626319863
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2112204900507373
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.294827459672432
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0881408429800756
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3164215843744598
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2324741129125985
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.27095155434142
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1577283343730371
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1498935358564732
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1402907960665716
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2294843766854568
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2330444146380355
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.21426139711288
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1337703992641621
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2405660019845854
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.170352634483582
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.292042127155729
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2422870123414202
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.193508224303237
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1663608359487398
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.254317958115392
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.19677083081815
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2555455044959403
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1492312410188872
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2350240181356944
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1803225409929765
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2258799590968714
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2358724975013957
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3160551279927681
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3093657828324754
+VDVAE_II_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.234895297969594
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1872911746009292
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18108543611109945
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1831406276040573
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18120819315127934
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17421484227171782
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18537308205430897
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17447285976324248
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18025763020105223
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1767136024305245
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17996310595504056
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17707266694140444
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17092503619644034
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.16776647490108215
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18314167701181477
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18507733129206916
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1732100713060834
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.178517904597564
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17760005596800366
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18029905453008582
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.16647530799638555
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17757573928135392
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17673576946250777
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17562327995030055
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17463969811038338
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1745729560601993
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1812210508434356
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17021627224980215
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18066674542938668
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17322445467238423
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17667554989215567
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18261532476240602
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1712345903674892
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17407333275518502
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17783107010987617
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.16835167002192705
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1839550813463437
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17642032788369108
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17501779884736574
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17179603875871013
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18474126997919932
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1811044393095702
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17838516869450094
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1808765673996083
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17833838517926803
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1741291351226865
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17959781917157006
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18119954565321167
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18149828356562797
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17986359443355923
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18262713867183472
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18078406885591786
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18897589123698696
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17365370719148113
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17811856835758857
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17042689377539588
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18122974351549104
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17958611954826786
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17704717658549526
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17901345751806172
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18360437114767078
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18301229072978775
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1803314845462209
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17644990047426887
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1845896585129511
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18438376984938631
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18275152569445555
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1815208791431866
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17037143473348695
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1757958589617829
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1781124799270154
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.16464793024918506
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17012278218061969
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18519600887071333
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1765744371893728
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17811402351359262
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19139086085722792
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17442091492876596
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18064850238602034
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17515381639681288
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.16993507619189088
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17950815257579236
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17026342639391503
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17772982060690307
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17121548238274387
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17599371771308384
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18784699213099007
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17676628110105289
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1760248889796968
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18160557605034028
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1870989563873429
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1779533473573243
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17114261454462085
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18160107795758867
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17007517649338705
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17973138178343767
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18217232153514018
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1778692247925685
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17461663657129275
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17648357714865895
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18464279369302963
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17915290376195678
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1779413182552283
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17561034931429448
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17207050110225083
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18915660794075545
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17726366800259732
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18642168864141023
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1784991416543241
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17354549726888088
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17383544578847487
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17547295046417094
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18209800989327665
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17676962537990829
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18550143982618145
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18158272006412776
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1802961131998793
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18406040496897735
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.177990396806516
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1761443547170406
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1733312694609323
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17527549061301534
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17775278714419604
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18215303107821157
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17155800710549904
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17182870603088796
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17736622380104716
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17731574815954843
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1789442615106079
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1870863210717998
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17310531035872911
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1770253513702614
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18355306466558385
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17405752546459075
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1800402735005549
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.16601174472074207
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18180817627748141
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17717028952932906
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17608155097170852
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17869108654054255
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18101643997866718
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18692132892258434
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17886284978975575
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17450079633662394
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18324404420116447
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17333713876078208
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18395120187850936
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.16605288541393462
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17415137466858888
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17804235957192102
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.16673600847619321
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17567156934433809
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17407335133032853
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17518274472186518
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1731338486027137
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18553672534924343
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18133608004540036
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18877137705390623
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17513258096528259
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17559313124097123
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17744240267938405
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17308365969880468
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1766929307465822
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18389229769496285
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1776888534219513
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1887513862898169
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17308867875648662
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1795571555140695
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18057567259913124
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18796001964271944
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18609807513272225
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17533143160530928
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17386895640550207
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.16787520849883347
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18184924699039343
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17075117082437852
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18247693494104328
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1859711100876446
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17840946654784648
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1707980449526228
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18176871216612384
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17964561064452117
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17443738909726114
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1722661189265304
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17661374381798686
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1846330304347941
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.16134602941165863
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1728204405089104
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1847402907679695
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17923235798296588
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17460453584177038
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18793147880376324
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18088392825013297
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1691032397383063
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19056134315036252
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17928628116513548
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1791020682654035
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.16922982616875515
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17754713958612808
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1894309359909134
+VDVAE_II_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17904548413382382

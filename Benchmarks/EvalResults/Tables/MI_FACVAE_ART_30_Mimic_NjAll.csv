@@ -1,0 +1,601 @@
+Model,Metrics,Values
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06303855805337776
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.058571512427670204
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05524953357552764
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.049984540895630356
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07015250740426734
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.04722779499552128
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06001999813907229
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06974525897055221
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05691302148486596
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07262054999879361
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06089942315415432
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07245225214387489
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.04952757458641956
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.051960141738848255
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06117719030537928
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0722527671829038
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05313065625363544
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07072434975674623
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05767742994771697
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.057090431962601905
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07722708230164786
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06401362417080703
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06802737913330449
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07127671640344131
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.055407213004285694
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.054577864837091
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.062008728467813315
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.052397261854411875
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06469144890577079
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.04876063712563622
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06478320398359863
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05879640976922062
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05674221154652005
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07127824349038199
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06091832586287823
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06257547344272107
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05328467158389432
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06527785617265172
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.046962468871206
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06790595003094363
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.060365925114183545
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06558796340369716
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05569242071054933
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.058223121706256514
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05895568317356024
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.060439031774661194
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06379263366569851
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06068791376353515
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05805423787030934
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06831808076665377
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07565398022213178
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06905970560467084
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06512878975585602
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.059872881791877886
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05740800621992168
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0657044585645725
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06880824225242657
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0677039230987046
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.049639650231785036
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06863920241891548
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.057126651438829244
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07101066020295195
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0561632948233917
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06736266404483783
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07340446729349663
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06484057345201198
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05180628143986985
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.04915963408703203
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.059067292831361265
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06722027050878361
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05227138258321665
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05911587539644056
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06439839428784147
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.057983597136849106
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05734992370929892
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0626920076088388
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06610993955297047
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.054688888015392366
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.058890447180557644
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.04864636207035913
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.04728481232886894
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06599968648233956
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05799671974026674
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06063557889482261
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0715342510338372
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06392983481704574
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05119246426079802
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0589083885169133
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05389405625598606
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06427680081854774
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0653868574482856
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.056537470155148734
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.062043012993914716
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06064067396072189
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.049715467322599904
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06026078407951968
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06132664246462642
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05449105128850642
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06870598466483979
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05821667804169925
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.061817048588237625
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05956127980188336
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05555538931715098
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.04308947536937532
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.053476653556324416
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06180083869704309
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.056085802839138
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0581630250541688
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05692037977302533
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05558838027213204
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06502292262006314
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0618553939972424
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05791349140809076
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05576826120500935
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05962277739426553
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07150288188838867
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06624757792918734
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0527578737505461
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06364794435518202
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06383300951114863
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06239945937037679
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05591992415719964
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.061228618136691
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.058359156275873986
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.057874822808884854
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05889603716895343
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05540964505539916
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06904133996284705
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05401263336480658
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05531275634425881
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.059876798249796755
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.056195186164144754
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05576686881185086
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05667697179598432
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05537258367682804
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06669801432630948
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06721112258281899
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06034797507460701
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06578483417972088
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.061333710697651235
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06157526548338352
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.04901991208870047
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06950816000420516
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.04413406578985148
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06380430133184833
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05732050378912586
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06700725944542606
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06003049578613094
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0506590989841311
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06408314904620889
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07171770022348258
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.059977294334922805
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.060405026799551995
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07687230285551999
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07674793402769726
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05028728030911792
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06106391810498231
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05214041769089779
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05136313617671903
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06306895716013054
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.08312548798074826
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06619134689050145
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.069855171427073
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06878988202550755
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06938726090085526
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06651788257301354
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05777219293556816
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06100097252725851
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07204887344158889
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06400907442929842
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05729862271244911
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06747988635201428
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05935412664904664
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05354105734452025
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06067874995019059
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07869432471970779
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06073649458198358
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0658729068985665
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07616758546919827
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06015627868558373
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06687927004675136
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05561961636721364
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.056863433774211304
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06119696478078745
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07584083345211765
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.058375989762154815
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06908120279027048
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.0616009135504355
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.052648778258523876
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05936729156148196
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.051848776698685706
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.04631674979550133
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06306454072736234
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06158783286706226
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.06031762829300927
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.054829568877280514
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05554331013684868
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.05168540738936007
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.07207190890221864
+FACVAE_ART_30_Mimic,(i) $I(V; \acute{Z} \mid Z)$,0.056777855520365954
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0957109647302254
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9393277928410629
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0751217801416992
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9646046657655712
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0108699323347534
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0275485094336776
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.841396149719177
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9651486477916066
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0769515352613994
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9630342306669601
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0351726348025043
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8959711028018215
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.058842317578317
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9668075151355302
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9230041853604917
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9876981376697013
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9972346455693942
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9079718229768082
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.210949916930236
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8714744968133273
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.96542240342981
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.110848318174306
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0356514762636788
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9832852181946997
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1004892593685467
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8833597070265319
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.847534894839904
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0458675102555324
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8922477152788582
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9659049047344971
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0430106940051598
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.929160917806992
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9527221640922886
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9387802921194823
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0221900737236849
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9380402528086978
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.063460063674767
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9712790933796804
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9915923913854783
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9175219347886331
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0266756147021692
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9513322056033813
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8952431032079905
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8822078691737842
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9996845606836418
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9832553735821864
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9238343470512329
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0581487476601814
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.064859731803368
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9554937794412822
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.086710924374957
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0106642412147984
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9028368027178162
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9772657080602418
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9434013931533463
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0132059885005598
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8611547574260218
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9708695985643828
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8854702535895188
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8722686102747356
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9855127209919786
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0533222405670337
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8405623578168355
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.118109549548003
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0025556729002312
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0892782248285595
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9666655011349518
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9756790648800974
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9301395291218849
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9869309091898709
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0299147165709432
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.185093462843218
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.058985496871598
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8812989646713139
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8923241103186915
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9574020043431776
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9176661550446138
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0318608372155986
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8714376302246598
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0539409835095335
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9820627428298916
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9187142622140285
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8975756063653317
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9325395275413905
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9741002034746279
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9869188787472624
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0214062959054104
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9309459391576164
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.873783309424234
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9519292236209072
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9160477371415405
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9802012305239054
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0399300816843569
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9087542814905166
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9935051904885448
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9127151197820004
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.982762904286702
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.904315916659634
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8169645260872314
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.027701363417416
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8504122953518787
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8023739042682675
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0397464754166104
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9550346276038231
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.059205273414954
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0220313657519113
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.92748159298719
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9091437899471702
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0804840534480682
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8666726254661177
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8991789170974854
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9243635746477455
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0389281197015938
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9061251924629599
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9491020493839766
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.953465451869254
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9575532851161747
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8438924547887134
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0565493989305432
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9726915462469117
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0609649867243078
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0447975658183608
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9597913151293702
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8778434378420691
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8837069605950658
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8506918378979336
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0668383119403344
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8723040338733549
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0677292867513408
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.950400022035617
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9786187795529492
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9658428899819731
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9552299498330282
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0163025206217275
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9534897865638514
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8742858553904829
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9525211559299759
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.975027863005047
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9256279152729995
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8331421385599278
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9037512259795016
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.876786375626172
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.979298189078128
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9823318511395176
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.979585341473499
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9133070128284179
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9739678941450669
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9486868017255446
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9835562764191308
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9983202747605184
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9523241589726054
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8213560561388501
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9038115545071918
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9197240731524616
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9811272210422939
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9876419567644947
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1254054970906515
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9523677360237086
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.954083745382556
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9878985147466669
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8145200066222416
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9915301747403604
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8700947001153473
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9172697499104742
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9572570530135407
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9647202208826664
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8638462932544394
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8663739448365138
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9540115092701953
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.959831264881673
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9182755085514471
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9146104119813677
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.052118493070996
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9841692457931548
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.945496933567811
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9918082975980519
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8822052788570224
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9323852037908832
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8830187559076498
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9305476731225895
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9101461735627155
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9148288793256337
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8078813580996713
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.10000714591973
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9145514627063889
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9876640607379288
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8705143509020976
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8892730864591486
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9169794769006918
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8608824667377389
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9090546108581006
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0560871197730612
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9816273643406963
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9602145233007542
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9618899309264107
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9920174738362212
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9997984703624415
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8856518218086089
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.8660198051493846
+FACVAE_ART_30_Mimic,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,0.9772172393404699
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1974663916399842
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1962623036020443
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20274639378388862
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2054832897147667
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19901909518389657
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1924220507202567
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20340831077148006
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20147540781033288
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21324017606467266
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20630261164739025
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19666887727362375
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1936271348984271
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2125634448622691
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2038381206189457
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18868513867401432
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19950522832205025
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2157831741626162
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21986100441289466
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20091715828310114
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2168234081868574
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21376385303072604
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2053132141494846
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20244803628603308
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19110694225072433
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21579514732756175
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21115963703783897
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20135068235668654
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.208524815917257
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21042361346988972
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19571108135256687
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20669502536248965
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21280465489386574
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20130565182115612
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19955773773292787
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2069371928654537
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2119120715022563
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20385451651487219
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20195164693734877
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2149038073000623
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21439889249083624
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21951131388658154
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1953795375372538
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21232815545771314
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21333853588837215
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1983826215183059
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.22266244409740563
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.206730433573734
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21065646979341834
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2107045339008025
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20280872568267708
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21451456341204847
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19266761714002867
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19803227293473227
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.22116030808092485
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2126811644772659
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2101998670073831
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2018195590807008
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20620734276444894
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2156545882579609
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.22640327570990665
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.22444566173665068
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20030696975822337
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18295239049457915
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2059917182373104
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20497113909066575
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19117844141373677
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20687207312522904
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21009980435672443
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21017189243049864
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19442820154897883
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2158261498053112
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1918539913752687
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2107385588849678
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19380631449316976
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18786314422319514
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20861318428997624
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2021131415130238
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1974200226508798
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21696944508597502
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19945589896285906
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1999481475419307
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2127214964741262
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1996963055832932
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20494115966464288
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20207269081152782
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18670850133076355
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2001497201773158
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20458798662057595
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20969749486245207
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.215499122558014
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2043360960232655
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19969695703379056
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20706431390370125
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21028740991338915
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18449019220570598
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21113733376939833
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20454604359718995
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2055141639719228
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2234202829608377
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2154636086938115
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1986139020613357
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1879918896035009
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21356272068173215
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.188095518031094
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20166643573649076
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20938125155960616
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19933005511440022
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21946329149612523
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19644391259074165
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2038607210631953
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2101369890355852
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1920583359843255
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21153939016797657
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21394286278335187
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20439767121849703
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2095169939001444
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21036721463198813
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2165157961098737
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20629883893265943
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21128196976507552
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21856865822617932
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.22725012874340247
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2251014375295658
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19102732670681383
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19633741703411384
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21053548515559609
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2150233469616427
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.217145281450613
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.22380199084562055
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1990465169408141
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21344757817989
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20533052446169744
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2075499312665115
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20488443674892343
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20149966329880745
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20020099521512907
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19525256236314356
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.203020827502189
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20538114851163997
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21419707542223632
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20630876673451654
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20318184971441106
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19369221481160032
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20060892434424468
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19060501855947634
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21185428473081547
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19282407868638024
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20897884249545304
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21049378461079368
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20901087260782047
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21793081972572298
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19177809065633955
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21178674293764518
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2126436580394583
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2135678794351688
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2055964697524583
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21772542538500678
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1944862247521338
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2036279117500742
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21186408261565626
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21256694162891776
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21240845261244773
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19752405984858487
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20747493188780294
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19887260195406165
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20478538907533575
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20666128763626493
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21048539216241785
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21608369160547825
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2013433782093385
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.22186546261414936
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20854639524184082
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1968118610610756
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1954996709957442
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2015363432008553
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.22206320630372103
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18921207224349917
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.195887659591993
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2086619000167548
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2012500580378081
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2186813087103119
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2035904252070945
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20808096897419262
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2107513026241697
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19960782829121348
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20560919297810368
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19466609362073053
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21184302216684398
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18772308861014103
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21197808001152182
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20693694637398877
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19810153822993523
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21618432484785807
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21118017406040587
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2133216961451332
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19671425525808794
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.22708340753393128
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20459097996036835
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1854845412871531
+FACVAE_ART_30_Mimic,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.17804119010854766

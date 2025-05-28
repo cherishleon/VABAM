@@ -1,0 +1,601 @@
+Model,Metrics,Values
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07802306256824433
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06866624344865638
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0712779231933535
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08470446293130897
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07614929548320072
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0545406000663429
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07374769632014214
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07266548866208385
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06719023770993605
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0821673240878407
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06858122263883405
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0733392026245346
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06210434329398337
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.052171989417196404
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.057088796391632626
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07002574347017587
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06471199208738879
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05606868869222059
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.057865977229869164
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07434336609630893
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07012805043187907
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06498669295374303
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08461596890436429
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05714986670268047
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06042530604197349
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07481915221122871
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06932020879681243
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06572896291120575
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06326354942517265
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0822634526278504
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0753603409265086
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07437879943720625
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05721426840956057
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07684839995677364
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0625104001819233
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06909150092654222
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05710358298220074
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0776879676890175
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.061972719032782016
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06942823378414992
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08870341791570464
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05420088067684462
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06837263655947226
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08152836320157471
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07685271648571375
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0650760828068619
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08015581186018075
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06344576438762897
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07082338010553879
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0684219830120184
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0603437788462429
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06619999466340049
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05771474516377042
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06287767348758366
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06134728056918539
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08415194287716879
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0678803168000447
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05828401513740929
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06209222947233529
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08721968009002035
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08711127649261753
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.09080556596371953
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06831974649814958
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06033445975276397
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06683029202743188
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08674953794389516
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0701034518811389
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06000672668475571
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07103904239560425
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07681641807239589
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05933925926695106
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06599783223311047
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06774363520092556
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06252146054142918
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06396854937887728
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0696039958019681
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.050082869666473816
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07122915035420432
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07337224477778642
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06930220996650582
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05633804784346317
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07153862344854123
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08396894051983145
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05394389979793275
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07265857733023859
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07840195163821763
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07029852360032013
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05540429988141851
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06617151474605099
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05787681314505658
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08137250252369517
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07610369765566721
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06938427513878939
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07501216104016016
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06462345856023652
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07812557109218271
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06878754020184612
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07666992350633264
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06762425116211468
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06282429721325523
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06069347654046352
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06679510835778585
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06914717056104668
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07955618230087831
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06528948296754983
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06558337076629947
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.062462218626263395
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07422738925163397
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05884772869416725
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07575423140518169
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06931145909575656
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06040416560785429
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.048414090395650394
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07422641514551302
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05369168388927382
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.09313302563755771
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06325056940435111
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06904094405363073
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04422738588765974
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.062034780339073184
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07405676965522479
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08372075657521716
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07268870006432744
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06671629940491272
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07399279056303705
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06521751312898415
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06967422821709086
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06657449680814036
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06436514259878773
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06300829461649968
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06692729935554106
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05983636789397757
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07218318264588147
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0701674527655646
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06555355566503955
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06422034673358609
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06956150062862025
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06577485847120013
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07341052620526095
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06666288836568787
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.060116244190310336
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06513038454174033
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0662137082017251
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06868404727850852
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06432742896624044
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07559890631727754
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06531361121241903
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07620796818410457
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06087367993723877
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06404423374761889
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05711994126621013
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06910189092280217
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05950530398430173
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08186774247438273
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06406163646454993
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08012249771377197
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06428987579220312
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.051083883949340894
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07160450358715204
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05729610078386795
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05388406947315521
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0643639077751762
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07912275239340415
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06072892336581796
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05237497994163475
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08448363704163225
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06752554708779268
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04999420662550249
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08112142284235009
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07438294890982321
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0678605724204381
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06335768692111697
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.060008626246247136
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06652330068079443
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06373593273685138
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06475947451548801
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.062498522850425405
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06983306481315898
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06570677560373134
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0826067742339893
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07199096727343884
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07224850621040758
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04799545716936185
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05496917155831868
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0817839934527777
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07575180629137583
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06532712347662105
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05149569428400738
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07077133354707095
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07350820109969637
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0666553622680925
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.056087176598040564
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06070828837265486
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06387095449488217
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06573056559968554
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05750210155897048
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06655971033299818
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.060009376485896035
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07146586654744443
+FACVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.08207517914509171
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1617277337925085
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1725264635832986
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.141331292825173
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1379699642752485
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2491605087043351
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2104371452265559
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2279781810374417
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2560951957777653
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2271774138389728
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1685298006719704
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2563657826180124
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2175686908925099
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.225531043396373
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1000326713970103
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2628940422569774
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1900196344550884
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1524225433926292
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1688725615236621
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1604116500696668
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2237408860184082
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1228998853522412
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1871102215278864
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1459574695482504
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.17871804615179
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3205025121364888
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.137417586196008
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2111314126325115
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1657762590750154
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1906822488850688
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.112031821943116
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1995413822064815
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2402759498198008
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2403885410215778
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3115537658280045
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.214045381770673
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3218993434525403
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2268612598830608
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2354595347218704
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.212265940859035
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2090488384824973
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.253988263357619
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.228836221815776
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.225480369611205
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.189197994557578
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2640443809011397
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2231130626983842
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.144524631315769
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.252756024246807
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2120163524319723
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2053591197540154
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1498807468568721
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2577090859962456
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2063458073724918
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1511840856224085
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2148534977760768
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.177779663139037
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3248893809770457
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1431536701056533
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1866275100829657
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1758161904764095
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1981446949287093
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2399055721562968
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2864972287742535
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.141983258487338
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.182706383354115
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2175724577710096
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1874959719535767
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2327393624068161
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2345740126955564
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2972514306720262
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1554080005517724
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2044746751342972
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1581656382895
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2603941018463296
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.165235440021246
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1642201776951697
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1460489994026073
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1872268220345668
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2144883526765187
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3019221760062374
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.287955849161591
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2709555388066185
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2708512093355164
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1810639588619143
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.241628445294828
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.163886775779061
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1730781261094538
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2099049253807612
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.222029209070375
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1574074714813707
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2024907626180898
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.0914974624814626
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2677103302312305
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2061140094573293
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2174039757513277
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1383952482296578
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1405843398158382
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.243819980199792
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2470716943346902
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2616474373467264
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.172784119834758
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1092210218731777
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2342863181432169
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1775737979857812
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.234161618101005
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3402854380355063
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1931026825440731
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2285388088836304
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.185342489292222
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1449678433384185
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2533661934502616
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.28870579326967
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.15836585103816
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2413544095819253
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1965644122601113
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1418585458579371
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2216730793219805
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1602066953839825
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2089054451047299
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.255115991713487
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1615270138726692
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1975287850770915
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1539129864162236
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.122974684712918
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1904793242353688
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2273791703499326
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1805671890084068
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2345586227621101
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2895464982308025
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.114033097133357
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2215971553862446
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2249867086522301
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1999839821117475
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2114260434538604
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.264459442219215
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.165614120260476
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.237888203699165
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2772395890735555
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2229147713578938
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.20156088476473
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1441926420397703
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.183150124897611
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2519148377515241
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1547005129520462
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2355045247624585
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1781099118838343
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1972906963298668
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2348367648300391
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.246036717992005
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2653349476681104
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2567572869975776
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.221289412365061
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1605126342743994
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1506678889413424
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1315196260366738
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1369013656212077
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1546245128204982
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2083528494316393
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2816285566052636
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2366265398774403
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.174432825769577
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1571724859835404
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1551477880758894
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2422939658853718
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2582089647665162
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1634028822148326
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2762620436978895
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1770404411463367
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2381475214338098
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.308196967882252
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2009230226603902
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.142480294166101
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.165661477294676
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2421313832228784
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1983795588727977
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1905192188966462
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1257530269934977
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2022854264895522
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2306108013242545
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1887612597385622
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1760574736555425
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1650018102853497
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.202511337382581
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1485069928327893
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2456081747965126
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1730039784574888
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2310980140135401
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1732082588884412
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2234800196316558
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2491937648355174
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1907521730719672
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2136368833814783
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1211792210434341
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2039724073782732
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.300389553710972
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2078399975930025
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1609088296591095
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2147517817173863
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1377161075547741
+FACVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.1853373901443647
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19758398489114298
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2068924245670058
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20983943943220548
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20788598407581277
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20877989003796155
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2034184376497559
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21132571838200512
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20896591566306497
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19939780512533745
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1975472342479389
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1988442515395694
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2177051132260467
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20952053793024397
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20174370500346725
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19490438067289254
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2128287223876314
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21113611536077725
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21765995528445992
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2061235015090755
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1993424929846282
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21353382737102777
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19829549148530098
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20551660099791078
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2044592821044267
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20193396577146905
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2053902796941998
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20709028926895803
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19940959870363603
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19716724541994743
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19930572324965884
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19081475771674644
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2073037811326987
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2031481511031854
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19637113951002777
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1903010215905602
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19916551137852267
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.211133989000302
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21330314346761156
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19431233248660224
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20671359822087898
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19170964003644067
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21255123942203472
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19257364700961704
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2030179146910383
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20763862341390013
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19982319304824073
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2153267986765102
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19824187889220482
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2087143442198281
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20702934068670284
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2023084213827212
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1945701455682045
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21021471149261395
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20362070017309453
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19108796907371167
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21506483799113904
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2041577295143807
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20663445624025317
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18549693647195878
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19965336043880252
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19695261311064693
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20857528796235023
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20284645739772134
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20830428765660144
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2004482951968553
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20373183933019096
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2131530474587034
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19319842489068734
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19628941191723698
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19813185045186926
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21156253417660487
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20470591022514256
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1973917379232973
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19917734538393184
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1990290265094238
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1912942358598632
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18598573561330295
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21786308923583303
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20774937443131736
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.203899839071276
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19726323454091754
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20177560361288652
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20474545011016065
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20996725753200152
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2041904429209877
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20398438583498701
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2166771063448578
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2084671648784283
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2096896678282028
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19963157011724453
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2057405192919812
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20327313760721405
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20504075536539504
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1910708421320271
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21002361735312566
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21151133377568615
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20055192135654112
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20343620954004302
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20543735981934905
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20666600459264925
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20705063107819247
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19221493441211415
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20330767031062633
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1866434673009532
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19566573978303892
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20658399648085532
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20270857479511722
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1935389688896037
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19914514965215932
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.22080454849538103
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2117211399467191
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20998136374233348
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18719790729269778
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20619281450679455
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19950626450165315
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2040064799860846
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20022659779784224
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20288472348313755
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1990031504901305
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19887833095158672
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.195332332981737
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2133645098642897
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21390457543584934
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20403755228237458
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19936510793488116
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20323884238590556
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.196190553517983
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20746961107789755
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1993511963513635
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2079366407017144
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19884522525435916
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20008913798633401
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20893815534748636
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21474388157811727
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1966762741031207
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20147475663167883
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20198205048931725
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21169654478323033
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20147630871567823
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19817137980676708
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20509526752598273
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21127686139092536
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2028715156450972
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2058459040033451
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20070948203080796
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1920897417810213
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19174542416619655
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2050466393585296
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21303505882817234
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19292307393229838
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.200889098538576
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20699496804654147
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20768396515655213
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19247297752825535
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20809787696148327
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1979777996700877
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19879519564117246
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19604191871157448
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20016290681532706
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20861685923127152
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2080671327879778
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19567369160376016
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20216398695474957
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2063733649072454
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1956279903891907
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2019381074812358
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20294184016327957
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19473796097172041
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.18806317744909318
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20198135489454483
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20575600850450745
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19605833016664953
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2099656832847947
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20139937078455872
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19805573135529994
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19839308235541694
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20297373430294433
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21976999355197394
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.21550121316200294
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2128577370448035
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19932627817205067
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.22518596143197758
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20417165632814985
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19704634763305148
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20672363482725192
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2070917047659626
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20367695470025715
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2018148871215007
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.192165214513493
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19406863283442863
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20210694932755988
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20620702120470102
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.2028790603021439
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19956380694315506
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19524632298564593
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20113232884294077
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.19021454003700605
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20010550768678534
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.1879584006731581
+FACVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.20554325774663568

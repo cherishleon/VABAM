@@ -1,0 +1,601 @@
+Model,Metrics,Values
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05549835253316332
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05153864654492222
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05544067588833799
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04671463453000094
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04984048961931704
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05056681600270449
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06042842249800796
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04797862463134297
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05404813881363114
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.055935356700288014
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04641724030084058
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05701735561762808
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.052845185934859
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04042096191756443
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.051658164520386
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.056871423635132784
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04505894658001921
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04695399435864902
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06768475386757493
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04709722318188189
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.059147644638914684
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06736084408351366
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.053112198384149496
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05106119079128949
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06334033235035336
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05133996267753124
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04702258839991005
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07433580303991659
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05189918562061648
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05124914778710211
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07122637405091105
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05293729658721615
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05268465142460909
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.055637451400465956
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.044760755705427584
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.057091109865896134
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.059021044148201994
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.052203466935806436
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05022435980928736
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04755899588930832
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06783545658352902
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05895077039671664
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0511114289669451
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05460826757786008
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05715221487769572
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06388703442512432
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05621916623929545
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05302037574236549
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05038021166319154
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06409959649870936
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.049753784375448286
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06141348038322834
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06712290916193124
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0671428696994454
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07315239931037412
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05868339282360766
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0452865751829257
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.044570707744819395
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.057929205545412206
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04789714255242598
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.047474790393426655
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04798438481450204
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05243123471867643
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05465106053704744
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.058870240712105844
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05450747930635689
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.058178580807103045
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05904861371165603
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04257212039174935
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0703590811443178
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.052161638465650285
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05720218093916039
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05593572372556046
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05546445448871652
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04863874796232509
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.059718851543924714
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0468037614123066
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05790352495787741
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06721836658875939
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06702093232326378
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.052364262299022885
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05607999810093313
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06353789756370798
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.057480455910286964
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.058428437577265784
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05661204399212549
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.052689196382706055
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05580390158321404
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06416142209517485
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.054457407066557544
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.053834741768154205
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.046732665728897525
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05252813064471163
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05312889248799078
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04727836581860585
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06653198820440914
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.058779406389952396
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05756789090892506
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.059979013565133264
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04790937036211575
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04727496725320931
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06123490707015659
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05458004095344037
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04647940959146666
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05154317001319764
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06194214524791246
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05983997007034227
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05917982348325298
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05094552100808358
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.062004497143829
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.042418004520677226
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.060182316535237305
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04893974276932661
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05414252689862281
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.056716174896754505
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05995178365345338
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.049402304557302684
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05140095889382757
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06388485884408675
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.057543255789723746
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04877152673573551
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0658013789793016
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.057113232022585426
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04178856620776531
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.050706605988143166
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06148155080486235
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04191863830886203
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04854743343681147
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0569474852928636
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06986560639885848
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04554735157060786
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.049478395719836525
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05457835726178491
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.056716982230744284
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.058453770340552
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07848590920874227
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04431115113942658
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06605176080029967
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04474551098960142
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06138268360071125
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05424381291317964
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05626626839734266
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05539843047749362
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.051375784195072695
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.054781550431581616
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0729217296443216
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05728424188056002
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06126328851518039
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.049797162125310566
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05632103099207231
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0525025855839673
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.046029184630298384
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0435508443650719
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.07198053088267244
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.057748256085936214
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0673487881149014
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.049178249425830656
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.053355474773431506
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04814222610603461
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04993786288414971
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06124697443704614
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.053705635373132346
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.044227459556394864
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05099906814934323
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.047271098416625516
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05671964950302109
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.052379157631692756
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.045259623169014024
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05865259737193501
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05857374807286588
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.050637802557655445
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.044257627681840855
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04782704090722598
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06303239528457652
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04992714654351285
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05060671510455189
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.040515485116439105
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.052455210907823874
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.045617134635233786
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0699470775109574
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05689512305196901
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05208160625429956
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.057845476263037064
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.048519679911025654
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04525775928231353
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06656721415652679
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04743579556558971
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.058255351815955245
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.046280390954204914
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.0509483313537839
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.06641895851510889
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05364758344302617
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05924873248910686
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.054424458213139924
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04178248810823033
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04866404863974379
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.04710865387003205
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.05715703644417247
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.061784751034506334
+ConVAE_ART_30_VitalDB,(i) $I(V; \acute{Z} \mid Z)$,0.052389738647703264
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4558101002109172
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.345087363961236
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.224621652154948
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3564649634261843
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4057989387858376
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.280754935476049
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4442588927855255
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3365553144967208
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2491227110018601
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3949872329294604
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4519761872629275
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3330867962407935
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4093679537168964
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2786079846751044
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.444952561874322
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4827835822406914
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2525198240929794
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4064326150058823
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4653611830346547
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4296633445024807
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.358737827278284
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2935447158736018
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.443529402206267
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4488365202316387
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4783981271723172
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.319885701773705
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4197300622051785
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4102746243893824
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.301020640825034
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.456922110651214
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3536538565866942
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3759394599272008
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.345527640563871
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4030156913768779
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4367695781311816
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3327390184630548
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3984754729094993
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4079705016598054
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4511895923466258
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.225061033238368
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4206736567975395
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.397965641111487
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3640924953872382
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3767284256471648
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.459899267713997
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3544515970014601
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4607678513862532
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.323513521112848
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3076641506280908
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4586933739009276
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4476692931670128
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4149090144227912
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.390158913795387
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2678831103272519
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4420910420653354
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2513387625547907
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.355682780640168
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4774428170640674
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.557387661630246
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4160639043462835
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3156899617803788
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3914048129387135
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3499910790217087
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.341009745296604
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3230021332437856
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4495702791715943
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2868974675445015
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2729628205721317
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4199528367413832
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.312911775017656
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2696958277850448
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3150127693784206
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4144257741567734
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2247296859091785
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4293078618062498
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.297562774214084
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4616765719471554
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.382903262953868
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3604890684930242
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3402874764694992
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3881966594153508
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3529258471890722
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2972862348173329
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3683656129848467
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2905551679334872
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4614008235737068
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.446607547661935
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2694492194678462
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.391658752624212
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3099917751670416
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3093622270694132
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.240588869480358
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3146626738148328
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.363523699937549
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.372896262779404
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3899959597731033
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3568186004847762
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.410296262062037
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2184034774313284
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2921272751775124
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.308160447721903
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3642664689783621
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3972878643463726
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4198147291016974
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.449312485463907
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2896075190615592
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.356857257373062
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.5254434208893761
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3504922989071348
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2516304363330215
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4871863196907973
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.355849991168258
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4429794050268154
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3713810291074702
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3384961201998595
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.382514963794535
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2886840209146835
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.382886123568186
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.435619630063217
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3487006487804276
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4352440430378643
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4229454383681663
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4132539636020365
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3165169127299132
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3384024332199271
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3656704946510323
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4420769011323207
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4096248357818693
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3153096310618988
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.283922324648791
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.298794657548633
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3909922152362557
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3646254376545033
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4886256394903674
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3209595765784874
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.5015686452409185
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2975799040342466
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3619791426817829
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.431838511743563
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3763421704158276
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4150564201809053
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4542211068863713
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3773449632343633
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3554732404294412
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2958966656694924
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4657641147273608
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4234340660391884
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3037971700914357
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3051457848305614
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3385667226306088
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4627784570824982
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.5282589568342602
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3698974896207152
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2470917019900383
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.359616197603016
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4482228277937397
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.372099495383671
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.365261922547209
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3132335375144735
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.321330113719337
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3647163647308207
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4320139288767257
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3277860574079028
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4430964941699094
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3646220235047546
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2617993742658262
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3756674328400949
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4667880544438296
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4340364571774986
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.488911445747108
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2801956737616278
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4468689309925842
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4139157953373354
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3243226731401376
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.486826966870331
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4127214046211605
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.365958647810387
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4303342140616655
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2921504619050703
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.466665228035867
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.382903564733667
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3527904162818378
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3664845549089706
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4021868264784612
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.340661031832782
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3418122112451258
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3262041241950615
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3223274331382484
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2609892473312818
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3979901963001178
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.5383763027924835
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4709758760140639
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.190004695889085
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3969996411590335
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3833594548501376
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3802373571916318
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.4144629367740527
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.2717660979366807
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3567804875431504
+ConVAE_ART_30_VitalDB,(ii) $I(V;\acute{\Theta} \mid \acute{Z})$,1.3914667537630927
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3282623242440287
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32587085042654707
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33091536915217135
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32376376177378047
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3355634550016972
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.337442380304158
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.34199121403748256
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32150905785991674
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3291022309521885
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3276736994175852
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32367617811196403
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32645417217875405
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33026541036577584
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33360697329692146
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3356106734712161
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33099156630317705
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.334879520630857
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3221357695037905
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3436848917798319
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32387656254506586
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3289197839890342
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32669410098681273
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32408014947688074
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33376614199455196
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32544787265234826
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3310759441771953
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32878054750641156
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32265390758290347
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3296719788030989
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33244510722694764
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.34089318310812244
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3409564773844073
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33525722958712395
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32724900588257183
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3279862230641981
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33511682852693725
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32757752717617433
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32602670704821285
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33878748537929304
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3235719017873644
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32863121129668627
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32945111235427565
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3091721439062332
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3415486723570369
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3244108032975126
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31782861646971106
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33233656959890795
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31721476243960206
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33414944053047163
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32326811794543764
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33353588896060615
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3314700119109915
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3241161092010706
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.34859212310227233
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33507385334187423
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33857911865175633
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33378577008943916
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32800075970168757
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31471256545288634
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3348314089896205
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3283335793737706
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.321226642702465
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.324921836658309
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3131522159666796
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33207831850826247
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31443279807216934
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3232625320243179
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3343522618749158
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.30800419146533636
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3244557238229946
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3393133428723005
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3302783338905372
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33844208128919573
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3363794871323052
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3189422723550797
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3314591000985439
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3176666226231844
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3219373786424012
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31692970457339614
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33730875086578516
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3205780552583365
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31830899450478617
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32316047758845107
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32358832627410355
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.328786800796682
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3270377616790484
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3315980832409355
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.34534251568414354
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3241514819309398
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3221539513469138
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3326142461042741
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32443574613998405
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3412756850002475
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3348213521476556
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3450457299319465
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3295339210583952
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3386081732361395
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3238207323027125
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33681553998008595
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3335870278877959
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3392253700391605
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32302571653337053
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33247476787077995
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3316423581097331
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3296930432143984
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3366491609521249
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3197509352638254
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33403667851596025
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33050551601533373
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.323480289435137
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33840267944077884
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.335494554049774
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3252580862892087
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3283865443065406
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33445799503832957
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3189586272721022
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3468240831446
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3371017539221652
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32433820264680663
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32238621089076647
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3418490318858672
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3340859855987036
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33016991025772213
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3287971454335411
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32974587241495845
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3259186183042903
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3256251042088303
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32282200824408297
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32297976968819375
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3348478718013037
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31829296337209884
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32198941345286497
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33013666912971634
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32045334806505715
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3290093248299834
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3309938798959451
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3194324559537719
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33572155759114275
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33923926631482404
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3268125683048849
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3325947689023878
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31839375351737453
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3299859009821337
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.30497668006165496
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.329775995294179
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3327655747747116
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3303795234830428
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33542623117119774
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33897319319546954
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33068901075700585
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31547233229409355
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3330052909630535
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3313777584464055
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33162907995606455
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3328494845418085
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3362676148857177
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3197802817536018
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3367117626953252
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3220833478413124
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32786846540835574
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3308284105263092
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3276131119711023
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3294867720897406
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3347780728430022
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32552094838971135
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3312736070285313
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33743031426563197
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32739855392969824
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3255519945621294
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3401347814709707
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3418442718163467
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32317798319896357
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3177606508884248
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3370554751693555
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31793868193389746
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3236064122195974
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3236759154958715
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3350495782832914
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3470652492196894
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3300199233068853
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32928304640187156
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3296230238337532
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32975510615815085
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3395250116192877
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3325446741618823
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3260594361095033
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3366577831332027
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31127486857920283
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3313437480326465
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3467412564785813
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3269484596581655
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33523956464101146
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3408393453177206
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.31463437083081786
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.32382411465957456
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3411826278772743
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.33162232837057787
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3276896652455337
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3353072677740459
+ConVAE_ART_30_VitalDB,(iii) $I(S;\acute{\Theta} \mid \acute{Z})$,0.3113230238662901
