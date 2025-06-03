@@ -26,17 +26,17 @@ Figure 1 shows the results of synthesizing 100 signals from a single original Ar
  ## A Brief Introduction to VABAM
 -VABAM is structured around five key components: Feature Extractor, Encoder, Sampler, Feature Generator, and Signal Reconstructor (Figure 4). For detailed information, please refer to our paper.
 
-- **Feature Extractor** $\boldsymbol{g_{x}(\cdot)}$ applies cascading filters to the raw signal $y$, producing four amplitude-modulated subsets $x \in \\{x_{2^{\lambda}-1}, x_{2^{\lambda}}, \dots, x_{2^{\lambda+1}-3}, x_{2^{\lambda+1}-2}\\}$ that guide the Feature Generator.
+- **Feature Extractor** $g_x(\cdot)$ applies cascading filters to the raw signal $y$, producing four amplitude-modulated subsets $x \in \\{x_{2^{\lambda}-1}, x_{2^{\lambda}}, \dots, x_{2^{\lambda+1}-3}, x_{2^{\lambda+1}-2}\\}$ that guide the Feature Generator.
 
-- **Encoder** $\boldsymbol{g_{e}(\cdot)}$ learns parameters for the latent variable $Z$ and cutoff frequency $\Theta$, under two assumptions:
+- **Encoder** $g_e(\cdot)$ learns parameters for the latent variable $Z$ and cutoff frequency $\Theta$, under two assumptions:
   - $\theta_k \sim \mathcal{U}(0, 1)$ for $k = 1, \ldots, K$, where $K = \sum_{i=1}^{\lambda} 2^i$ denotes the total number of cascading filters, increasing with depth $\zeta$, approximated by Bernoulli distributions.
   - $z_{j} \sim \mathcal{N}(\mu_{z_j}, \sigma_{z_j}^2)$ for each dimension $j$, with $j \in \\{1, 2, \ldots, J\\}$, where $J$ is a hyperparameter defining dimension count.
 
-- **Sampler** $\boldsymbol{g_{z}(\cdot)}$ and $\boldsymbol{g_{\theta}(\cdot)}$ utilizes the reparameterization trick for backpropagation, allowing sampling of $z_{j}$ and $\theta_{k}$ for gradient flow.
+- **Sampler** $g_z(\cdot)$ and $g_\theta(\cdot)$ utilizes the reparameterization trick for backpropagation, allowing sampling of $z_{j}$ and $\theta_{k}$ for gradient flow.
 
-- **Feature Generator** $\boldsymbol{g_{x'}(\cdot)}$ generates four principal feature signals for the Signal Reconstructor, aligning with the amplitude-modulated subsets from the Feature Extractor.
+- **Feature Generator** $g_{x'}(\cdot)$ generates four principal feature signals for the Signal Reconstructor, aligning with the amplitude-modulated subsets from the Feature Extractor.
 
-- **Signal Reconstructor** $\boldsymbol{g_{y}(\cdot)}$ reconstructs coherent signals from the feature subsets, keeping the original signal's main aspects and adding latent elements influenced by $z_{j}$ and $\theta_{k}$.
+- **Signal Reconstructor** $g_y(\cdot)$ reconstructs coherent signals from the feature subsets, keeping the original signal's main aspects and adding latent elements influenced by $z_{j}$ and $\theta_{k}$.
 
 <p align="center">
   <img src="https://github.com/JunetaeKim/VABAM/blob/main/Figures/Training framework and Generative process.png" width="90%" alt="Intuitive Illustration of VABAM">
