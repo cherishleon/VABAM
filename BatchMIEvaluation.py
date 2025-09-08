@@ -69,7 +69,7 @@ if __name__ == "__main__":
     if gpus:
         try:
             gpu = gpus[0]  # Fix the index as zero since GPU_ID has already been given. 
-            tf.config.experimental.set_memory_growth(gpu, False)
+            tf.config.experimental.set_memory_growth(gpu, True)
             tf.config.experimental.set_virtual_device_configuration
             (
                 gpu, [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=(1024*23.5))]  
@@ -153,7 +153,7 @@ if __name__ == "__main__":
         Eval = Evaluator(MinFreq = Params['MinFreq'], MaxFreq = Params['MaxFreq'], SimSize = Params['SimSize'], NMiniBat = Params['NMiniBat'], NParts = Params['NParts'],
                NSubGen = Params['NSubGen'], ReparaStdZj = Params['ReparaStdZj'], NSelZ = NZs, SampBatchSize = Params['SampBatchSize'], 
                SelMetricType = Params['SelMetricType'], SelMetricCut = Params['SelMetricCut'], GenBatchSize = Params['GenBatchSize'], GPU = Params['GPU'], 
-               Name=ConfigName+'_Nj'+str(NZs)+'_FC'+str(FC))
+               Name=ConfigName+'_Nj'+str(NZs)+'_FC'+str(FC), fft_methods=['fft', 'welch_evo', 'matching_pursuit'])
 
         
         ## Executing evaluation

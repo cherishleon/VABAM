@@ -77,50 +77,12 @@ def find_t(instance, Xbdr_tmp_copy, Iter, GenSteps, SNR_cutoff=10.0):
     elif 'DiffWave' in instance.Name:
         return GenSteps, GenSteps
 
-
-# FFT_PSD function to support multi-method processing
-def FFT_PSD_MultiMethod(Data, ReducedAxis, MinFreq=1, MaxFreq=51, 
-                       methods=['fft', 'welch', 'matching_pursuit', 'welch_evo'],
-                       nperseg=None, window='hann', preserve_dims=False, return_phase=False):
-    """
-    Multi-method Power Spectral Density calculation.
-    
-    Returns
-    -------
-    results : dict
-        Dictionary with method names as keys and their respective PSD results as values.
-        Format: {'method_name': (AggPSPDF, phase_result)}
-    """
-    results = {}
-    
-    for method in methods:
-        try:
-            if return_phase:
-                psd_result, phase_result = FFT_PSD(
-                    Data, ReducedAxis, MinFreq, MaxFreq, method, 
-                    nperseg, window, preserve_dims, return_phase
-                )
-                results[method] = (psd_result, phase_result)
-            else:
-                psd_result = FFT_PSD(
-                    Data, ReducedAxis, MinFreq, MaxFreq, method, 
-                    nperseg, window, preserve_dims, return_phase
-                )
-                results[method] = (psd_result, None)
-        except Exception as e:
-            print(f"Warning: Method {method} failed with error: {e}")
-            results[method] = (None, None)
-    
-    return results
-
-
-
-
+        
+       
 class Evaluator ():
     
     def __init__ (self, MinFreq=1, MaxFreq=51,  SimSize = 1, NMiniBat=100,  NSubGen=100, NParts=5, ReparaStdZj = 1, NSelZ = 1, 
-                  SampBatchSize = 1000, GenBatchSize = 1000, SelMetricCut = 1., SelMetricType = 'KLD', GPU=False, Name=None,
-                  fft_methods=['fft']):
+                  SampBatchSize = 1000, GenBatchSize = 1000, SelMetricCut = 1., SelMetricType = 'KLD', GPU=False, Name=None):
 
         
         # Optional parameters with default values
@@ -140,8 +102,6 @@ class Evaluator ():
         self.Name = Name                     # Model name.
         self.NGen = NSubGen * NParts         # The number of generations (i.e., samplings) within the mini-batch.
         
-        # Method parameters
-        self.fft_methods = fft_methods
         
         # Iteration counters
         self.sim, self.mini, self.iter = 0, 0, 0
@@ -150,30 +110,9 @@ class Evaluator ():
         if not os.path.exists('./Data/Checkpoints/') and Name is not None:
             os.makedirs('./Data/Checkpoints/')
         self.CheckpointPath = './Data/Checkpoints/' +Name+ '.pkl'
-        
-        # Initialize method-specific trackers
-        self._initialize_method_trackers()
     
-    ''' --------------------------------------------------------- Ancillary Functions ---------------------------------------------------------'''
+    ''' ------------------------------------------------------ Ancillary Functions ------------------------------------------------------'''
     
-    def _initialize_method_trackers(self):
-        """Initialize tracking structures for all methods."""
-        self.SubResDic = {}
-        self.AggResDic = {}
-        
-        for method in self.fft_methods:
-            self.SubResDic[f'I_V_ZjZ_{method}'] = []
-            self.SubResDic[f'I_V_FCsZj_{method}'] = []
-            self.SubResDic[f'I_S_FCsZj_{method}'] = []
-            
-            self.AggResDic[f'I_V_ZjZ_{method}'] = []
-            self.AggResDic[f'I_V_FCsZj_{method}'] = []
-            self.AggResDic[f'I_S_FCsZj_{method}'] = []
-            
-            setattr(self, f'I_V_ZjZ_{method}', 0)
-            setattr(self, f'I_V_FCsZj_{method}', 0)
-            setattr(self, f'I_S_FCsZj_{method}', 0)
-
     def save_checkpoint(self, ):
         """
         Saves (pickles) all relevant fields, including optional metrics if present.
@@ -189,18 +128,13 @@ class Evaluator ():
             "TrackerCand_Temp": self.TrackerCand_Temp,
             "Name": self.Name,
             "NMiniBat": self.NMiniBat,
-            "SimSize": self.SimSize,
-            "fft_methods": self.fft_methods }
-
-        # Save method-specific metrics
-        for method in self.fft_methods:
-            for metric_type in ['I_V_ZjZ', 'I_V_FCsZj', 'I_S_FCsZj']:
-                attr_name = f'{metric_type}_{method}'
-                if hasattr(self, attr_name):
-                    checkpoint_data[attr_name] = getattr(self, attr_name)
+            "SimSize": self.SimSize, }
 
         # Optional attributes that may or may not exist yet
-        optional_attrs = ["I_V_CONsZj", "I_S_CONsZj", "I_V_CONsX", "I_S_CONsX"]
+        optional_attrs = [
+            "I_V_ZjZ", "I_V_FCsZj", "I_S_FCsZj",
+            "I_V_CONsZj", "I_S_CONsZj",
+            "I_V_CONsX", "I_S_CONsX" ]
         
         for attr in optional_attrs:
             if hasattr(self, attr):
@@ -235,68 +169,71 @@ class Evaluator ():
         self.Name = checkpoint_data.get("Name", None)
         self.NMiniBat = checkpoint_data.get("NMiniBat", self.NMiniBat)
         self.SimSize = checkpoint_data.get("SimSize", self.SimSize)
-        self.fft_methods = checkpoint_data.get("fft_methods", self.fft_methods)
 
-        # Load method-specific metrics
-        for method in self.fft_methods:
-            for metric_type in ['I_V_ZjZ', 'I_V_FCsZj', 'I_S_FCsZj']:
-                attr_name = f'{metric_type}_{method}'
-                setattr(self, attr_name, checkpoint_data.get(attr_name, 0))
-
-        # Load optional attributes
-        for attr in ["I_V_CONsZj", "I_S_CONsZj", "I_V_CONsX", "I_S_CONsX"]:
+        # Use the original fixed value.
+        for attr in ["I_V_ZjZ", "I_V_FCsZj", "I_S_FCsZj",
+                     "I_V_CONsZj", "I_S_CONsZj", "I_V_CONsX", "I_S_CONsX"]:
             setattr(self, attr, checkpoint_data.get(attr, None))
-            
         print(f"[Evaluator] Checkpoint loaded <- {self.CheckpointPath}")
         print("iter =", self.iter)
         
-    ''' --------------------------------------------------------- Candidate Z Selection Functions ---------------------------------------------------------'''
+    ### ----------- Searching for candidate Zj for plausible signal generation ----------- ###
+    def LocCandZsMaxFreq (self, CandQV, Samp_Z, SecData=None):
+        # Shape of CandQV: (NMiniBat, N_frequency, NGen)
+        # Shape of Samp_Z: (NMiniBat x NGen, LatDim)
+        # Shape of SecData: (NMiniBat x NGen, SecDataDim)
+
         
-    def LocCandZsMaxFreq(self, CandQV_results, Samp_Z, SecData=None):
-        """Multi-method candidate Z location with method-specific tracking."""
-        
-        for method, (CandQV, _) in CandQV_results.items():
-            if CandQV is None:
-                continue
-                
-            # Calculate scores based on SelMetricType
-            if self.SelMetricType == 'Entropy': 
-                Score = -np.sum(CandQV * np.log(CandQV), axis=1).ravel()
-            elif self.SelMetricType == 'KLD':
-                # Use method-specific QV_Batch
-                QV_Batch_method = getattr(self, f'QV_Batch_{method}')
-                CandQV_T = CandQV.transpose(0,2,1).reshape(self.NMiniBat*self.NGen, -1)[:,:,None]
-                KLD_BatGen = np.sum(QV_Batch_method * np.log(QV_Batch_method / CandQV_T), axis=1)
-                Score = np.min(KLD_BatGen, axis=-1)
-
-            # Get maximum frequency
-            MaxFreq = np.argmax(CandQV, axis=1).ravel() + 1
-
-            for Freq, _ in self.BestZsMetrics[method].items():
-                FreqIdx = np.where(MaxFreq == Freq)[0]
-                if len(FreqIdx) < 1: 
-                    continue
-
-                # Find minimum score and candidate Z values
-                MinScoreIdx = np.argmin(Score[FreqIdx]) 
-                MinScore = np.min(Score[FreqIdx]) 
-                CandZs = Samp_Z[[FreqIdx[MinScoreIdx]]]
-                
-                # Track results for specific method
-                self.TrackerCand_Temp[method][Freq]['TrackZX'].append(CandZs[None])
-                self.TrackerCand_Temp[method][Freq]['TrackMetrics'].append(MinScore[None])
-                
-                if SecData is not None:
-                    CandSecData = SecData[[FreqIdx[MinScoreIdx]]]
-                    self.TrackerCand_Temp[method][Freq]['TrackSecData'].append(CandSecData[None])
-                else:
-                    CandSecData = None
-
-                # Update best Z metrics for specific method
-                if MinScore < self.BestZsMetrics[method][Freq][0]:
-                    self.BestZsMetrics[method][Freq] = [MinScore, CandZs, CandSecData]
-                    print(f'Candidate Z updated! Method: {method}, Freq: {Freq}, Score: {np.round(MinScore, 4)}')
+        if self.SelMetricType == 'Entropy': 
+            # Calculating the entropies given the probability density function of the power spectral.
+            ## Return shape: (NMiniBat x NGen )
+            Score = -np.sum(CandQV * np.log(CandQV), axis=1).ravel()
     
+        elif self.SelMetricType == 'KLD':
+            # Calculating KLD(QV_Batch||CandQV_T) (KLD_BatGen) and selecing IDs for which KLD_BatGen less than SelMetricCut.
+            ## Shape of CandQV_T: (NMiniBat, N_frequency, NGen) -> (NMiniBat x NGen, N_frequency, 1), Shape of QV_Batch: (1, N_frequency, NMiniBat)
+            CandQV_T = CandQV.transpose(0,2,1).reshape(self.NMiniBat*self.NGen, -1)[:,:,None]
+            KLD_BatGen = np.sum(self.QV_Batch * np.log(self.QV_Batch / CandQV_T ), axis=1)
+        
+            ## Return shape: (NMiniBat x NGen )
+            Score = np.min(KLD_BatGen, axis=-1)
+
+        
+        # Getting the maximum frequency given the PSD from CandQV.
+        ## The 0 frequency is excluded as it represents the constant term; by adding 1 to the index, the frequency and index can be aligned to be the same.
+        ## Return shape: (NMiniBat, NGen) -> (NMiniBat x NGen) for the computational efficiency (i.e, ravel function applied)
+        MaxFreq = np.argmax(CandQV, axis=1).ravel() + 1
+
+        for Freq, _ in self.BestZsMetrics.items():
+            FreqIdx = np.where(MaxFreq == Freq)[0]
+
+            # Skipping the remainder of the code if there are no FreqIdx present at the predefined frequencies.
+            if len(FreqIdx) <1: 
+                continue;
+
+            # Calculating the minimum of Score and selecting candidate Z-values(CandZs)
+            MinScoreIdx = np.argmin(Score[FreqIdx]) 
+            MinScore = np.min(Score[FreqIdx]) 
+            CandZs = Samp_Z[[FreqIdx[MinScoreIdx]]]
+            
+            # Tracking results
+            self.TrackerCand_Temp[Freq]['TrackZX'].append(CandZs[None])
+            self.TrackerCand_Temp[Freq]['TrackMetrics'].append(MinScore[None])
+            
+            if SecData is not None: # for processing secondary data (SecData).
+                CandSecData = SecData[[FreqIdx[MinScoreIdx]]]
+                self.TrackerCand_Temp[Freq]['TrackSecData'].append(CandSecData[None])
+            else:
+                CandSecData = None
+
+            # Updating the Min_SumH value if the current iteration value is smaller.
+            if MinScore < self.BestZsMetrics[Freq][0]:
+                self.BestZsMetrics[Freq] = [MinScore, CandZs, CandSecData]
+                print('Candidate Z updated! ', 'Freq:', Freq, ', Score:', np.round(MinScore, 4))
+
+
+    
+    ### ------------------------  # Selecting nested Z values and secondary data matrix --------------------- ###
     def SubNestedZFix(self, SubTrackerCand):
                 
         ''' Constructing the dictionary: {'KeyID': { 'TrackZX' : Zs or Xs, 'TrackSecData' : Secondary-data }}
@@ -325,8 +262,9 @@ class Evaluator ():
             
         return Results
     
-    ''' --------------------------------------------------------- Task Iteration Functions ---------------------------------------------------------'''
     
+    
+    ### ------------------------------ Conducting task iteration ------------------------------ ###
     def Iteration (self, TaskLogic, SaveInterval=1, Continue=False):
         """
         If Continue=True, try to load from 'SavePath' first.
@@ -366,65 +304,97 @@ class Evaluator ():
 
                     pbar.update(1)
     
-    ''' --------------------------------------------------------- Post-Sampling Selection Functions ---------------------------------------------------------'''
     
-    def SelPostSamp(self, SelMetricCut=np.inf, BestZsMetrics=None, TrackerCand=None, SavePath=None):
-        """Post-sampling selection with multi-method support."""
+    
+    ### ------------------- Selecting post-sampled Z values for generating plausible signals ------------------- ###
+    def SelPostSamp (self, SelMetricCut=np.inf, BestZsMetrics=None, TrackerCand=None, SavePath=None ):
         
+        ## Optional parameters
+        # Updating The threshold value for selecting Zs in SubNestedZFix if needed.
         self.SelMetricCut = SelMetricCut
+
+        # Setting arguments
         BestZsMetrics = self.BestZsMetrics if BestZsMetrics is None else BestZsMetrics
         TrackerCand = self.TrackerCand if TrackerCand is None else TrackerCand
-        
-        # Method-specific post-sampling results
-        self.PostSamp = {}
-        
-        for method in self.fft_methods:
-            # Get candidate frequency IDs for current method
-            if method in BestZsMetrics:
-                CandFreqIDs = [item[0] for item in BestZsMetrics[method].items() if item[1][0] != np.inf]
                 
-                # Select nested Z values for current method
-                method_PostSamp = {FreqID: self.SubNestedZFix(TrackerCand[method][FreqID]) 
-                                  for FreqID in CandFreqIDs if FreqID in TrackerCand.get(method, {})}
-                
-                self.PostSamp[method] = method_PostSamp
-                
-                # Count observations for current method
-                NPostZs = sum(len(item[1]) for item in method_PostSamp.items())
-                print(f'Method {method} - Total number of sets in NestedZs: {NPostZs}')
+        # Exploring FreqIDs available for signal generation  
+        ## FreqIDs such as [9, 10, 11 ..... 45]
+        ## item[0] contains frequency domains
+        ## item[1][0] contains metrics
+        self.CandFreqIDs = [item[0] for item in BestZsMetrics.items() if item[1][0] != np.inf ]
+            
         
-        # Save results
+        # Selecting nested Z values and secondary data matrix
+        '''  Constructing the dictionary : {'FreqID' : {'SubKeys' : { 'TrackZX' : Zs or Xs, 'TrackSecData' : Secondary-data }}}
+        
+           - Outermost Dictionary:
+             - Key (FreqID): Represents frequency identifiers.
+             - Value: A second-level dictionary (explained below).
+        
+           - Second-level Dictionary:
+             - Key (SubKeys): Represents sub-key (i.e., ID) for the given 'FreqID'.
+             - Value: A third-level dictionary (explained below).
+        
+           - Third-level Dictionary:
+             - Key (TrackZX) : Value (Tracked Z or X data)
+             - Key (TrackSecData) : Values (Tracked secondary data matrix)
+             
+        '''
+        self.PostSamp = {FreqID : self.SubNestedZFix(TrackerCand[FreqID], ) for FreqID in self.CandFreqIDs}
+
+        
+        
+        # Counting the number of obs in NestedZs
+        NPostZs =0 
+        for item in self.PostSamp.items():
+            NPostZs += len(item[1])
+
+        print('The total number of sets in NestedZs:', NPostZs)
+
+        
+        # Saving intermedicate results into the hard disk
         if SavePath is not None:
             with open(SavePath, 'wb') as handle:
                 pickle.dump(self.PostSamp, handle, protocol=pickle.HIGHEST_PROTOCOL)
         
         return self.PostSamp
+    
+    
         
-    ''' --------------------------------------------------------- Quality Evaluation Functions ---------------------------------------------------------'''
+    ### -------------- Evaluating the KLD between the PSD of the true signals and the generated signals ---------------- ###
+    def KLD_TrueGen (self, PostSamp=None, AnalSig=None, SecDataType=None, PlotDist=True): # Filtering Quality Index
+    
+        ## Required parameters
+        # PostSamp: The post-sampled data for generating signals with the shape of ({'FreqID': {'SubKeys': {'TrackZX': Zs or Xs, 'TrackSecData': Secondary-data}}}).
+        # AnalSig: The raw true signals for obtaining the population PSD.  Data shape: (N_PostSamp, N_Obs)
         
-    def KLD_TrueGen(self, PostSamp=None, AnalSig=None, SecDataType=None, PlotDist=True):
-        """KLD evaluation with multi-method support."""
+        ## Optional parameters
+        # SecDataType: The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
+        # PostSamp: The selected sampled data.
+
         
+        # Setting arguments
         PostSamp = self.PostSamp if PostSamp is None else PostSamp
         AnalSig = self.AnalSig if AnalSig is None else AnalSig
         SecDataType = self.SecDataType if SecDataType is None else SecDataType
         
-        # Extract post-sampled data
+        # Converting the dictionary to the list type.
         PostZsList = []
         PostSecDataList = []
 
-        for method_data in PostSamp.values():
-            for Freq, Subkeys in method_data.items():
-                for Subkeys, Values in Subkeys.items():
-                    PostZsList.append(np.array(Values['TrackZX']))
-                    if 'TrackSecData' in Values.keys(): 
-                        PostSecDataList.append(np.array(Values['TrackSecData']))
+        for Freq, Subkeys in PostSamp.items():
+            for Subkeys, Values in Subkeys.items():
+                PostZsList.append(np.array(Values['TrackZX']))
+                if 'TrackSecData' in Values.keys(): 
+                    PostSecDataList.append(np.array(Values['TrackSecData']))
         
+        # Converting the list type to the np-data type.
         PostZsList = np.concatenate(PostZsList)
-        if SecDataType is not False:
+        if SecDataType is not False:  # it means there are secondary-data inputs
             PostSecDataList = np.concatenate(PostSecDataList)
         
-        # Data binding for model input
+        
+        # Data binding for the model input
         if SecDataType == 'FCIN':
             Data = [PostSecDataList[:, :self.GenModel.input[0].shape[-1]], PostSecDataList[:, self.GenModel.input[0].shape[-1]:], PostZsList]            
         elif SecDataType == 'CONDIN':  
@@ -432,89 +402,40 @@ class Evaluator ():
         elif SecDataType == False :
              Data = PostZsList
             
-        # Generate signals
-        self.GenSamp = CompResource(self.GenModel, Data, BatchSize=self.GenBatchSize, GPU=self.GPU)
+          
+        # Generating signals
+        ## Return shape of data: (N_PostSamp, SigDim)
+        self.GenSamp = CompResource (self.GenModel, Data, BatchSize=self.GenBatchSize, GPU=self.GPU)
             
-        # Multi-method KLD calculation
-        self.method_results = {}
+
+        # Calculating the KLD between the PSD of the true signals and the generated signals    
+        PSDGenSamp =  FFT_PSD(self.GenSamp, 'All', MinFreq = self.MinFreq, MaxFreq = self.MaxFreq)
+        PSDTrueData =  FFT_PSD(AnalSig, 'All', MinFreq = self.MinFreq, MaxFreq = self.MaxFreq)
+            
+            
+        self.KldPSD_GenTrue = MeanKLD(PSDGenSamp, PSDTrueData)
+        self.KldPSD_TrueGen  = MeanKLD(PSDTrueData, PSDGenSamp)
+        self.MeanKld_GTTG = (self.KldPSD_GenTrue + self.KldPSD_TrueGen) / 2
         
-        for method in self.fft_methods:
-            try:
-                # Calculate PSD for generated and true data using current method
-                PSDGenSamp_results = FFT_PSD_MultiMethod(self.GenSamp, 'All', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                PSDTrueData_results = FFT_PSD_MultiMethod(AnalSig, 'All', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                
-                PSDGenSamp, _ = PSDGenSamp_results[method]
-                PSDTrueData, _ = PSDTrueData_results[method]
-                
-                if PSDGenSamp is None or PSDTrueData is None:
-                    print(f"Warning: Method {method} failed for KLD calculation")
-                    continue
-                
-                # Calculate KLD metrics for current method
-                KldPSD_GenTrue = MeanKLD(PSDGenSamp, PSDTrueData)
-                KldPSD_TrueGen = MeanKLD(PSDTrueData, PSDGenSamp)
-                MeanKld_GTTG = (KldPSD_GenTrue + KldPSD_TrueGen) / 2
-                
-                # Store method-specific results
-                self.method_results[method] = {
-                    'KldPSD_GenTrue': KldPSD_GenTrue,
-                    'KldPSD_TrueGen': KldPSD_TrueGen, 
-                    'MeanKld_GTTG': MeanKld_GTTG,
-                    'PSDGenSamp': PSDGenSamp,
-                    'PSDTrueData': PSDTrueData
-                }
-                
-                print(f'Method {method} - KldPSD_GenTrue: {KldPSD_GenTrue}')
-                print(f'Method {method} - KldPSD_TrueGen: {KldPSD_TrueGen}')
-                print(f'Method {method} - MeanKld_GTTG: {MeanKld_GTTG}')
-                
-            except Exception as e:
-                print(f"Error calculating KLD for method {method}: {e}")
-                continue
+
+        print('KldPSD_GenTrue: ', self.KldPSD_GenTrue)
+        print('KldPSD_TrueGen: ', self.KldPSD_TrueGen)
+        print('MeanKld_GTTG: ', self.MeanKld_GTTG)
+
+        if PlotDist==True:
+            plt.plot(PSDGenSamp, c='green', label='Generated')
+            plt.plot(PSDTrueData, c='orange', label='True')
+            plt.fill_between(np.arange(len(PSDTrueData)), PSDTrueData, color='orange', alpha=0.5)
+            plt.fill_between(np.arange(len(PSDGenSamp)), PSDGenSamp, color='green', alpha=0.5)
+            plt.legend()    
+    
         
-        # Set primary results to first successful method for backward compatibility
-        if self.method_results:
-            primary_method = list(self.method_results.keys())[0]
-            primary_results = self.method_results[primary_method]
-            self.KldPSD_GenTrue = primary_results['KldPSD_GenTrue']
-            self.KldPSD_TrueGen = primary_results['KldPSD_TrueGen']
-            self.MeanKld_GTTG = primary_results['MeanKld_GTTG']
-        
-        # Enhanced plotting for multi-method comparison
-        if PlotDist and self.method_results:
-            import matplotlib.pyplot as plt
-            
-            fig, axes = plt.subplots(2, 2, figsize=(12, 10))
-            axes = axes.flatten()
-            
-            for idx, (method, results) in enumerate(self.method_results.items()):
-                if idx >= 4:  # Limit to 4 plots
-                    break
-                    
-                ax = axes[idx]
-                PSDGenSamp = results['PSDGenSamp']
-                PSDTrueData = results['PSDTrueData']
-                
-                ax.plot(PSDGenSamp, c='green', label='Generated', alpha=0.8)
-                ax.plot(PSDTrueData, c='orange', label='True', alpha=0.8)
-                ax.fill_between(np.arange(len(PSDTrueData)), PSDTrueData, color='orange', alpha=0.3)
-                ax.fill_between(np.arange(len(PSDGenSamp)), PSDGenSamp, color='green', alpha=0.3)
-                ax.set_title(f'Method: {method}')
-                ax.legend()
-                ax.grid(True, alpha=0.3)
-            
-            # Hide unused subplots
-            for idx in range(len(self.method_results), 4):
-                axes[idx].set_visible(False)
-                
-            plt.tight_layout()
-            plt.show()
     
-    ''' --------------------------------------------------------- Main Evaluation Functions ---------------------------------------------------------'''
     
-    ''' --------------------------------------------------------- Main Evaluation Functions ---------------------------------------------------------'''
     
+    ''' ------------------------------------------------------ Main Functions ------------------------------------------------------'''
+    
+    ### -------------------------- Evaluating the performance of the model using both Z and FC inputs  -------------------------- ###
     def Eval_ZFC (self, AnalSig, SampZModel, SampFCModel, GenModel,  FcLimit= [0, 1.],  WindowSize=3,  SecDataType='FCIN',  Continue=True ):
         
         ## Required parameters
@@ -548,17 +469,12 @@ class Evaluator ():
         if Continue == False or not hasattr(self, 'iter'):
             self.sim, self.mini, self.iter = 0, 0, 0
         
-            # Method-specific candidate tracking
-            self.BestZsMetrics = {}
-            self.TrackerCand_Temp = {}
-            
-            for method in self.fft_methods:
-                self.BestZsMetrics[method] = {i: [np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
-                self.TrackerCand_Temp[method] = {i: {'TrackSecData': [], 'TrackZX': [], 'TrackMetrics': []} 
-                                                 for i in range(1, self.MaxFreq - self.MinFreq + 2)}
-                setattr(self, f'I_V_ZjZ_{method}', 0)
-                setattr(self, f'I_V_FCsZj_{method}', 0)
-                setattr(self, f'I_S_FCsZj_{method}', 0)
+            ## Result trackers
+            self.SubResDic = {'I_V_ZjZ':[],'I_V_FCsZj':[],'I_S_FCsZj':[]}
+            self.AggResDic = {'I_V_ZjZ':[],'I_V_FCsZj':[],'I_S_FCsZj':[]}
+            self.BestZsMetrics = {i:[np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
+            self.TrackerCand_Temp = {i:{'TrackSecData':[],'TrackZX':[],'TrackMetrics':[] } for i in range(1, self.MaxFreq - self.MinFreq + 2)} 
+            self.I_V_ZjZ, self.I_V_FCsZj, self.I_S_FCsZj = 0,0,0
         
          
 
@@ -566,12 +482,8 @@ class Evaluator ():
         ### ------------------------------------------------ Task logics ------------------------------------------------ ###
         
         # P(V=v)
-        # Calculate population PSD for all methods
-        QV_Pop_results = FFT_PSD_MultiMethod(self.AnalSig, 'All', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=self.fft_methods)
-        
-        for method, (qv_pop, _) in QV_Pop_results.items():
-            if qv_pop is not None:
-                setattr(self, f'QV_Pop_{method}', qv_pop)
+        ## Data shape: (N_frequency)
+        self.QV_Pop = FFT_PSD(self.AnalSig, 'All', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)
         
         
         def TaskLogic(SubData):
@@ -686,129 +598,104 @@ class Evaluator ():
                 
             '''
 
-            # Multi-method PSD calculations and metric computation
-            for method in self.fft_methods:
-                try:
-                    # Calculate PSDs for all signal types using current method
-                    MQV_Zbd_FCbdm_results = FFT_PSD_MultiMethod(self.Sig_Zbd_FCbdm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    MQV_Zjbd_FCbdm_results = FFT_PSD_MultiMethod(self.Sig_Zjbd_FCbdm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Zjbd_FCbdSt_results = FFT_PSD_MultiMethod(self.Sig_Zjbd_FCbdSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    
-                    QV_Zbdr_FCbdrm_results = FFT_PSD_MultiMethod(self.Sig_Zbdr_FCbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Zjbd_FCbdrm_results = FFT_PSD_MultiMethod(self.Sig_Zjbd_FCbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Zjbd_FCbdmSt_results = FFT_PSD_MultiMethod(self.Sig_Zjbd_FCbdmSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    
-                    # Extract results for current method
-                    MQV_Zbd_FCbdm, _ = MQV_Zbd_FCbdm_results[method]
-                    MQV_Zjbd_FCbdm, _ = MQV_Zjbd_FCbdm_results[method]
-                    QV_Zjbd_FCbdSt, _ = QV_Zjbd_FCbdSt_results[method]
-                    QV_Zbdr_FCbdrm, _ = QV_Zbdr_FCbdrm_results[method]
-                    QV_Zjbd_FCbdrm, _ = QV_Zjbd_FCbdrm_results[method]
-                    QV_Zjbd_FCbdmSt, _ = QV_Zjbd_FCbdmSt_results[method]
-                    
-                    if any(x is None for x in [MQV_Zbd_FCbdm, MQV_Zjbd_FCbdm, QV_Zjbd_FCbdSt]):
-                        print(f"Warning: Method {method} returned None results, skipping...")
-                        continue
-                    
-                    # Apply mean operation where needed
-                    MQV_Zbd_FCbdm = MQV_Zbd_FCbdm.mean(1)
-                    MQV_Zjbd_FCbdm = MQV_Zjbd_FCbdm.mean(1)
-                    QV_Zjbd_FCbdSt = QV_Zjbd_FCbdSt[:,0]
-                    
-                    # Permutation calculations
-                    QSV_Zbdr_FCbdrm = np.concatenate([ProbPermutation(QV_Zbdr_FCbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
-                    QSV_Zjbd_FCbdrm = np.concatenate([ProbPermutation(QV_Zjbd_FCbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
-                    QSV_Zjbd_FCbdmSt = ProbPermutation(QV_Zjbd_FCbdmSt, WindowSize=WindowSize)
-                    
-                    QS_Zbdr_FCbdrm = np.sum(QSV_Zbdr_FCbdrm, axis=2)
-                    QS_Zjbd_FCbdrm = np.sum(QSV_Zjbd_FCbdrm, axis=2)
-                    QS_Zjbd_FCbdmSt = np.sum(QSV_Zjbd_FCbdmSt, axis=1)
-                    
-                    MQS_Zjbd_FCbdrm = np.mean(QS_Zjbd_FCbdrm, axis=1)
-                    MQS_Zbdr_FCbdrm = np.mean(QS_Zbdr_FCbdrm, axis=1)
-                    
-                    # Calculate mutual information for current method
-                    I_V_ZjZ_ = MeanKLD(MQV_Zjbd_FCbdm, MQV_Zbd_FCbdm)
-                    I_V_FCsZj_ = MeanKLD(QV_Zjbd_FCbdSt, MQV_Zjbd_FCbdm)
-                    I_S_FCsZj_ = MeanKLD(QS_Zjbd_FCbdmSt, MQS_Zjbd_FCbdrm)
-                    
-                    print(f"Method {method} - I(V;z'|z): {I_V_ZjZ_}")
-                    print(f"Method {method} - I(V;fc'|z'): {I_V_FCsZj_}")
-                    print(f"Method {method} - I(S;fc'|z'): {I_S_FCsZj_}")
-                    
-                    # Store results for current method
-                    self.SubResDic[f'I_V_ZjZ_{method}'].append(I_V_ZjZ_)
-                    self.SubResDic[f'I_V_FCsZj_{method}'].append(I_V_FCsZj_)
-                    self.SubResDic[f'I_S_FCsZj_{method}'].append(I_S_FCsZj_)
-                    
-                    # Accumulate for aggregated results
-                    current_val = getattr(self, f'I_V_ZjZ_{method}')
-                    setattr(self, f'I_V_ZjZ_{method}', current_val + I_V_ZjZ_)
-                    
-                    current_val = getattr(self, f'I_V_FCsZj_{method}')
-                    setattr(self, f'I_V_FCsZj_{method}', current_val + I_V_FCsZj_)
-                    
-                    current_val = getattr(self, f'I_S_FCsZj_{method}')
-                    setattr(self, f'I_S_FCsZj_{method}', current_val + I_S_FCsZj_)
-                    
-                    # Calculate batch QV for candidate Z location
-                    QV_Batch_results = FFT_PSD_MultiMethod(SubData[:,None], 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Batch, _ = QV_Batch_results[method]
-                    if QV_Batch is not None:
-                        setattr(self, f'QV_Batch_{method}', QV_Batch.transpose((1,2,0)))
-                    
-                except Exception as e:
-                    print(f"Error processing method {method}: {e}")
-                    continue
+      
+            ### ---------------------------- Cumulative Power Spectral Density (PSD) over each frequency -------------------------------- ###
+            # Return shape of MQV_Zbd_FCbdm : (NMiniBat, N_frequency)
+            self.MQV_Zbd_FCbdm = FFT_PSD(self.Sig_Zbd_FCbdm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).mean(1)
+            # Return shape of MQV_Zjbd_FCbdm : (NMiniBat, N_frequency)
+            self.MQV_Zjbd_FCbdm = FFT_PSD(self.Sig_Zjbd_FCbdm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).mean(1)
+            # Return shape of QV_Zjbd_FCbdSt : (NMiniBat, N_frequency)
+            self.QV_Zjbd_FCbdSt = FFT_PSD(self.Sig_Zjbd_FCbdSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)[:,0]
             
-            # Multi-method candidate Z location
-            QV_Zbdr_FCbdrm_T_results = {}
-            for method in self.fft_methods:
-                try:
-                    QV_results = FFT_PSD_MultiMethod(self.Sig_Zbdr_FCbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Zbdr_FCbdrm, _ = QV_results[method]
-                    if QV_Zbdr_FCbdrm is not None:
-                        QV_Zbdr_FCbdrm_T_results[method] = (QV_Zbdr_FCbdrm.reshape(self.NMiniBat, self.NGen, -1).transpose(0,2,1), None)
-                except Exception as e:
-                    print(f"Error in candidate Z location for method {method}: {e}")
-                    continue
+            # Return shape of QV_Zbdr_FCbdrm : (NMiniBat, NParts, NSubGen, N_frequency)
+            self.QV_Zbdr_FCbdrm = FFT_PSD(self.Sig_Zbdr_FCbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)
+            # Return shape of QV_Zjbd_FCbdrm : (NMiniBat, NParts, NSubGen, N_frequency)
+            self.QV_Zjbd_FCbdrm = FFT_PSD(self.Sig_Zjbd_FCbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)
+            # Return shape of QV_Zjbd_FCbdmSt : (NMiniBat, NSubGen, N_frequency)
+            self.QV_Zjbd_FCbdmSt = FFT_PSD(self.Sig_Zjbd_FCbdmSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)
+            #print(self.MQV_Zbd_FCbdm.shape, self.MQV_Zjbd_FCbdm.shape, self.QV_Zjbd_FCbdSt.shape, self.QV_Zbdr_FCbdrm.shape, self.QV_Zjbd_FCbdrm.shape, self.QV_Zjbd_FCbdmSt.shape)
             
-            self.LocCandZsMaxFreq(QV_Zbdr_FCbdrm_T_results, self.Zbdr, self.FCbdrm)
+            ### ---------------------------- Permutation density given PSD over each generation -------------------------------- ###
+            # Calculating PD-PSD over v and s.
+            ## Return shape of QSV_Zbdr_FCbdrm : (NMiniBat, NParts, N_frequency, N_permutation_cases)
+            self.QSV_Zbdr_FCbdrm = np.concatenate([ProbPermutation(self.QV_Zbdr_FCbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
+            ## Return shape of QSV_Zjbd_FCbdrm : (NMiniBat, NParts, N_frequency, N_permutation_cases)
+            self.QSV_Zjbd_FCbdrm = np.concatenate([ProbPermutation(self.QV_Zjbd_FCbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
+            ## Return shape of QSV_Zjbd_FCbdmSt : (NMiniBat, N_frequency, N_permutation_cases)
+            self.QSV_Zjbd_FCbdmSt = ProbPermutation(self.QV_Zjbd_FCbdmSt, WindowSize=WindowSize)
             
-            # Restructure TrackerCand for all methods
-            self.TrackerCand = {}
-            for method in self.fft_methods:
-                self.TrackerCand[method] = {
-                    item[0]: {
-                        'TrackZX': np.concatenate(self.TrackerCand_Temp[method][item[0]]['TrackZX']), 
-                        'TrackSecData': np.concatenate(self.TrackerCand_Temp[method][item[0]]['TrackSecData']), 
-                        'TrackMetrics': np.concatenate(self.TrackerCand_Temp[method][item[0]]['TrackMetrics'])
-                    } 
-                    for item in self.TrackerCand_Temp[method].items() 
-                    if len(item[1]['TrackSecData']) > 0
-                }
+            # Marginalizing v to obtain PD-PSD(s).
+            ## Return shape of QS_Zbdr_FCbdrm : (NMiniBat, NParts, N_permutation_cases)
+            self.QS_Zbdr_FCbdrm = np.sum(self.QSV_Zbdr_FCbdrm, axis=2)
+            ## Return shape of QS_Zjbd_FCbdrm : (NMiniBat, NParts, N_permutation_cases)
+            self.QS_Zjbd_FCbdrm = np.sum(self.QSV_Zjbd_FCbdrm, axis=2)
+            ## Return shape of QS_Zjbd_FCbdmSt : (NMiniBat, N_permutation_cases)
+            self.QS_Zjbd_FCbdmSt = np.sum(self.QSV_Zjbd_FCbdmSt, axis=1)
+            #print(self.QSV_Zbdr_FCbdrm.shape,  self.QSV_Zjbd_FCbdrm.shape, self.QSV_Zjbd_FCbdmSt.shape, self.QS_Zbdr_FCbdrm.shape, self.QS_Zjbd_FCbdrm.shape, self.QS_Zjbd_FCbdmSt.shape)
+            
+            # Averaging PD-PSD(s) over the Dimension m: Effect of Monte Carlo Simulation
+            ## Return shape of MQS_Zjbd_FCbdrm : (NMiniBat, N_permutation_cases)
+            self.MQS_Zjbd_FCbdrm = np.mean(self.QS_Zjbd_FCbdrm, axis=1)
+            ## Return shape of MQS_Zbdr_FCbdrm : (NMiniBat, N_permutation_cases)
+            self.MQS_Zbdr_FCbdrm = np.mean(self.QS_Zbdr_FCbdrm, axis=1)
+            #print(self.MQS_Zjbd_FCbdrm.shape, self.MQS_Zbdr_FCbdrm.shape )
+            
+            
+            ### ---------------------------------------- Mutual information ---------------------------------------- ###
+            I_V_ZjZ_ = MeanKLD(self.MQV_Zjbd_FCbdm, self.MQV_Zbd_FCbdm )  # I(V;z'|z)
+            I_V_FCsZj_ = MeanKLD(self.QV_Zjbd_FCbdSt, self.MQV_Zjbd_FCbdm ) # I(V;fc'|z')
+            I_S_FCsZj_ = MeanKLD(self.QS_Zjbd_FCbdmSt, self.MQS_Zjbd_FCbdrm ) # I(S;fc'|z')
+
+
+            print("I(V;z'|z) :", I_V_ZjZ_)
+            self.SubResDic['I_V_ZjZ'].append(I_V_ZjZ_)
+            self.I_V_ZjZ += I_V_ZjZ_
+
+            print("I(V;fc'|z') :", I_V_FCsZj_)
+            self.SubResDic['I_V_FCsZj'].append(I_V_FCsZj_)
+            self.I_V_FCsZj += I_V_FCsZj_
+
+            print("I(S;fc'|z') :", I_S_FCsZj_)
+            self.SubResDic['I_S_FCsZj'].append(I_S_FCsZj_)
+            self.I_S_FCsZj += I_S_FCsZj_
+            
+            
+            ### --------------------------- Locating the candidate Z values that generate plausible signals ------------------------- ###
+            ## Return shape: (1, N_frequency, NMiniBat)
+            ### Since it is the true PSD, there are no M generations. 
+            self.QV_Batch = FFT_PSD(SubData[:,None], 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).transpose((1,2,0))
+            
+            # Intermediate objects for Q(s) and H(')
+            ## Return shape: (NMiniBat, N_frequency, NGen)
+            #self.QV_Zjbd_FCbdrm_T = self.QV_Zjbd_FCbdrm.reshape(self.NMiniBat, self.NGen, -1).transpose(0,2,1)
+            #self.LocCandZsMaxFreq ( self.QV_Zjbd_FCbdrm_T, self.Zjbd,  self.FCbdrm)
+            self.QV_Zbdr_FCbdrm_T = self.QV_Zbdr_FCbdrm.reshape(self.NMiniBat, self.NGen, -1).transpose(0,2,1)
+            self.LocCandZsMaxFreq ( self.QV_Zbdr_FCbdrm_T, self.Zbdr,  self.FCbdrm)
+ 
+            # Restructuring TrackerCand
+            ## item[0] contains frequency domains
+            ## item[1] contains tracked Z values, 2nd data, and metrics
+            self.TrackerCand = {item[0]: {'TrackZX': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackZX']), 
+                                          'TrackSecData': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackSecData']), 
+                                          'TrackMetrics': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackMetrics'])} 
+                                          for item in self.TrackerCand_Temp.items() if len(item[1]['TrackSecData']) > 0} 
             
             
         # Conducting the task iteration
         self.Iteration(TaskLogic, Continue=Continue)
 
-        # Calculate final aggregated results for all methods
-        for method in self.fft_methods:
-            # Normalize by total iteration size
-            current_val = getattr(self, f'I_V_ZjZ_{method}')
-            setattr(self, f'I_V_ZjZ_{method}', current_val / self.TotalIterSize)
-            self.AggResDic[f'I_V_ZjZ_{method}'].append(getattr(self, f'I_V_ZjZ_{method}'))
-            
-            current_val = getattr(self, f'I_V_FCsZj_{method}')
-            setattr(self, f'I_V_FCsZj_{method}', current_val / self.TotalIterSize)
-            self.AggResDic[f'I_V_FCsZj_{method}'].append(getattr(self, f'I_V_FCsZj_{method}'))
-            
-            current_val = getattr(self, f'I_S_FCsZj_{method}')
-            setattr(self, f'I_S_FCsZj_{method}', current_val / self.TotalIterSize)
-            self.AggResDic[f'I_S_FCsZj_{method}'].append(getattr(self, f'I_S_FCsZj_{method}'))
 
+        # MI(V;Z',Z)
+        self.I_V_ZjZ /= (self.TotalIterSize)
+        self.AggResDic['I_V_ZjZ'].append(self.I_V_ZjZ)
 
+        # MI(V;FC,Z')
+        self.I_V_FCsZj /= (self.TotalIterSize)
+        self.AggResDic['I_V_FCsZj'].append(self.I_V_FCsZj)
 
+        # MI(VE;FC',Z') 
+        self.I_S_FCsZj /= (self.TotalIterSize)
+        self.AggResDic['I_S_FCsZj'].append(self.I_S_FCsZj)
 
 
     ### -------------------------- Evaluating the performance of the model using both Z and Conditions -------------------------- ###
@@ -828,7 +715,7 @@ class Evaluator ():
         self.SecDataType = SecDataType   # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
         
         
-    
+
         ## Intermediate variables
         self.AnalSig = AnalData[0]  # The raw true signals to be used for analysis.
         self.TrueCond = AnalData[1] # The raw true PSD to be used for analysis.
@@ -840,61 +727,38 @@ class Evaluator ():
         self.TotalIterSize = self.SubIterSize * self.SimSize
         
         assert self.NGen >= self.CondDim, "NGen must be greater than or equal to CondDim for the evaluation."
-    
+
         
         # Functional trackers
         if Continue == False or not hasattr(self, 'iter'):
             self.sim, self.mini, self.iter = 0, 0, 0
         
-            # Method-specific candidate tracking
-            self.BestZsMetrics = {}
-            self.TrackerCand_Temp = {}
-            
-            for method in self.fft_methods:
-                self.BestZsMetrics[method] = {i: [np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
-                self.TrackerCand_Temp[method] = {i: {'TrackSecData': [], 'TrackZX': [], 'TrackMetrics': []} 
-                                                 for i in range(1, self.MaxFreq - self.MinFreq + 2)}
-                
-                # Initialize method-specific result trackers
-                setattr(self, f'I_V_ZjZ_{method}', 0)
-                setattr(self, f'I_V_CONsZj_{method}', 0)
-                setattr(self, f'I_S_CONsZj_{method}', 0)
-            
-            # Initialize method-specific result dictionaries
-            self.SubResDic = {}
-            self.AggResDic = {}
-            
-            for method in self.fft_methods:
-                self.SubResDic[f'I_V_ZjZ_{method}'] = []
-                self.SubResDic[f'I_V_CONsZj_{method}'] = []
-                self.SubResDic[f'I_S_CONsZj_{method}'] = []
-                
-                self.AggResDic[f'I_V_ZjZ_{method}'] = []
-                self.AggResDic[f'I_V_CONsZj_{method}'] = []
-                self.AggResDic[f'I_S_CONsZj_{method}'] = []
+            ## Result trackers
+            self.SubResDic = {'I_V_ZjZ':[],'I_V_CONsZj':[],'I_S_CONsZj':[]}
+            self.AggResDic = {'I_V_ZjZ':[],'I_V_CONsZj':[],'I_S_CONsZj':[]}
+            self.BestZsMetrics = {i:[np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
+            self.TrackerCand_Temp = {i:{'TrackSecData':[],'TrackZX':[],'TrackMetrics':[] } for i in range(1, self.MaxFreq - self.MinFreq + 2)} 
+            self.I_V_ZjZ, self.I_V_CONsZj, self.I_S_CONsZj = 0,0,0
         
          
-    
+
         
         ### ------------------------------------------------ Task logics ------------------------------------------------ ###
         
-        # P(V=v) - Calculate population PSD for all methods
-        QV_Pop_results = FFT_PSD_MultiMethod(self.AnalSig, 'All', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=self.fft_methods)
-        
-        for method, (qv_pop, _) in QV_Pop_results.items():
-            if qv_pop is not None:
-                setattr(self, f'QV_Pop_{method}', qv_pop)
+        # P(V=v)
+        ## Data shape: (N_frequency)
+        self.QV_Pop = FFT_PSD(self.AnalSig, 'All', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)
         
         
         def TaskLogic(SubData):
-    
+
             print('-------------  ',self.Name,'  -------------')
-    
+
             ### ------------------------------------------------ Sampling ------------------------------------------------ ###
             # Updating NMiniBat; If there is a remainder in Ndata/NMiniBat, NMiniBat must be updated." 
             self.NMiniBat = len(SubData[0]) 
             self.SubCond = SubData[1]
-    
+
             
             # Sampling Samp_Z and Samp_Zj
             # Please note that the tensor is maintained in a reduced number of dimensions for computational efficiency in practice.
@@ -942,9 +806,9 @@ class Evaluator ():
             # Return shape of CONbd_Sort : (NMiniBat, LatDim)
             ## The conditions are sorted at the dimension d after being randomly sampled across the dimensions b, d and k.
             self.CONbd_Sort = np.sort(self.CONbdm_Ext[:, 0, 0], axis=0).copy() 
-    
+
             
-    
+
             ### ------------------------------------------------ Signal reconstruction ------------------------------------------------ ###
             '''
             - To maximize the efficiency of GPU utilization, 
@@ -960,7 +824,7 @@ class Evaluator ():
               4) Zjbd + CONbd_Sort      ->         Sig_Zjbd_CONbdSt        ->                                    I()  
                                                   * St=Sort 
              '''
-    
+
                         
             # Binding the samples together, generate signals through the model 
             ListZs = [ self.Zbdr,   self.Zjbd,    self.Zjbd_Red1,       self.Zjbd_Red2]
@@ -985,8 +849,8 @@ class Evaluator ():
             
             self.Sig_Zbd_CONbdm = self.Sig_Zbdr_CONbdrm[:, 0]
             self.Sig_Zjbd_CONbdm = self.Sig_Zjbd_CONbdrm[:, 0]
-    
-     
+
+ 
             
             ### ------------------------------------------------ Calculating metrics for the evaluation ------------------------------------------------ ###
             
@@ -1002,129 +866,105 @@ class Evaluator ():
                 
              '''
             
-            # Multi-method PSD calculations and metric computation
-            for method in self.fft_methods:
-                try:
-                    # Calculate PSDs for all signal types using current method
-                    MQV_Zbd_CONbdm_results = FFT_PSD_MultiMethod(self.Sig_Zbd_CONbdm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    MQV_Zjbd_CONbdm_results = FFT_PSD_MultiMethod(self.Sig_Zjbd_CONbdm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Zjbd_CONbdSt_results = FFT_PSD_MultiMethod(self.Sig_Zjbd_CONbdSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    
-                    QV_Zbdr_CONbdrm_results = FFT_PSD_MultiMethod(self.Sig_Zbdr_CONbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Zjbd_CONbdrm_results = FFT_PSD_MultiMethod(self.Sig_Zjbd_CONbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Zjbd_CONbdmSt_results = FFT_PSD_MultiMethod(self.Sig_Zjbd_CONbdmSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    
-                    # Extract results for current method
-                    MQV_Zbd_CONbdm, _ = MQV_Zbd_CONbdm_results[method]
-                    MQV_Zjbd_CONbdm, _ = MQV_Zjbd_CONbdm_results[method]
-                    QV_Zjbd_CONbdSt, _ = QV_Zjbd_CONbdSt_results[method]
-                    QV_Zbdr_CONbdrm, _ = QV_Zbdr_CONbdrm_results[method]
-                    QV_Zjbd_CONbdrm, _ = QV_Zjbd_CONbdrm_results[method]
-                    QV_Zjbd_CONbdmSt, _ = QV_Zjbd_CONbdmSt_results[method]
-                    
-                    if any(x is None for x in [MQV_Zbd_CONbdm, MQV_Zjbd_CONbdm, QV_Zjbd_CONbdSt]):
-                        print(f"Warning: Method {method} returned None results, skipping...")
-                        continue
-                    
-                    # Apply mean operation where needed
-                    MQV_Zbd_CONbdm = MQV_Zbd_CONbdm.mean(1)
-                    MQV_Zjbd_CONbdm = MQV_Zjbd_CONbdm.mean(1)
-                    QV_Zjbd_CONbdSt = QV_Zjbd_CONbdSt[:,0]
-                    
-                    # Permutation calculations
-                    QSV_Zbdr_CONbdrm = np.concatenate([ProbPermutation(QV_Zbdr_CONbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
-                    QSV_Zjbd_CONbdrm = np.concatenate([ProbPermutation(QV_Zjbd_CONbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
-                    QSV_Zjbd_CONbdmSt = ProbPermutation(QV_Zjbd_CONbdmSt, WindowSize=WindowSize)
-                    
-                    QS_Zbdr_CONbdrm = np.sum(QSV_Zbdr_CONbdrm, axis=2)
-                    QS_Zjbd_CONbdrm = np.sum(QSV_Zjbd_CONbdrm, axis=2)
-                    QS_Zjbd_CONbdmSt = np.sum(QSV_Zjbd_CONbdmSt, axis=1)
-                    
-                    MQS_Zjbd_CONbdrm = np.mean(QS_Zjbd_CONbdrm, axis=1)
-                    MQS_Zbdr_CONbdrm = np.mean(QS_Zbdr_CONbdrm, axis=1)
-                    
-                    # Calculate mutual information for current method
-                    I_V_ZjZ_ = MeanKLD(MQV_Zjbd_CONbdm, MQV_Zbd_CONbdm)
-                    I_V_CONsZj_ = MeanKLD(QV_Zjbd_CONbdSt, MQV_Zjbd_CONbdm)
-                    I_S_CONsZj_ = MeanKLD(QS_Zjbd_CONbdmSt, MQS_Zjbd_CONbdrm)
-                    
-                    print(f"Method {method} - I(V;z'|z): {I_V_ZjZ_}")
-                    print(f"Method {method} - I(V;Con'|z'): {I_V_CONsZj_}")
-                    print(f"Method {method} - I(S;Con'|z'): {I_S_CONsZj_}")
-                    
-                    # Store results for current method
-                    self.SubResDic[f'I_V_ZjZ_{method}'].append(I_V_ZjZ_)
-                    self.SubResDic[f'I_V_CONsZj_{method}'].append(I_V_CONsZj_)
-                    self.SubResDic[f'I_S_CONsZj_{method}'].append(I_S_CONsZj_)
-                    
-                    # Accumulate for aggregated results
-                    current_val = getattr(self, f'I_V_ZjZ_{method}')
-                    setattr(self, f'I_V_ZjZ_{method}', current_val + I_V_ZjZ_)
-                    
-                    current_val = getattr(self, f'I_V_CONsZj_{method}')
-                    setattr(self, f'I_V_CONsZj_{method}', current_val + I_V_CONsZj_)
-                    
-                    current_val = getattr(self, f'I_S_CONsZj_{method}')
-                    setattr(self, f'I_S_CONsZj_{method}', current_val + I_S_CONsZj_)
-                    
-                    # Calculate batch QV for candidate Z location
-                    QV_Batch_results = FFT_PSD_MultiMethod(SubData[0][:,None], 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Batch, _ = QV_Batch_results[method]
-                    if QV_Batch is not None:
-                        setattr(self, f'QV_Batch_{method}', QV_Batch.transpose((1,2,0)))
-                    
-                except Exception as e:
-                    print(f"Error processing method {method}: {e}")
-                    continue
             
-            # Multi-method candidate Z location
-            QV_Zbdr_CONbdrm_T_results = {}
-            for method in self.fft_methods:
-                try:
-                    QV_results = FFT_PSD_MultiMethod(self.Sig_Zbdr_CONbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Zbdr_CONbdrm, _ = QV_results[method]
-                    if QV_Zbdr_CONbdrm is not None:
-                        QV_Zbdr_CONbdrm_T_results[method] = (QV_Zbdr_CONbdrm.reshape(self.NMiniBat, self.NGen, -1).transpose(0,2,1), None)
-                except Exception as e:
-                    print(f"Error in candidate Z location for method {method}: {e}")
-                    continue
+            ### ---------------------------- Cumulative Power Spectral Density (PSD) over each frequency -------------------------------- ###
+            # Return shape of MQV_Zbd_CONbdm : (NMiniBat, N_frequency)
+            self.MQV_Zbd_CONbdm = FFT_PSD(self.Sig_Zbd_CONbdm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).mean(1)
+            # Return shape of MQV_Zjbd_CONbdm : (NMiniBat, N_frequency)
+            self.MQV_Zjbd_CONbdm = FFT_PSD(self.Sig_Zjbd_CONbdm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).mean(1)
+            # Return shape of QV_Zjbd_CONbdSt : (NMiniBat, N_frequency)
+            self.QV_Zjbd_CONbdSt = FFT_PSD(self.Sig_Zjbd_CONbdSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)[:,0]
             
-            self.LocCandZsMaxFreq(QV_Zbdr_CONbdrm_T_results, self.Zbdr, self.CONbdrm)
+            # Return shape of QV_Zbdr_CONbdrm : (NMiniBat, NParts, NSubGen, N_frequency)
+            self.QV_Zbdr_CONbdrm = FFT_PSD(self.Sig_Zbdr_CONbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)
+            # Return shape of QV_Zjbd_CONbdrm : (NMiniBat, NParts, NSubGen, N_frequency)
+            self.QV_Zjbd_CONbdrm = FFT_PSD(self.Sig_Zjbd_CONbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)
+            # Return shape of QV_Zjbd_CONbdmSt : (NMiniBat, NSubGen, N_frequency)
+            self.QV_Zjbd_CONbdmSt = FFT_PSD(self.Sig_Zjbd_CONbdmSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)
+            #print(self.MQV_Zbd_CONbdm.shape, self.MQV_Zjbd_CONbdm.shape, self.QV_Zjbd_CONbdSt.shape, self.QV_Zbdr_CONbdrm.shape, self.QV_Zjbd_CONbdrm.shape, self.QV_Zjbd_CONbdmSt.shape)
             
-            # Restructure TrackerCand for all methods
-            self.TrackerCand = {}
-            for method in self.fft_methods:
-                self.TrackerCand[method] = {
-                    item[0]: {
-                        'TrackZX': np.concatenate(self.TrackerCand_Temp[method][item[0]]['TrackZX']), 
-                        'TrackSecData': np.concatenate(self.TrackerCand_Temp[method][item[0]]['TrackSecData']), 
-                        'TrackMetrics': np.concatenate(self.TrackerCand_Temp[method][item[0]]['TrackMetrics'])
-                    } 
-                    for item in self.TrackerCand_Temp[method].items() 
-                    if len(item[1]['TrackSecData']) > 0
-                }
+            ### ---------------------------- Permutation density given PSD over each generation -------------------------------- ###
+            # Calculating PD-PSD over v and s.
+            ## Return shape of QSV_Zbdr_CONbdrm : (NMiniBat, NParts, N_frequency, N_permutation_cases)
+            self.QSV_Zbdr_CONbdrm = np.concatenate([ProbPermutation(self.QV_Zbdr_CONbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
+            ## Return shape of QSV_Zjbd_CONCbdrm : (NMiniBat, NParts, N_frequency, N_permutation_cases)
+            self.QSV_Zjbd_CONbdrm = np.concatenate([ProbPermutation(self.QV_Zjbd_CONbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
+            ## Return shape of QSV_Zjbd_CONbdmSt : (NMiniBat, N_frequency, N_permutation_cases)
+            self.QSV_Zjbd_CONbdmSt = ProbPermutation(self.QV_Zjbd_CONbdmSt, WindowSize=WindowSize)
+            
+            # Marginalizing v to obtain PD-PSD(s).
+            ## Return shape of QS_Zbdr_CONbdrm : (NMiniBat, NParts, N_permutation_cases)
+            self.QS_Zbdr_CONbdrm = np.sum(self.QSV_Zbdr_CONbdrm, axis=2)
+            ## Return shape of QS_Zjbd_CONbdrm : (NMiniBat, NParts, N_permutation_cases)
+            self.QS_Zjbd_CONbdrm = np.sum(self.QSV_Zjbd_CONbdrm, axis=2)
+            ## Return shape of QS_Zjbd_CONbdmSt : (NMiniBat, N_permutation_cases)
+            self.QS_Zjbd_CONbdmSt = np.sum(self.QSV_Zjbd_CONbdmSt, axis=1)
+            #print(self.QSV_Zbdr_CONbdrm.shape,  self.QSV_Zjbd_CONbdrm.shape, self.QSV_Zjbd_CONbdmSt.shape, self.QS_Zbdr_CONbdrm.shape, self.QS_Zjbd_CONbdrm.shape, self.QS_Zjbd_CONbdmSt.shape)
+            
+            # Averaging PD-PSD(s) over the Dimension m: Effect of Monte Carlo Simulation
+            ## Return shape of MQS_Zjbd_CONbdrm : (NMiniBat, N_permutation_cases)
+            self.MQS_Zjbd_CONbdrm = np.mean(self.QS_Zjbd_CONbdrm, axis=1)
+            ## Return shape of MQS_Zbdr_CONbdrm : (NMiniBat, N_permutation_cases)
+            self.MQS_Zbdr_CONbdrm = np.mean(self.QS_Zbdr_CONbdrm, axis=1)
+            #print(self.MQS_Zjbd_CONbdrm.shape, self.MQS_Zbdr_CONbdrm.shape )
+
+            
+                
+            ### ---------------------------------------- Mutual information ---------------------------------------- ###
+            I_V_ZjZ_ = MeanKLD(self.MQV_Zjbd_CONbdm, self.MQV_Zbd_CONbdm )  # I(V;z'|z)
+            I_V_CONsZj_ = MeanKLD(self.QV_Zjbd_CONbdSt, self.MQV_Zjbd_CONbdm ) # I(V;Con'|z')
+            I_S_CONsZj_ = MeanKLD(self.QS_Zjbd_CONbdmSt, self.MQS_Zjbd_CONbdrm ) # I(S;Con'|z')
+
+            print("I(V;z'|z) :", I_V_ZjZ_)
+            self.SubResDic['I_V_ZjZ'].append(I_V_ZjZ_)
+            self.I_V_ZjZ += I_V_ZjZ_
+           
+            print("I(V;Con'|z') :", I_V_CONsZj_)
+            self.SubResDic['I_V_CONsZj'].append(I_V_CONsZj_)
+            self.I_V_CONsZj += I_V_CONsZj_
+            
+            print("I(S;Con'|z') :", I_S_CONsZj_)
+            self.SubResDic['I_S_CONsZj'].append(I_S_CONsZj_)
+            self.I_S_CONsZj += I_S_CONsZj_
+                        
+            
+            ### --------------------------- Locating the candidate Z values that generate plausible signals ------------------------- ###
+            ## Return shape: (1, N_frequency, NMiniBat)
+            ### Since it is the true PSD, there are no M generations. 
+            self.QV_Batch = FFT_PSD(SubData[0][:,None], 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).transpose((1,2,0))
+            
+            # Intermediate objects for Q(s) and H(')
+            ## Return shape: (NMiniBat, N_frequency, NGen)
+            self.QV_Zbdr_CONbdrm_T = self.QV_Zbdr_CONbdrm.reshape(self.NMiniBat, self.NGen, -1).transpose(0,2,1)
+            self.LocCandZsMaxFreq ( self.QV_Zbdr_CONbdrm_T, self.Zbdr,  self.CONbdrm)
+            
+            # Restructuring TrackerCand
+            ## item[0] contains frequency domains
+            ## item[1] contains tracked Z values, 2nd data, and metrics
+            self.TrackerCand = {item[0]: {'TrackZX': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackZX']), 
+                                          'TrackSecData': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackSecData']), 
+                                          'TrackMetrics': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackMetrics'])} 
+                                          for item in self.TrackerCand_Temp.items() if len(item[1]['TrackSecData']) > 0} 
             
             
         # Conducting the task iteration
         self.Iteration(TaskLogic, Continue=Continue)
+
+
+        # MI(V;Z',Z)
+        self.I_V_ZjZ /= (self.TotalIterSize)
+        self.AggResDic['I_V_ZjZ'].append(self.I_V_ZjZ)
+
+        # MI(V;CON,Z')
+        self.I_V_CONsZj /= (self.TotalIterSize)
+        self.AggResDic['I_V_CONsZj'].append(self.I_V_CONsZj)
+
+        # MI(VE;CON',Z') 
+        self.I_S_CONsZj /= (self.TotalIterSize)
+        self.AggResDic['I_S_CONsZj'].append(self.I_S_CONsZj)
+
+
     
-        # Calculate final aggregated results for all methods
-        for method in self.fft_methods:
-            # Normalize by total iteration size
-            current_val = getattr(self, f'I_V_ZjZ_{method}')
-            setattr(self, f'I_V_ZjZ_{method}', current_val / self.TotalIterSize)
-            self.AggResDic[f'I_V_ZjZ_{method}'].append(getattr(self, f'I_V_ZjZ_{method}'))
-            
-            current_val = getattr(self, f'I_V_CONsZj_{method}')
-            setattr(self, f'I_V_CONsZj_{method}', current_val / self.TotalIterSize)
-            self.AggResDic[f'I_V_CONsZj_{method}'].append(getattr(self, f'I_V_CONsZj_{method}'))
-            
-            current_val = getattr(self, f'I_S_CONsZj_{method}')
-            setattr(self, f'I_S_CONsZj_{method}', current_val / self.TotalIterSize)
-            self.AggResDic[f'I_S_CONsZj_{method}'].append(getattr(self, f'I_S_CONsZj_{method}'))
-
-
-
     ### -------------------------- Evaluating the performance of the model using both X and Conditions -------------------------- ###
     def Eval_XCON (self, AnalData, GenModel, FcLimit=0.05,  WindowSize=3, SecDataType=None,  Continue=True, **kwargs ):
         
@@ -1148,7 +988,7 @@ class Evaluator ():
         self.SecDataType = SecDataType   # The ancillary data-type: Use 'FCIN' for FC values or 'CONDIN' for conditional inputs such as power spectral density.
         
         
-    
+
         ## Intermediate variables
         self.AnalSig = AnalData[0]  # The raw true signals to be used for analysis.
         self.TrueCond = AnalData[1] # The raw true PSD to be used for analysis.
@@ -1159,59 +999,34 @@ class Evaluator ():
         self.TotalIterSize = self.SubIterSize * self.SimSize
         
         assert self.NGen >= self.CondDim, "NGen must be greater than or equal to CondDim for the evaluation."
-    
+
         
         # Functional trackers
         if Continue == False or not hasattr(self, 'iter'):
             self.sim, self.mini, self.iter = 0, 0, 0
         
-            # Method-specific candidate tracking
-            self.BestZsMetrics = {}
-            self.TrackerCand_Temp = {}
-            
-            for method in self.fft_methods:
-                self.BestZsMetrics[method] = {i: [np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
-                self.TrackerCand_Temp[method] = {i: {'TrackSecData': [], 'TrackZX': [], 'TrackMetrics': []} 
-                                                 for i in range(1, self.MaxFreq - self.MinFreq + 2)}
-                
-                # Initialize method-specific result trackers
-                setattr(self, f'I_V_CONsX_{method}', 0)
-                setattr(self, f'I_S_CONsX_{method}', 0)
-            
-            # Initialize method-specific result dictionaries
-            self.SubResDic = {}
-            self.AggResDic = {}
-            
-            for method in self.fft_methods:
-                self.SubResDic[f'I_V_CONsX_{method}'] = []
-                self.SubResDic[f'I_S_CONsX_{method}'] = []
-                
-                self.AggResDic[f'I_V_CONsX_{method}'] = []
-                self.AggResDic[f'I_S_CONsX_{method}'] = []
+            ## Result trackers
+            self.SubResDic = {'I_V_CONsX':[],'I_S_CONsX':[]}
+            self.AggResDic = {'I_V_CONsX':[],'I_S_CONsX':[]}
+            self.BestZsMetrics = {i:[np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
+            self.TrackerCand_Temp = {i:{'TrackSecData':[],'TrackZX':[],'TrackMetrics':[] } for i in range(1, self.MaxFreq - self.MinFreq + 2)} 
+            self.I_V_CONsX, self.I_S_CONsX = 0,0
         
          
-    
+
         
         ### ------------------------------------------------ Task logics ------------------------------------------------ ###
         
-        # P(V=v) - Calculate population PSD for all methods
-        QV_Pop_results = FFT_PSD_MultiMethod(self.AnalSig, 'All', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=self.fft_methods)
-        
-        for method, (qv_pop, _) in QV_Pop_results.items():
-            if qv_pop is not None:
-                setattr(self, f'QV_Pop_{method}', qv_pop)
-        
-        
         def TaskLogic(SubData):
-    
+
             print('-------------  ',self.Name,'  -------------')
-    
+
             ### ------------------------------------------------ Sampling ------------------------------------------------ ###
             # Updating NMiniBat; If there is a remainder in Ndata/NMiniBat, NMiniBat must be updated." 
             self.NMiniBat = len(SubData[0]) 
             self.SubCond = SubData[1]
-    
-    
+
+
             # Sampling Samp_X
             # Please note that the tensor is maintained in a reduced number of dimensions for computational efficiency in practice.
             ## Dimensionality Mapping in Our Paper: b: skipped, d: NMiniBat, r: NParts, m: NSubGen, t: SigDim; 
@@ -1231,7 +1046,7 @@ class Evaluator ():
                            
             self.Xbdr_Exp = np.broadcast_to(self.Xbdr_tmp[:,:,None], (self.NMiniBat, self.NParts, self.NSubGen, self.SigDim))
             self.Xbdr = np.reshape(self.Xbdr_Exp, (-1, self.SigDim))
-    
+
             # The values of X are perturbed by randomly sampled errors along dimensions b, d, and j, while remaining constant along dimensions r and m.
             self.Xbd = np.broadcast_to(self.Xbdr_Exp[:,0,0][:,None,None], (self.NMiniBat, self.NParts, self.NSubGen, self.SigDim)).reshape(-1, self.SigDim)
             
@@ -1243,7 +1058,7 @@ class Evaluator ():
             # Return shape of Xbd_Red2 : (NMiniBat, SigDim)
             ## The values of X are perturbed by randomly sampled errors along dimensions b, d, and j.
             self.Xbd_Red2 = self.Xbd_Ext[:, 0, 0].copy()
-    
+
             # Processing Conditional information 
             ### Generating random indices for selecting true conditions
             RandSelIDXbdm = np.random.randint(0, self.TrueCond.shape[0], self.NMiniBat * self.NSubGen)
@@ -1267,7 +1082,7 @@ class Evaluator ():
             ## The conditions are sorted at the dimension d after being randomly sampled across the dimensions b, d and k.
             self.CONbd_Sort = np.sort(self.CONbdm_Ext[:, 0, 0], axis=0).copy() 
             
-    
+
             ### ------------------------------------------------ Signal reconstruction ------------------------------------------------ ###
             '''
             - To maximize the efficiency of GPU utilization, 
@@ -1289,7 +1104,7 @@ class Evaluator ():
             Set_Xs = np.concatenate(ListXs)   
             Set_CONs = np.concatenate([self.CONbdrm, self.CONbdrm, self.CONbdm_Sort, self.CONbd_Sort]) 
             Set_Data = [Set_Xs[:,:,None], Set_CONs]
-    
+
             # Gneraing indices for Re-splitting predictions for each case
             CaseLens = np.array([item.shape[0] for item in ListXs])
             DataCaseIDX = [0] + list(np.cumsum(CaseLens))
@@ -1318,8 +1133,8 @@ class Evaluator ():
             
             self.Sig_Xbd_CONbdm = self.Sig_Xbdr_CONbdrm[:, 0]
             self.Sig_Xbd_CONbdm = self.Sig_Xbd_CONbdrm[:, 0]
-    
-    
+
+
             ### ------------------------------------------------ Calculating metrics for the evaluation ------------------------------------------------ ###
             
             '''                                        ## Sub-Metric list ##
@@ -1332,117 +1147,98 @@ class Evaluator ():
                 ## Metric list : I_V_CONsX, I_S_CONsX, H() or KLD()
                 
              '''
-    
-            # Multi-method PSD calculations and metric computation
-            for method in self.fft_methods:
-                try:
-                    # Calculate PSDs for all signal types using current method
-                    MQV_Xbd_CONbdm_results = FFT_PSD_MultiMethod(self.Sig_Xbd_CONbdm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Xbd_CONbdSt_results = FFT_PSD_MultiMethod(self.Sig_Xbd_CONbdSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    
-                    QV_Xbdr_CONbdrm_results = FFT_PSD_MultiMethod(self.Sig_Xbdr_CONbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Xbd_CONbdrm_results = FFT_PSD_MultiMethod(self.Sig_Xbd_CONbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Xbd_CONbdmSt_results = FFT_PSD_MultiMethod(self.Sig_Xbd_CONbdmSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    
-                    # Extract results for current method
-                    MQV_Xbd_CONbdm, _ = MQV_Xbd_CONbdm_results[method]
-                    QV_Xbd_CONbdSt, _ = QV_Xbd_CONbdSt_results[method]
-                    QV_Xbdr_CONbdrm, _ = QV_Xbdr_CONbdrm_results[method]
-                    QV_Xbd_CONbdrm, _ = QV_Xbd_CONbdrm_results[method]
-                    QV_Xbd_CONbdmSt, _ = QV_Xbd_CONbdmSt_results[method]
-                    
-                    if any(x is None for x in [MQV_Xbd_CONbdm, QV_Xbd_CONbdSt]):
-                        print(f"Warning: Method {method} returned None results, skipping...")
-                        continue
-                    
-                    # Apply mean operation where needed
-                    MQV_Xbd_CONbdm = MQV_Xbd_CONbdm.mean(1)
-                    QV_Xbd_CONbdSt = QV_Xbd_CONbdSt[:,0]
-                    
-                    # Permutation calculations
-                    QSV_Xbdr_CONbdrm = np.concatenate([ProbPermutation(QV_Xbdr_CONbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
-                    QSV_Xbd_CONbdrm = np.concatenate([ProbPermutation(QV_Xbd_CONbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
-                    QSV_Xbd_CONbdmSt = ProbPermutation(QV_Xbd_CONbdmSt, WindowSize=WindowSize)
-                    
-                    QS_Xbdr_CONbdrm = np.sum(QSV_Xbdr_CONbdrm, axis=2)
-                    QS_Xbd_CONbdrm = np.sum(QSV_Xbd_CONbdrm, axis=2)
-                    QS_Xbd_CONbdmSt = np.sum(QSV_Xbd_CONbdmSt, axis=1)
-                    
-                    MQS_Xbd_CONbdrm = np.mean(QS_Xbd_CONbdrm, axis=1)
-                    MQS_Xbdr_CONbdrm = np.mean(QS_Xbdr_CONbdrm, axis=1)
-                    
-                    # Calculate mutual information for current method
-                    I_V_CONsX_ = MeanKLD(QV_Xbd_CONbdSt, MQV_Xbd_CONbdm)
-                    I_S_CONsX_ = MeanKLD(QS_Xbd_CONbdmSt, MQS_Xbd_CONbdrm)
-                    
-                    print(f"Method {method} - I(V;Con'|x): {I_V_CONsX_}")
-                    print(f"Method {method} - I(S;Con'|x): {I_S_CONsX_}")
-                    
-                    # Store results for current method
-                    self.SubResDic[f'I_V_CONsX_{method}'].append(I_V_CONsX_)
-                    self.SubResDic[f'I_S_CONsX_{method}'].append(I_S_CONsX_)
-                    
-                    # Accumulate for aggregated results
-                    current_val = getattr(self, f'I_V_CONsX_{method}')
-                    setattr(self, f'I_V_CONsX_{method}', current_val + I_V_CONsX_)
-                    
-                    current_val = getattr(self, f'I_S_CONsX_{method}')
-                    setattr(self, f'I_S_CONsX_{method}', current_val + I_S_CONsX_)
-                    
-                    # Calculate batch QV for candidate Z location
-                    QV_Batch_results = FFT_PSD_MultiMethod(np.squeeze(SubData[0])[:, None], 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Batch, _ = QV_Batch_results[method]
-                    if QV_Batch is not None:
-                        setattr(self, f'QV_Batch_{method}', QV_Batch.transpose((1,2,0)))
-                    
-                except Exception as e:
-                    print(f"Error processing method {method}: {e}")
-                    continue
+
+
+            ### ---------------------------- Cumulative Power Spectral Density (PSD) over each frequency -------------------------------- ###
+            # Return shape of MQV_Xbd_CONbdm : (NMiniBat, N_frequency)
+            self.MQV_Xbd_CONbdm = FFT_PSD(self.Sig_Xbd_CONbdm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).mean(1)
+            # Return shape of MQV_Xbd_CONbdm : (NMiniBat, N_frequency)
+            self.MQV_Xbd_CONbdm = FFT_PSD(self.Sig_Xbd_CONbdm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).mean(1)
+            # Return shape of QV_Xbd_CONbdSt : (NMiniBat, N_frequency)
+            self.QV_Xbd_CONbdSt = FFT_PSD(self.Sig_Xbd_CONbdSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)[:,0]
             
-            # Multi-method candidate Z location
-            QV_Xbdr_CONbdrm_T_results = {}
-            for method in self.fft_methods:
-                try:
-                    QV_results = FFT_PSD_MultiMethod(self.Sig_Xbdr_CONbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Xbdr_CONbdrm, _ = QV_results[method]
-                    if QV_Xbdr_CONbdrm is not None:
-                        QV_Xbdr_CONbdrm_T_results[method] = (QV_Xbdr_CONbdrm.reshape(self.NMiniBat, self.NGen, -1).transpose(0,2,1), None)
-                except Exception as e:
-                    print(f"Error in candidate Z location for method {method}: {e}")
-                    continue
+            # Return shape of QV_Xbdr_CONbdrm : (NMiniBat, NParts, NSubGen, N_frequency)
+            self.QV_Xbdr_CONbdrm = FFT_PSD(self.Sig_Xbdr_CONbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)
+            # Return shape of QV_Xbd_CONbdrm : (NMiniBat, NParts, NSubGen, N_frequency)
+            self.QV_Xbd_CONbdrm = FFT_PSD(self.Sig_Xbd_CONbdrm, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)
+            # Return shape of QV_Xbd_CONbdmSt : (NMiniBat, NSubGen, N_frequency)
+            self.QV_Xbd_CONbdmSt = FFT_PSD(self.Sig_Xbd_CONbdmSt, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq)
+            #print(self.MQV_Xbd_CONbdm.shape, self.MQV_Xbd_CONbdm.shape, self.QV_Xbd_CONbdSt.shape, self.QV_Xbdr_CONbdrm.shape, self.QV_Xbd_CONbdrm.shape, self.QV_Xbd_CONbdmSt.shape)
             
-            self.LocCandZsMaxFreq(QV_Xbdr_CONbdrm_T_results, self.Xbdr, self.CONbdrm)
             
-            # Restructure TrackerCand for all methods
-            self.TrackerCand = {}
-            for method in self.fft_methods:
-                self.TrackerCand[method] = {
-                    item[0]: {
-                        'TrackZX': np.concatenate(self.TrackerCand_Temp[method][item[0]]['TrackZX']), 
-                        'TrackSecData': np.concatenate(self.TrackerCand_Temp[method][item[0]]['TrackSecData']), 
-                        'TrackMetrics': np.concatenate(self.TrackerCand_Temp[method][item[0]]['TrackMetrics'])
-                    } 
-                    for item in self.TrackerCand_Temp[method].items() 
-                    if len(item[1]['TrackSecData']) > 0
-                }
+            ### ---------------------------- Permutation density given PSD over each generation -------------------------------- ###
+            # Calculating PD-PSD over v and s.
+            ## Return shape of QSV_Xbdr_CONbdrm : (NMiniBat, NParts, N_frequency, N_permutation_cases)
+            self.QSV_Xbdr_CONbdrm = np.concatenate([ProbPermutation(self.QV_Xbdr_CONbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
+            ## Return shape of QSV_Xbd_CONCbdrm : (NMiniBat, NParts, N_frequency, N_permutation_cases)
+            self.QSV_Xbd_CONbdrm = np.concatenate([ProbPermutation(self.QV_Xbd_CONbdrm[:,i], WindowSize=WindowSize)[:,None] for i in range(self.NParts)], axis=1)
+            ## Return shape of QSV_Xbd_CONbdmSt : (NMiniBat, N_frequency, N_permutation_cases)
+            self.QSV_Xbd_CONbdmSt = ProbPermutation(self.QV_Xbd_CONbdmSt, WindowSize=WindowSize)
+            
+            # Marginalizing v to obtain PD-PSD(s).
+            ## Return shape of QS_Xbdr_CONbdrm : (NMiniBat, NParts, N_permutation_cases)
+            self.QS_Xbdr_CONbdrm = np.sum(self.QSV_Xbdr_CONbdrm, axis=2)
+            ## Return shape of QS_Xbd_CONbdrm : (NMiniBat, NParts, N_permutation_cases)
+            self.QS_Xbd_CONbdrm = np.sum(self.QSV_Xbd_CONbdrm, axis=2)
+            ## Return shape of QS_Xbd_CONbdmSt : (NMiniBat, N_permutation_cases)
+            self.QS_Xbd_CONbdmSt = np.sum(self.QSV_Xbd_CONbdmSt, axis=1)
+            #print(self.QSV_Xbdr_CONbdrm.shape,  self.QSV_Xbd_CONbdrm.shape, self.QSV_Xbd_CONbdmSt.shape, self.QS_Xbdr_CONbdrm.shape, self.QS_Xbd_CONbdrm.shape, self.QS_Xbd_CONbdmSt.shape)
+            
+            # Averaging PD-PSD(s) over the Dimension m: Effect of Monte Carlo Simulation
+            ## Return shape of MQS_Xbd_CONbdrm : (NMiniBat, N_permutation_cases)
+            self.MQS_Xbd_CONbdrm = np.mean(self.QS_Xbd_CONbdrm, axis=1)
+            ## Return shape of MQS_Xbdr_CONbdrm : (NMiniBat, N_permutation_cases)
+            self.MQS_Xbdr_CONbdrm = np.mean(self.QS_Xbdr_CONbdrm, axis=1)
+            #print(self.MQS_Xbd_CONbdrm.shape, self.MQS_Xbdr_CONbdrm.shape )
+
+           
+                
+            ### ---------------------------------------- Mutual information ---------------------------------------- ###
+            I_V_CONsX_ = MeanKLD(self.QV_Xbd_CONbdSt, self.MQV_Xbd_CONbdm ) # I(V;Con'|z')
+            I_S_CONsX_ = MeanKLD(self.QS_Xbd_CONbdmSt, self.MQS_Xbd_CONbdrm ) # I(S;Con'|z')
+           
+            print("I(V;Con'|x) :", I_V_CONsX_)
+            self.SubResDic['I_V_CONsX'].append(I_V_CONsX_)
+            self.I_V_CONsX += I_V_CONsX_
+            
+            print("I(S;Con'|x) :", I_S_CONsX_)
+            self.SubResDic['I_S_CONsX'].append(I_S_CONsX_)
+            self.I_S_CONsX += I_S_CONsX_
+                        
+            
+            ### --------------------------- Locating the candidate Z values that generate plausible signals ------------------------- ###
+            ## Return shape: (1, N_frequency, NMiniBat)
+            ### Since it is the true PSD, there are no M generations. 
+            self.QV_Batch = FFT_PSD(np.squeeze(SubData[0])[:, None], 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).transpose((1,2,0))
+            
+            # Intermediate objects for Q(s) and H(')
+            ## Return shape: (NMiniBat, N_frequency, NGen)
+            self.QV_Xbdr_CONbdrm_T = self.QV_Xbdr_CONbdrm.reshape(self.NMiniBat, self.NGen, -1).transpose(0,2,1)
+            self.LocCandZsMaxFreq ( self.QV_Xbdr_CONbdrm_T, self.Xbdr,  self.CONbdrm)
+            
+            # Restructuring TrackerCand
+            ## item[0] contains frequency domains
+            ## item[1] contains tracked X values, 2nd data, and metrics
+            self.TrackerCand = {item[0]: {'TrackZX': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackZX']), 
+                                          'TrackSecData': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackSecData']), 
+                                          'TrackMetrics': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackMetrics'])} 
+                                          for item in self.TrackerCand_Temp.items() if len(item[1]['TrackSecData']) > 0} 
             
             
         # Conducting the task iteration
         self.Iteration(TaskLogic, Continue=Continue)
+
+
+        # MI(V;CON,X)
+        self.I_V_CONsX /= (self.TotalIterSize)
+        self.AggResDic['I_V_CONsX'].append(self.I_V_CONsX)
+
+        # MI(VE;CON',X) 
+        self.I_S_CONsX /= (self.TotalIterSize)
+        self.AggResDic['I_S_CONsX'].append(self.I_S_CONsX)
+
+
     
-        # Calculate final aggregated results for all methods
-        for method in self.fft_methods:
-            # Normalize by total iteration size
-            current_val = getattr(self, f'I_V_CONsX_{method}')
-            setattr(self, f'I_V_CONsX_{method}', current_val / self.TotalIterSize)
-            self.AggResDic[f'I_V_CONsX_{method}'].append(getattr(self, f'I_V_CONsX_{method}'))
-            
-            current_val = getattr(self, f'I_S_CONsX_{method}')
-            setattr(self, f'I_S_CONsX_{method}', current_val / self.TotalIterSize)
-            self.AggResDic[f'I_S_CONsX_{method}'].append(getattr(self, f'I_S_CONsX_{method}'))
-
-
-
     ### -------------------------- Evaluating the performance of the model using only Z inputs  -------------------------- ###
     def Eval_Z (self, AnalSig, SampZModel, GenModel, FcLimit=0.05, WindowSize=3, Continue=True ):
         
@@ -1464,44 +1260,22 @@ class Evaluator ():
         if Continue == False or not hasattr(self, 'iter'):
             self.sim, self.mini, self.iter = 0, 0, 0
         
-            # Method-specific candidate tracking
-            self.BestZsMetrics = {}
-            self.TrackerCand_Temp = {}
-            
-            for method in self.fft_methods:
-                self.BestZsMetrics[method] = {i: [np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
-                self.TrackerCand_Temp[method] = {i: {'TrackSecData': [], 'TrackZX': [], 'TrackMetrics': []} 
-                                                 for i in range(1, self.MaxFreq - self.MinFreq + 2)}
-                
-                # Initialize method-specific result trackers
-                setattr(self, f'I_V_ZjZ_{method}', 0)
-            
-            # Initialize method-specific result dictionaries
-            self.SubResDic = {}
-            self.AggResDic = {}
-            
-            for method in self.fft_methods:
-                self.SubResDic[f'I_V_ZjZ_{method}'] = []
-                self.AggResDic[f'I_V_ZjZ_{method}'] = []
+            ## Result trackers
+            self.SubResDic = {'I_V_ZjZ':[]}
+            self.AggResDic = {'I_V_ZjZ':[]}
+            self.BestZsMetrics = {i:[np.inf] for i in range(1, self.MaxFreq - self.MinFreq + 2)}
+            self.TrackerCand_Temp = {i:{'TrackSecData':[],'TrackZX':[],'TrackMetrics':[] } for i in range(1, self.MaxFreq - self.MinFreq + 2)} 
+            self.I_V_ZjZ = 0
         
                  
         ### ------------------------------------------------ Task logics ------------------------------------------------ ###
-        
-        # P(V=v) - Calculate population PSD for all methods
-        QV_Pop_results = FFT_PSD_MultiMethod(self.AnalSig, 'All', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=self.fft_methods)
-        
-        for method, (qv_pop, _) in QV_Pop_results.items():
-            if qv_pop is not None:
-                setattr(self, f'QV_Pop_{method}', qv_pop)
-    
+
         def TaskLogic(SubData):
-    
-            print('-------------  ',self.Name,'  -------------')
-    
+
             ### ------------------------------------------------ Sampling ------------------------------------------------ ###
             # Updating NMiniBat; If there is a remainder in Ndata/NMiniBat, NMiniBat must be updated." 
             self.NMiniBat = len(SubData) 
-    
+
             # Sampling Samp_Z and Samp_Zj
             # Please note that the tensor is maintained in a reduced number of dimensions for computational efficiency in practice.
             ## Dimensionality Mapping in Our Paper: b: skipped, d: NMiniBat; 
@@ -1511,10 +1285,10 @@ class Evaluator ():
            
             # Selecting Samp_Zjs from Zbd 
             self.Zjbd = SamplingZj (self.Zbd, self.NMiniBat, 1, 1, self.LatDim, self.NSelZ, ZjType='bd' )
-    
+
             
             
-    
+
             ### ------------------------------------------------ Signal reconstruction ------------------------------------------------ ###
             '''
                                         ## Variable cases for the signal generation ##
@@ -1527,20 +1301,20 @@ class Evaluator ():
             # Binding the samples together, generate signals through the model 
             ListZs = [self.Zbd,    self.Zjbd]
             Set_Data = np.concatenate(ListZs)  
-    
+
             # Gneraing indices for Re-splitting predictions for each case
             CaseLens = np.array([item.shape[0] for item in ListZs])
             DataCaseIDX = [0] + list(np.cumsum(CaseLens))
             
             # Choosing GPU or CPU and generating signals
             Set_Pred = CompResource (self.GenModel, Set_Data, BatchSize=self.GenBatchSize, GPU=self.GPU)
-    
+
             # Re-splitting predictions for each case
             self.Sig_Zbd, self.Sig_Zjbd = [Set_Pred[DataCaseIDX[i]:DataCaseIDX[i+1]] for i in range(len(DataCaseIDX)-1)] 
             
             self.Sig_Zbd = self.Sig_Zbd.reshape(self.NMiniBat, -1)
             self.Sig_Zjbd = self.Sig_Zjbd.reshape(self.NMiniBat, -1)
-    
+
             
             ### ------------------------------------------------ Calculating metrics for the evaluation ------------------------------------------------ ###
             
@@ -1554,80 +1328,45 @@ class Evaluator ():
                 
             '''
             
-            # Multi-method PSD calculations and metric computation
-            for method in self.fft_methods:
-                try:
-                    # Calculate PSDs for all signal types using current method
-                    QV_Zbd_results = FFT_PSD_MultiMethod(self.Sig_Zbd, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Zjbd_results = FFT_PSD_MultiMethod(self.Sig_Zjbd, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    
-                    # Extract results for current method
-                    QV_Zbd, _ = QV_Zbd_results[method]
-                    QV_Zjbd, _ = QV_Zjbd_results[method]
-                    
-                    if any(x is None for x in [QV_Zbd, QV_Zjbd]):
-                        print(f"Warning: Method {method} returned None results, skipping...")
-                        continue
-                    
-                    # Apply mean operation where needed
-                    QV_Zbd = QV_Zbd.mean(1)
-                    QV_Zjbd = QV_Zjbd.mean(1)
-                    
-                    # Calculate mutual information for current method
-                    I_V_ZjZ_ = MeanKLD(QV_Zjbd, QV_Zbd)
-                    
-                    print(f"Method {method} - I(V;z'|z): {I_V_ZjZ_}")
-                    
-                    # Store results for current method
-                    self.SubResDic[f'I_V_ZjZ_{method}'].append(I_V_ZjZ_)
-                    
-                    # Accumulate for aggregated results
-                    current_val = getattr(self, f'I_V_ZjZ_{method}')
-                    setattr(self, f'I_V_ZjZ_{method}', current_val + I_V_ZjZ_)
-                    
-                    # Calculate batch QV for candidate Z location
-                    QV_Batch_results = FFT_PSD_MultiMethod(SubData[:,None], 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Batch, _ = QV_Batch_results[method]
-                    if QV_Batch is not None:
-                        setattr(self, f'QV_Batch_{method}', QV_Batch.transpose((1,2,0)))
-                    
-                except Exception as e:
-                    print(f"Error processing method {method}: {e}")
-                    continue
             
-            # Multi-method candidate Z location
-            QV_Zbd_T_results = {}
-            for method in self.fft_methods:
-                try:
-                    QV_results = FFT_PSD_MultiMethod(self.Sig_Zbd, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq, methods=[method])
-                    QV_Zbd, _ = QV_results[method]
-                    if QV_Zbd is not None:
-                        QV_Zbd_T_results[method] = (QV_Zbd.reshape(self.NMiniBat, self.NGen, -1).transpose(0,2,1), None)
-                except Exception as e:
-                    print(f"Error in candidate Z location for method {method}: {e}")
-                    continue
+             ### ---------------------------- Cumulative Power Spectral Density (PSD) over each frequency -------------------------------- ###
+            # Return shape of MQV_Zbd_FCbdm : (NMiniBat, N_frequency)
+            self.QV_Zbd = FFT_PSD(self.Sig_Zbd, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).mean(1)
+            # Return shape of MQV_Zjbd_FCbdm : (NMiniBat, N_frequency)
+            self.QV_Zjbd = FFT_PSD(self.Sig_Zjbd, 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).mean(1)
+
+
+            ### ---------------------------------------- Mutual information ---------------------------------------- ###
+            # zPSD and fcPE stand for z-wise power spectral density and fc-wise permutation sets, respectively.
+            I_V_ZjZ_ = MeanKLD(self.QV_Zjbd, self.QV_Zbd )  # I(V;z'|z)
+
+
+            print("I(V;z'|z) :", I_V_ZjZ_)
+            self.SubResDic['I_V_ZjZ'].append(I_V_ZjZ_)
+            self.I_V_ZjZ += I_V_ZjZ_
+
+
+            ### --------------------------- Locating the candidate Z values that generate plausible signals ------------------------- ###
+            ## Return shape: (1, N_frequency, NMiniBat)
+            ### Since it is the true PSD, there are no M generations. 
+            self.QV_Batch = FFT_PSD(SubData[:,None], 'None', MinFreq=self.MinFreq, MaxFreq=self.MaxFreq).transpose((1,2,0))
             
-            self.LocCandZsMaxFreq(QV_Zbd_T_results, self.Zbd)
-            
-            # Restructure TrackerCand for all methods
-            self.TrackerCand = {}
-            for method in self.fft_methods:
-                self.TrackerCand[method] = {
-                    item[0]: {
-                        'TrackZX': np.concatenate(self.TrackerCand_Temp[method][item[0]]['TrackZX']), 
-                        'TrackMetrics': np.concatenate(self.TrackerCand_Temp[method][item[0]]['TrackMetrics'])
-                    } 
-                    for item in self.TrackerCand_Temp[method].items() 
-                    if len(item[1]['TrackZX']) > 0
-                }
+            # Intermediate objects for Q(s) and H(')
+            ## Return shape: (NMiniBat, N_frequency, NGen)
+            self.QV_Zbdr_T = self.QV_Zbd.reshape(self.NMiniBat, self.NGen, -1).transpose(0,2,1)
+            self.LocCandZsMaxFreq ( self.QV_Zbdr_T, self.Zbd)
+ 
+            # Restructuring TrackerCand
+            ## item[0] contains frequency domains
+            ## item[1] contains tracked Z values, 2nd data, and metrics
+            self.TrackerCand = {item[0]: {'TrackZX': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackZX']), 
+                                   'TrackMetrics': np.concatenate(self.TrackerCand_Temp[item[0]]['TrackMetrics'])} 
+                                     for item in self.TrackerCand_Temp.items() if len(item[1]['TrackZX']) > 0} 
             
             
         # Conducting the task iteration
         self.Iteration(TaskLogic, Continue=Continue)
-    
-        # Calculate final aggregated results for all methods
-        for method in self.fft_methods:
-            # Normalize by total iteration size
-            current_val = getattr(self, f'I_V_ZjZ_{method}')
-            setattr(self, f'I_V_ZjZ_{method}', current_val / self.TotalIterSize)
-            self.AggResDic[f'I_V_ZjZ_{method}'].append(getattr(self, f'I_V_ZjZ_{method}'))
+
+        # MI(V;Z',Z)
+        self.I_V_ZjZ /= (self.TotalIterSize)
+        self.AggResDic['I_V_ZjZ'].append(self.I_V_ZjZ)

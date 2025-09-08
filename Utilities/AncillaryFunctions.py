@@ -11,6 +11,8 @@ import matplotlib.cm as cm
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from Utilities.Utilities import GenBatches
 
+from scipy import signal
+from scipy.fftpack import dct
 
 def compute_snr(signal, noisy_signal):
     """Computes SNR in dB for a 2D batch signal."""
@@ -54,26 +56,180 @@ def SplitBatch (Vec, HalfBatchIdx1, HalfBatchIdx2, mode='Both'):
  
 
 # Power spectral density 
-def FFT_PSD (Data, ReducedAxis, MinFreq = 1, MaxFreq = 51):
-    # Dimension check; this part operates with 3D tensors.
-    # (NMiniBat, NGen, SigDim)
-    Data = Data[:,None] if len(Data.shape) < 3 else Data
+def FFT_PSD(Data, ReducedAxis, MinFreq=1, MaxFreq=51, 
+           method='matching_pursuit', nperseg=None, window='hann', 
+           preserve_dims=False, return_phase=False):
+    """
+    Power Spectral Density calculation with configurable methods.
 
-    # Power Spectral Density
-    HalfLen = Data.shape[-1]//2
-    FFTRes = np.abs(np.fft.fft(Data, axis=-1)[..., :HalfLen])[..., MinFreq:MaxFreq]
-    # (NMiniBat, NGen, N_frequency)
-    PSD = (FFTRes**2)/Data.shape[-1]
+    Parameters
+    ----------
+    Data : array_like
+        Input data tensor (1D to 4D supported).
+    ReducedAxis : str
+        'None', 'All', or 'Batch' - how to reduce dimensions.
+    MinFreq : int, default=1
+        Minimum frequency index (inclusive).
+    MaxFreq : int, default=51
+        Maximum frequency index (exclusive).
+    method : str, default='matching_pursuit'
+        'fft' (original), 'welch' (variance-reduced), 'matching_pursuit' (sparse DCT),
+        or 'welch_evo' (time-varying STFT power averaged over time).
+    nperseg : int, optional
+        Segment length for Welch/STFT-based methods.
+    window : str, default='hann'
+        Window function for Welch/STFT-based methods.
+    preserve_dims : bool, default=False
+        If True, maintain input dimensions when reducing.
+    return_phase : bool, default=False
+        If True, also return phase. For 'fft' the phase is from the complex FFT.
+        For 'welch_evo' the phase is the circular mean of STFT phases over time.
+        For 'welch' and 'matching_pursuit', phase is computed from the complex FFT
+        of the input in the selected frequency band.
 
-    # Probability Density Function
+    Returns
+    -------
+    AggPSPDF : array_like
+        Normalized power spectral density (PDF along the last axis).
+    phase_result : array_like, optional
+        Phase array corresponding to the selected band and reduction rule when
+        return_phase=True.
+    """
+    original_shape = Data.shape
+    Data = Data[:, None] if len(Data.shape) < 3 else Data
+
+    # Utility: circular mean of phase
+    def _circ_mean(ph, axis=None, keepdims=False):
+        return np.angle(np.mean(np.exp(1j * ph), axis=axis, keepdims=keepdims))
+
+    phase_raw = None  # will be set only if return_phase is True
+
+    if method in ("sparse_dct", "matching_pursuit"):
+        # Matching Pursuit (MP) is a greedy algorithm: at each iteration it selects
+        # the atom with maximal inner product with the current residual and updates the residual.
+        # When the dictionary is orthonormal (e.g., the DCT-II basis), k-step MP is
+        # equivalent to keeping the k largest transform coefficients (hard-thresholding)
+        # in that basis. Thus, this branch implements DCT hard-thresholding (sparse DCT),
+        # which can be viewed as a restricted special case of MP under an orthonormal dictionary.
+        # It is NOT general MP with redundant/overcomplete dictionaries.
+        # Reference: Mallat, S. G., & Zhang, Z. (1993). “Matching Pursuits with Time-Frequency
+        # Dictionaries.” IEEE Transactions on Signal Processing, 41(12), 3397–3415.
+        # DOI: 10.1109/78.258082
+        sig_len = Data.shape[-1]
+    
+        X = Data.reshape(-1, sig_len)
+        X = np.nan_to_num(X, nan=0.0, posinf=0.0, neginf=0.0).astype(np.float32, copy=False)
+    
+        C = dct(X, type=2, norm="ortho", axis=-1)
+    
+        band_width = max(1, int(MaxFreq) - int(MinFreq))
+        k = min(sig_len, max(128, 2 * band_width))
+    
+        num_coeff = C.shape[1]
+        if k < num_coeff:
+            kill = np.argpartition(np.abs(C), num_coeff - k, axis=1)[:, : num_coeff - k]
+            C[np.arange(C.shape[0])[:, None], kill] = 0.0
+    
+        HalfLen = sig_len // 2
+        m0 = max(0, int(MinFreq))
+        m1 = min(int(MaxFreq), HalfLen)
+        if m1 <= m0:
+            m1 = min(m0 + 1, HalfLen)
+    
+        psd_slice = (C[:, :HalfLen] ** 2)[:, m0:m1]
+        psd_slice = np.nan_to_num(psd_slice, nan=0.0, posinf=0.0, neginf=0.0)
+        psd_slice = np.maximum(psd_slice, 0.0)
+        PSD = psd_slice.reshape(Data.shape[:-1] + (-1,))
+
+    elif method == 'welch':
+        sig_len = Data.shape[-1]
+        if nperseg is None:
+            nperseg = min(256, sig_len // 4)
+        freqs, PSD = signal.welch(Data, axis=-1, nperseg=nperseg, window=window)
+        PSD = PSD[..., MinFreq:MaxFreq]
+
+        if return_phase:
+            HalfLen = Data.shape[-1] // 2
+            m0 = max(0, int(MinFreq))
+            m1 = min(int(MaxFreq), HalfLen)
+            if m1 <= m0:
+                m1 = min(m0 + 1, HalfLen)
+            FFTComplex_any = np.fft.fft(Data, axis=-1)[..., :HalfLen][..., m0:m1]
+            phase_raw = np.angle(FFTComplex_any)
+
+    elif method == 'welch_evo':
+        sig_len = Data.shape[-1]
+        if nperseg is None:
+            nperseg = min(256, sig_len // 4)
+        noverlap = nperseg // 2
+
+        f, t, Zxx = signal.stft(
+            Data, axis=-1, nperseg=nperseg, noverlap=noverlap, window=window, detrend='constant', 
+            return_onesided=True, boundary=None, padded=False
+        )
+        P = (np.abs(Zxx) ** 2)
+
+        freq_bins = P.shape[-2]
+        m0 = max(0, int(MinFreq))
+        m1 = min(int(MaxFreq), freq_bins)
+        if m1 <= m0:
+            m1 = min(m0 + 1, freq_bins)
+
+        P = P[..., m0:m1, :]
+        PSD = P.mean(axis=-1)
+
+        if return_phase:
+            phase_evo = np.angle(Zxx[..., m0:m1, :])
+            phase_raw = _circ_mean(phase_evo, axis=-1, keepdims=False)
+
+    else:  # 'fft'
+        HalfLen = Data.shape[-1] // 2
+        FFTRes = np.abs(np.fft.fft(Data, axis=-1)[..., :HalfLen])[..., MinFreq:MaxFreq]
+        PSD = (FFTRes ** 2) / Data.shape[-1]
+        if return_phase:
+            FFTComplex = np.fft.fft(Data, axis=-1)[..., :HalfLen][..., MinFreq:MaxFreq]
+            phase_raw = np.angle(FFTComplex)
+
     if ReducedAxis == 'All':
-        AggPSD = np.mean(PSD, axis=(0,1))
-        # (N_frequency,)
-        AggPSPDF = AggPSD / np.sum(AggPSD, axis=(-1),keepdims=True)
+        if preserve_dims:
+            AggPSD = np.mean(PSD, axis=(0, 1), keepdims=True)
+            if len(original_shape) < 3:
+                AggPSD = np.squeeze(AggPSD, axis=1)
+        else:
+            AggPSD = np.mean(PSD, axis=(0, 1))
+        _eps = 1e-12
+        AggPSD = np.nan_to_num(AggPSD, nan=0.0, posinf=0.0, neginf=0.0)
+        AggPSD = np.maximum(AggPSD, 0.0)
+        AggPSPDF = (AggPSD + _eps) / np.sum(AggPSD + _eps, axis=(-1), keepdims=True)
+
     elif ReducedAxis == 'None':
-        # (NMiniBat, NGen, N_frequency)
-        AggPSPDF = PSD / np.sum(PSD, axis=(-1),keepdims=True)    
-        
+        _eps = 1e-12
+        PSD_safe = np.nan_to_num(PSD, nan=0.0, posinf=0.0, neginf=0.0)
+        PSD_safe = np.maximum(PSD_safe, 0.0)
+        AggPSPDF = (PSD_safe + _eps) / np.sum(PSD_safe + _eps, axis=(-1), keepdims=True)
+        if preserve_dims and len(original_shape) < 3:
+            AggPSPDF = np.squeeze(AggPSPDF, axis=1)
+
+    else:
+        _eps = 1e-12
+        PSD_safe = np.nan_to_num(PSD, nan=0.0, posinf=0.0, neginf=0.0)
+        PSD_safe = np.maximum(PSD_safe, 0.0)
+        AggPSPDF = (PSD_safe + _eps) / np.sum(PSD_safe + _eps, axis=(-1), keepdims=True)
+
+    if return_phase and phase_raw is not None:
+        if ReducedAxis == 'All':
+            if preserve_dims:
+                phase_result = _circ_mean(phase_raw, axis=(0, 1), keepdims=True)
+                if len(original_shape) < 3:
+                    phase_result = np.squeeze(phase_result, axis=1)
+            else:
+                phase_result = _circ_mean(phase_raw, axis=(0, 1), keepdims=False)
+        else:
+            phase_result = phase_raw
+            if preserve_dims and len(original_shape) < 3:
+                phase_result = np.squeeze(phase_result, axis=1)
+        return AggPSPDF, phase_result
+
     return AggPSPDF
 
 

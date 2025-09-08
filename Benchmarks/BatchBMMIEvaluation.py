@@ -186,7 +186,7 @@ if __name__ == "__main__":
         # Instantiation 
         Eval = Evaluator(MinFreq = Params['MinFreq'], MaxFreq = Params['MaxFreq'], SimSize = Params['SimSize'], NMiniBat = Params['NMiniBat'], NParts = Params['NParts'], 
                NSubGen = Params['NSubGen'], ReparaStdZj = Params['ReparaStdZj'], NSelZ = NZs, SampBatchSize = Params['SampBatchSize'],  SelMetricType = Params['SelMetricType'],
-               SelMetricCut = Params['SelMetricCut'], GenBatchSize = Params['GenBatchSize'], GPU = Params['GPU'], Name=ConfigName+'_Nj'+str(NZs))
+               SelMetricCut = Params['SelMetricCut'], GenBatchSize = Params['GenBatchSize'], GPU = Params['GPU'], Name=ConfigName+'_Nj'+str(NZs), fft_methods=['fft', 'welch_evo', 'matching_pursuit'])
         
         if Params['SecDataType'] is None:
             Eval.Eval_Z(AnalData, SampModel, GenModel, Continue=Continue)
@@ -195,10 +195,10 @@ if __name__ == "__main__":
                 Eval.Eval_ZCON(AnalData,  SampModel, GenModel, Continue=Continue, SecDataType=Params['SecDataType'])
             
             elif 'Wavenet' in ConfigName:
-                Eval.Eval_XCON([AnalData[0], AnalData[1]], GenModel, Continue=Continue, NSplitBatch=Params['NSplitBatch'], SecDataType='CONDIN' )
+                Eval.Eval_XCON([AnalData[0], AnalData[1]], GenModel, Continue=Continue, NSplitBatch=Params['NSplitBatch'], SecDataType='CONDIN')
             
             elif 'DiffWave' or 'VDWave' in ConfigName:
-                Eval.Eval_XCON([AnalData[0], AnalData[1]], GenModel, GenSteps=Params['GenSteps'], StepInterval=Params['StepInterval'], Continue=Continue, SecDataType='CONDIN' )
+                Eval.Eval_XCON([AnalData[0], AnalData[1]], GenModel, GenSteps=Params['GenSteps'], StepInterval=Params['StepInterval'], Continue=Continue, SecDataType='CONDIN')
             else:
                 assert False, "Please verify if ConfigName is properly provided."
 
