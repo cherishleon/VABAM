@@ -263,20 +263,31 @@ class Evaluator ():
             if self.SelMetricType == 'Entropy': 
                 Score = -np.sum(CandQV * np.log(CandQV), axis=1).ravel()
             elif self.SelMetricType == 'KLD':
+                # Check if QV_Batch_method exists, if not skip this method
+                qv_batch_attr = f'QV_Batch_{method}'
+                if not hasattr(self, qv_batch_attr):
+                    print(f"Warning: {qv_batch_attr} not found, skipping method {method}")
+                    continue
+                    
                 # Use method-specific QV_Batch
-                QV_Batch_method = getattr(self, f'QV_Batch_{method}')
+                QV_Batch_method = getattr(self, qv_batch_attr)
                 CandQV_T = CandQV.transpose(0,2,1).reshape(self.NMiniBat*self.NGen, -1)[:,:,None]
                 KLD_BatGen = np.sum(QV_Batch_method * np.log(QV_Batch_method / CandQV_T), axis=1)
                 Score = np.min(KLD_BatGen, axis=-1)
-
+    
             # Get maximum frequency
             MaxFreq = np.argmax(CandQV, axis=1).ravel() + 1
-
+    
+            # Check if BestZsMetrics exists for this method
+            if method not in self.BestZsMetrics:
+                print(f"Warning: BestZsMetrics not found for method {method}, skipping")
+                continue
+    
             for Freq, _ in self.BestZsMetrics[method].items():
                 FreqIdx = np.where(MaxFreq == Freq)[0]
                 if len(FreqIdx) < 1: 
                     continue
-
+    
                 # Find minimum score and candidate Z values
                 MinScoreIdx = np.argmin(Score[FreqIdx]) 
                 MinScore = np.min(Score[FreqIdx]) 
@@ -291,12 +302,12 @@ class Evaluator ():
                     self.TrackerCand_Temp[method][Freq]['TrackSecData'].append(CandSecData[None])
                 else:
                     CandSecData = None
-
+    
                 # Update best Z metrics for specific method
                 if MinScore < self.BestZsMetrics[method][Freq][0]:
                     self.BestZsMetrics[method][Freq] = [MinScore, CandZs, CandSecData]
                     print(f'Candidate Z updated! Method: {method}, Freq: {Freq}, Score: {np.round(MinScore, 4)}')
-    
+        
     def SubNestedZFix(self, SubTrackerCand):
                 
         ''' Constructing the dictionary: {'KeyID': { 'TrackZX' : Zs or Xs, 'TrackSecData' : Secondary-data }}
@@ -378,14 +389,18 @@ class Evaluator ():
         # Method-specific post-sampling results
         self.PostSamp = {}
         
+        # Store CandFreqIDs for all methods 
+        self.CandFreqIDs = {}
+        
         for method in self.fft_methods:
             # Get candidate frequency IDs for current method
             if method in BestZsMetrics:
-                CandFreqIDs = [item[0] for item in BestZsMetrics[method].items() if item[1][0] != np.inf]
+                CandFreqIDs_method = [item[0] for item in BestZsMetrics[method].items() if item[1][0] != np.inf]
+                self.CandFreqIDs[method] = CandFreqIDs_method 
                 
                 # Select nested Z values for current method
                 method_PostSamp = {FreqID: self.SubNestedZFix(TrackerCand[method][FreqID]) 
-                                  for FreqID in CandFreqIDs if FreqID in TrackerCand.get(method, {})}
+                                  for FreqID in CandFreqIDs_method if FreqID in TrackerCand.get(method, {})}
                 
                 self.PostSamp[method] = method_PostSamp
                 
@@ -510,8 +525,6 @@ class Evaluator ():
                 
             plt.tight_layout()
             plt.show()
-    
-    ''' --------------------------------------------------------- Main Evaluation Functions ---------------------------------------------------------'''
     
     ''' --------------------------------------------------------- Main Evaluation Functions ---------------------------------------------------------'''
     
@@ -872,9 +885,45 @@ class Evaluator ():
                 self.AggResDic[f'I_V_ZjZ_{method}'] = []
                 self.AggResDic[f'I_V_CONsZj_{method}'] = []
                 self.AggResDic[f'I_S_CONsZj_{method}'] = []
+
         
-         
-    
+         # Always ensure method-specific attributes exist (regardless of Continue flag)
+        for method in self.fft_methods:
+            # Initialize method-specific result trackers if they don't exist
+            if not hasattr(self, f'I_V_ZjZ_{method}'):
+                setattr(self, f'I_V_ZjZ_{method}', 0)
+            if not hasattr(self, f'I_V_CONsZj_{method}'):
+                setattr(self, f'I_V_CONsZj_{method}', 0)
+            if not hasattr(self, f'I_S_CONsZj_{method}'):
+                setattr(self, f'I_S_CONsZj_{method}', 0)
+            
+            # Initialize result dictionaries if they don't exist
+            if f'I_V_ZjZ_{method}' not in getattr(self, 'SubResDic', {}):
+                if not hasattr(self, 'SubResDic'):
+                    self.SubResDic = {}
+                self.SubResDic[f'I_V_ZjZ_{method}'] = []
+            if f'I_V_CONsZj_{method}' not in getattr(self, 'SubResDic', {}):
+                if not hasattr(self, 'SubResDic'):
+                    self.SubResDic = {}
+                self.SubResDic[f'I_V_CONsZj_{method}'] = []
+            if f'I_S_CONsZj_{method}' not in getattr(self, 'SubResDic', {}):
+                if not hasattr(self, 'SubResDic'):
+                    self.SubResDic = {}
+                self.SubResDic[f'I_S_CONsZj_{method}'] = []
+            
+            if f'I_V_ZjZ_{method}' not in getattr(self, 'AggResDic', {}):
+                if not hasattr(self, 'AggResDic'):
+                    self.AggResDic = {}
+                self.AggResDic[f'I_V_ZjZ_{method}'] = []
+            if f'I_V_CONsZj_{method}' not in getattr(self, 'AggResDic', {}):
+                if not hasattr(self, 'AggResDic'):
+                    self.AggResDic = {}
+                self.AggResDic[f'I_V_CONsZj_{method}'] = []
+            if f'I_S_CONsZj_{method}' not in getattr(self, 'AggResDic', {}):
+                if not hasattr(self, 'AggResDic'):
+                    self.AggResDic = {}
+                self.AggResDic[f'I_S_CONsZj_{method}'] = []
+            
         
         ### ------------------------------------------------ Task logics ------------------------------------------------ ###
         
@@ -1189,7 +1238,33 @@ class Evaluator ():
                 self.AggResDic[f'I_V_CONsX_{method}'] = []
                 self.AggResDic[f'I_S_CONsX_{method}'] = []
         
-         
+
+        # Always ensure method-specific attributes exist (regardless of Continue flag)
+        for method in self.fft_methods:
+            # Initialize method-specific result trackers if they don't exist
+            if not hasattr(self, f'I_V_CONsX_{method}'):
+                setattr(self, f'I_V_CONsX_{method}', 0)
+            if not hasattr(self, f'I_S_CONsX_{method}'):
+                setattr(self, f'I_S_CONsX_{method}', 0)
+            
+            # Initialize result dictionaries if they don't exist
+            if f'I_V_CONsX_{method}' not in getattr(self, 'SubResDic', {}):
+                if not hasattr(self, 'SubResDic'):
+                    self.SubResDic = {}
+                self.SubResDic[f'I_V_CONsX_{method}'] = []
+            if f'I_S_CONsX_{method}' not in getattr(self, 'SubResDic', {}):
+                if not hasattr(self, 'SubResDic'):
+                    self.SubResDic = {}
+                self.SubResDic[f'I_S_CONsX_{method}'] = []
+            
+            if f'I_V_CONsX_{method}' not in getattr(self, 'AggResDic', {}):
+                if not hasattr(self, 'AggResDic'):
+                    self.AggResDic = {}
+                self.AggResDic[f'I_V_CONsX_{method}'] = []
+            if f'I_S_CONsX_{method}' not in getattr(self, 'AggResDic', {}):
+                if not hasattr(self, 'AggResDic'):
+                    self.AggResDic = {}
+                self.AggResDic[f'I_S_CONsX_{method}'] = []
     
         
         ### ------------------------------------------------ Task logics ------------------------------------------------ ###
