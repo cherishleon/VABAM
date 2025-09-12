@@ -108,26 +108,55 @@ def Aggregation (ConfigName, ConfigPath, NJ=1, FC=1.0, MetricCut = 1., BatSize=3
     
     # Post evaluation of KLD
     ## MetricCut: The threshold value for selecting Zs whose Entropy of PSD (i.e., SumH) is less than the MetricCut
+    NewEval.fft_methods = ['fft', 'welch_evo', 'matching_pursuit']
     PostSamp = NewEval.SelPostSamp( MetricCut)
     
     
     ## Calculation of KLD
     NewEval.GenModel = GenModel
     NewEval.KLD_TrueGen(AnalSig=AnalData, PlotDist=False) 
-    MeanKld_GTTG = (NewEval.KldPSD_GenTrue + NewEval.KldPSD_TrueGen) / 2
+    #MeanKld_GTTG = NewEval.method_results['MeanKld_GTTG']
+    MeanKld_GTTG_dic = {}
+    for keys, values in NewEval.method_results.items():
+        MeanKld_GTTG_dic['MeanKld_GTTG_'+keys] = values['MeanKld_GTTG']
     
     
     ''' Renaming columns '''
     # r'I(V; \acute{Z} \mid Z)'
     # r'I(V;\acute{\Theta} \mid \acute{Z})'
     # r'I(S;\acute{\Theta} \mid \acute{Z})'
+    # Generate labels in key order
+    keys = list(NewEval.SubResDic.keys())
+    base_labels = [r'(i) $I(V; \acute{Z} \mid Z)$', 
+                   r'(ii) $I(V;\acute{\Theta} \mid \acute{Z})$', 
+                   r'(iii) $I(S;\acute{\Theta} \mid \acute{Z})$']
     
+    # Key pattern mapping
+    pattern_map = {'I_V_ZjZ': 0, 'I_V_FCsZj': 1, 'I_S_FCsZj': 2}
+    
+    all_labels = []
+    for key in keys:
+        pattern = '_'.join(key.split('_')[:3])  # Extract first 3 parts
+        method = '_'.join(key.split('_')[3:])   # Extract method part
+        
+        base_label = base_labels[pattern_map[pattern]]
+        # Add method as prefix or suffix
+        labeled = f"{base_label} ({method})"  # or f"({method}) {base_label}"
+        all_labels.append(labeled)
+
+    # Create DataFrame with labeled columns
     MIVals = pd.DataFrame(NewEval.SubResDic)
-    MIVals.columns = [r'(i) $I(V; \acute{Z} \mid Z)$', r'(ii) $I(V;\acute{\Theta} \mid \acute{Z})$', r'(iii) $I(S;\acute{\Theta} \mid \acute{Z})$']
+    MIVals.columns = all_labels
     MIVals['Model'] = ConfigName
+
+    # Melt DataFrame to long format 
     longMI = MIVals.melt(id_vars='Model', var_name='Metrics', value_name='Values')
 
-    return MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, longMI, MeanKld_GTTG
+    # Extract method type and clean metric names
+    longMI['MetricType'] = longMI['Metrics'].str.extract(r'\(([^)]+)\)$')
+    longMI['Metrics'] = longMI['Metrics'].str.replace(r'\s*\([^)]+\)\s*$', '', regex=True)
+
+    return MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, longMI, MeanKld_GTTG_dic
     
 
 
@@ -229,6 +258,10 @@ if __name__ == "__main__":
         longMI.to_csv('./EvalResults/Tables/MI_' + str(ConfigName) +'_Nj'+str(NJ)+'_FC'+str(FC) + '.csv', index=False)
     
         # Save the AccKLDtables to a CSV file.
-        DicRes = {'Model': [ConfigName] , 'MeanKldRes': [MeanKld_GTTG], 'MSEnorm':[MSEnorm] , 'MSEdenorm': [MSEdenorm], 'MAPEnorm': [MAPEnorm], 'MAPEdenorm': [MAPEdenorm] }
+        DicRes = {'Model': [ConfigName] , 'MSEnorm':[MSEnorm] , 'MSEdenorm': [MSEdenorm], 'MAPEnorm': [MAPEnorm], 'MAPEdenorm': [MAPEdenorm] }
+
+        for key, value in MeanKld_GTTG.items():
+            DicRes[key] = value
+        
         AccKLDtables = pd.DataFrame(DicRes)
         AccKLDtables.to_csv('./EvalResults/Tables/AccKLD_' + str(ConfigName) + '_Nj'+str(NJ)+'_FC'+str(FC) +'.csv', index=False)

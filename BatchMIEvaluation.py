@@ -60,24 +60,43 @@ if __name__ == "__main__":
     YamlPath = './Config/'+ConfigName+'.yml'
     EvalConfigs = ReadYaml(YamlPath)
 
-    ## GPU selection
-    os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
-    os.environ["CUDA_VISIBLE_DEVICES"]= str(GPU_ID)
-
-    # TensorFlow memory configuration
+    ## GPU selection and configuration
+    os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+    os.environ["CUDA_VISIBLE_DEVICES"] = str(GPU_ID)
+    
+    # TensorFlow GPU memory configuration
     gpus = tf.config.experimental.list_physical_devices('GPU')
     if gpus:
         try:
-            gpu = gpus[0]  # Fix the index as zero since GPU_ID has already been given. 
+            # Since CUDA_VISIBLE_DEVICES is set, the first GPU (index 0) corresponds to the selected GPU_ID
+            gpu = gpus[0]
+            
+            # Enable memory growth to avoid allocating all GPU memory at once
             tf.config.experimental.set_memory_growth(gpu, True)
-            tf.config.experimental.set_virtual_device_configuration
-            (
-                gpu, [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=(1024*23.5))]  
+            
+            # Set virtual device memory limit (convert to integer to avoid type error)
+            memory_limit_mb = int(1024 * 23.5)  # 24064 MB
+            tf.config.experimental.set_virtual_device_configuration(
+                gpu, 
+                [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=memory_limit_mb)]
             )
+            
+            print(f"GPU {GPU_ID} configured successfully with memory limit: {memory_limit_mb} MB")
+            
         except RuntimeError as e:
-            print(e)         
-
-    
+            print(f"GPU configuration failed: {e}")
+            print("Falling back to default GPU settings")
+            
+        except Exception as e:
+            print(f"Unexpected error during GPU configuration: {e}")
+            
+    else:
+        print("No GPU devices found. Running on CPU.")
+        
+    # Optional: Verify GPU configuration
+    print(f"Available GPUs: {len(tf.config.experimental.list_physical_devices('GPU'))}")
+    print(f"Available CPUs: {len(tf.config.experimental.list_physical_devices('CPU'))}")
+            
     # Checking whether the path to save the object exists or not.
     if not os.path.exists('./EvalResults/Instances/') :
         os.makedirs('./EvalResults/Instances/')

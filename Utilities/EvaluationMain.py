@@ -391,7 +391,8 @@ class Evaluator ():
         
         # Store CandFreqIDs for all methods 
         self.CandFreqIDs = {}
-        
+
+        print(self.fft_methods)
         for method in self.fft_methods:
             # Get candidate frequency IDs for current method
             if method in BestZsMetrics:
@@ -488,7 +489,7 @@ class Evaluator ():
                 print(f"Error calculating KLD for method {method}: {e}")
                 continue
         
-        # Set primary results to first successful method for backward compatibility
+        # Set primary results to first successful method 
         if self.method_results:
             primary_method = list(self.method_results.keys())[0]
             primary_results = self.method_results[primary_method]
