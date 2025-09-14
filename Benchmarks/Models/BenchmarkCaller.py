@@ -1,6 +1,23 @@
 from Benchmarks.Models.BenchmarkModels import *
 from Utilities.Utilities import RelLossWeight
-from Utilities.AncillaryFunctions import FFT_PSD
+
+# Power spectral density 
+def FFT_PSD_Vanilla (Data,  MinFreq = 1, MaxFreq = 51):
+    # Dimension check; this part operates with 3D tensors.
+    # (NMiniBat, NGen, SigDim)
+    Data = Data[:,None] if len(Data.shape) < 3 else Data
+
+    # Power Spectral Density
+    HalfLen = Data.shape[-1]//2
+    FFTRes = np.abs(np.fft.fft(Data, axis=-1)[..., :HalfLen])[..., MinFreq:MaxFreq]
+    # (NMiniBat, NGen, N_frequency)
+    PSD = (FFTRes**2)/Data.shape[-1]
+
+    # (NMiniBat, NGen, N_frequency)
+    AggPSPDF = PSD / np.sum(PSD, axis=(-1),keepdims=True)    
+        
+    return AggPSPDF
+    
 
 def ModelCall (ConfigSpec, ConfigName, TrData, ValData, Resume=False, LoadWeight=False, Reparam=True, ReparaStd=None, ModelSaveName=None):
     
@@ -12,8 +29,8 @@ def ModelCall (ConfigSpec, ConfigName, TrData, ValData, Resume=False, LoadWeight
     # ModelName selection
     if 'VAE' in ConfigName:
         ## Identifying conditions based on cumulative Power Spectral Entropy (PSE) over each frequency
-        Tr_Cond = FFT_PSD(TrData, 'None')[:, 0]
-        Val_Cond = FFT_PSD(ValData, 'None')[:, 0]            
+        Tr_Cond = FFT_PSD_Vanilla(TrData)[:, 0]
+        Val_Cond = FFT_PSD_Vanilla(ValData)[:, 0]            
         TrInp, ValInp = [TrData, Tr_Cond], [ValData, Val_Cond]
         CondDim = Tr_Cond.shape[-1]
 
@@ -35,10 +52,10 @@ def ModelCall (ConfigSpec, ConfigName, TrData, ValData, Resume=False, LoadWeight
         TrSampled, TrRaw = TrData
         ValSampled, ValRaw = ValData
         ## Identifying 3-dimensional conditions using raw data, not sampled, based on PSE.
-        #Tr_Cond_3d = FFT_PSD(tf.signal.frame(TrRaw, SlidingSize, SlidingSize), 'None')
-        #Val_Cond_3d = FFT_PSD(tf.signal.frame(ValRaw, SlidingSize, SlidingSize), 'None')
-        Tr_Cond = FFT_PSD(TrRaw, 'None')[:, 0]
-        Val_Cond = FFT_PSD(ValRaw, 'None')[:, 0]      
+        #Tr_Cond_3d = FFT_PSD_Vanilla(tf.signal.frame(TrRaw, SlidingSize, SlidingSize))
+        #Val_Cond_3d = FFT_PSD_Vanilla(tf.signal.frame(ValRaw, SlidingSize, SlidingSize))
+        Tr_Cond = FFT_PSD_Vanilla(TrRaw)[:, 0]
+        Val_Cond = FFT_PSD_Vanilla(ValRaw)[:, 0]      
 
         TrInp, ValInp = [TrSampled, Tr_Cond], [ValSampled, Val_Cond]
         ConDim = Tr_Cond.shape[-1]
@@ -48,8 +65,8 @@ def ModelCall (ConfigSpec, ConfigName, TrData, ValData, Resume=False, LoadWeight
         BenchModel([Dummy[:1] for Dummy in TrInp])
     
     elif 'DiffWave' in ConfigName:
-        Tr_Cond = FFT_PSD(TrData, 'None')[:, 0]
-        Val_Cond = FFT_PSD(ValData, 'None')[:, 0]   
+        Tr_Cond = FFT_PSD_Vanilla(TrData)[:, 0]
+        Val_Cond = FFT_PSD_Vanilla(ValData)[:, 0]   
         TrInp, ValInp = [TrData, Tr_Cond], [ValData, Val_Cond]
         ConfigSpec['SigDim'] = TrData.shape[-1]
 
@@ -59,8 +76,8 @@ def ModelCall (ConfigSpec, ConfigName, TrData, ValData, Resume=False, LoadWeight
         _ = BenchModel(TrInp[1][:1])
         
     elif 'VDWave' in ConfigName:
-        Tr_Cond = FFT_PSD(TrData, 'None')[:, 0]
-        Val_Cond = FFT_PSD(ValData, 'None')[:, 0]   
+        Tr_Cond = FFT_PSD_Vanilla(TrData)[:, 0]
+        Val_Cond = FFT_PSD_Vanilla(ValData)[:, 0]   
         TrInp, ValInp = [TrData, Tr_Cond], [ValData, Val_Cond]
         ConfigSpec['SigDim'] = TrData.shape[-1]
 

@@ -125,7 +125,7 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
             PredSigRec = PredSigRec[1]
     
     elif 'Wavenet' in ConfigName:
-        PredSigRec = CompResource(BenchModel, AnalData, BatchSize=Params['GenBatchSize'], NSplitBatch=5)
+        PredSigRec = CompResource(BenchModel, AnalData, BatchSize=Params['GenBatchSize'], NSplitBatch=10)
         PredSigRec = mu_law_decode(PredSigRec)
     
     elif 'VDWave' in ConfigName:
@@ -156,20 +156,13 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
         
         PredSigRec = scale_and_normalize(PredSigRec, SigmaSig, MeanSig, MinX, MaxX)
         GroundTruth = scale_and_normalize(GroundTruth, SigmaSig, MeanSig, MinX, MaxX)
-        
+
+    ## MAPE    
+    MAPEnorm, MAPEdenorm = MAPECal(GroundTruth, np.squeeze(PredSigRec), MaxX, MinX)
+    ## MSE    
+    MSEnorm, MSEdenorm, R2denorm = MSECal(GroundTruth, np.squeeze(PredSigRec), MaxX, MinX)
     
-    if Params['SecDataType'] == 'CONDIN':
-        ## MAPE    
-        MAPEnorm, MAPEdenorm = MAPECal(GroundTruth, np.squeeze(PredSigRec), MaxX, MinX)
-        ## MSE    
-        MSEnorm, MSEdenorm = MSECal(GroundTruth, np.squeeze(PredSigRec), MaxX, MinX)
-    else:
-        ## MAPE    
-        MAPEnorm, MAPEdenorm = MAPECal(GroundTruth, np.squeeze(PredSigRec), MaxX, MinX)
-        ## MSE    
-        MSEnorm, MSEdenorm = MSECal(GroundTruth, np.squeeze(PredSigRec), MaxX, MinX)
-    
-    print('MAPEnorm : ', MAPEnorm,', MAPEdenorm : ', MAPEdenorm, ', MSEnorm : ', MSEnorm, ', MSEdenorm : ', MSEdenorm)
+    print('MAPEnorm : ', MAPEnorm,', MAPEdenorm : ', MAPEdenorm, ', MSEnorm : ', MSEnorm, ', MSEdenorm : ', MSEdenorm, 'R2denorm :', R2denorm)
     
     # Evaluating Mutual information
     ## Creating new instances
@@ -181,70 +174,112 @@ def Aggregation (ConfigName, ConfigPath, NJ=1,  MetricCut = 1., BatSize=3000):
     # Post evaluation of KLD
     ## MetricCut: The threshold value for selecting Zs whose Entropy of PSD (i.e., SumH) is less than the MetricCut
     NewEval.SecDataType = Params['SecDataType'] if Params['SecDataType'] is not None else False
-    PostSamp = NewEval.SelPostSamp(MetricCut)
+    NewEval.fft_methods = ['fft', 'welch_evo', 'matching_pursuit']
+    PostSamp = NewEval.SelPostSamp( MetricCut)
     
     if 'VAE' in ConfigName:
         ## Calculation of KLD
         NewEval.GenModel = BenchModel.get_layer('ReconModel')
         NewEval.KLD_TrueGen(AnalSig=GroundTruth, PlotDist=False) 
-        MeanKld_GTTG = (NewEval.KldPSD_GenTrue + NewEval.KldPSD_TrueGen) / 2
+        MeanKld_GTTG_dic = {}
+        for keys, values in NewEval.method_results.items():
+            MeanKld_GTTG_dic['MeanKld_GTTG_'+keys] = values['MeanKld_GTTG']
         
     else:
-        # Converting the dictionary to the list type.
-        PostZsList = []
-        PostSecDataList = []
-        
-        for Freq, Subkeys in PostSamp.items():
-            for Subkeys, Values in Subkeys.items():
-                PostZsList.append(np.array(Values['TrackZX']))
-                if 'TrackSecData' in Values.keys(): 
-                    PostSecDataList.append(np.array(Values['TrackSecData']))
-        
-                
-        # Converting the list type to the np-data type.
-        PostZsList = np.concatenate(PostZsList)
-        PostSecDataList = np.concatenate(PostSecDataList)
-        
-        if 'VDWave' in ConfigName:
-            PredSigRec = VDiffWAVE_Restoration(BenchModel,PostZsList[:,:,None], PostSecDataList, GenSteps, 
-                                               BenchModel.cfg['StepInterval'], GenBatchSize = Params['GenBatchSize'] )
-            PredSigRec = np.squeeze(PredSigRec)
+        MeanKld_GTTG_dic ={}
+        for method in NewEval.fft_methods:
             
-        elif 'DiffWave' in ConfigName:
-            PredSigRec = DiffWAVE_Restoration(BenchModel,PostZsList, PostSecDataList, GenBatchSize = Params['GenBatchSize'], 
-                                              GenSteps = GenSteps, StepInterval = BenchModel.config['StepInterval'])
-    
-        elif 'Wavenet' in ConfigName:
-            PredSigRec = CompResource(BenchModel, [PostZsList[...,None] , PostSecDataList], BatchSize=Params['GenBatchSize'], NSplitBatch=5)
-            PredSigRec = mu_law_decode(PredSigRec)
-    
-        # Calculating the KLD between the PSD of the true signals and the generated signals    
-        PSDGenSamp =  FFT_PSD(PredSigRec, 'All', MinFreq = NewEval.MinFreq, MaxFreq = NewEval.MaxFreq)
-        PSDTrueData =  FFT_PSD(GroundTruth, 'All', MinFreq = NewEval.MinFreq, MaxFreq = NewEval.MaxFreq)
+            PostZsList = []
+            PostSecDataList = []
+            
+            for Freq, Subkeys in PostSamp[method].items():
+                for Subkey, Values in Subkeys.items():
+                    PostZsList.append(np.array(Values['TrackZX']))
+                    if 'TrackSecData' in Values.keys(): 
+                        PostSecDataList.append(np.array(Values['TrackSecData']))
+            
+                    
+            # Converting the list type to the np-data type.
+            PostZsList = np.concatenate(PostZsList)
+            PostSecDataList = np.concatenate(PostSecDataList)
+            
+            if 'VDWave' in ConfigName:
+                PredSigRec = VDiffWAVE_Restoration(BenchModel,PostZsList[:,:,None], PostSecDataList, GenSteps, 
+                                                   BenchModel.cfg['StepInterval'], GenBatchSize = Params['GenBatchSize'] )
+                PredSigRec = np.squeeze(PredSigRec)
+                
+            elif 'DiffWave' in ConfigName:
+                PredSigRec = DiffWAVE_Restoration(BenchModel,PostZsList, PostSecDataList, GenBatchSize = Params['GenBatchSize'], 
+                                                  GenSteps = GenSteps, StepInterval = BenchModel.config['StepInterval'])
         
-        KldPSD_GenTrue = MeanKLD(PSDGenSamp, PSDTrueData)
-        KldPSD_TrueGen  = MeanKLD(PSDTrueData, PSDGenSamp)
-        MeanKld_GTTG = (KldPSD_GenTrue + KldPSD_TrueGen) / 2
+            elif 'Wavenet' in ConfigName:
+                PredSigRec = CompResource(BenchModel, [PostZsList[...,None] , PostSecDataList], BatchSize=Params['GenBatchSize'], NSplitBatch=10)
+                PredSigRec = mu_law_decode(PredSigRec)
         
-        print('KldPSD_GenTrue : ', KldPSD_GenTrue,', KldPSD_TrueGen : ', KldPSD_TrueGen, ', MeanKld_GTTG : ', MeanKld_GTTG)
+            # Calculating the KLD between the PSD of the true signals and the generated signals    
+            PSDGenSamp =  FFT_PSD(PredSigRec, 'All', MinFreq = NewEval.MinFreq, MaxFreq = NewEval.MaxFreq)
+            PSDTrueData =  FFT_PSD(GroundTruth, 'All', MinFreq = NewEval.MinFreq, MaxFreq = NewEval.MaxFreq)
+            
+            KldPSD_GenTrue = MeanKLD(PSDGenSamp, PSDTrueData)
+            KldPSD_TrueGen  = MeanKLD(PSDTrueData, PSDGenSamp)
+            MeanKld_GTTG = (KldPSD_GenTrue + KldPSD_TrueGen) / 2
+            MeanKld_GTTG_dic['MeanKld_GTTG_'+method] = MeanKld_GTTG
+            
+            print('FFT_Method :', method, 'KldPSD_GenTrue : ', KldPSD_GenTrue,', KldPSD_TrueGen : ', KldPSD_TrueGen, ', MeanKld_GTTG : ', MeanKld_GTTG)
     
     ''' Renaming columns '''
     # r'I(V; \acute{Z} \mid Z)'
     # r'I(V;\acute{\Theta} \mid \acute{Z})'
     # r'I(S;\acute{\Theta} \mid \acute{Z})'
     
-    
+
     MIVals = pd.DataFrame(NewEval.SubResDic)
     if 'VAE' in ConfigName:
-        MIVals.columns = [r'(i) $I(V; \acute{Z} \mid Z)$', r'(ii) $I(V;\acute{\Theta} \mid \acute{Z})$', r'(iii) $I(S;\acute{\Theta} \mid \acute{Z})$']
-    else:
-        MIVals.columns =[r'(i) $I(V;\acute{\Theta} \mid X)$', r'(ii) $I(S;\acute{\Theta} \mid X)$']
+        # Generate labels in key order
+        keys = list(NewEval.SubResDic.keys())
+        base_labels = [r'(i) $I(V; \acute{Z} \mid Z)$', r'(ii) $I(V;\acute{\Theta} \mid \acute{Z})$', r'(iii) $I(S;\acute{\Theta} \mid \acute{Z})$']
+
+        # Key pattern mapping
+        pattern_map = {'I_V_ZjZ': 0, 'I_V_CONsZj': 1, 'I_S_CONsZj': 2}
         
+        all_labels = []
+        for key in keys:
+            pattern = '_'.join(key.split('_')[:3]) # Extract first 3 parts
+            method = '_'.join(key.split('_')[3:]) # Extract method part
+
+            base_label = base_labels[pattern_map[pattern]]
+            # Add method as prefix or suffix
+            labeled = f"{base_label} ({method})" # or f"({method}) {base_label}"
+            all_labels.append(labeled)
+    else:
+        # Generate labels in key order
+        keys = list(NewEval.SubResDic.keys())
+        base_labels =[r'(i) $I(V;\acute{\Theta} \mid X)$', r'(ii) $I(S;\acute{\Theta} \mid X)$']
+        
+        # Key pattern mapping
+        pattern_map = {'I_V_CONsX': 0, 'I_S_CONsX': 1}
+        
+        all_labels = []
+        for key in keys:
+            pattern = '_'.join(key.split('_')[:3]) # Extract first 3 parts
+            method = '_'.join(key.split('_')[3:]) # Extract method part
+                
+            base_label = base_labels[pattern_map[pattern]]
+            # Add method as prefix or suffix
+            labeled = f"{base_label} ({method})" # or f"({method}) {base_label}"
+            all_labels.append(labeled)        
+    
+    # Create DataFrame with labeled columns
+    MIVals = pd.DataFrame(NewEval.SubResDic)
+    MIVals.columns = all_labels
     MIVals['Model'] = ConfigName
     longMI = MIVals.melt(id_vars='Model', var_name='Metrics', value_name='Values')
-
-
-    return MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, longMI, MeanKld_GTTG
+  
+    # Extract method type and clean metric names
+    longMI['MetricType'] = longMI['Metrics'].str.extract(r'\(([^)]+)\)$')
+    longMI['Metrics'] = longMI['Metrics'].str.replace(r'\s*\([^)]+\)\s*$', '', regex=True)
+    
+    return MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, R2denorm, longMI, MeanKld_GTTG_dic
     
 
 if __name__ == "__main__":
@@ -304,6 +339,7 @@ if __name__ == "__main__":
     
     # loop
     for Filename in FileList:
+
         # Extracts the string between 'Obj_' and '_Nj'
         ConfigName =re.search(r'Obj_(.*?)_Nj', Filename).group(1) 
         Match = re.search(r'(VAE)', ConfigName).group(1) if re.search(r'(VAE)', ConfigName) else None
@@ -324,14 +360,18 @@ if __name__ == "__main__":
     
         
         # Perform aggregation (custom function) and retrieve results.
-        MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, longMI, MeanKld_GTTG = Aggregation(ConfigName, ConfigPath, NJ=NJ, MetricCut=MetricCut, BatSize=BatSize)
+        MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, R2denorm, longMI, MeanKld_GTTG = Aggregation(ConfigName, ConfigPath, NJ=NJ, MetricCut=MetricCut, BatSize=BatSize)
     
         
         # Save the MItables to a CSV file.
         longMI.to_csv('./EvalResults/Tables/MI_' + str(ConfigName) +'_Nj'+str(NJ) + '.csv', index=False)
     
         # Save the AccKLDtables to a CSV file.
-        DicRes = {'Model': [ConfigName] , 'MeanKldRes': [MeanKld_GTTG], 'MSEnorm':[MSEnorm] , 'MSEdenorm': [MSEdenorm], 'MAPEnorm': [MAPEnorm], 'MAPEdenorm': [MAPEdenorm] }
+        DicRes = {'Model': [ConfigName] , 'MSEnorm':[MSEnorm] , 'MSEdenorm': [MSEdenorm], 'MAPEnorm': [MAPEnorm], 'MAPEdenorm': [MAPEdenorm], 'R2denorm': [R2denorm] }
+
+        for key, value in MeanKld_GTTG.items():
+            DicRes[key] = value
+        
         AccKLDtables = pd.DataFrame(DicRes)
         AccKLDtables.to_csv('./EvalResults/Tables/AccKLD_' + str(ConfigName) + '_Nj'+str(NJ) +'.csv', index=False)
             

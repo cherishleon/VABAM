@@ -455,11 +455,16 @@ def MSECal (TrueData, PredSigRec, MaxX, MinX):
     DenormTrueData = Denorm(TrueData, MaxX, MinX).copy()
     DenormPredSigRec = Denorm(PredSigRec, MaxX, MinX).copy()
    
-    # MAPE
+    # MSE
     MSEdenorm = np.mean((DenormTrueData - DenormPredSigRec)**2)
     MSEnorm = np.mean((TrueData - PredSigRec)**2)
+
+    # R-squared (coefficient of determination)
+    ybar_denorm = np.mean(DenormTrueData)
+    sst_denorm  = np.mean((DenormTrueData - ybar_denorm)**2)  # Var(y) in original units
+    R2denorm   = 1.0 - (MSEdenorm / sst_denorm)
     
-    return MSEnorm, MSEdenorm
+    return MSEnorm, MSEdenorm, R2denorm
 
 
 

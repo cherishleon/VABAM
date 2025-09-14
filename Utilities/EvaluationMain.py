@@ -392,7 +392,6 @@ class Evaluator ():
         # Store CandFreqIDs for all methods 
         self.CandFreqIDs = {}
 
-        print(self.fft_methods)
         for method in self.fft_methods:
             # Get candidate frequency IDs for current method
             if method in BestZsMetrics:
