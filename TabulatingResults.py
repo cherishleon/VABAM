@@ -96,7 +96,7 @@ def Aggregation (ConfigName, ConfigPath, NJ=1, FC=1.0, MetricCut = 1., BatSize=3
     ## MAPE    
     MAPEnorm, MAPEdenorm = MAPECal(AnalData, PredSigRec, MaxX, MinX)
     ## MSE    
-    MSEnorm, MSEdenorm = MSECal(AnalData, PredSigRec, MaxX, MinX)
+    MSEnorm, MSEdenorm, R2denorm = MSECal(AnalData, PredSigRec, MaxX, MinX)
     
     
     # Evaluating Mutual information
@@ -115,7 +115,6 @@ def Aggregation (ConfigName, ConfigPath, NJ=1, FC=1.0, MetricCut = 1., BatSize=3
     ## Calculation of KLD
     NewEval.GenModel = GenModel
     NewEval.KLD_TrueGen(AnalSig=AnalData, PlotDist=False) 
-    #MeanKld_GTTG = NewEval.method_results['MeanKld_GTTG']
     MeanKld_GTTG_dic = {}
     for keys, values in NewEval.method_results.items():
         MeanKld_GTTG_dic['MeanKld_GTTG_'+keys] = values['MeanKld_GTTG']
@@ -156,7 +155,7 @@ def Aggregation (ConfigName, ConfigPath, NJ=1, FC=1.0, MetricCut = 1., BatSize=3
     longMI['MetricType'] = longMI['Metrics'].str.extract(r'\(([^)]+)\)$')
     longMI['Metrics'] = longMI['Metrics'].str.replace(r'\s*\([^)]+\)\s*$', '', regex=True)
 
-    return MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, longMI, MeanKld_GTTG_dic
+    return MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, R2denorm, longMI, MeanKld_GTTG_dic
     
 
 
@@ -243,6 +242,7 @@ if __name__ == "__main__":
     
     
     for Filename in (FileList):
+
         # Extracts the string between 'Obj_' and '_Nj'
         ConfigName =re.search(r'Obj_(.*?)_Nj', Filename).group(1)  
         ConfigPath = [EvalConfig for EvalConfig in EvalConfigList if  ConfigName.split('_')[-1] in EvalConfig][0]
@@ -252,13 +252,13 @@ if __name__ == "__main__":
     
         
         # Perform aggregation (custom function) and retrieve results.
-        MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, longMI, MeanKld_GTTG = Aggregation(ConfigName, ConfigPath, NJ=NJ, FC=FC, MetricCut=MetricCut, BatSize=BatSize)
+        MSEnorm, MSEdenorm, MAPEnorm, MAPEdenorm, R2denorm, longMI, MeanKld_GTTG = Aggregation(ConfigName, ConfigPath, NJ=NJ, FC=FC, MetricCut=MetricCut, BatSize=BatSize)
     
         # Save the MItables to a CSV file.
         longMI.to_csv('./EvalResults/Tables/MI_' + str(ConfigName) +'_Nj'+str(NJ)+'_FC'+str(FC) + '.csv', index=False)
     
         # Save the AccKLDtables to a CSV file.
-        DicRes = {'Model': [ConfigName] , 'MSEnorm':[MSEnorm] , 'MSEdenorm': [MSEdenorm], 'MAPEnorm': [MAPEnorm], 'MAPEdenorm': [MAPEdenorm] }
+        DicRes = {'Model': [ConfigName] , 'MSEnorm':[MSEnorm] , 'MSEdenorm': [MSEdenorm], 'MAPEnorm': [MAPEnorm], 'MAPEdenorm': [MAPEdenorm], 'R2denorm': [R2denorm] }
 
         for key, value in MeanKld_GTTG.items():
             DicRes[key] = value
