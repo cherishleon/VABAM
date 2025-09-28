@@ -243,9 +243,6 @@ if __name__ == "__main__":
     
     for Filename in (FileList):
 
-        if ('SKZFC_ART_1_50_800_Mimic' not in Filename and 'SKZFC_ART_1_30_800_Mimic' not in Filename and 'SKZFC_ART_1_50_500_Mimic' not in Filename):
-            continue
-
         # Extracts the string between 'Obj_' and '_Nj'
         ConfigName =re.search(r'Obj_(.*?)_Nj', Filename).group(1)  
         ConfigPath = [EvalConfig for EvalConfig in EvalConfigList if  ConfigName.split('_')[-1] in EvalConfig][0]
