@@ -67,7 +67,7 @@ def FFT_PSD(Data, ReducedAxis, MinFreq=1, MaxFreq=51,
     Data : array_like
         Input data tensor (1D to 4D supported).
     ReducedAxis : str
-        'None', 'All', or 'Batch' - how to reduce dimensions.
+        'None' or 'All' - how to reduce dimensions.
     MinFreq : int, default=1
         Minimum frequency index (inclusive).
     MaxFreq : int, default=51
@@ -82,10 +82,7 @@ def FFT_PSD(Data, ReducedAxis, MinFreq=1, MaxFreq=51,
     preserve_dims : bool, default=False
         If True, maintain input dimensions when reducing.
     return_phase : bool, default=False
-        If True, also return phase. For 'fft' the phase is from the complex FFT.
-        For 'welch_evo' the phase is the circular mean of STFT phases over time.
-        For 'welch' and 'matching_pursuit', phase is computed from the complex FFT
-        of the input in the selected frequency band.
+        If True, also return phase.
 
     Returns
     -------
