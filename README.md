@@ -18,8 +18,8 @@ Figure 1 shows the results of synthesizing 100 signals from a single original Ar
 
 
 - **Introduction of Novel Metrics:** We propose three novel metrics to provide a comprehensive evaluation of the model's synthesis and representation capabilities:
-  1. **Morphological Specialization in Latent Z:** Assessing whether latent space disentangles morphological features along specific dimensions.
-  2. **Morphological Preservation under Conditional Inputs :** Assessing the model’s ability to maintain waveform structure while adjusting amplitude.
+  1. **Waveform Shape Factorization in Latent Z:** Assessing whether latent space disentangles morphological features along specific dimensions.
+  2. **Waveform Shape Preservation under Conditional Inputs :** Assessing the model’s ability to maintain waveform structure while adjusting amplitude.
   3. **Amplitude Modulation Controllability within Fixed Morphologies:** Measuring the model's capability to modulate signal amplitude accurately in accordance with the intended input.
 
 
