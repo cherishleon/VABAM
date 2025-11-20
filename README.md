@@ -52,9 +52,8 @@ VABAM's training and its post-evaluation were conducted and tested with the foll
 - pandas == 1.1.4 , 2.1.1
 - tensorflow == 2.4.0 , 2.10.0
 - gpu == rtx3090TI , rtx4080 , rtx4090
-
 > **Note:** On RTX 5090 GPUs, the scripts may not run due to CUDA/cuDNN compatibility issues with the GRU implementation.
-<br><br>
+<br>
 
 
 ## Code Overview and Run Procedure Guide
