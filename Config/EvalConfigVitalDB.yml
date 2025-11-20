@@ -1,7 +1,6 @@
 # The list of common objects subject to class serialization.
 Common_Info: ['SubResDic', 'AggResDic', 'BestZsMetrics', 'TrackerCand', 'CandFreqIDs', 
-              'I_V_ZjZ',  'I_V_FCsZj',  'I_S_FCsZj', 'PostSamp', 'LatDim', 'NFCs', 'NSelZ', 
-              'GenBatchSize', 'GPU', 'SecDataType', 'FcLimit' ] 
+               'PostSamp', 'LatDim', 'NFCs', 'NSelZ', 'GenBatchSize', 'GPU', 'SecDataType', 'FcLimit' ] 
               
 
 Parameters:           # SigType_LatDim_CompSize

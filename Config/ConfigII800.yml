@@ -133,3 +133,36 @@ Models:
     SpecLosses: ['FC'] # Specific loss nicknames.
     MnWZ: 0.00001
     MxWZ: 0.00001
+
+
+  SKZ_II_1_30_800_Mimic:
+    DataSource: Mimic3 
+    LatDim: 30
+    Depth: 1
+    SpecLosses: ['SKZ'] # Specific loss nicknames.
+    MnWZ: 0.000001
+    MxWZ: 0.000001
+    
+  SKZ_II_1_30_800_VitalDB:
+    DataSource: VitalDB 
+    LatDim: 30
+    Depth: 1
+    SpecLosses: ['SKZ'] # Specific loss nicknames.
+    MnWZ: 0.00001
+    MxWZ: 0.00001
+    
+  FC_II_1_30_800_Mimic:
+    DataSource: Mimic3 
+    LatDim: 30
+    Depth: 1
+    SpecLosses: ['FC'] # Specific loss nicknames.
+    MnWZ: 0.000001
+    MxWZ: 0.000001
+
+  FC_II_1_30_800_VitalDB:
+    DataSource: VitalDB 
+    LatDim: 30
+    Depth: 1
+    SpecLosses: ['FC'] # Specific loss nicknames.
+    MnWZ: 0.00001
+    MxWZ: 0.00001

@@ -111,3 +111,28 @@ Models:
     LatDim: 50
     Depth: 1
     SpecLosses: ['FC'] # Specific loss nicknames.
+
+
+  SKZ_ART_1_30_800_Mimic:
+    DataSource: Mimic3 
+    LatDim: 30
+    Depth: 1
+    SpecLosses: ['SKZ'] # Specific loss nicknames.
+    
+  SKZ_ART_1_30_800_VitalDB:
+    DataSource: VitalDB 
+    LatDim: 30
+    Depth: 1
+    SpecLosses: ['SKZ'] # Specific loss nicknames.
+    
+  FC_ART_1_30_800_Mimic:
+    DataSource: Mimic3 
+    LatDim: 30
+    Depth: 1
+    SpecLosses: ['FC'] # Specific loss nicknames.
+
+  FC_ART_1_30_800_VitalDB:
+    DataSource: VitalDB 
+    LatDim: 30
+    Depth: 1
+    SpecLosses: ['FC'] # Specific loss nicknames.
