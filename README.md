@@ -76,7 +76,7 @@ For visualization and table generation:
 - `TablesVis.ipynb`: Converts pandas tables into LaTeX code for presentation.
 - `Tables.ipynb`: Jupyter Notebook for generating summary tables of experimental results.
 
-> **Note:** The visualization code was developed with GPT-4.0 assistance and prioritizes functional output over readability. Some redundancy may be present, and further updates are expected.
+> **Note:** The visualization code was developed with GPT and Claude assistance and prioritizes functional output over readability. Some redundancy may be present, and further updates are expected.
 
 ### Configurations
 - Configuration files for the main and benchmark models are located in the [Config](https://github.com/JunetaeKim/VABAM/tree/main/Config) and [/Benchmarks
